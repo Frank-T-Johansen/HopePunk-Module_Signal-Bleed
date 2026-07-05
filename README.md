@@ -61,3 +61,17 @@ Floor D: Quarantine, Incident Floor, and Landing Corner
 ```
 
 These maps are intended to be stacked vertically with possible dummy floors in between. Elevators are the accessible and cargo/patient-safe route. Stair/ladderwells are emergency access routes: useful for PCs, bad for stretchers.
+
+
+## Keyed map locations
+
+The module now includes separate GM key handouts for each active map:
+
+```text
+handouts/14_Map_A_Clinic_Key.md
+handouts/15_Map_B_Community_Support_Key.md
+handouts/16_Map_C_Service_Utility_Key.md
+handouts/17_Map_D_Incident_Key.md
+```
+
+The location keys are designed to prompt players to interact with the environment using many skills, not only Awareness/Investigation. Combat skills such as Small Arms, Big Guns, Blades, and Melee Combat can reveal tactical and forensic information without requiring violence.

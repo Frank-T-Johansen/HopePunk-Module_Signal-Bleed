@@ -1,0 +1,236 @@
+{
+  "metadata": {
+    "title": "Signal Bleed keyed map locations",
+    "note": "These keys map handout IDs to GM notes and suggested interaction prompts. Coordinates are not yet assigned."
+  },
+  "maps": [
+    {
+      "id": "A",
+      "title": "Map A — Mercy Twelve Clinic and Indoor Street Key",
+      "handout_file": "handouts/14_Map_A_Clinic_Key.md",
+      "locations": [
+        {
+          "id": "A1",
+          "name": "Indoor Street / Public Concourse"
+        },
+        {
+          "id": "A2",
+          "name": "Public Front Entrance"
+        },
+        {
+          "id": "A3",
+          "name": "Reception and Waiting Area"
+        },
+        {
+          "id": "A4",
+          "name": "Pediatric / Community Corner"
+        },
+        {
+          "id": "A5",
+          "name": "Triage Desk"
+        },
+        {
+          "id": "A6",
+          "name": "Emergency Intake Bay"
+        },
+        {
+          "id": "A7",
+          "name": "Trauma / Surgery Rooms"
+        },
+        {
+          "id": "A8",
+          "name": "Pharmacy and Supply"
+        },
+        {
+          "id": "A9",
+          "name": "Recovery Wing"
+        },
+        {
+          "id": "A10",
+          "name": "Staff Office / Records"
+        },
+        {
+          "id": "A11",
+          "name": "Elevator Core"
+        },
+        {
+          "id": "A12",
+          "name": "Emergency Stair / Ladderwell"
+        },
+        {
+          "id": "A13",
+          "name": "Service Corridor"
+        },
+        {
+          "id": "A14",
+          "name": "Bluewire’s Pacing Route"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Map B — Community Support, Shelter, and School Annex Key",
+      "handout_file": "handouts/15_Map_B_Community_Support_Key.md",
+      "locations": [
+        {
+          "id": "B1",
+          "name": "Indoor Street / Neighborhood Walkway"
+        },
+        {
+          "id": "B2",
+          "name": "Public Entrance / Welcome Desk"
+        },
+        {
+          "id": "B3",
+          "name": "Community Commons"
+        },
+        {
+          "id": "B4",
+          "name": "Pantry / Aid Distribution"
+        },
+        {
+          "id": "B5",
+          "name": "Communal Kitchen / Cafeteria"
+        },
+        {
+          "id": "B6",
+          "name": "Classroom / Workshop"
+        },
+        {
+          "id": "B7",
+          "name": "Children’s Corner / Daycare"
+        },
+        {
+          "id": "B8",
+          "name": "Shelter Dorm"
+        },
+        {
+          "id": "B9",
+          "name": "Counselor / Caseworker Offices"
+        },
+        {
+          "id": "B10",
+          "name": "Back Service Corridor"
+        },
+        {
+          "id": "B11",
+          "name": "Elevator Core"
+        },
+        {
+          "id": "B12",
+          "name": "Emergency Stair / Ladderwell"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Map C — Service, Utility, and Maintenance Floor Key",
+      "handout_file": "handouts/16_Map_C_Service_Utility_Key.md",
+      "locations": [
+        {
+          "id": "C1",
+          "name": "Service Street / Logistics Lane"
+        },
+        {
+          "id": "C2",
+          "name": "Central Loading Zone"
+        },
+        {
+          "id": "C3",
+          "name": "Generator Room"
+        },
+        {
+          "id": "C4",
+          "name": "Battery Bank"
+        },
+        {
+          "id": "C5",
+          "name": "Water Recycling / Filtration"
+        },
+        {
+          "id": "C6",
+          "name": "HVAC / Air Handling"
+        },
+        {
+          "id": "C7",
+          "name": "Workshop / Repair Bay"
+        },
+        {
+          "id": "C8",
+          "name": "Storage Rooms"
+        },
+        {
+          "id": "C9",
+          "name": "Monitoring Office"
+        },
+        {
+          "id": "C10",
+          "name": "Elevator / Freight Lift Core"
+        },
+        {
+          "id": "C11",
+          "name": "Emergency Stair / Ladderwell"
+        },
+        {
+          "id": "C12",
+          "name": "Signal Interference Node"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "title": "Map D — Quarantine, Incident Floor, and Landing Corner Key",
+      "handout_file": "handouts/17_Map_D_Incident_Key.md",
+      "locations": [
+        {
+          "id": "D1",
+          "name": "Landing Corner / Skywell Pad"
+        },
+        {
+          "id": "D2",
+          "name": "Skywell Access Door"
+        },
+        {
+          "id": "D3",
+          "name": "Central Incident Hall"
+        },
+        {
+          "id": "D4",
+          "name": "Quarantine Cells"
+        },
+        {
+          "id": "D5",
+          "name": "Diagnostics Lab"
+        },
+        {
+          "id": "D6",
+          "name": "Control Room"
+        },
+        {
+          "id": "D7",
+          "name": "Patient Holding Rooms"
+        },
+        {
+          "id": "D8",
+          "name": "Containment Chamber"
+        },
+        {
+          "id": "D9",
+          "name": "Service Bypass"
+        },
+        {
+          "id": "D10",
+          "name": "Elevator Core"
+        },
+        {
+          "id": "D11",
+          "name": "Emergency Stair / Ladderwell"
+        },
+        {
+          "id": "D12",
+          "name": "NightCrash Arrival Route"
+        }
+      ]
+    }
+  ]
+}
