@@ -1,0 +1,93 @@
+{
+  "metadata": {
+    "title": "Signal Bleed camera and surveillance zones",
+    "status": "draft"
+  },
+  "difficulty_scale": {
+    "8": "obvious public / weak / cooperative",
+    "10": "normal internal with cooperation",
+    "12": "restricted or faction-controlled",
+    "14": "corporate-compromised or edited",
+    "16": "active overwatch / trace risk",
+    "18+": "alien-corrupted, Samurai sponsor feed, or hardened ICE"
+  },
+  "zones": [
+    {
+      "map": "A",
+      "location": "A1 Indoor Street",
+      "owner": "Municipal / Ad-network",
+      "hack_difficulty": 10,
+      "notes": "High ad-injection risk; public cameras."
+    },
+    {
+      "map": "A",
+      "location": "A6 Emergency Intake Bay",
+      "owner": "Clinic-owned, recently looped",
+      "hack_difficulty": 12,
+      "notes": "Six-minute gap around courier incident."
+    },
+    {
+      "map": "A",
+      "location": "A10 Staff Office / Records",
+      "owner": "Clinic-owned restricted",
+      "hack_difficulty": 12,
+      "notes": "Better accessed by cooperation than intrusion."
+    },
+    {
+      "map": "A",
+      "location": "A13 Service Corridor",
+      "owner": "Contested Clinic / Redline",
+      "hack_difficulty": 12,
+      "notes": "Useful blind spots."
+    },
+    {
+      "map": "B",
+      "location": "B4 Pantry / Aid Distribution",
+      "owner": "Community / Redline-adjacent",
+      "hack_difficulty": 12,
+      "notes": "Can reveal Mara's covert support."
+    },
+    {
+      "map": "B",
+      "location": "B7 Children’s Corner",
+      "owner": "Clinic/community restricted",
+      "hack_difficulty": 14,
+      "notes": "Privacy-sensitive; staff resist casual access."
+    },
+    {
+      "map": "B",
+      "location": "B10 Back Service Corridor",
+      "owner": "Redline-controlled",
+      "hack_difficulty": 12,
+      "notes": "Supply-route feed."
+    },
+    {
+      "map": "C",
+      "location": "C9 Monitoring Office",
+      "owner": "Maintenance / contested",
+      "hack_difficulty": 12,
+      "notes": "Can access service feeds."
+    },
+    {
+      "map": "C",
+      "location": "C12 Signal Interference Node",
+      "owner": "Unknown / corrupted",
+      "hack_difficulty": 16,
+      "notes": "Signal artifacts and possible alien bleed."
+    },
+    {
+      "map": "D",
+      "location": "D6 Control Room",
+      "owner": "Restricted clinic/corporate hybrid",
+      "hack_difficulty": 14,
+      "notes": "Controls doors/cameras on incident floor."
+    },
+    {
+      "map": "D",
+      "location": "D1 Landing Corner",
+      "owner": "Municipal / emergency response / sponsor feed",
+      "hack_difficulty": 12,
+      "notes": "NightCrash arrival can add sponsor/bodycam feeds."
+    }
+  ]
+}

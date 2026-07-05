@@ -1,0 +1,229 @@
+{
+  "metadata": {
+    "title": "Signal Bleed token/NPC placement manifest",
+    "status": "draft",
+    "note": "Use as a GM planning guide. Roll20 scripts can create character sheets and handouts, but placing tokens automatically requires page IDs, token image URLs already in Roll20, and map-specific coordinates. For now, place tokens manually."
+  },
+  "token_groups": [
+    {
+      "group": "Clinic",
+      "default_attitude": "Helpful, stressed, protective",
+      "tokens": [
+        {
+          "name": "Dr. Sera Valez",
+          "type": "named NPC",
+          "starting_map": "A",
+          "starting_location": "A5 Triage Desk or A10 Staff Office / Records",
+          "visible_to_players": true,
+          "notes": "Charismatic clinic leader. Pushes negotiation, evacuation, and containment."
+        },
+        {
+          "name": "Senior Nurse Imani Cho",
+          "type": "support NPC",
+          "starting_map": "A",
+          "starting_location": "A3 Reception and Waiting Area or A5 Triage Desk",
+          "visible_to_players": true,
+          "notes": "Practical, tired, knows patient flow and which corridors must remain clear."
+        },
+        {
+          "name": "Orderly Pax Ruun",
+          "type": "support NPC",
+          "starting_map": "A",
+          "starting_location": "A6 Emergency Intake Bay",
+          "visible_to_players": true,
+          "notes": "Saw that the courier did not arrive through official emergency intake."
+        },
+        {
+          "name": "Clinic Security Monitor",
+          "type": "control-room NPC",
+          "starting_map": "A",
+          "starting_location": "A10 Staff Office / Records or a small security alcove",
+          "visible_to_players": false,
+          "notes": "Can help retrieve clinic camera footage if PCs earn trust. Possible pressure point for privacy conflicts."
+        },
+        {
+          "name": "Sister Luma",
+          "type": "support NPC",
+          "starting_map": "A or B",
+          "starting_location": "A3 Waiting Area or B9 Counselor Offices",
+          "visible_to_players": true,
+          "notes": "Emotional/spiritual support. Good prompt for psychology/comfort interactions."
+        }
+      ]
+    },
+    {
+      "group": "Redline Choir",
+      "default_attitude": "Suspicious, territorial, potentially negotiable",
+      "tokens": [
+        {
+          "name": "Mara “Mother Red” Vey",
+          "type": "named NPC",
+          "starting_map": "A or B",
+          "starting_location": "A1 Indoor Street, A13 Service Corridor, or B4 Pantry",
+          "visible_to_players": "delayed",
+          "notes": "Gang leader. Charismatic and negotiation-oriented if respected. Covertly funds aid/school support."
+        },
+        {
+          "name": "Nox “Bluewire” Kade",
+          "type": "named NPC / volatile fuse",
+          "starting_map": "A",
+          "starting_location": "A14 Bluewire’s Pacing Route near A6/A7/A13",
+          "visible_to_players": true,
+          "notes": "Obvious distress. Difficulty 8 to notice serious instability, 10 to identify likely opioid dependence/cyber-strain."
+        },
+        {
+          "name": "Redline Lookout Pair",
+          "type": "mooks / social pressure",
+          "starting_map": "A",
+          "starting_location": "A1 Indoor Street or A13 Service Corridor",
+          "visible_to_players": true,
+          "notes": "Protective, not suicidal. Can be talked down with respect and concrete plans."
+        },
+        {
+          "name": "Redline Camera Sitter",
+          "type": "control-room NPC",
+          "starting_map": "B or C",
+          "starting_location": "B10 Back Service Corridor or C9 Monitoring Office",
+          "visible_to_players": false,
+          "notes": "Has access to side-corridor and street feeds. May have additional allegiances."
+        },
+        {
+          "name": "Redline Supply Runner",
+          "type": "support NPC",
+          "starting_map": "B",
+          "starting_location": "B4 Pantry / Aid Distribution or B10 Back Service Corridor",
+          "visible_to_players": true,
+          "notes": "Can reveal Mara’s good works accidentally if treated kindly."
+        }
+      ]
+    },
+    {
+      "group": "Children / civilians",
+      "default_attitude": "Curious, scared, observant",
+      "tokens": [
+        {
+          "name": "Keet",
+          "type": "named child witness",
+          "starting_map": "B",
+          "starting_location": "B6 Classroom or B7 Children’s Corner",
+          "visible_to_players": true,
+          "notes": "Saw the courier/signals. Can mention Auntie Red if trust is built."
+        },
+        {
+          "name": "Miri and Sol",
+          "type": "schoolchildren pair",
+          "starting_map": "B or A",
+          "starting_location": "B7 Children’s Corner or A4 Pediatric Corner",
+          "visible_to_players": true,
+          "notes": "Use for overheard conversation: 'Auntie Red paid for breakfast again, but don’t say it loud.'"
+        },
+        {
+          "name": "Worried Parent",
+          "type": "civilian",
+          "starting_map": "A or B",
+          "starting_location": "A3 Waiting Area or B3 Community Commons",
+          "visible_to_players": true,
+          "notes": "Can pressure PCs to think about evacuation and not only the relay."
+        },
+        {
+          "name": "Food Line Volunteers",
+          "type": "civilian group",
+          "starting_map": "B",
+          "starting_location": "B4 Pantry / Aid Distribution",
+          "visible_to_players": true,
+          "notes": "Know that supplies arrive through suspicious but reliable routes."
+        }
+      ]
+    },
+    {
+      "group": "Corporate Recovery",
+      "default_attitude": "Professional, hostile, rational",
+      "tokens": [
+        {
+          "name": "Commander Ilan Rusk",
+          "type": "named antagonist",
+          "starting_map": "A or D",
+          "starting_location": "A1 Indoor Street edge, D3 Central Incident Hall, or remote comms first",
+          "visible_to_players": "delayed",
+          "notes": "Can be negotiated with, bluffed, exposed, blackmailed, or temporarily allied against aliens."
+        },
+        {
+          "name": "Corp Recovery Pair",
+          "type": "mooks",
+          "starting_map": "A or C",
+          "starting_location": "A1 Public Concourse edge or C1 Service Street",
+          "visible_to_players": true,
+          "notes": "Disciplined posture. Nonlethal or lethal depending on escalation."
+        },
+        {
+          "name": "Corporate Drone",
+          "type": "drone",
+          "starting_map": "A/C/D",
+          "starting_location": "A1 Public Concourse, C1 Service Street, or D1 Landing Corner",
+          "visible_to_players": true,
+          "notes": "Camera/speaker platform before it becomes a weapon."
+        },
+        {
+          "name": "Corporate Feed Handler",
+          "type": "remote/control NPC",
+          "starting_map": "off-map or D6",
+          "starting_location": "Remote initially; D6 Control Room if present",
+          "visible_to_players": false,
+          "notes": "May be the additional allegiance inside a control room; could manipulate footage."
+        }
+      ]
+    },
+    {
+      "group": "Samurai / emergency",
+      "default_attitude": "Rescue-focused",
+      "tokens": [
+        {
+          "name": "Florence “NightCrash” Vale",
+          "type": "Level 5 Samurai",
+          "starting_map": "D",
+          "starting_location": "D1 Landing Corner / Skywell Pad or post-finale A1/A3",
+          "visible_to_players": "only if arrives",
+          "notes": "Emergency safety valve or recognition cameo. Nonlethal against humans, lethal against aliens."
+        },
+        {
+          "name": "The Siren Saint",
+          "type": "vehicle token",
+          "starting_map": "D",
+          "starting_location": "D1 Landing Corner / Skywell Pad",
+          "visible_to_players": "only if arrives",
+          "notes": "Rapid-response bike with detachable trauma pod/micro-ambulance sled."
+        },
+        {
+          "name": "Gurney Angels",
+          "type": "two humanoid stretcher drones",
+          "starting_map": "D/A",
+          "starting_location": "D12 NightCrash Arrival Route or A6 Emergency Intake Bay",
+          "visible_to_players": "only if arrives",
+          "notes": "Sponsored human medical tech, not alien drones."
+        }
+      ]
+    },
+    {
+      "group": "Alien Incursion",
+      "default_attitude": "Non-negotiable first-contact pressure",
+      "tokens": [
+        {
+          "name": "Mote Swarm",
+          "type": "alien group",
+          "starting_map": "D",
+          "starting_location": "D8 Containment Chamber or D3 Central Incident Hall",
+          "visible_to_players": "when breach starts",
+          "notes": "Forces cooperation and evacuation. Not a social faction."
+        },
+        {
+          "name": "Signal-Touched Patient",
+          "type": "hazard/NPC",
+          "starting_map": "A/D",
+          "starting_location": "A7 Trauma or D7 Patient Holding Rooms",
+          "visible_to_players": "when discovered",
+          "notes": "Medical/social scene before combat. Should prompt Medicine, Psychology, Cyberware, and Mesh checks."
+        }
+      ]
+    }
+  ]
+}
