@@ -6,15 +6,6 @@ This is an unofficial fan creation for Hope//Punk by RavensDagger.
 
 Official rules and information: https://ravensdagger.itch.io/hopepunk
 
-## Roll20 requirements
-
-This module is designed for a Roll20 game using the public **Hope//Punk** character sheet template.
-
-When creating the Roll20 game, choose:
-
-```text
-Character Sheet: Hope//Punk
-
 ## Current contents
 
 ```text
@@ -44,4 +35,15 @@ Commands:
 !hopepunk-signal-bleed --dry-run
 !hopepunk-signal-bleed --import
 !hopepunk-signal-bleed --overwrite
+```
+
+
+## Roll20 requirements
+
+This module is designed for a Roll20 game using the public **Hope//Punk** character sheet template.
+
+When creating or configuring the Roll20 game, choose:
+
+```text
+Character Sheet: Hope//Punk
 ```

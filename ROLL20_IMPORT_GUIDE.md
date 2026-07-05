@@ -1,16 +1,5 @@
 # Roll20 Import Guide: Signal Bleed
 
-
-```md
-## Before importing
-
-Create or open a Roll20 game using the public **Hope//Punk** character sheet template.
-
-In Roll20 game settings, the selected character sheet should be:
-
-```text
-Hope//Punk
-
 Use this script:
 
 ```text
@@ -22,6 +11,18 @@ The Roll20 chat command is:
 ```text
 !hopepunk-signal-bleed
 ```
+
+## Before importing
+
+Create or open a Roll20 game using the public **Hope//Punk** character sheet template.
+
+In Roll20 game settings, the selected character sheet should be:
+
+```text
+Hope//Punk
+```
+
+Do this before running the importer.
 
 ## Commands
 

@@ -13,6 +13,7 @@
 // - Imports draft NPCs as GM-only character entries with Bio and GM Notes.
 // - Imports scenario Markdown files as GM-only Roll20 handouts.
 // - Does not upload images/maps.
+// - Designed for games using the public Hope//Punk character sheet.
 // - Keep only one copy of this script active in the Roll20 game.
 
 var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
@@ -190,6 +191,76 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "The swarm is a symptom, not the main alien intelligence"
     ],
     "gm_notes": "Use to force cooperation, evacuation, and first ascension. Do not make this a social faction in the starter job."
+  },
+  {
+    "name": "Florence “NightCrash” Vale",
+    "role": "Level 5 Samurai / combat medic / evacuation specialist",
+    "faction": "Samurai / Emergency medical sponsors",
+    "attitude": "Sponsor-bright, exhausted, sincere, frighteningly competent",
+    "wants": [
+      "Save civilians",
+      "Stabilize wounded",
+      "Contain alien breaches",
+      "Avoid fighting human factions",
+      "Welcome newly awakened Samurai if the PCs ascend"
+    ],
+    "offers": [
+      "Emergency evacuation",
+      "Trauma care",
+      "One tactical opening during an alien breach",
+      "Non-lethal restraint against humans",
+      "Mentor cameo after the crisis"
+    ],
+    "secrets": [
+      "She is already being redirected to a larger emergency elsewhere",
+      "Her cheerful public persona hides severe fatigue",
+      "She will not solve the PCs' final decision for them"
+    ],
+    "gm_notes": "Use NightCrash only as an emergency safety valve or post-victory recognition cameo. She arrives briefly, saves wounded or creates one opening, then rushes to a bigger emergency. She is adverse to fighting humans and focuses on evacuation, medicine, and fighting aliens."
+  },
+  {
+    "name": "The Siren Saint",
+    "role": "NightCrash's rapid-response vehicle",
+    "faction": "Samurai / Emergency medical sponsors",
+    "attitude": "Vehicle asset, not a social NPC",
+    "wants": [
+      "Arrive fast",
+      "Extract critical patients",
+      "Keep NightCrash mobile"
+    ],
+    "offers": [
+      "Hyperfast arrival",
+      "Detachable powered trauma sled",
+      "Micro-ambulance pod",
+      "Emergency override hacks",
+      "One critical-patient extraction"
+    ],
+    "secrets": [
+      "The hoverbike itself does not carry the patient; the detachable trauma pod does"
+    ],
+    "gm_notes": "Use as explanation for how NightCrash arrives quickly without pretending a critically injured person fits on a normal hoverbike."
+  },
+  {
+    "name": "Gurney Angels",
+    "role": "Two humanoid stretcher drones",
+    "faction": "Samurai / Human medical sponsors",
+    "attitude": "Soothing, sponsor-approved, slightly creepy",
+    "wants": [
+      "Evacuate patients",
+      "Protect the stretcher",
+      "Follow NightCrash's triage commands"
+    ],
+    "offers": [
+      "Carry one critical patient",
+      "Carry two small civilians in an emergency",
+      "Deploy trauma straps and medfoam",
+      "Navigate smoke and crowds",
+      "Shield patients from debris"
+    ],
+    "secrets": [
+      "They are sponsored human tech, not alien drones"
+    ],
+    "gm_notes": "The Gurney Angels are evacuation tools, not combat monsters. They can briefly block or shove through danger while carrying a patient, but their main job is extraction."
   }
 ];
 
@@ -232,7 +303,12 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   {
     "name": "Signal Bleed - Scene Outline",
     "source_file": "handouts/07_Scene_Outline.md",
-    "notes": "<h1>Signal Bleed: Scene Outline</h1>\n<h2>Scene 1: Arrival at Mercy Twelve</h2>\n<p>The PCs arrive at the clinic for a simple protection job.</p>\n<p>Visible tensions:</p>\n<ul>\n<li>patients in the waiting room</li>\n<li>gang underlings near the rear exit</li>\n<li>clinic volunteers trying to keep order</li>\n<li>Bluewire pacing too close to the treatment wing</li>\n<li>the lights flicker every time the relay pulses</li>\n</ul>\n<h2>Scene 2: Keep the Peace</h2>\n<p>A disagreement breaks out over who controls access to the relay.</p>\n<p>Options:</p>\n<ul>\n<li>talk down underlings</li>\n<li>investigate Bluewire’s condition</li>\n<li>discover clinic/gang history</li>\n<li>inspect security</li>\n<li>detect corp surveillance</li>\n<li>examine relay symptoms</li>\n</ul>\n<h2>Scene 3: Faction Negotiation</h2>\n<p>The PCs can interact with Dr. Valez, Mara, gang underlings, clinic staff, school volunteers, and corporate intermediaries.</p>\n<p>Possible discoveries:</p>\n<ul>\n<li>Mara secretly supports the school and food programs</li>\n<li>the relay contains more than evidence</li>\n<li>the courier’s route should have been impossible</li>\n<li>someone has already tagged the clinic for recovery</li>\n<li>Bluewire’s implants are reacting to the signal</li>\n</ul>\n<h2>Scene 4: Corporate Pressure</h2>\n<p>Commander Rusk or his team makes contact through a drone warning, legal threat, extraction demand, offer of payment, staged power outage, or recovery squad outside.</p>\n<h2>Scene 5: Signal Breach</h2>\n<p>The relay pulses. Lights bloom white-blue. Implants ache. Patients seize or speak in static. AR overlays show impossible geometry. Something hears the signal and answers.</p>\n<p>Earlier choices matter.</p>\n<h2>Scene 6: First Ascension</h2>\n<p>The PCs are exposed to the breach and trigger their first Samurai potential.</p>\n<p>Focus on protecting civilians, impossible pressure, personal choice, and hope under threat.</p>\n<h2>Scene 7: Finale</h2>\n<p>Possible finale locations:</p>\n<ul>\n<li>treatment wing</li>\n<li>generator room</li>\n<li>roof transmitter</li>\n<li>street outside clinic</li>\n<li>school annex</li>\n</ul>\n<p>Final choices:</p>\n<ul>\n<li>broadcast evidence now, risking unstable signal effects</li>\n<li>delay and stabilize it, giving the corp time</li>\n<li>destroy the relay to save the clinic</li>\n<li>give/shared custody to clinic, gang, or corp</li>\n<li>turn the signal into bait for the alien threat</li>\n</ul>"
+    "notes": "<h1>Signal Bleed: Scene Outline</h1>\n<h2>Scene 1: Arrival at Mercy Twelve</h2>\n<p>The PCs arrive at the clinic for a simple protection job.</p>\n<p>Visible tensions:</p>\n<ul>\n<li>patients in the waiting room</li>\n<li>gang underlings near the rear exit</li>\n<li>clinic volunteers trying to keep order</li>\n<li>Bluewire pacing too close to the treatment wing</li>\n<li>the lights flicker every time the relay pulses</li>\n</ul>\n<h2>Scene 2: Keep the Peace</h2>\n<p>A disagreement breaks out over who controls access to the relay.</p>\n<p>Options:</p>\n<ul>\n<li>talk down underlings</li>\n<li>investigate Bluewire’s condition</li>\n<li>discover clinic/gang history</li>\n<li>inspect security</li>\n<li>detect corp surveillance</li>\n<li>examine relay symptoms</li>\n</ul>\n<h2>Scene 3: Faction Negotiation</h2>\n<p>The PCs can interact with Dr. Valez, Mara, gang underlings, clinic staff, school volunteers, and corporate intermediaries.</p>\n<p>Possible discoveries:</p>\n<ul>\n<li>Mara secretly supports the school and food programs</li>\n<li>the relay contains more than evidence</li>\n<li>the courier’s route should have been impossible</li>\n<li>someone has already tagged the clinic for recovery</li>\n<li>Bluewire’s implants are reacting to the signal</li>\n</ul>\n<h2>Scene 4: Corporate Pressure</h2>\n<p>Commander Rusk or his team makes contact through a drone warning, legal threat, extraction demand, offer of payment, staged power outage, or recovery squad outside.</p>\n<h2>Scene 5: Signal Breach</h2>\n<p>The relay pulses. Lights bloom white-blue. Implants ache. Patients seize or speak in static. AR overlays show impossible geometry. Something hears the signal and answers.</p>\n<p>Earlier choices matter.</p>\n<h2>Scene 6: First Ascension</h2>\n<p>The PCs are exposed to the breach and trigger their first Samurai potential.</p>\n<p>Focus on protecting civilians, impossible pressure, personal choice, and hope under threat.</p>\n<h2>Scene 7: Finale</h2>\n<p>Possible finale locations:</p>\n<ul>\n<li>treatment wing</li>\n<li>generator room</li>\n<li>roof transmitter</li>\n<li>street outside clinic</li>\n<li>school annex</li>\n</ul>\n<p>Final choices:</p>\n<ul>\n<li>broadcast evidence now, risking unstable signal effects</li>\n<li>delay and stabilize it, giving the corp time</li>\n<li>destroy the relay to save the clinic</li>\n<li>give/shared custody to clinic, gang, or corp</li>\n<li>turn the signal into bait for the alien threat</li>\n</ul>\n<h2>Optional: NightCrash Intervention</h2>\n<p>If the PCs are being overwhelmed by the alien breach, Florence “NightCrash” Vale may arrive as an emergency safety valve.</p>\n<p>She should not solve the scenario. She creates one opening:</p>\n<ul>\n<li>evacuates endangered civilians</li>\n<li>stabilizes a dying PC or NPC</li>\n<li>blocks one alien push</li>\n<li>identifies the breach point</li>\n<li>gives the PCs one clear tactical instruction</li>\n</ul>\n<p>Then she receives a higher-priority emergency call and must leave.</p>\n<p>If the PCs solve the crisis themselves, use NightCrash after the finale instead. She arrives too late to save the day, realizes the PCs handled it, thanks them, recognizes them as newly awakened Samurai, and welcomes them into the wider Samurai world.</p>"
+  },
+  {
+    "name": "Signal Bleed - NightCrash Samurai Failsafe",
+    "source_file": "handouts/08_NightCrash_Samurai_Failsafe.md",
+    "notes": "<h1>NightCrash: Samurai Failsafe and Mentor Cameo</h1>\n<h2>GM purpose</h2>\n<p>Florence “NightCrash” Vale is not here to win the scenario for the players.</p>\n<p>She exists for two possible uses:</p>\n<p>1. <strong>Emergency arrival</strong> If the PCs are overwhelmed by the first alien breach, NightCrash arrives, saves wounded civilians or a fallen PC, creates one tactical opening, then leaves for a larger emergency elsewhere.</p>\n<p>2. <strong>Recognition arrival</strong> If the PCs solve the crisis themselves, NightCrash arrives after the danger has passed. She thanks them, identifies them as newly awakened Samurai, offers medical aid, and gives them their first connection to the wider Samurai world.</p>\n<p>NightCrash should never take the final decision away from the PCs.</p>\n<h2>Identity</h2>\n<p><strong>Name:</strong> Florence Vale <strong>Samurai Handle:</strong> NightCrash <strong>Level:</strong> 5 <strong>Active Samurai:</strong> about six months <strong>Role:</strong> combat medic, evacuation specialist, hospital patron <strong>Power budget:</strong> roughly Tier 1 catalogue-equivalent, around 500–1000 SP spent <strong>Public brand:</strong> absurd sponsor-friendly emergency nurse icon <strong>Private self:</strong> exhausted, sincere, frighteningly competent</p>\n<h2>Visual concept</h2>\n<p>NightCrash wears a white, pink, and chrome combat-medic outfit that looks halfway between trauma surgeon, racing leathers, magical-girl emergency responder, and theatrical nurse costume.</p>\n<p>Her outfit is ridiculous enough to attract sponsors and functional enough that people stop laughing when she cuts through an alien swarm to carry three patients out of a burning ward.</p>\n<p>Avoid using real-world protected medical symbols directly. Use fictional sponsor marks instead, such as:</p>\n<ul>\n<li>Mercy Star</li>\n<li>White Siren</li>\n<li>SaintPulse</li>\n<li>Pink Crossline</li>\n</ul>\n<h2>Sponsors</h2>\n<p>NightCrash is backed by hospitals, medtech companies, charity streams, trauma-foam manufacturers, and emergency-response brands.</p>\n<p>Possible sponsor names:</p>\n<ul>\n<li>SaintPulse Emergency Systems</li>\n<li>MercyCart Medical Logistics</li>\n<li>PanaceaLite Trauma Foam</li>\n<li>Aegis Ambulance Union</li>\n<li>HaloPatch Wound Sealant</li>\n<li>KidneyCandy Electrolytes</li>\n</ul>\n<p>Her sponsors are silly and exploitative. NightCrash is not.</p>\n<h2>Vehicle: The Siren Saint</h2>\n<p>A hoverbike alone is not enough to transport a critically injured person.</p>\n<p>Use this instead:</p>\n<p><strong>The Siren Saint</strong> is a hyperfast rapid-response hoverbike with a detachable powered trauma sled / micro-ambulance pod.</p>\n<p>In fast-response mode, it is a sleek armored hoverbike.</p>\n<p>In evacuation mode, it deploys or tows a compact stabilized medical pod large enough for one critical patient. The pod has shock suspension, trauma foam, oxygen support, restraint webbing, and a hard-shell canopy.</p>\n<p>The Siren Saint is built for impossible arrival:</p>\n<ul>\n<li>splitting traffic</li>\n<li>climbing ramps and stairwells</li>\n<li>launching from med-evac rails</li>\n<li>crossing rooftops</li>\n<li>forcing doors with emergency override hacks</li>\n<li>dragging the trauma pod through smoke, debris, and panicked crowds</li>\n</ul>\n<p>It can extract one critical patient or two cramped small civilians if the situation is desperate.</p>\n<h2>Drones: The Gurney Angels</h2>\n<p>NightCrash has two humanoid evacuation drones.</p>\n<p>They are sponsored human technology, not alien tech.</p>\n<p><strong>Public name:</strong> the Gurney Angels <strong>Technical labels:</strong> Mercy Unit 12-A and Mercy Unit 12-B</p>\n<p>The Gurney Angels have nurse-like silhouettes, white/pink trauma plating, soft synthetic voices, and a collapsible smart-stretcher carried between them.</p>\n<p>They are not combat monsters. Their purpose is evacuation.</p>\n<p>They can:</p>\n<ul>\n<li>carry one critical patient or two small civilians</li>\n<li>deploy trauma straps and medfoam</li>\n<li>shield a patient from debris</li>\n<li>navigate smoke and crowds automatically</li>\n<li>follow NightCrash’s triage commands</li>\n<li>block a hallway briefly while evacuating someone</li>\n<li>say cheerful scripted things at inappropriate moments</li>\n</ul>\n<p>Example line:</p>\n<blockquote>Please remain calm. Your panic has been noted and is valid.</blockquote>\n<h2>Human combat policy</h2>\n<p>NightCrash is adverse to fighting human factions.</p>\n<p>Her rule:</p>\n<blockquote>Humans are patients until they prove otherwise. Aliens are the emergency.</blockquote>\n<p>Against humans she uses non-lethal force unless there is no other way to stop immediate murder.</p>\n<h3>Non-lethal tools</h3>\n<p><strong>Bedside Manner</strong> A wrist-mounted non-lethal system that fires restraint foam, sedative microdarts, sonic disorientation pulses, and bright sponsor-colored warning flares.</p>\n<p><strong>Mercy Lance</strong> A collapsible injector-staff / shock-syringe polearm. Against humans it delivers sedatives, muscle-lock pulses, or trauma foam bursts. Against aliens, she switches it to cutting plasma, corrosive sterilant, or other lethal modes.</p>\n<h2>Alien combat policy</h2>\n<p>Against aliens, NightCrash uses maximum sterilizing violence.</p>\n<p>She will not hesitate if the threat is non-human, actively breaching, and endangering civilians.</p>\n<h2>How she treats factions</h2>\n<h3>Mercy Twelve Clinic</h3>\n<p>Warm, respectful, protective.</p>\n<p>Possible line:</p>\n<blockquote>Doctor Valez. I’m sorry I’m late.</blockquote>\n<h3>The Redline Choir</h3>\n<p>She does not approve of their violence, but she recognizes that they are part of the local survival system.</p>\n<p>Possible line:</p>\n<blockquote>Choir people: if you can carry, carry. If you can’t carry, clear the hall. If you start a fight in my triage path, I foam you to the ceiling.</blockquote>\n<h3>Corporate Recovery Team</h3>\n<p>Cold and procedural.</p>\n<p>Possible line:</p>\n<blockquote>Corporate personnel are invited to stop creating casualties.</blockquote>\n<p>If corporate troops are wounded, she still stabilizes them if possible.</p>\n<h3>Bluewire</h3>\n<p>She immediately reads him as overloaded, not evil.</p>\n<p>Possible line:</p>\n<blockquote>Oh, sweetheart. Who let you run that much ware on that much pain?</blockquote>\n<p>She may sedate him, but she will not humiliate him.</p>\n<h2>Emergency arrival</h2>\n<p>Use only if the PCs are about to be overwhelmed in a way that would make the first session collapse rather than become dramatic.</p>\n<p>NightCrash creates one opening:</p>\n<ul>\n<li>evacuate a cluster of civilians</li>\n<li>stabilize a dying NPC</li>\n<li>block one alien push</li>\n<li>extract a fallen PC</li>\n<li>give the PCs tactical advice</li>\n<li>pin the breach for one round while the PCs act</li>\n</ul>\n<p>Then she receives an emergency priority override and must leave.</p>\n<p>Possible larger emergency:</p>\n<ul>\n<li>a maternity shelter three districts over has gone into breach</li>\n<li>a school convoy is trapped in a tunnel</li>\n<li>a hospital tower just lost containment</li>\n<li>a Samurai team failed to answer a distress ping</li>\n<li>a refugee triage hub is being overrun</li>\n</ul>\n<p>She can help here, briefly. She cannot stay.</p>\n<h2>Recognition arrival</h2>\n<p>If the PCs solve the crisis themselves, NightCrash arrives after the danger has passed.</p>\n<p>Read or paraphrase:</p>\n<blockquote>The siren arrives too late to save the day.</blockquote>\n<p>&gt;</p>\n<blockquote>A white-pink rapid-response bike drops onto the broken street outside Mercy Twelve, dragging a compact trauma pod behind it. Two nurse-shaped drones unfold a stretcher that is no longer needed.</blockquote>\n<p>&gt;</p>\n<blockquote>NightCrash steps through the smoke, looks at the living patients, the ruined breach site, and the newly awakened Samurai.</blockquote>\n<p>&gt;</p>\n<blockquote>For once, the sponsor-smile drops.</blockquote>\n<p>&gt;</p>\n<blockquote>“You handled this yourselves?”</blockquote>\n<p>Then she may:</p>\n<ul>\n<li>thank them if Mercy Twelve was saved</li>\n<li>help stabilize survivors</li>\n<li>recognize signs of new Samurai ascension</li>\n<li>explain that their lives are about to change</li>\n<li>warn them that sponsors, corps, aliens, and other Samurai will notice</li>\n<li>suggest Samurai handles if the players want ideas</li>\n</ul>\n<h2>Handle suggestions</h2>\n<p>If the PCs have not picked Samurai names yet, NightCrash can offer suggestions based on what they did.</p>\n<p>Possible line:</p>\n<blockquote>You’re going to need handles. The system will give you numbers if you don’t give it names, and trust me, nobody wants to be Samurai Candidate Local-Event-Seven-B.</blockquote>\n<p>Suggestions:</p>\n<ul>\n<li>held the door: Lockjaw, DoorSaint, Lastline</li>\n<li>saved civilians: Hearth, Lifeline, Carrylight</li>\n<li>hacked the signal: Ghostwire, Signal Saint, Null Choir</li>\n<li>protected Bluewire: Softkill, Mercybreak, Kind Knife</li>\n<li>fought aliens directly: Breachburn, Motegrinder, Brightscar</li>\n<li>negotiated peace: Redthread, Truce, Bridgeburn</li>\n</ul>\n<p>The suggestions are optional and a little silly. Players should be free to reject them.</p>"
   }
 ];
 
@@ -281,14 +357,12 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     if (existing && !overwrite) {
       return { status: 'exists', name: npc.name };
     }
-
     var character = existing || createObj('character', { name: npc.name });
     character.set('name', npc.name);
     character.set('bio', bioForNpc(npc));
     character.set('gmnotes', gmnotesForNpc(npc));
     character.set('inplayerjournals', '');
     character.set('controlledby', '');
-
     return { status: existing ? 'updated' : 'created', name: npc.name };
   }
 
@@ -297,12 +371,10 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     if (existing && !overwrite) {
       return { status: 'exists', name: handout.name };
     }
-
     var obj = existing || createObj('handout', { name: handout.name });
     obj.set('name', handout.name);
     obj.set('notes', handout.notes);
     obj.set('inplayerjournals', '');
-
     return { status: existing ? 'updated' : 'created', name: handout.name };
   }
 
@@ -360,19 +432,16 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     }
 
     var summaries = [];
-
     if (includeNpcs) {
       summaries.push('<strong>NPCs</strong><br>' + resultSummary(NPCS.map(function (npc) {
         return createOrUpdateNpc(npc, overwrite);
       })));
     }
-
     if (includeHandouts) {
       summaries.push('<strong>Handouts</strong><br>' + resultSummary(HANDOUTS.map(function (handout) {
         return createOrUpdateHandout(handout, overwrite);
       })));
     }
-
     sendChat('Signal Bleed', '/w gm Import complete:<br><br>' + summaries.join('<br><br>'));
   }
 

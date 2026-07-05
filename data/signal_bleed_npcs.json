@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Signal Bleed NPCs",
-    "status": "draft"
+    "status": "draft updated with NightCrash"
   },
   "npcs": [
     {
@@ -173,6 +173,76 @@
         "The swarm is a symptom, not the main alien intelligence"
       ],
       "gm_notes": "Use to force cooperation, evacuation, and first ascension. Do not make this a social faction in the starter job."
+    },
+    {
+      "name": "Florence “NightCrash” Vale",
+      "role": "Level 5 Samurai / combat medic / evacuation specialist",
+      "faction": "Samurai / Emergency medical sponsors",
+      "attitude": "Sponsor-bright, exhausted, sincere, frighteningly competent",
+      "wants": [
+        "Save civilians",
+        "Stabilize wounded",
+        "Contain alien breaches",
+        "Avoid fighting human factions",
+        "Welcome newly awakened Samurai if the PCs ascend"
+      ],
+      "offers": [
+        "Emergency evacuation",
+        "Trauma care",
+        "One tactical opening during an alien breach",
+        "Non-lethal restraint against humans",
+        "Mentor cameo after the crisis"
+      ],
+      "secrets": [
+        "She is already being redirected to a larger emergency elsewhere",
+        "Her cheerful public persona hides severe fatigue",
+        "She will not solve the PCs' final decision for them"
+      ],
+      "gm_notes": "Use NightCrash only as an emergency safety valve or post-victory recognition cameo. She arrives briefly, saves wounded or creates one opening, then rushes to a bigger emergency. She is adverse to fighting humans and focuses on evacuation, medicine, and fighting aliens."
+    },
+    {
+      "name": "The Siren Saint",
+      "role": "NightCrash's rapid-response vehicle",
+      "faction": "Samurai / Emergency medical sponsors",
+      "attitude": "Vehicle asset, not a social NPC",
+      "wants": [
+        "Arrive fast",
+        "Extract critical patients",
+        "Keep NightCrash mobile"
+      ],
+      "offers": [
+        "Hyperfast arrival",
+        "Detachable powered trauma sled",
+        "Micro-ambulance pod",
+        "Emergency override hacks",
+        "One critical-patient extraction"
+      ],
+      "secrets": [
+        "The hoverbike itself does not carry the patient; the detachable trauma pod does"
+      ],
+      "gm_notes": "Use as explanation for how NightCrash arrives quickly without pretending a critically injured person fits on a normal hoverbike."
+    },
+    {
+      "name": "Gurney Angels",
+      "role": "Two humanoid stretcher drones",
+      "faction": "Samurai / Human medical sponsors",
+      "attitude": "Soothing, sponsor-approved, slightly creepy",
+      "wants": [
+        "Evacuate patients",
+        "Protect the stretcher",
+        "Follow NightCrash's triage commands"
+      ],
+      "offers": [
+        "Carry one critical patient",
+        "Carry two small civilians in an emergency",
+        "Deploy trauma straps and medfoam",
+        "Navigate smoke and crowds",
+        "Shield patients from debris"
+      ],
+      "secrets": [
+        "They are sponsored human tech, not alien drones"
+      ],
+      "gm_notes": "The Gurney Angels are evacuation tools, not combat monsters. They can briefly block or shove through danger while carrying a patient, but their main job is extraction."
     }
   ]
 }

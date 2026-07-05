@@ -70,3 +70,20 @@ Final choices:
 - destroy the relay to save the clinic
 - give/shared custody to clinic, gang, or corp
 - turn the signal into bait for the alien threat
+
+
+## Optional: NightCrash Intervention
+
+If the PCs are being overwhelmed by the alien breach, Florence “NightCrash” Vale may arrive as an emergency safety valve.
+
+She should not solve the scenario. She creates one opening:
+
+- evacuates endangered civilians
+- stabilizes a dying PC or NPC
+- blocks one alien push
+- identifies the breach point
+- gives the PCs one clear tactical instruction
+
+Then she receives a higher-priority emergency call and must leave.
+
+If the PCs solve the crisis themselves, use NightCrash after the finale instead. She arrives too late to save the day, realizes the PCs handled it, thanks them, recognizes them as newly awakened Samurai, and welcomes them into the wider Samurai world.
