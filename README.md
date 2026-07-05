@@ -47,3 +47,17 @@ When creating or configuring the Roll20 game, choose:
 ```text
 Character Sheet: Hope//Punk
 ```
+
+
+## Maps
+
+The current draft assumes four main map floors inside the same megacomplex stack:
+
+```text
+Floor A: Mercy Twelve Clinic and Indoor Street
+Floor B: Community Support, Shelter, and School Annex
+Floor C: Service, Utility, and Maintenance Floor
+Floor D: Quarantine, Incident Floor, and Landing Corner
+```
+
+These maps are intended to be stacked vertically with possible dummy floors in between. Elevators are the accessible and cargo/patient-safe route. Stair/ladderwells are emergency access routes: useful for PCs, bad for stretchers.
