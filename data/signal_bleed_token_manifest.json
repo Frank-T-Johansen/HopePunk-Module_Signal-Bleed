@@ -278,6 +278,68 @@
           "notes": "Final warning: the Model 1s were relocating, not fleeing."
         }
       ]
+    },
+    {
+      "group": "Supporting underlings and spies",
+      "default_attitude": "Faction-dependent; useful for social play and investigation",
+      "tokens": [
+        {
+          "name": "Dr. Vela Myung",
+          "type": "clinic doctor",
+          "starting_map": "A",
+          "starting_location": "A7 Trauma or A9 Recovery",
+          "visible_to_players": true,
+          "notes": "Medical interpretation of trial victims and Model 3 wounds."
+        },
+        {
+          "name": "Vex Tan",
+          "type": "Redline supply runner",
+          "starting_map": "B",
+          "starting_location": "B4 Pantry or B10 Corridor",
+          "visible_to_players": true,
+          "notes": "Aid-route witness; connects Lala and Mara’s support network."
+        },
+        {
+          "name": "Rook “Mads” Madsen",
+          "type": "Redline underling",
+          "starting_map": "A",
+          "starting_location": "A1 or A13",
+          "visible_to_players": true,
+          "notes": "Suspicious muscle; useful once Bex is proven taken."
+        },
+        {
+          "name": "Talla “Auntie’s Eyes” Vey",
+          "type": "Redline aid coordinator",
+          "starting_map": "B",
+          "starting_location": "B3 or B4",
+          "visible_to_players": true,
+          "notes": "Protects Mara’s hidden soft-power network."
+        },
+        {
+          "name": "Lt. Varya Senn",
+          "type": "corporate lieutenant",
+          "starting_map": "A/C",
+          "starting_location": "A1 or C1",
+          "visible_to_players": "delayed",
+          "notes": "Aggressive field second under Rusk."
+        },
+        {
+          "name": "Orlan Pike",
+          "type": "corporate surveillance handler / spy",
+          "starting_map": "off-map/C/D",
+          "starting_location": "C9 or D6",
+          "visible_to_players": "hidden",
+          "notes": "Corporate handler who pressures Switch and edits feeds. Use as Bloke #3 until identified."
+        },
+        {
+          "name": "Mara Silex",
+          "type": "corporate medic / conscience spy",
+          "starting_map": "A/C/D",
+          "starting_location": "with corp team",
+          "visible_to_players": "delayed",
+          "notes": "Corporate medic who may leak to Mercy Twelve by conscience."
+        }
+      ]
     }
   ]
 }

@@ -1,10 +1,26 @@
 // Hope//Punk Signal Bleed Importer
 // Roll20 Mod/API script.
-// Updated current canon: human relay evidence + biological Antithesis hidden nest.
+//
+// Commands:
+//   !hopepunk-signal-bleed --help
+//   !hopepunk-signal-bleed --dry-run
+//   !hopepunk-signal-bleed --import
+//   !hopepunk-signal-bleed --overwrite
+//   !hopepunk-signal-bleed --npcs
+//   !hopepunk-signal-bleed --handouts
+//
+// Notes:
+// - Imports draft NPCs as GM-only character entries with Bio and GM Notes.
+// - Imports scenario Markdown files as GM-only Roll20 handouts.
+// - Does not upload images/maps or place map tokens.
+// - Designed for games using the public Hope//Punk character sheet.
+// - Keep only one copy of this script active in the Roll20 game.
 
 var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   'use strict';
+
   var COMMAND = '!hopepunk-signal-bleed';
+
   var NPCS = [
   {
     "name": "Dr. Sera Valez",
@@ -419,8 +435,186 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "The corporation does not know this happened"
     ],
     "gm_notes": "This is a location/hazard more than a character."
+  },
+  {
+    "name": "Dr. Vela Myung",
+    "role": "Clinic trauma doctor",
+    "faction": "Mercy Twelve Clinic",
+    "attitude": "Exhausted, sharp, quietly angry",
+    "wants": [
+      "Keep patients alive",
+      "Understand what illegal treatments were used",
+      "Avoid corporate seizure of patient records"
+    ],
+    "offers": [
+      "Medical interpretation",
+      "Exposure-trial recognition",
+      "Triage leadership",
+      "Model 3 wound analysis"
+    ],
+    "secrets": [
+      "Accepted corporate-donated medicine without asking enough questions",
+      "Fears some clinic patients were trial subjects"
+    ],
+    "gm_notes": "Use Dr. Myung when PCs need medical interpretation. She can identify trial-batch codes, false treatment protocols, and Model 3 bite trauma after evidence appears."
+  },
+  {
+    "name": "Vex Tan",
+    "role": "Redline supply runner",
+    "faction": "Redline Choir",
+    "attitude": "Defensive, fast-talking, protective",
+    "wants": [
+      "Keep aid routes secret",
+      "Find out what happened to Lala",
+      "Avoid being accused of smuggling weapons"
+    ],
+    "offers": [
+      "Aid-route knowledge",
+      "Redline route access",
+      "Confirmation that Lala delivered food",
+      "Proof Mara ordered no shooting near clinic"
+    ],
+    "secrets": [
+      "Smuggles minor side goods",
+      "Knows Mara funds food and medicine"
+    ],
+    "gm_notes": "Vex ties the Redline aid network to the missing-person trail. Treat as a witness, not a combatant."
+  },
+  {
+    "name": "Rook “Mads” Madsen",
+    "role": "Redline underling",
+    "faction": "Redline Choir",
+    "attitude": "Suspicious, blunt, insecure",
+    "wants": [
+      "Keep Redline from looking weak",
+      "Find Bex",
+      "Stop outsiders humiliating Bluewire"
+    ],
+    "offers": [
+      "Street muscle",
+      "Local route knowledge",
+      "Corp observer identification",
+      "Evacuation help if convinced"
+    ],
+    "secrets": [
+      "Hates Bluewire and may provoke him",
+      "Knows Bex would not desert easily"
+    ],
+    "gm_notes": "Use Mads as a named underling token. He can escalate social tension or become useful once Bex’s fate is proven."
+  },
+  {
+    "name": "Talla “Auntie’s Eyes” Vey",
+    "role": "Redline aid coordinator",
+    "faction": "Redline Choir / Community Support",
+    "attitude": "Warm with locals, cold with outsiders",
+    "wants": [
+      "Protect Mara’s hidden support network",
+      "Keep food routes open",
+      "Protect children and volunteers"
+    ],
+    "offers": [
+      "Food-route records",
+      "Witness introductions",
+      "Community trust",
+      "Confirmation of Mara’s aid if trust is earned"
+    ],
+    "secrets": [
+      "Not actually Mara’s family",
+      "Uses the Vey name because Mara saved her"
+    ],
+    "gm_notes": "Talla guards the Auntie Red secret. She is a good social gatekeeper for the support-center floor."
+  },
+  {
+    "name": "Lt. Varya Senn",
+    "role": "Corporate field lieutenant",
+    "faction": "Corporate Recovery",
+    "attitude": "Disciplined, aggressive, impatient",
+    "wants": [
+      "Seize the relay",
+      "Secure witnesses",
+      "Control the scene before public panic",
+      "Make Rusk’s plan work"
+    ],
+    "offers": [
+      "Tactical ceasefire",
+      "Access to corp equipment",
+      "Old cleanup-site knowledge if forced"
+    ],
+    "secrets": [
+      "Briefed on witness control, not the second nest",
+      "Believes ugly containment is necessary"
+    ],
+    "gm_notes": "Use Senn when the corp needs teeth. She is more likely than Rusk to escalate physically."
+  },
+  {
+    "name": "Orlan Pike",
+    "role": "Corporate surveillance handler",
+    "faction": "Corporate Recovery",
+    "attitude": "Smug, careful, ambitious",
+    "wants": [
+      "Edit footage",
+      "Suppress the relay trail",
+      "Frame Redline if useful",
+      "Advance his career"
+    ],
+    "offers": [
+      "Camera metadata",
+      "Knowledge of edited feeds",
+      "Traceable link to Switch",
+      "Proof of corporate tampering"
+    ],
+    "secrets": [
+      "Pressured or paid Switch for feed access",
+      "May be operating without explicit written authorization"
+    ],
+    "gm_notes": "Spy/handler. Pike is a greed/career spy inside local systems. Use as Bloke #3 until identified."
+  },
+  {
+    "name": "Mara Silex",
+    "role": "Corporate field medic",
+    "faction": "Corporate Recovery / possible Mercy Twelve informant",
+    "attitude": "Controlled, guilty, medically competent",
+    "wants": [
+      "Keep people alive",
+      "Avoid being exposed by Corporate Recovery",
+      "Leak enough to save lives without being disappeared"
+    ],
+    "offers": [
+      "Medical help",
+      "Batch-code recognition",
+      "Quiet warning",
+      "Possible testimony"
+    ],
+    "secrets": [
+      "Has leaked fragments to Mercy Twelve by conscience",
+      "Knows corp medical orders are indefensible"
+    ],
+    "gm_notes": "Potential conscience-spy. She can become a bridge between corp assets and clinic survival."
+  },
+  {
+    "name": "Miri and Sol",
+    "role": "Schoolchildren witnesses",
+    "faction": "Community Support",
+    "attitude": "Curious, scared, more observant than adults expect",
+    "wants": [
+      "Understand why adults are frightened",
+      "Keep each other safe",
+      "Find out why Lala vanished"
+    ],
+    "offers": [
+      "Auntie Red clue",
+      "Lala clue",
+      "Dog-feet-in-the-wall rumor",
+      "Keet connection"
+    ],
+    "secrets": [
+      "Adults told them not to talk",
+      "They know Mara is softer than her reputation"
+    ],
+    "gm_notes": "Use them to reveal Auntie Red and the missing-person trail through overheard conversation."
   }
 ];
+
   var HANDOUTS = [
   {
     "name": "Signal Bleed - GM Overview",
@@ -475,22 +669,22 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   {
     "name": "Signal Bleed - Map Floor A Clinic and Indoor Street",
     "source_file": "handouts/10_Map_Floor_A_Clinic_and_Indoor_Street.md",
-    "notes": "<h1>Map: Floor A — Mercy Twelve Clinic and Indoor Street</h1>\n<h2>Function</h2>\n<p>This is the primary starting map for Signal Bleed.</p>\n<p>It represents Mercy Twelve Clinic’s public and emergency-access level inside the megacomplex. It is surrounded by broad indoor streets and pedestrian lanes, because the clinic is part of a dense vertical city rather than a standalone building.</p>\n<h2>What the map shows</h2>\n<p>Key areas:</p>\n<ul>\n<li>indoor megacomplex streets around the clinic</li>\n<li>public front entrance</li>\n<li>reception / waiting area</li>\n<li>triage station</li>\n<li>emergency ambulance/service bay</li>\n<li>surgery / trauma rooms</li>\n<li>long-term treatment / recovery rooms</li>\n<li>pharmacy and supply rooms</li>\n<li>pediatric or community corner</li>\n<li>staff office or break area</li>\n<li>elevator core</li>\n<li>emergency stair / ladderwell</li>\n</ul>\n<h2>Important circulation logic</h2>\n<p>The clinic has two different patient flows.</p>\n<h3>Public flow</h3>\n<p>Civilians enter from the indoor street through the public front entrance.</p>\n<p>They reach:</p>\n<pre>street → reception/waiting → triage → treatment/recovery</pre>\n<p>Reception controls normal visitor intake, but it should not block medical movement through the building.</p>\n<h3>Emergency flow</h3>\n<p>Ambulance or stretcher cases come through the non-public emergency bay.</p>\n<p>They reach:</p>\n<pre>emergency bay → triage/surgery/trauma → recovery rooms</pre>\n<p>This lets critical patients bypass the public waiting room.</p>\n<h3>Recovery flow</h3>\n<p>From surgery/trauma, patients can be moved through internal corridors into long-term treatment and resting rooms.</p>\n<p>The corridor structure matters. Staff should be able to move a patient from the back emergency intake to an operation/trauma room, and then onward to recovery, without dragging them through reception.</p>\n<h2>Scenario use</h2>\n<p>Good scenes here:</p>\n<ul>\n<li>opening arrival</li>\n<li>gang underlings arguing with clinic staff</li>\n<li>Bluewire pacing near a restricted corridor</li>\n<li>Dr. Valez trying to keep everyone calm</li>\n<li>first signal pulse</li>\n<li>evacuation route planning</li>\n<li>corporate recovery team making demands from the public street</li>\n<li>civilians passing by and reacting to faction tension</li>\n</ul>\n<h2>Faction positioning</h2>\n<h3>Clinic staff</h3>\n<p>Use reception, triage, recovery rooms, and supply rooms.</p>\n<p>Clinic underlings should be cooperative but stressed.</p>\n<h3>Redline Choir</h3>\n<p>Use the public street, side corridors, and maybe the area near the back entrance.</p>\n<p>The gang should feel protective and possessive, but not automatically hostile.</p>\n<h3>Corporate Recovery</h3>\n<p>Keep them outside or at the edge at first:</p>\n<ul>\n<li>across the indoor street</li>\n<li>near a service door</li>\n<li>watching from a kiosk</li>\n<li>using drones/cameras</li>\n<li>threatening to enter through emergency access</li>\n</ul>\n<h2>Elevator and stair notes</h2>\n<p>The elevator is the practical route for patients, stretchers, and NightCrash’s Gurney Angels.</p>\n<p>The stair/ladderwell is emergency access: good for PCs, bad for stretchers.</p>\n<p>If the stairs look too ladder-like on the image, describe them as a steep maintenance stairwell built into the megacomplex core.</p>"
+    "notes": "<h1>Map: Floor A — Mercy Twelve Clinic and Indoor Street</h1>\n<h2>Function</h2>\n<p>This is the primary starting map for Signal Bleed.</p>\n<p>It represents Mercy Twelve Clinic’s public and emergency-access level inside the megacomplex. It is surrounded by broad indoor streets and pedestrian lanes, because the clinic is part of a dense vertical city rather than a standalone building.</p>\n<h2>What the map shows</h2>\n<p>Key areas:</p>\n<ul>\n<li>indoor megacomplex streets around the clinic</li>\n<li>public front entrance</li>\n<li>reception / waiting area</li>\n<li>triage station</li>\n<li>emergency ambulance/service bay</li>\n<li>surgery / trauma rooms</li>\n<li>long-term treatment / recovery rooms</li>\n<li>pharmacy and supply rooms</li>\n<li>pediatric or community corner</li>\n<li>staff office or break area</li>\n<li>elevator core</li>\n<li>emergency stair / ladderwell</li>\n</ul>\n<h2>Important circulation logic</h2>\n<p>The clinic has two different patient flows.</p>\n<h3>Public flow</h3>\n<p>Civilians enter from the indoor street through the public front entrance.</p>\n<p>They reach:</p>\n<pre>street → reception/waiting → triage → treatment/recovery</pre>\n<p>Reception controls normal visitor intake, but it should not block medical movement through the building.</p>\n<h3>Emergency flow</h3>\n<p>Ambulance or stretcher cases come through the non-public emergency bay.</p>\n<p>They reach:</p>\n<pre>emergency bay → triage/surgery/trauma → recovery rooms</pre>\n<p>This lets critical patients bypass the public waiting room.</p>\n<h3>Recovery flow</h3>\n<p>From surgery/trauma, patients can be moved through internal corridors into long-term treatment and resting rooms.</p>\n<p>The corridor structure matters. Staff should be able to move a patient from the back emergency intake to an operation/trauma room, and then onward to recovery, without dragging them through reception.</p>\n<h2>Scenario use</h2>\n<p>Good scenes here:</p>\n<ul>\n<li>opening arrival</li>\n<li>gang underlings arguing with clinic staff</li>\n<li>Bluewire pacing near a restricted corridor</li>\n<li>Dr. Valez trying to keep everyone calm</li>\n<li>first signal pulse</li>\n<li>evacuation route planning</li>\n<li>corporate recovery team making demands from the public street</li>\n<li>civilians passing by and reacting to faction tension</li>\n</ul>\n<h2>Faction positioning</h2>\n<h3>Clinic staff</h3>\n<p>Use reception, triage, recovery rooms, and supply rooms.</p>\n<p>Clinic underlings should be cooperative but stressed.</p>\n<h3>Redline Choir</h3>\n<p>Use the public street, side corridors, and maybe the area near the back entrance.</p>\n<p>The gang should feel protective and possessive, but not automatically hostile.</p>\n<h3>Corporate Recovery</h3>\n<p>Keep them outside or at the edge at first:</p>\n<ul>\n<li>across the indoor street</li>\n<li>near a service door</li>\n<li>watching from a kiosk</li>\n<li>using drones/cameras</li>\n<li>threatening to enter through emergency access</li>\n</ul>\n<h2>Elevator and stair notes</h2>\n<p>The elevator is the practical route for patients, stretchers, and NightCrash’s Gurney Angels.</p>\n<p>The stair/ladderwell is emergency access: good for PCs, bad for stretchers.</p>\n<p>If the stairs look too ladder-like on the image, describe them as a steep maintenance stairwell built into the megacomplex core.</p>\n<h2>What happens on this map</h2>\n<p>This is the main opening floor. Use it for first impressions, faction tension, clinic stakes, Bluewire, first corporate pressure, and early missing-person clues.</p>\n<h3>Main active NPCs</h3>\n<ul>\n<li>Dr. Sera Valez — A5 Triage or A10 Records.</li>\n<li>Nurse Cho — A3 Reception or A5 Triage.</li>\n<li>Pax Ruun — A6 Emergency Intake.</li>\n<li>Rafa Mbeki — A10 Records / clinic camera alcove.</li>\n<li>Bluewire — A14 pacing route near A6/A7/A13.</li>\n<li>Redline Lookout Pair or Mads — A1/A13.</li>\n<li>Miri &amp; Sol — A4 if not placed on Floor B.</li>\n<li>Corporate observer or Corp Recovery Pair — A1 edge, delayed.</li>\n</ul>\n<h3>Main scene beats</h3>\n<p>1. PCs arrive and see the clinic under pressure. 2. Staff ask for peacekeeping and patient protection. 3. Redline lookouts challenge who controls the relay. 4. Bluewire is visibly unstable but also a useful witness. 5. Corporate Recovery appears as legal/security pressure. 6. Early missing-person clues point away from the clinic and toward service infrastructure.</p>\n<h3>Map-specific clues</h3>\n<ul>\n<li>A3: staff mention rising no-show patients.</li>\n<li>A4: children mention Auntie Red and Lala’s disappearance.</li>\n<li>A6: Pax knows patient transfers and intake records do not line up.</li>\n<li>A10: Rafa can access clinic feeds and door logs.</li>\n<li>A13: Bex clue, service-route clue, low-angle struggle evidence.</li>\n<li>A14: Bluewire heard clicking in the walls and says the walls have teeth.</li>\n</ul>\n<h3>Camera ownership</h3>\n<ul>\n<li>Public concourse: municipal/ad-network.</li>\n<li>Clinic interior: clinic-owned, privacy-limited.</li>\n<li>Service corridor: contested clinic/Redline.</li>\n<li>Staff records: clinic restricted.</li>\n<li>No Antithesis electronics interference; footage issues are human tampering, bad infrastructure, or missing coverage.</li>\n</ul>\n<h3>What this floor should establish</h3>\n<ul>\n<li>The relay matters politically.</li>\n<li>The clinic is worth protecting.</li>\n<li>Redline Choir are not just villains.</li>\n<li>Corporate Recovery is not here to save people.</li>\n<li>Something is wrong beyond the human cover-up, but that should still be subtle.</li>\n</ul>"
   },
   {
     "name": "Signal Bleed - Map Floor B Community Support",
     "source_file": "handouts/11_Map_Floor_B_Community_Support.md",
-    "notes": "<h1>Map: Floor B — Community Support, Shelter, and School Annex</h1>\n<h2>Function</h2>\n<p>This floor shows the civilian support infrastructure tied to Mercy Twelve.</p>\n<p>It is not just “extra rooms.” It explains why people care about the clinic and why the Redline Choir and Dr. Valez both see the place as politically important.</p>\n<h2>What the map shows</h2>\n<p>Key areas:</p>\n<ul>\n<li>indoor streets around the support center</li>\n<li>public entrance</li>\n<li>community commons</li>\n<li>pantry / aid distribution point</li>\n<li>cafeteria or communal kitchen</li>\n<li>classroom / workshop room</li>\n<li>children’s corner or daycare room</li>\n<li>counselor / caseworker offices</li>\n<li>dormitory / shelter sleeping area</li>\n<li>secure back/service corridor</li>\n<li>elevator core</li>\n<li>emergency stair / ladderwell</li>\n</ul>\n<h2>Scenario use</h2>\n<p>Good scenes here:</p>\n<ul>\n<li>players discover Mara secretly funds meals and school support</li>\n<li>children recognize a PC or NightCrash brand</li>\n<li>Keet gives information about the courier</li>\n<li>civilians hide during the breach</li>\n<li>gang members guard a food delivery</li>\n<li>clinic staff ask PCs to help move patients or kids</li>\n<li>social consequences become visible</li>\n</ul>\n<h2>Mara’s hidden support</h2>\n<p>This is the best map for discovering that Mara “Mother Red” Vey is not just running a gang.</p>\n<p>Possible clues:</p>\n<ul>\n<li>food crates that came through Redline Choir channels</li>\n<li>school supplies paid for through anonymous street accounts</li>\n<li>teachers who go quiet when Mara is mentioned</li>\n<li>children who call her “Auntie Red”</li>\n<li>a ledger showing meal packs, medicine, generator fuel, and teacher stipends</li>\n</ul>\n<p>This should not be public knowledge. If the PCs discover it respectfully, Mara becomes easier to negotiate with. If they expose it to mock her or weaken her image, she becomes angry.</p>\n<h2>Civilian stakes</h2>\n<p>Use this floor to make the mission about more than the relay.</p>\n<p>If the PCs fail, these are the people who suffer:</p>\n<ul>\n<li>patients</li>\n<li>schoolkids</li>\n<li>volunteers</li>\n<li>hungry families</li>\n<li>night-shift workers</li>\n<li>people with nowhere else to sleep</li>\n</ul>\n<h2>Elevator and stair notes</h2>\n<p>The elevator can move food carts, stretchers, and evacuation groups.</p>\n<p>The stair/ladderwell can move small groups but should be slower and more dangerous under panic conditions.</p>"
+    "notes": "<h1>Map: Floor B — Community Support, Shelter, and School Annex</h1>\n<h2>Function</h2>\n<p>This floor shows the civilian support infrastructure tied to Mercy Twelve.</p>\n<p>It is not just “extra rooms.” It explains why people care about the clinic and why the Redline Choir and Dr. Valez both see the place as politically important.</p>\n<h2>What the map shows</h2>\n<p>Key areas:</p>\n<ul>\n<li>indoor streets around the support center</li>\n<li>public entrance</li>\n<li>community commons</li>\n<li>pantry / aid distribution point</li>\n<li>cafeteria or communal kitchen</li>\n<li>classroom / workshop room</li>\n<li>children’s corner or daycare room</li>\n<li>counselor / caseworker offices</li>\n<li>dormitory / shelter sleeping area</li>\n<li>secure back/service corridor</li>\n<li>elevator core</li>\n<li>emergency stair / ladderwell</li>\n</ul>\n<h2>Scenario use</h2>\n<p>Good scenes here:</p>\n<ul>\n<li>players discover Mara secretly funds meals and school support</li>\n<li>children recognize a PC or NightCrash brand</li>\n<li>Keet gives information about the courier</li>\n<li>civilians hide during the breach</li>\n<li>gang members guard a food delivery</li>\n<li>clinic staff ask PCs to help move patients or kids</li>\n<li>social consequences become visible</li>\n</ul>\n<h2>Mara’s hidden support</h2>\n<p>This is the best map for discovering that Mara “Mother Red” Vey is not just running a gang.</p>\n<p>Possible clues:</p>\n<ul>\n<li>food crates that came through Redline Choir channels</li>\n<li>school supplies paid for through anonymous street accounts</li>\n<li>teachers who go quiet when Mara is mentioned</li>\n<li>children who call her “Auntie Red”</li>\n<li>a ledger showing meal packs, medicine, generator fuel, and teacher stipends</li>\n</ul>\n<p>This should not be public knowledge. If the PCs discover it respectfully, Mara becomes easier to negotiate with. If they expose it to mock her or weaken her image, she becomes angry.</p>\n<h2>Civilian stakes</h2>\n<p>Use this floor to make the mission about more than the relay.</p>\n<p>If the PCs fail, these are the people who suffer:</p>\n<ul>\n<li>patients</li>\n<li>schoolkids</li>\n<li>volunteers</li>\n<li>hungry families</li>\n<li>night-shift workers</li>\n<li>people with nowhere else to sleep</li>\n</ul>\n<h2>Elevator and stair notes</h2>\n<p>The elevator can move food carts, stretchers, and evacuation groups.</p>\n<p>The stair/ladderwell can move small groups but should be slower and more dangerous under panic conditions.</p>\n<h2>What happens on this map</h2>\n<p>This floor makes the neighborhood worth saving. Use it for schoolchildren, food aid, Mara’s hidden support network, missing-person reports, and civilian evacuation pressure.</p>\n<h3>Main active NPCs</h3>\n<ul>\n<li>Miri &amp; Sol — B7 Children’s Corner.</li>\n<li>Keet — B6 Classroom or B7 Children’s Corner.</li>\n<li>Sister Luma — B9 Counselor Offices or B3 Commons.</li>\n<li>Talla “Auntie’s Eyes” Vey — B3/B4.</li>\n<li>Vex Tan — B4 Pantry or B10 Corridor.</li>\n<li>Lala Mir clue marker — B10.</li>\n<li>Narin Pell clue marker — B8/B12.</li>\n<li>Mara — delayed, B4 or B10 if PCs dig into Redline aid.</li>\n</ul>\n<h3>Main scene beats</h3>\n<p>1. PCs see that Redline money and routes keep people fed. 2. Children reveal “Auntie Red” without understanding the political danger. 3. Lala’s disappearance connects food aid to service routes. 4. Narin’s disappearance shows official systems miss vulnerable people. 5. Civilians complicate any simple fight with corp or Redline forces.</p>\n<h3>Map-specific clues</h3>\n<ul>\n<li>B4: food supplies have Redline-adjacent routing.</li>\n<li>B7: children know Lala and Auntie Red.</li>\n<li>B8: Narin’s bag is still under the bunk.</li>\n<li>B10: spilled meal crates and a damaged service hatch.</li>\n<li>B12: organic smear / muffled scream clue.</li>\n</ul>\n<h3>Camera ownership</h3>\n<ul>\n<li>Public areas: community/municipal/ad-network.</li>\n<li>Pantry/service corridor: Redline-influenced.</li>\n<li>Children and shelter areas: restricted for privacy.</li>\n<li>Counselor offices: no ordinary camera coverage; only door logs.</li>\n</ul>\n<h3>What this floor should establish</h3>\n<ul>\n<li>Mara’s power has a protective side.</li>\n<li>Missing people are locals the system can ignore.</li>\n<li>The missing-person trail is not random.</li>\n<li>The nest is feeding on people with quiet routes and weak official protection.</li>\n</ul>"
   },
   {
     "name": "Signal Bleed - Map Floor C Service Utility",
     "source_file": "handouts/12_Map_Floor_C_Service_Utility.md",
-    "notes": "<h1>Map: Floor C — Service, Utility, and Maintenance Floor</h1>\n<h2>Function</h2>\n<p>This floor is the megacomplex’s practical underside.</p>\n<p>It contains the systems that keep Mercy Twelve and the surrounding district alive: power, air, water, cargo, repair, storage, and maintenance access.</p>\n<p>It is more industrial than the clinic and shelter maps, but still part of the Hope//Punk environment. The people here keep the lights on.</p>\n<h2>What the map shows</h2>\n<p>Key areas:</p>\n<ul>\n<li>logistics/service street</li>\n<li>central loading or distribution zone</li>\n<li>generator or power room</li>\n<li>battery banks</li>\n<li>HVAC / air handling</li>\n<li>water treatment or recycling</li>\n<li>storage rooms</li>\n<li>repair workshop</li>\n<li>monitoring/security office</li>\n<li>elevator core</li>\n<li>emergency stair / ladderwell</li>\n<li>suspicious side room or hidden service space</li>\n</ul>\n<h2>Scenario use</h2>\n<p>Good scenes here:</p>\n<ul>\n<li>power failure caused by signal pulses</li>\n<li>Grease Monkey or Scavenger gets useful spotlight</li>\n<li>corp team tries to cut the clinic’s systems</li>\n<li>gang uses maintenance routes to bypass public areas</li>\n<li>players discover a hidden route between maps</li>\n<li>alien contamination starts in the infrastructure</li>\n<li>Bluewire’s implants react near power or signal conduits</li>\n</ul>\n<h2>Tactical role</h2>\n<p>This floor is good for:</p>\n<ul>\n<li>stealth routes</li>\n<li>chases</li>\n<li>sabotage</li>\n<li>repairs</li>\n<li>ambushes</li>\n<li>alternate access</li>\n<li>restoring power</li>\n<li>isolating the relay</li>\n<li>moving unseen between public areas</li>\n</ul>\n<h2>Social role</h2>\n<p>Do not make this floor empty. Maintenance workers, delivery crews, unofficial vendors, Redline Choir lookouts, and tired clinic staff may all use it.</p>\n<p>It is a good place for non-faction passersby who are just trying to work.</p>\n<h2>Elevator and stair notes</h2>\n<p>The elevator is likely a cargo-capable lift here.</p>\n<p>The stair/ladderwell is probably a steep maintenance access route. It can bypass shutdowns, but moving wounded people through it should require time, equipment, or checks.</p>"
+    "notes": "<h1>Map: Floor C — Service, Utility, and Maintenance Floor</h1>\n<h2>Function</h2>\n<p>This floor is the megacomplex’s practical underside.</p>\n<p>It contains the systems that keep Mercy Twelve and the surrounding district alive: power, air, water, cargo, repair, storage, and maintenance access.</p>\n<p>It is more industrial than the clinic and shelter maps, but still part of the Hope//Punk environment. The people here keep the lights on.</p>\n<h2>What the map shows</h2>\n<p>Key areas:</p>\n<ul>\n<li>logistics/service street</li>\n<li>central loading or distribution zone</li>\n<li>generator or power room</li>\n<li>battery banks</li>\n<li>HVAC / air handling</li>\n<li>water treatment or recycling</li>\n<li>storage rooms</li>\n<li>repair workshop</li>\n<li>monitoring/security office</li>\n<li>elevator core</li>\n<li>emergency stair / ladderwell</li>\n<li>suspicious side room or hidden service space</li>\n</ul>\n<h2>Scenario use</h2>\n<p>Good scenes here:</p>\n<ul>\n<li>power failure caused by signal pulses</li>\n<li>Grease Monkey or Scavenger gets useful spotlight</li>\n<li>corp team tries to cut the clinic’s systems</li>\n<li>gang uses maintenance routes to bypass public areas</li>\n<li>players discover a hidden route between maps</li>\n<li>alien contamination starts in the infrastructure</li>\n<li>Bluewire’s implants react near power or signal conduits</li>\n</ul>\n<h2>Tactical role</h2>\n<p>This floor is good for:</p>\n<ul>\n<li>stealth routes</li>\n<li>chases</li>\n<li>sabotage</li>\n<li>repairs</li>\n<li>ambushes</li>\n<li>alternate access</li>\n<li>restoring power</li>\n<li>isolating the relay</li>\n<li>moving unseen between public areas</li>\n</ul>\n<h2>Social role</h2>\n<p>Do not make this floor empty. Maintenance workers, delivery crews, unofficial vendors, Redline Choir lookouts, and tired clinic staff may all use it.</p>\n<p>It is a good place for non-faction passersby who are just trying to work.</p>\n<h2>Elevator and stair notes</h2>\n<p>The elevator is likely a cargo-capable lift here.</p>\n<p>The stair/ladderwell is probably a steep maintenance access route. It can bypass shutdowns, but moving wounded people through it should require time, equipment, or checks.</p>\n<h2>What happens on this map</h2>\n<p>This is the primary hidden-nest investigation floor. Use it for missing-person trails, Model 3 clues, utility routes, surveillance rooms, and the second nest reveal.</p>\n<h3>Main active NPCs and tokens</h3>\n<ul>\n<li>Oskar Venn clue marker — C6 HVAC.</li>\n<li>Bex Aranda clue marker — C1/C9.</li>\n<li>Juvenile Model 3 — C6, C5, C11, or C12.</li>\n<li>Second Hidden Nest — C12 Hidden Maintenance Cavity by default.</li>\n<li>Model 1 Seed Clump — inside or near the hidden nest.</li>\n<li>Switch — C9 Monitoring or remote from B10.</li>\n<li>Maintenance worker(s) — C2/C7/C9.</li>\n<li>Corporate Drone / Corp Recovery Pair — C1/C10 if corp pushes service access.</li>\n</ul>\n<h3>Main scene beats</h3>\n<p>1. PCs follow missing-person evidence into the service floor. 2. Maintenance clues show something physical is moving through vents. 3. Cameras reveal low fast movement, but do not solve everything. 4. First Model 3 contact should involve dragging a victim, not a fair fight. 5. The hidden nest is found near ducts, moisture, and service cavities.</p>\n<h3>Map-specific clues</h3>\n<ul>\n<li>C1: missing-person routes cluster around service access.</li>\n<li>C5: organic film and fused small animals.</li>\n<li>C6: Oskar’s tool cart, warm vent, drag marks, breathing radio log.</li>\n<li>C7: improvised vent locks and repair tools.</li>\n<li>C9: camera frame of Bex/Oskar being dragged.</li>\n<li>C11: organic smear along stairs.</li>\n<li>C12: hidden maintenance cavity, Model 1 seed clump, second nest.</li>\n</ul>\n<h3>Camera ownership</h3>\n<ul>\n<li>General utility feeds: maintenance/municipal.</li>\n<li>Some old service cameras: Redline-accessible.</li>\n<li>Freight and service routes: possibly corporate-compromised.</li>\n<li>Monitoring Office: contested.</li>\n<li>Footage problems are human tampering or poor coverage, not alien hacking.</li>\n</ul>\n<h3>What this floor should establish</h3>\n<ul>\n<li>The second nest is real.</li>\n<li>The corp does not know the full current threat.</li>\n<li>Juvenile Model 3s are gathering biomass.</li>\n<li>Missing people are the growth mechanism.</li>\n<li>The human factions must stop fighting or civilians will be harvested.</li>\n</ul>"
   },
   {
     "name": "Signal Bleed - Map Floor D Quarantine Incident",
     "source_file": "handouts/13_Map_Floor_D_Quarantine_Incident.md",
-    "notes": "<h1>Map: Floor D — Quarantine, Incident Floor, and Landing Corner</h1>\n<h2>Function</h2>\n<p>This is the likely alien breach / finale map.</p>\n<p>It combines a medical-research or quarantine annex with indoor megacomplex access and a small landing corner where flying vehicles can arrive.</p>\n<h2>What the map shows</h2>\n<p>Key areas:</p>\n<ul>\n<li>quarantine / containment section</li>\n<li>diagnostics or lab section</li>\n<li>control room</li>\n<li>patient or holding rooms</li>\n<li>wide central hall</li>\n<li>side corridors and bypass routes</li>\n<li>back/service entry</li>\n<li>elevator core</li>\n<li>emergency stair / ladderwell</li>\n<li>small roof or open-air-feeling landing corner</li>\n<li>marked landing spot for a flying vehicle or emergency craft</li>\n</ul>\n<h2>Why there is a landing corner</h2>\n<p>Most of the megacomplex is indoors, but large complexes still need emergency access.</p>\n<p>The landing corner is a small exposed or semi-exposed rooftop/skywell pad: enough for a flying vehicle or rapid-response craft to touch down, not a whole outdoor map.</p>\n<p>Use it for:</p>\n<ul>\n<li>NightCrash’s arrival</li>\n<li>medevac extraction</li>\n<li>corporate drone access</li>\n<li>emergency supply drop</li>\n<li>final escape under pressure</li>\n</ul>\n<h2>NightCrash use</h2>\n<p>If the PCs are overwhelmed, NightCrash can arrive here.</p>\n<p>She should not solve the scenario. She creates one opening:</p>\n<ul>\n<li>evacuates endangered civilians</li>\n<li>stabilizes a dying PC or NPC</li>\n<li>blocks one alien push</li>\n<li>identifies the breach point</li>\n<li>gives the PCs one clear tactical instruction</li>\n</ul>\n<p>Then she gets a larger emergency call and must leave.</p>\n<p>If the PCs solve the crisis themselves, she may arrive after the danger has passed and welcome them as newly awakened Samurai.</p>\n<h2>Alien breach options</h2>\n<p>Possible breach locations:</p>\n<ul>\n<li>containment chamber</li>\n<li>diagnostics room</li>\n<li>central hall</li>\n<li>patient holding room</li>\n<li>elevator shaft</li>\n<li>landing corner</li>\n<li>service corridor</li>\n</ul>\n<p>The best breach point depends on the player choices.</p>\n<p>If they isolated the relay well, the breach starts contained.</p>\n<p>If they delayed too long, the breach starts in the central hall.</p>\n<p>If they used the elevator carelessly, the breach can travel between floors.</p>\n<h2>Human faction behavior</h2>\n<p>NightCrash avoids fighting humans except non-lethally.</p>\n<p>Human factions should still be negotiable or at least redirectable even during the breach.</p>\n<p>Examples:</p>\n<ul>\n<li>corp personnel may help contain the breach if convinced it is worse than the data leak</li>\n<li>Redline Choir may help evacuate civilians if respected earlier</li>\n<li>clinic staff may guide PCs through locked areas if trusted</li>\n<li>frightened civilians may block corridors unless calmed</li>\n</ul>\n<h2>Elevator and stair notes</h2>\n<p>The elevator is useful but dangerous here. It may carry contamination or panic between floors.</p>\n<p>The stair/ladderwell is a fallback route. It may look narrow or steep because this is a megacomplex emergency access shaft, not a comfortable public staircase.</p>"
+    "notes": "<h1>Map: Floor D — Quarantine, Incident Floor, and Landing Corner</h1>\n<h2>Function</h2>\n<p>This is the likely alien breach / finale map.</p>\n<p>It combines a medical-research or quarantine annex with indoor megacomplex access and a small landing corner where flying vehicles can arrive.</p>\n<h2>What the map shows</h2>\n<p>Key areas:</p>\n<ul>\n<li>quarantine / containment section</li>\n<li>diagnostics or lab section</li>\n<li>control room</li>\n<li>patient or holding rooms</li>\n<li>wide central hall</li>\n<li>side corridors and bypass routes</li>\n<li>back/service entry</li>\n<li>elevator core</li>\n<li>emergency stair / ladderwell</li>\n<li>small roof or open-air-feeling landing corner</li>\n<li>marked landing spot for a flying vehicle or emergency craft</li>\n</ul>\n<h2>Why there is a landing corner</h2>\n<p>Most of the megacomplex is indoors, but large complexes still need emergency access.</p>\n<p>The landing corner is a small exposed or semi-exposed rooftop/skywell pad: enough for a flying vehicle or rapid-response craft to touch down, not a whole outdoor map.</p>\n<p>Use it for:</p>\n<ul>\n<li>NightCrash’s arrival</li>\n<li>medevac extraction</li>\n<li>corporate drone access</li>\n<li>emergency supply drop</li>\n<li>final escape under pressure</li>\n</ul>\n<h2>NightCrash use</h2>\n<p>If the PCs are overwhelmed, NightCrash can arrive here.</p>\n<p>She should not solve the scenario. She creates one opening:</p>\n<ul>\n<li>evacuates endangered civilians</li>\n<li>stabilizes a dying PC or NPC</li>\n<li>blocks one alien push</li>\n<li>identifies the breach point</li>\n<li>gives the PCs one clear tactical instruction</li>\n</ul>\n<p>Then she gets a larger emergency call and must leave.</p>\n<p>If the PCs solve the crisis themselves, she may arrive after the danger has passed and welcome them as newly awakened Samurai.</p>\n<h2>Alien breach options</h2>\n<p>Possible breach locations:</p>\n<ul>\n<li>containment chamber</li>\n<li>diagnostics room</li>\n<li>central hall</li>\n<li>patient holding room</li>\n<li>elevator shaft</li>\n<li>landing corner</li>\n<li>service corridor</li>\n</ul>\n<p>The best breach point depends on the player choices.</p>\n<p>If they isolated the relay well, the breach starts contained.</p>\n<p>If they delayed too long, the breach starts in the central hall.</p>\n<p>If they used the elevator carelessly, the breach can travel between floors.</p>\n<h2>Human faction behavior</h2>\n<p>NightCrash avoids fighting humans except non-lethally.</p>\n<p>Human factions should still be negotiable or at least redirectable even during the breach.</p>\n<p>Examples:</p>\n<ul>\n<li>corp personnel may help contain the breach if convinced it is worse than the data leak</li>\n<li>Redline Choir may help evacuate civilians if respected earlier</li>\n<li>clinic staff may guide PCs through locked areas if trusted</li>\n<li>frightened civilians may block corridors unless calmed</li>\n</ul>\n<h2>Elevator and stair notes</h2>\n<p>The elevator is useful but dangerous here. It may carry contamination or panic between floors.</p>\n<p>The stair/ladderwell is a fallback route. It may look narrow or steep because this is a megacomplex emergency access shaft, not a comfortable public staircase.</p>\n<h2>What happens on this map</h2>\n<p>This floor holds the old corporate crime scene: the first nest, cleanup records, exposure-trial data, and the clue that Model 1s relocated. It is not the default current nest location.</p>\n<h3>Main active NPCs and tokens</h3>\n<ul>\n<li>Halden Rook evidence marker — D6 logs.</li>\n<li>Old Nest Remains — D8.</li>\n<li>Model 1 escape-vector marker — D9.</li>\n<li>Commander Rusk or Lt. Senn — delayed, if corp confrontation moves here.</li>\n<li>Corporate cleanup records — D5/D6.</li>\n<li>NightCrash / Siren Saint — D1 if emergency rescue occurs.</li>\n</ul>\n<h3>Main scene beats</h3>\n<p>1. PCs learn the corporation created the first nest through illegal bio-research. 2. Records show researchers and staff were consumed as biomass. 3. Cleanup footage shows Model 1s escaping in formation. 4. Halden Rook flagged nest-seeding risk. 5. Corporate reports buried this as terminal erratic flight.</p>\n<h3>Map-specific clues</h3>\n<ul>\n<li>D3: professional sterilization damage.</li>\n<li>D5: exposure-treatment records and patient trial data.</li>\n<li>D6: cleanup footage, Halden warning, deleted risk tags.</li>\n<li>D8: destroyed first nest and researcher biomass evidence.</li>\n<li>D9: Model 1 escape route toward service levels.</li>\n<li>D10: edited freight/elevator transport records.</li>\n</ul>\n<h3>Camera ownership</h3>\n<ul>\n<li>Restricted clinic/corporate hybrid.</li>\n<li>Corporate edits are common.</li>\n<li>Emergency systems may have lockdown logic.</li>\n<li>Landing corner has emergency/sponsor feeds if NightCrash arrives.</li>\n</ul>\n<h3>What this floor should establish</h3>\n<ul>\n<li>The corp caused the original disaster.</li>\n<li>The first nest was nearly destroyed.</li>\n<li>The corp thought the cleanup succeeded.</li>\n<li>Someone inside the corp warned about Model 1 relocation.</li>\n<li>The current threat points back toward Map C.</li>\n</ul>"
   },
   {
     "name": "Signal Bleed - Map A Clinic Key",
@@ -541,18 +735,155 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "name": "Signal Bleed - Antithesis Hidden Nest GM",
     "source_file": "handouts/23_Antithesis_Hidden_Nest_GM.md",
     "notes": "<h1>Antithesis in Signal Bleed: Model 1s, Model 3s, and the Hidden Nest</h1>\n<h2>Module-specific Antithesis structure</h2>\n<p>Signal Bleed uses a small local nest, not a full-scale invasion.</p>\n<h3>Model 1s</h3>\n<p>Use Model 1s mainly as backstory and late-stage pressure.</p>\n<p>In this module:</p>\n<ul>\n<li>the original corporate nest produced Model 1s</li>\n<li>corporate sterilization nearly wiped them out</li>\n<li>several Model 1s escaped in formation</li>\n<li>they suicided in a clump at a hidden site</li>\n<li>their bodies seeded the second nest</li>\n</ul>\n<p>The strange Model 1 behavior is the key clue that the corporate cleanup failed.</p>\n<h3>Model 3 juveniles</h3>\n<p>Use a few juvenile Model 3s as the active present-tense threat.</p>\n<p>They are dog-like Antithesis predators with jaws that split into three parts. Their purpose here is not to conquer openly, but to gather biomass for the hidden nest.</p>\n<p>Behavior:</p>\n<pre>stalk isolated prey\nambush from low angles\ndisable or kill quickly\ndrag biomass back to the nest\navoid unnecessary fights with strong groups\nretreat through vents, service shafts, and maintenance gaps\nbecome bolder as the nest grows</pre>\n<h2>Tactical behavior</h2>\n<p>A Model 3 juvenile should try to:</p>\n<ul>\n<li>attack isolated targets</li>\n<li>knock prey down</li>\n<li>drag unconscious or dead victims away</li>\n<li>retreat if badly hurt</li>\n<li>attack civilians, wounded NPCs, lone guards, and panicked targets first</li>\n<li>use vents/service routes that humans find awkward</li>\n<li>avoid fighting Samurai-capable PCs to the death unless cornered or defending the nest</li>\n</ul>\n<h2>Horror tell</h2>\n<p>The first visible reveal should be the jaw.</p>\n<p>Examples:</p>\n<pre>Its head opens in three directions.\nFor one second it looks like a dog.\nThen its face unfolds.\nThe jaw splits like a wet flower with teeth.</pre>\n<h2>Encounter pacing</h2>\n<h3>First sign — no combat</h3>\n<ul>\n<li>vent cover bent outward</li>\n<li>three-pronged bite marks</li>\n<li>drag marks toward a service hatch</li>\n<li>a food crate spilled and smeared with organic residue</li>\n<li>a camera shows one impossible low blur</li>\n<li>someone’s shoe or badge is found near a duct</li>\n</ul>\n<h3>First glimpse — brief contact</h3>\n<ul>\n<li>something low and fast crosses the end of a corridor</li>\n<li>a jaw opens wrong in a camera freeze-frame</li>\n<li>a child says “it was like a dog, but the mouth was wrong”</li>\n<li>Bluewire or another unstable NPC hears clicking in the walls</li>\n</ul>\n<h3>First fight — rescue pressure</h3>\n<p>Best first fight setup:</p>\n<pre>A Model 3 juvenile has grabbed an NPC and is trying to drag them into a service route.</pre>\n<p>Good victims:</p>\n<ul>\n<li>Redline Lookout #2</li>\n<li>Food Line Volunteer</li>\n<li>Orderly Pax Ruun</li>\n<li>Corp Recovery #2</li>\n<li>Narin Pell</li>\n<li>random “Bloke #3” token</li>\n</ul>\n<p>This teaches the players the Model 3 goal: it wants biomass, not a fair fight.</p>\n<h3>Nest reveal</h3>\n<p>The hidden nest should be small but horrifying:</p>\n<ul>\n<li>dead Model 1 clump forming the seed</li>\n<li>warm wet tissue along ducts</li>\n<li>bones/tools/badges partly absorbed</li>\n<li>victims used as scaffolding</li>\n<li>one possibly savable victim if the PCs were fast</li>\n<li>juvenile Model 3s defending or feeding it</li>\n<li>signs that it will produce more Antithesis if not stopped</li>\n</ul>\n<h2>Human faction reaction</h2>\n<h3>Clinic</h3>\n<p>Horrified, but immediately focused on triage, evacuation, and exposure risk.</p>\n<h3>Redline Choir</h3>\n<p>Angry and frightened because their people were taken. This can push them into cooperation if the PCs respect them.</p>\n<h3>Corporate Recovery</h3>\n<p>Initially dismissive or hostile. Once the second nest is proven, Rusk has to choose between admitting the cleanup failed, helping contain the new nest, doubling down on witness control, or trying to destroy everything and blame the neighborhood.</p>\n<h2>Skill prompts</h2>\n<ul>\n<li><strong>Medicine / Surgery:</strong> identify bite trauma, biomass incorporation, whether a victim can be saved.</li>\n<li><strong>Tracking / Bounty Hunter:</strong> follow drag marks, identify prey movement, find ambush routes.</li>\n<li><strong>Small Arms:</strong> read where shots were fired at something low and fast.</li>\n<li><strong>Big Guns:</strong> identify corp sterilization damage from the old nest.</li>\n<li><strong>Blades / Melee:</strong> read close-quarters defensive wounds and jaw-strike patterns.</li>\n<li><strong>Grease Monkey:</strong> identify duct access, damaged vents, and maintenance routes.</li>\n<li><strong>Mesh Hacker:</strong> retrieve camera frames and access logs; this is human surveillance, not alien electronics.</li>\n<li><strong>Streetwise:</strong> know which missing people would not have left voluntarily.</li>\n<li><strong>Psychology / Empathy:</strong> calm witnesses who saw the jaw unfold.</li>\n</ul>"
+  },
+  {
+    "name": "Signal Bleed - Missing Person Descriptions GM",
+    "source_file": "handouts/24_Missing_Person_Descriptions_GM.md",
+    "notes": "<h1>Missing Person Descriptions</h1>\n<p>Use these as GM-facing descriptions, witness summaries, and search-result snippets. They are written so each missing person can be introduced through rumors, posters, camera lookups, staff conversations, or Redline reports.</p>\n<h2>Oskar Venn</h2>\n<p><strong>Public description:</strong> Oskar Venn is a square-shouldered maintenance worker in his late forties, with a shaved head, grey stubble, heavy work gloves, and the permanent squint of someone used to broken lighting. His orange maintenance vest is patched with old union stickers and hand-written tool labels.</p>\n<p><strong>How people describe him:</strong> “Careful. Stubborn. Complains about everything, but fixes it anyway.”</p>\n<p><strong>Last known clothing:</strong> Orange maintenance vest, dark undershirt, grey utility trousers, tool belt, scuffed magnetic boots.</p>\n<p><strong>Last seen:</strong> C6 HVAC / Air Handling.</p>\n<p><strong>Found clues:</strong></p>\n<ul>\n<li>tool cart left in the wrong place</li>\n<li>radio log: “Something is breathing in here.”</li>\n<li>access badge used once after disappearance</li>\n<li>vent cover bent outward</li>\n<li>drag marks toward maintenance cavity</li>\n<li>one boot found near a warm vent junction</li>\n</ul>\n<p><strong>What really happened:</strong> A juvenile Model 3 ambushed Oskar near the HVAC junction and dragged him toward the hidden nest. He is probably dead unless the GM wants an early rescue possibility.</p>\n<h2>Laleh “Lala” Mir</h2>\n<p><strong>Public description:</strong> Lala Mir is a food-distribution volunteer in her twenties or early thirties, usually seen with a bright scarf, delivery harness, and a stack of meal crates balanced like she has done this every day of her life. She has quick hands, a quicker smile, and a habit of remembering who needs extra food without asking publicly.</p>\n<p><strong>How people describe her:</strong> “She feeds people before they have to beg.”</p>\n<p><strong>Last known clothing:</strong> Teal scarf, volunteer jacket, patched cargo trousers, meal-crate harness.</p>\n<p><strong>Last seen:</strong> B10 Back Service Corridor, moving between aid distribution and service routes.</p>\n<p><strong>Found clues:</strong></p>\n<ul>\n<li>spilled meal crates</li>\n<li>torn food packets, not eaten normally</li>\n<li>a child heard “dog feet in the wall”</li>\n<li>service hatch with acid-scored screws</li>\n<li>Redline supply marks near the route</li>\n</ul>\n<p><strong>What really happened:</strong> A juvenile Model 3 caught her near the service hatch and dragged her toward Map C. Her disappearance links Mara’s aid network to the hidden nest trail.</p>\n<h2>Bex Aranda</h2>\n<p><strong>Public description:</strong> Bex Aranda is a lean Redline Choir lookout with sharp cheekbones, chipped black nail paint, a red scarf tied at one wrist, and a cheap pistol they carry like they are trying to look more dangerous than they feel. They are young enough to be reckless and old enough to know better.</p>\n<p><strong>How people describe them:</strong> “Mouthy, scared of nothing, scared of Mara, loyal when it counts.”</p>\n<p><strong>Last known clothing:</strong> Dark jacket, red wrist scarf, black work boots, cheap sidearm, Redline token.</p>\n<p><strong>Last seen:</strong> A13 Service Corridor / C1 Service Street.</p>\n<p><strong>Found clues:</strong></p>\n<ul>\n<li>dropped Redline token or knife</li>\n<li>scrape marks leading upward toward a service gap</li>\n<li>corrupted Switch footage showing something low and fast</li>\n<li>low-angle blood smear or impact mark</li>\n<li>no evidence Bex left voluntarily</li>\n</ul>\n<p><strong>What really happened:</strong> Bex did not desert. A juvenile Model 3 took them. Proving this gives Mara a direct reason to cooperate.</p>\n<h2>Narin Pell</h2>\n<p><strong>Public description:</strong> Narin Pell is an undocumented shelter resident in their thirties, thin, watchful, and careful about every doorway. They keep their belongings folded into a single fabric bag and speak softly unless they are helping someone else avoid attention.</p>\n<p><strong>How people describe them:</strong> “They survived by not being noticed. That’s why someone should have noticed when they vanished.”</p>\n<p><strong>Last known clothing:</strong> Brown coat, soft shoes, threadbare scarf, cloth shoulder bag.</p>\n<p><strong>Last seen:</strong> B8 Shelter Dorm / B12 Emergency Stair.</p>\n<p><strong>Found clues:</strong></p>\n<ul>\n<li>bag still under bunk</li>\n<li>Sister Luma insists Narin would never leave it</li>\n<li>organic smear near stair landing</li>\n<li>muffled scream dismissed as a fight</li>\n<li>possible trail toward C11 / C12</li>\n</ul>\n<p><strong>What really happened:</strong> Narin may still be alive if the PCs move quickly. Use them as a rescue timer: the longer the PCs delay, the more likely Narin becomes part of the nest.</p>\n<h2>Halden Rook</h2>\n<p><strong>Public description:</strong> Halden Rook was a corporate cleanup technician attached to the original nest sterilization operation. He was narrow-faced, precise, and looked more like a lab-safety officer than a soldier. His ID photo shows a man trying very hard not to look frightened.</p>\n<p><strong>How people describe him:</strong> “Annoying because he read the procedures. Dangerous because he noticed when the procedures were wrong.”</p>\n<p><strong>Last known clothing:</strong> Corporate cleanup suit, sealed helmet, hazard tag, chest-mounted recorder.</p>\n<p><strong>Last seen:</strong> Old nest cleanup site / D6 Control Room records.</p>\n<p><strong>Found clues:</strong></p>\n<ul>\n<li>final annotation: “They’re not fleeing. They’re relocating.”</li>\n<li>deleted warning: “nest-seeding risk”</li>\n<li>overruled report classification: “terminal erratic flight”</li>\n<li>relay copy of his helmet feed</li>\n<li>personnel file marked reassigned instead of dead</li>\n</ul>\n<p><strong>What really happened:</strong> Halden understood that the Model 1s were not fleeing randomly. His warning was buried because admitting it would mean the cleanup had failed.</p>\n<h2>How to present missing-person evidence</h2>\n<p>Start mundane. Do not reveal Antithesis immediately.</p>\n<p>Good first descriptions:</p>\n<ul>\n<li>“No-show patient.”</li>\n<li>“Maintenance worker missing after a vent call.”</li>\n<li>“Food volunteer did not come back.”</li>\n<li>“Gang lookout deserted.”</li>\n<li>“Shelter resident left without their bag.”</li>\n</ul>\n<p>Then sharpen the pattern:</p>\n<ul>\n<li>all routes touch service infrastructure</li>\n<li>all disappearances happen near ducts, stairs, or back corridors</li>\n<li>camera footage is missing, edited, or shows low fast movement</li>\n<li>there are drag marks and biological residue</li>\n<li>people heard clicking, dog feet, or breathing in the walls</li>\n</ul>\n<h2>Quick token labels</h2>\n<p>Use these for clue markers:</p>\n<pre>Oskar’s Tool Cart\nLala’s Spilled Crates\nBex’s Redline Token\nNarin’s Bag\nHalden’s Deleted Warning\nWarm Vent Smear\nBent Vent Cover\nModel 3 Drag Marks</pre>"
+  },
+  {
+    "name": "Signal Bleed - Supporting NPCs and Spies GM",
+    "source_file": "handouts/25_Supporting_NPCs_and_Spies_GM.md",
+    "notes": "<h1>Supporting NPCs and Spies</h1>\n<p>These NPCs are intended as map tokens, conversation targets, suspects, witnesses, and pressure valves. They are less important than the faction heads, but they make the maps feel populated and give players people to talk to.</p>\n<h2>Mercy Twelve Clinic</h2>\n<h3>Senior Nurse Imani Cho</h3>\n<p><strong>Token name:</strong> Nurse Cho <strong>Location:</strong> A3 Reception or A5 Triage <strong>Role:</strong> clinic floor lead <strong>Use:</strong> practical guide, triage authority, patient-protection voice</p>\n<p>Hooks:</p>\n<ul>\n<li>knows which patients cannot be evacuated quickly</li>\n<li>knows Lala Mir by name from food distribution</li>\n<li>suspects recent “no-shows” are connected</li>\n<li>can authorize access to non-private clinic logs if Dr. Valez agrees</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>terrified that the relay proves the clinic unknowingly treated illegal trial subjects</li>\n</ul>\n<h3>Orderly Pax Ruun</h3>\n<p><strong>Token name:</strong> Pax Ruun <strong>Location:</strong> A6 Emergency Intake <strong>Role:</strong> nervous witness <strong>Use:</strong> emergency-bay clue source</p>\n<p>Hooks:</p>\n<ul>\n<li>saw unusual patient transfers</li>\n<li>recognizes a supposedly discharged patient from relay files</li>\n<li>knows the courier did not arrive through the official bay</li>\n<li>may panic if Corporate Recovery enters the clinic</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>deleted one minor intake note because he feared being blamed</li>\n</ul>\n<h3>Rafa Mbeki</h3>\n<p><strong>Token name:</strong> Rafa Mbeki or Clinic Security <strong>Location:</strong> A10 Records / clinic security alcove <strong>Role:</strong> clinic camera monitor <strong>Use:</strong> control-room cooperation point</p>\n<p>Hooks:</p>\n<ul>\n<li>can pull clinic camera feeds</li>\n<li>knows privacy-disabled rooms</li>\n<li>noticed missing footage near patient transfers</li>\n<li>can compare clinic doors with Redline street cameras if Switch cooperates</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>sat on some camera anomalies because reporting them would invite corporate seizure</li>\n</ul>\n<h3>Dr. Vela Myung</h3>\n<p><strong>Token name:</strong> Dr. Myung <strong>Location:</strong> A7 Trauma / A9 Recovery <strong>Role:</strong> tired trauma doctor <strong>Use:</strong> medical interpretation of exposure-trial victims</p>\n<p>Hooks:</p>\n<ul>\n<li>can identify false treatment protocols in relay files</li>\n<li>notices that some “medicine” had trial-batch codes</li>\n<li>can identify Model 3 bite trauma once shown a victim</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>once accepted corporate-donated medicine without asking enough questions</li>\n</ul>\n<h2>Redline Choir</h2>\n<h3>Vex Tan</h3>\n<p><strong>Token name:</strong> Vex Tan or Redline Runner <strong>Location:</strong> B4 Pantry / B10 Service Corridor <strong>Role:</strong> supply runner <strong>Use:</strong> aid-route witness</p>\n<p>Hooks:</p>\n<ul>\n<li>moved food and medicine through unofficial routes</li>\n<li>knows Lala’s normal route</li>\n<li>can confirm Mara ordered no shooting near the clinic</li>\n<li>can show where Redline cameras stop</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>smuggles some personal side goods; worried PCs will mistake that for the main crime</li>\n</ul>\n<h3>Juno “Switch” Hale</h3>\n<p><strong>Token name:</strong> Switch <strong>Location:</strong> B10 Back Corridor or C9 Monitoring <strong>Role:</strong> Redline camera sitter <strong>Use:</strong> surveillance witness and spy</p>\n<p>Hooks:</p>\n<ul>\n<li>has footage of Bex being dragged toward a service gap</li>\n<li>knows Redline blind spots</li>\n<li>can compare camera angles with clinic feeds</li>\n<li>saw corp biohazard containers moving before the current incident</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Spy for Corporate Recovery, by pressure.</strong></li>\n<li>Switch sold selected feed access to a corporate handler to pay medical debt / protect someone in Redline territory.</li>\n<li>Switch did not know about the second nest and did not intend to get people killed.</li>\n<li>If exposed, Switch can still become useful if offered protection or a way out.</li>\n</ul>\n<h3>Rook “Mads” Madsen</h3>\n<p><strong>Token name:</strong> Mads <strong>Location:</strong> A1 Indoor Street / A13 Service Corridor <strong>Role:</strong> Redline underling <strong>Use:</strong> suspicious muscle with useful local knowledge</p>\n<p>Hooks:</p>\n<ul>\n<li>knows Bex did not seem like a deserter</li>\n<li>can point toward service routes</li>\n<li>recognizes corp observers by posture</li>\n<li>can be talked into evacuation help if Bex’s fate is proven</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>hates Bluewire and may escalate if Bluewire is humiliated</li>\n</ul>\n<h3>Talla “Auntie’s Eyes” Vey</h3>\n<p><strong>Token name:</strong> Talla <strong>Location:</strong> B3 Commons / B4 Pantry <strong>Role:</strong> Mara loyalist and aid coordinator <strong>Use:</strong> protects Mara’s hidden soft power</p>\n<p>Hooks:</p>\n<ul>\n<li>knows who receives food and medicine</li>\n<li>knows Lala, Miri, and Sol</li>\n<li>can confirm Mara funds school meals if PCs earn trust</li>\n<li>will deny everything if asked like an accusation</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>not actually family, despite the surname; uses it because Mara saved her years ago</li>\n</ul>\n<h2>Corporate Recovery</h2>\n<h3>Lt. Varya Senn</h3>\n<p><strong>Token name:</strong> Lt. Senn <strong>Location:</strong> A1 Concourse / C1 Service Street <strong>Role:</strong> Rusk’s field second <strong>Use:</strong> tactical pressure and escalation</p>\n<p>Hooks:</p>\n<ul>\n<li>more aggressive than Rusk</li>\n<li>wants a clean seizure before crowds form</li>\n<li>can recognize Model 3 evidence as impossible if she saw old cleanup files</li>\n<li>may accept a temporary ceasefire only after proof of the second nest</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>believes witness control is ugly but necessary</li>\n</ul>\n<h3>Orlan Pike</h3>\n<p><strong>Token name:</strong> Feed Handler or Bloke #3 <strong>Location:</strong> off-map, C9 Monitoring, or D6 Control Room <strong>Role:</strong> corporate surveillance handler <strong>Use:</strong> spy, footage editor, evidence suppressor</p>\n<p>Hooks:</p>\n<ul>\n<li>edits camera footage</li>\n<li>injects false timestamps</li>\n<li>bought access from Switch</li>\n<li>can be identified by mesh/camera forensics</li>\n<li>tries to frame Redline Choir for disappearances</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Spy inside local systems for Corporate Recovery, by greed and career ambition.</strong></li>\n<li>He is the handler pressuring Switch.</li>\n<li>If exposed, Rusk may deny authorizing him, even if Rusk benefits from his work.</li>\n</ul>\n<h3>Corp Recovery Pair</h3>\n<p><strong>Token names:</strong> Corp Recovery #1, Corp Recovery #2 <strong>Location:</strong> A1, C1, or D3 <strong>Role:</strong> disciplined mooks <strong>Use:</strong> tactical and moral pressure</p>\n<p>Hooks:</p>\n<ul>\n<li>one can be dragged by a Model 3 to prove the threat is real</li>\n<li>one may break discipline to save a civilian</li>\n<li>Small Arms / Tactics can read their formation and intent</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>they were briefed on witness cleanup, not on an active second nest</li>\n</ul>\n<h3>Mara Silex</h3>\n<p><strong>Token name:</strong> Corp Medic <strong>Location:</strong> A1 / C1 / D3 <strong>Role:</strong> corporate field medic <strong>Use:</strong> uneasy corporate conscience</p>\n<p>Hooks:</p>\n<ul>\n<li>recognizes exposure-treatment batch codes</li>\n<li>can stabilize victims</li>\n<li>knows some corporate medical orders are indefensible</li>\n<li>may quietly help if civilians are at risk</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Potential Mercy Twelve informant, by conscience.</strong></li>\n<li>She has leaked fragments to Dr. Valez before, but not enough to expose herself.</li>\n<li>Can become an ally if PCs protect her from Rusk/Senn.</li>\n</ul>\n<h2>Community / civilians</h2>\n<h3>Miri and Sol</h3>\n<p><strong>Token name:</strong> Miri &amp; Sol <strong>Location:</strong> A4 Pediatric Corner or B7 Children’s Corner <strong>Role:</strong> schoolchildren witnesses <strong>Use:</strong> Auntie Red clue and missing-person emotional hook</p>\n<p>Hooks:</p>\n<ul>\n<li>overheard: “Auntie Red paid for breakfast again.”</li>\n<li>know Lala used to bring food</li>\n<li>heard “dog feet in the wall”</li>\n<li>may have seen Keet hide relay fragments or a student slate</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>adults keep telling them not to talk</li>\n</ul>\n<h3>Keet</h3>\n<p><strong>Token name:</strong> Keet <strong>Location:</strong> B6 Classroom / B7 Children’s Corner <strong>Role:</strong> child witness / student tech helper <strong>Use:</strong> route and data-leak clue</p>\n<p>Hooks:</p>\n<ul>\n<li>copied a relay fragment to a school slate</li>\n<li>saw strange service-route movement</li>\n<li>knows which children heard what</li>\n<li>can identify the first place people started avoiding</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>afraid Redline or corp will punish whoever talks</li>\n</ul>\n<h3>Sister Luma</h3>\n<p><strong>Token name:</strong> Sister Luma <strong>Location:</strong> A3 Waiting / B9 Counselor Offices <strong>Role:</strong> counselor and emotional stabilizer <strong>Use:</strong> witness trust, Bluewire/Narin connection</p>\n<p>Hooks:</p>\n<ul>\n<li>knows Narin would not leave voluntarily</li>\n<li>can calm witnesses</li>\n<li>can interpret Bluewire’s fear as trauma, not just aggression</li>\n<li>may get civilians to cooperate with evacuation</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>keeps unofficial records of undocumented residents</li>\n</ul>\n<h2>Recommended spy placement</h2>\n<p>Use at least two:</p>\n<pre>Switch → compromised by Corporate Recovery, pressured by medical debt.\nOrlan Pike → corporate surveillance handler, greedy/careerist.\nMara Silex → corporate medic leaking to Mercy Twelve by conscience.</pre>\n<p>For a shorter game, use only Switch and Pike.</p>\n<p>For a richer game, add Silex as a possible redemption/contact NPC.</p>"
   }
 ];
-  function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-  function list(items) { if (!items || !items.length) return '<p>—</p>'; return '<ul>' + items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
-  function bioForNpc(npc) { return ['<h3>' + esc(npc.name) + '</h3>','<p><strong>Role:</strong> ' + esc(npc.role) + '</p>','<p><strong>Faction:</strong> ' + esc(npc.faction) + '</p>','<p><strong>Attitude:</strong> ' + esc(npc.attitude) + '</p>','<h4>Wants</h4>',list(npc.wants),'<h4>Offers</h4>',list(npc.offers)].join(''); }
-  function gmnotesForNpc(npc) { return ['<h3>GM Notes</h3>','<h4>Secrets</h4>',list(npc.secrets),'<h4>Use in Play</h4>','<p>' + esc(npc.gm_notes) + '</p>'].join(''); }
-  function findByName(type, name) { var matches = findObjs({ _type: type, name: name }); return matches && matches.length ? matches[0] : null; }
-  function createOrUpdateNpc(npc, overwrite) { var existing = findByName('character', npc.name); if (existing && !overwrite) return { status: 'exists', name: npc.name }; var character = existing || createObj('character', { name: npc.name }); character.set('name', npc.name); character.set('bio', bioForNpc(npc)); character.set('gmnotes', gmnotesForNpc(npc)); character.set('inplayerjournals', ''); character.set('controlledby', ''); return { status: existing ? 'updated' : 'created', name: npc.name }; }
-  function createOrUpdateHandout(handout, overwrite) { var existing = findByName('handout', handout.name); if (existing && !overwrite) return { status: 'exists', name: handout.name }; var obj = existing || createObj('handout', { name: handout.name }); obj.set('name', handout.name); obj.set('notes', handout.notes); obj.set('inplayerjournals', ''); return { status: existing ? 'updated' : 'created', name: handout.name }; }
-  function resultSummary(results) { return results.map(function (r) { return esc(r.name) + ' [' + esc(r.status) + ']'; }).join('<br>'); }
-  function showHelp() { sendChat('Signal Bleed', '/w gm <strong>Hope//Punk Signal Bleed Importer</strong><br><code>' + COMMAND + ' --dry-run</code><br><code>' + COMMAND + ' --import</code><br><code>' + COMMAND + ' --overwrite</code><br><code>' + COMMAND + ' --import --npcs</code><br><code>' + COMMAND + ' --import --handouts</code>'); }
-  function handle(msg) { if (msg.type !== 'api') return; if (msg.content.indexOf(COMMAND) !== 0) return; if (msg.content.indexOf('--help') !== -1) { showHelp(); return; } var dryRun = msg.content.indexOf('--dry-run') !== -1; var doImport = msg.content.indexOf('--import') !== -1; var overwrite = msg.content.indexOf('--overwrite') !== -1; var onlyNpcs = msg.content.indexOf('--npcs') !== -1; var onlyHandouts = msg.content.indexOf('--handouts') !== -1; if (!dryRun && !doImport && !overwrite) { showHelp(); return; } var includeNpcs = onlyNpcs || (!onlyNpcs && !onlyHandouts); var includeHandouts = onlyHandouts || (!onlyNpcs && !onlyHandouts); if (dryRun) { var parts=[]; if(includeNpcs) parts.push('<strong>NPCs:</strong> '+NPCS.length+'<br>'+NPCS.map(function(n){return esc(n.name);}).join('<br>')); if(includeHandouts) parts.push('<strong>Handouts:</strong> '+HANDOUTS.length+'<br>'+HANDOUTS.map(function(h){return esc(h.name);}).join('<br>')); sendChat('Signal Bleed','/w gm <strong>Dry run</strong><br>'+parts.join('<br><br>')); return; } var summaries=[]; if(includeNpcs) summaries.push('<strong>NPCs</strong><br>'+resultSummary(NPCS.map(function(npc){return createOrUpdateNpc(npc, overwrite);}))); if(includeHandouts) summaries.push('<strong>Handouts</strong><br>'+resultSummary(HANDOUTS.map(function(h){return createOrUpdateHandout(h, overwrite);}))); sendChat('Signal Bleed','/w gm Import complete:<br><br>'+summaries.join('<br><br>')); }
+
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function list(items) {
+    if (!items || !items.length) return '<p>—</p>';
+    return '<ul>' + items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+  }
+
+  function bioForNpc(npc) {
+    return [
+      '<h3>' + esc(npc.name) + '</h3>',
+      '<p><strong>Role:</strong> ' + esc(npc.role) + '</p>',
+      '<p><strong>Faction:</strong> ' + esc(npc.faction) + '</p>',
+      '<p><strong>Attitude:</strong> ' + esc(npc.attitude) + '</p>',
+      '<h4>Wants</h4>',
+      list(npc.wants),
+      '<h4>Offers</h4>',
+      list(npc.offers)
+    ].join('');
+  }
+
+  function gmnotesForNpc(npc) {
+    return [
+      '<h3>GM Notes</h3>',
+      '<h4>Secrets</h4>',
+      list(npc.secrets),
+      '<h4>Use in Play</h4>',
+      '<p>' + esc(npc.gm_notes) + '</p>'
+    ].join('');
+  }
+
+  function findByName(type, name) {
+    var matches = findObjs({ _type: type, name: name });
+    return matches && matches.length ? matches[0] : null;
+  }
+
+  function createOrUpdateNpc(npc, overwrite) {
+    var existing = findByName('character', npc.name);
+    if (existing && !overwrite) {
+      return { status: 'exists', name: npc.name };
+    }
+    var character = existing || createObj('character', { name: npc.name });
+    character.set('name', npc.name);
+    character.set('bio', bioForNpc(npc));
+    character.set('gmnotes', gmnotesForNpc(npc));
+    character.set('inplayerjournals', '');
+    character.set('controlledby', '');
+    return { status: existing ? 'updated' : 'created', name: npc.name };
+  }
+
+  function createOrUpdateHandout(handout, overwrite) {
+    var existing = findByName('handout', handout.name);
+    if (existing && !overwrite) {
+      return { status: 'exists', name: handout.name };
+    }
+    var obj = existing || createObj('handout', { name: handout.name });
+    obj.set('name', handout.name);
+    obj.set('notes', handout.notes);
+    obj.set('inplayerjournals', '');
+    return { status: existing ? 'updated' : 'created', name: handout.name };
+  }
+
+  function resultSummary(results) {
+    return results.map(function (r) {
+      return esc(r.name) + ' [' + esc(r.status) + ']';
+    }).join('<br>');
+  }
+
+  function showHelp() {
+    sendChat('Signal Bleed', '/w gm <strong>Hope//Punk Signal Bleed Importer</strong><br>' +
+      '<code>' + COMMAND + ' --dry-run</code><br>' +
+      '<code>' + COMMAND + ' --import</code> imports NPCs and handouts that do not already exist<br>' +
+      '<code>' + COMMAND + ' --overwrite</code> updates/replaces NPC and handout content<br>' +
+      '<code>' + COMMAND + ' --import --npcs</code> imports NPCs only<br>' +
+      '<code>' + COMMAND + ' --import --handouts</code> imports handouts only<br><br>' +
+      'NPCs and handouts are created GM-only by default. Review handouts before sharing player-facing ones.');
+  }
+
+  function handle(msg) {
+    if (msg.type !== 'api') return;
+    if (msg.content.indexOf(COMMAND) !== 0) return;
+
+    if (msg.content.indexOf('--help') !== -1) {
+      showHelp();
+      return;
+    }
+
+    var dryRun = msg.content.indexOf('--dry-run') !== -1;
+    var doImport = msg.content.indexOf('--import') !== -1;
+    var overwrite = msg.content.indexOf('--overwrite') !== -1;
+    var onlyNpcs = msg.content.indexOf('--npcs') !== -1;
+    var onlyHandouts = msg.content.indexOf('--handouts') !== -1;
+
+    if (!dryRun && !doImport && !overwrite) {
+      showHelp();
+      return;
+    }
+
+    var includeNpcs = onlyNpcs || (!onlyNpcs && !onlyHandouts);
+    var includeHandouts = onlyHandouts || (!onlyNpcs && !onlyHandouts);
+
+    if (dryRun) {
+      var msgParts = [];
+      if (includeNpcs) {
+        msgParts.push('<strong>NPCs:</strong> ' + NPCS.length + '<br>' +
+          NPCS.map(function (n) { return esc(n.name); }).join('<br>'));
+      }
+      if (includeHandouts) {
+        msgParts.push('<strong>Handouts:</strong> ' + HANDOUTS.length + '<br>' +
+          HANDOUTS.map(function (h) { return esc(h.name); }).join('<br>'));
+      }
+      sendChat('Signal Bleed', '/w gm <strong>Dry run</strong><br>' + msgParts.join('<br><br>'));
+      return;
+    }
+
+    var summaries = [];
+    if (includeNpcs) {
+      summaries.push('<strong>NPCs</strong><br>' + resultSummary(NPCS.map(function (npc) {
+        return createOrUpdateNpc(npc, overwrite);
+      })));
+    }
+    if (includeHandouts) {
+      summaries.push('<strong>Handouts</strong><br>' + resultSummary(HANDOUTS.map(function (handout) {
+        return createOrUpdateHandout(handout, overwrite);
+      })));
+    }
+    sendChat('Signal Bleed', '/w gm Import complete:<br><br>' + summaries.join('<br><br>'));
+  }
+
   on('chat:message', handle);
-  return { handle: handle };
+
+  return {
+    handle: handle
+  };
 }());

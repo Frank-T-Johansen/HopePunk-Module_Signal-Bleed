@@ -90,3 +90,48 @@ Examples:
 The elevator is useful but dangerous here. It may carry contamination or panic between floors.
 
 The stair/ladderwell is a fallback route. It may look narrow or steep because this is a megacomplex emergency access shaft, not a comfortable public staircase.
+
+## What happens on this map
+
+This floor holds the old corporate crime scene: the first nest, cleanup records, exposure-trial data, and the clue that Model 1s relocated. It is not the default current nest location.
+
+### Main active NPCs and tokens
+
+- Halden Rook evidence marker — D6 logs.
+- Old Nest Remains — D8.
+- Model 1 escape-vector marker — D9.
+- Commander Rusk or Lt. Senn — delayed, if corp confrontation moves here.
+- Corporate cleanup records — D5/D6.
+- NightCrash / Siren Saint — D1 if emergency rescue occurs.
+
+### Main scene beats
+
+1. PCs learn the corporation created the first nest through illegal bio-research.
+2. Records show researchers and staff were consumed as biomass.
+3. Cleanup footage shows Model 1s escaping in formation.
+4. Halden Rook flagged nest-seeding risk.
+5. Corporate reports buried this as terminal erratic flight.
+
+### Map-specific clues
+
+- D3: professional sterilization damage.
+- D5: exposure-treatment records and patient trial data.
+- D6: cleanup footage, Halden warning, deleted risk tags.
+- D8: destroyed first nest and researcher biomass evidence.
+- D9: Model 1 escape route toward service levels.
+- D10: edited freight/elevator transport records.
+
+### Camera ownership
+
+- Restricted clinic/corporate hybrid.
+- Corporate edits are common.
+- Emergency systems may have lockdown logic.
+- Landing corner has emergency/sponsor feeds if NightCrash arrives.
+
+### What this floor should establish
+
+- The corp caused the original disaster.
+- The first nest was nearly destroyed.
+- The corp thought the cleanup succeeded.
+- Someone inside the corp warned about Model 1 relocation.
+- The current threat points back toward Map C.

@@ -88,3 +88,19 @@ handouts/23_Antithesis_Hidden_Nest_GM.md
 ```
 
 These supersede earlier signal-interference framing. Signal Bleed now treats the relay as human evidence and the Antithesis threat as biological: the corporation’s first nest was nearly destroyed, but escaped Model 1s seeded a second hidden nest that is producing juvenile Model 3s and gathering biomass.
+
+
+## Map handout structure
+
+Map handouts 10–13 are the main floor-operation handouts. They now summarize what happens on each map, active NPCs, major clues, surveillance ownership, and scene beats.
+
+Map key handouts 14–17 are detailed keyed-location references. Use them when the PCs inspect a specific location or when you need skill prompts for a room, corridor, or feature.
+
+Recommended GM flow:
+
+```text
+Use 10–13 to run the floor.
+Use 14–17 to zoom into individual numbered locations.
+Use 21–23 for current plot canon, missing persons, and Antithesis behavior.
+Use 24–25 for missing-person descriptions and supporting NPCs.
+```

@@ -417,6 +417,183 @@
         "The corporation does not know this happened"
       ],
       "gm_notes": "This is a location/hazard more than a character."
+    },
+    {
+      "name": "Dr. Vela Myung",
+      "role": "Clinic trauma doctor",
+      "faction": "Mercy Twelve Clinic",
+      "attitude": "Exhausted, sharp, quietly angry",
+      "wants": [
+        "Keep patients alive",
+        "Understand what illegal treatments were used",
+        "Avoid corporate seizure of patient records"
+      ],
+      "offers": [
+        "Medical interpretation",
+        "Exposure-trial recognition",
+        "Triage leadership",
+        "Model 3 wound analysis"
+      ],
+      "secrets": [
+        "Accepted corporate-donated medicine without asking enough questions",
+        "Fears some clinic patients were trial subjects"
+      ],
+      "gm_notes": "Use Dr. Myung when PCs need medical interpretation. She can identify trial-batch codes, false treatment protocols, and Model 3 bite trauma after evidence appears."
+    },
+    {
+      "name": "Vex Tan",
+      "role": "Redline supply runner",
+      "faction": "Redline Choir",
+      "attitude": "Defensive, fast-talking, protective",
+      "wants": [
+        "Keep aid routes secret",
+        "Find out what happened to Lala",
+        "Avoid being accused of smuggling weapons"
+      ],
+      "offers": [
+        "Aid-route knowledge",
+        "Redline route access",
+        "Confirmation that Lala delivered food",
+        "Proof Mara ordered no shooting near clinic"
+      ],
+      "secrets": [
+        "Smuggles minor side goods",
+        "Knows Mara funds food and medicine"
+      ],
+      "gm_notes": "Vex ties the Redline aid network to the missing-person trail. Treat as a witness, not a combatant."
+    },
+    {
+      "name": "Rook “Mads” Madsen",
+      "role": "Redline underling",
+      "faction": "Redline Choir",
+      "attitude": "Suspicious, blunt, insecure",
+      "wants": [
+        "Keep Redline from looking weak",
+        "Find Bex",
+        "Stop outsiders humiliating Bluewire"
+      ],
+      "offers": [
+        "Street muscle",
+        "Local route knowledge",
+        "Corp observer identification",
+        "Evacuation help if convinced"
+      ],
+      "secrets": [
+        "Hates Bluewire and may provoke him",
+        "Knows Bex would not desert easily"
+      ],
+      "gm_notes": "Use Mads as a named underling token. He can escalate social tension or become useful once Bex’s fate is proven."
+    },
+    {
+      "name": "Talla “Auntie’s Eyes” Vey",
+      "role": "Redline aid coordinator",
+      "faction": "Redline Choir / Community Support",
+      "attitude": "Warm with locals, cold with outsiders",
+      "wants": [
+        "Protect Mara’s hidden support network",
+        "Keep food routes open",
+        "Protect children and volunteers"
+      ],
+      "offers": [
+        "Food-route records",
+        "Witness introductions",
+        "Community trust",
+        "Confirmation of Mara’s aid if trust is earned"
+      ],
+      "secrets": [
+        "Not actually Mara’s family",
+        "Uses the Vey name because Mara saved her"
+      ],
+      "gm_notes": "Talla guards the Auntie Red secret. She is a good social gatekeeper for the support-center floor."
+    },
+    {
+      "name": "Lt. Varya Senn",
+      "role": "Corporate field lieutenant",
+      "faction": "Corporate Recovery",
+      "attitude": "Disciplined, aggressive, impatient",
+      "wants": [
+        "Seize the relay",
+        "Secure witnesses",
+        "Control the scene before public panic",
+        "Make Rusk’s plan work"
+      ],
+      "offers": [
+        "Tactical ceasefire",
+        "Access to corp equipment",
+        "Old cleanup-site knowledge if forced"
+      ],
+      "secrets": [
+        "Briefed on witness control, not the second nest",
+        "Believes ugly containment is necessary"
+      ],
+      "gm_notes": "Use Senn when the corp needs teeth. She is more likely than Rusk to escalate physically."
+    },
+    {
+      "name": "Orlan Pike",
+      "role": "Corporate surveillance handler",
+      "faction": "Corporate Recovery",
+      "attitude": "Smug, careful, ambitious",
+      "wants": [
+        "Edit footage",
+        "Suppress the relay trail",
+        "Frame Redline if useful",
+        "Advance his career"
+      ],
+      "offers": [
+        "Camera metadata",
+        "Knowledge of edited feeds",
+        "Traceable link to Switch",
+        "Proof of corporate tampering"
+      ],
+      "secrets": [
+        "Pressured or paid Switch for feed access",
+        "May be operating without explicit written authorization"
+      ],
+      "gm_notes": "Spy/handler. Pike is a greed/career spy inside local systems. Use as Bloke #3 until identified."
+    },
+    {
+      "name": "Mara Silex",
+      "role": "Corporate field medic",
+      "faction": "Corporate Recovery / possible Mercy Twelve informant",
+      "attitude": "Controlled, guilty, medically competent",
+      "wants": [
+        "Keep people alive",
+        "Avoid being exposed by Corporate Recovery",
+        "Leak enough to save lives without being disappeared"
+      ],
+      "offers": [
+        "Medical help",
+        "Batch-code recognition",
+        "Quiet warning",
+        "Possible testimony"
+      ],
+      "secrets": [
+        "Has leaked fragments to Mercy Twelve by conscience",
+        "Knows corp medical orders are indefensible"
+      ],
+      "gm_notes": "Potential conscience-spy. She can become a bridge between corp assets and clinic survival."
+    },
+    {
+      "name": "Miri and Sol",
+      "role": "Schoolchildren witnesses",
+      "faction": "Community Support",
+      "attitude": "Curious, scared, more observant than adults expect",
+      "wants": [
+        "Understand why adults are frightened",
+        "Keep each other safe",
+        "Find out why Lala vanished"
+      ],
+      "offers": [
+        "Auntie Red clue",
+        "Lala clue",
+        "Dog-feet-in-the-wall rumor",
+        "Keet connection"
+      ],
+      "secrets": [
+        "Adults told them not to talk",
+        "They know Mara is softer than her reputation"
+      ],
+      "gm_notes": "Use them to reveal Auntie Red and the missing-person trail through overheard conversation."
     }
   ]
 }

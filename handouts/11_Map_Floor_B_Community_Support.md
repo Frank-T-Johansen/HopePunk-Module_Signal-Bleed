@@ -67,3 +67,48 @@ If the PCs fail, these are the people who suffer:
 The elevator can move food carts, stretchers, and evacuation groups.
 
 The stair/ladderwell can move small groups but should be slower and more dangerous under panic conditions.
+
+## What happens on this map
+
+This floor makes the neighborhood worth saving. Use it for schoolchildren, food aid, Mara’s hidden support network, missing-person reports, and civilian evacuation pressure.
+
+### Main active NPCs
+
+- Miri & Sol — B7 Children’s Corner.
+- Keet — B6 Classroom or B7 Children’s Corner.
+- Sister Luma — B9 Counselor Offices or B3 Commons.
+- Talla “Auntie’s Eyes” Vey — B3/B4.
+- Vex Tan — B4 Pantry or B10 Corridor.
+- Lala Mir clue marker — B10.
+- Narin Pell clue marker — B8/B12.
+- Mara — delayed, B4 or B10 if PCs dig into Redline aid.
+
+### Main scene beats
+
+1. PCs see that Redline money and routes keep people fed.
+2. Children reveal “Auntie Red” without understanding the political danger.
+3. Lala’s disappearance connects food aid to service routes.
+4. Narin’s disappearance shows official systems miss vulnerable people.
+5. Civilians complicate any simple fight with corp or Redline forces.
+
+### Map-specific clues
+
+- B4: food supplies have Redline-adjacent routing.
+- B7: children know Lala and Auntie Red.
+- B8: Narin’s bag is still under the bunk.
+- B10: spilled meal crates and a damaged service hatch.
+- B12: organic smear / muffled scream clue.
+
+### Camera ownership
+
+- Public areas: community/municipal/ad-network.
+- Pantry/service corridor: Redline-influenced.
+- Children and shelter areas: restricted for privacy.
+- Counselor offices: no ordinary camera coverage; only door logs.
+
+### What this floor should establish
+
+- Mara’s power has a protective side.
+- Missing people are locals the system can ignore.
+- The missing-person trail is not random.
+- The nest is feeding on people with quiet routes and weak official protection.
