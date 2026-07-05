@@ -10,7 +10,7 @@
 //   !hopepunk-signal-bleed --handouts
 //
 // Notes:
-// - Imports draft NPCs as GM-only character entries with Bio and GM Notes.
+// - Imports all NPCs from data/signal_bleed_npcs.json as GM-only character entries.
 // - Imports scenario Markdown files as GM-only Roll20 handouts.
 // - Does not upload images/maps or place map tokens.
 // - Designed for games using the public Hope//Punk character sheet.
@@ -43,7 +43,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "secrets": [
       "Knows Mara covertly supports local schools and food programs"
     ],
-    "gm_notes": "If the PCs interact with her, she pushes negotiation, evacuation, and containment. She is not naive and will not hand civilians to corporate recovery."
+    "gm_notes": "If the PCs interact with her, she pushes negotiation, evacuation, and containment. She is not naive and will not hand civilians to corporate recovery.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Mara “Mother Red” Vey",
@@ -65,7 +67,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Mara covertly funds food, medicine, and school support",
       "Mara knows Bex and Lala are missing and suspects this is not normal gang business"
     ],
-    "gm_notes": "Mara becomes more cooperative if PCs prove Redline people are being taken by something in the service infrastructure."
+    "gm_notes": "Mara becomes more cooperative if PCs prove Redline people are being taken by something in the service infrastructure.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Nox “Bluewire” Kade",
@@ -86,7 +90,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "His distress is opioids, cyber-strain, trauma, and possibly illegal treatment side effects",
       "He heard or saw signs of Model 3 activity and was dismissed because he is unstable"
     ],
-    "gm_notes": "Keep Bluewire human. He is an early warning system because nobody believes him when he says the walls have teeth."
+    "gm_notes": "Keep Bluewire human. He is an early warning system because nobody believes him when he says the walls have teeth.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Commander Ilan Rusk",
@@ -109,7 +115,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Rusk does not initially know the second hidden nest exists",
       "His team’s mission includes witness control"
     ],
-    "gm_notes": "Rusk can truthfully say the first nest was sterilized, while lying about experiments and cleanup orders. Once the second nest is proven, he must choose whether to cooperate or double down."
+    "gm_notes": "Rusk can truthfully say the first nest was sterilized, while lying about experiments and cleanup orders. Once the second nest is proven, he must choose whether to cooperate or double down.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Keet",
@@ -129,7 +137,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "secrets": [
       "Saw the courier arrive and noticed the relay pulse before anyone touched it"
     ],
-    "gm_notes": "Good NPC for pulling sympathetic PCs toward the school annex and civilian stakes."
+    "gm_notes": "Good NPC for pulling sympathetic PCs toward the school annex and civilian stakes.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Sister Luma",
@@ -150,7 +160,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "secrets": [
       "She has seen similar distress patterns before in patients exposed to forbidden tech"
     ],
-    "gm_notes": "Useful for encouraging players to investigate psychology, fear, grief, and pain."
+    "gm_notes": "Useful for encouraging players to investigate psychology, fear, grief, and pain.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Tamsin Quill",
@@ -170,7 +182,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Tamsin saw evidence that the first nest cleanup failed",
       "The relay is evidence, not alien technology"
     ],
-    "gm_notes": "Use Tamsin as the inciting body and warning. A clear line: “They weren’t fleeing. They were planting something.”"
+    "gm_notes": "Use Tamsin as the inciting body and warning. A clear line: “They weren’t fleeing. They were planting something.”",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Mote Swarm",
@@ -187,7 +201,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "secrets": [
       "The swarm is a symptom, not the main alien intelligence"
     ],
-    "gm_notes": "Use to force cooperation, evacuation, and first ascension. Do not make this a social faction in the starter job."
+    "gm_notes": "Use to force cooperation, evacuation, and first ascension. Do not make this a social faction in the starter job.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Florence “NightCrash” Vale",
@@ -213,7 +229,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Her cheerful public persona hides severe fatigue",
       "She will not solve the PCs' final decision for them"
     ],
-    "gm_notes": "Use NightCrash only as an emergency safety valve or post-victory recognition cameo. She arrives briefly, saves wounded or creates one opening, then rushes to a bigger emergency. She is adverse to fighting humans and focuses on evacuation, medicine, and fighting aliens."
+    "gm_notes": "Use NightCrash only as an emergency safety valve or post-victory recognition cameo. She arrives briefly, saves wounded or creates one opening, then rushes to a bigger emergency. She is adverse to fighting humans and focuses on evacuation, medicine, and fighting aliens.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "The Siren Saint",
@@ -235,7 +253,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "secrets": [
       "The hoverbike itself does not carry the patient; the detachable trauma pod does"
     ],
-    "gm_notes": "Use as explanation for how NightCrash arrives quickly without pretending a critically injured person fits on a normal hoverbike."
+    "gm_notes": "Use as explanation for how NightCrash arrives quickly without pretending a critically injured person fits on a normal hoverbike.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Gurney Angels",
@@ -257,7 +277,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "secrets": [
       "They are sponsored human tech, not alien drones"
     ],
-    "gm_notes": "The Gurney Angels are evacuation tools, not combat monsters. They can briefly block or shove through danger while carrying a patient, but their main job is extraction."
+    "gm_notes": "The Gurney Angels are evacuation tools, not combat monsters. They can briefly block or shove through danger while carrying a patient, but their main job is extraction.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Juno “Switch” Hale",
@@ -277,7 +299,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Switch has seen low, fast shapes on corrupted footage",
       "Switch suspects the missing people are not ordinary gang/corp casualties"
     ],
-    "gm_notes": "Use Switch as a social alternative to hacking. Cooperation can reveal that people disappeared near routes connected to the hidden nest."
+    "gm_notes": "Use Switch as a social alternative to hacking. Cooperation can reveal that people disappeared near routes connected to the hidden nest.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Rafa Mbeki",
@@ -297,7 +321,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "secrets": [
       "Rafa noticed camera gaps but feared reporting them would trigger a corporate raid"
     ],
-    "gm_notes": "Use Rafa as the clinic-side control room NPC. He can establish a pattern but not solve the whole mystery without physical investigation."
+    "gm_notes": "Use Rafa as the clinic-side control room NPC. He can establish a pattern but not solve the whole mystery without physical investigation.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Oskar Venn",
@@ -317,7 +343,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Oskar was taken by a juvenile Model 3",
       "His remains may be partly incorporated near the hidden nest"
     ],
-    "gm_notes": "Use Oskar as the cleanest technical missing-person clue."
+    "gm_notes": "Use Oskar as the cleanest technical missing-person clue.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Laleh “Lala” Mir",
@@ -336,7 +364,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Lala was taken near B10",
       "Her disappearance grounds the Auntie Red reveal"
     ],
-    "gm_notes": "Use Lala to link Mara’s covert support and the missing-person threat."
+    "gm_notes": "Use Lala to link Mara’s covert support and the missing-person threat.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Bex Aranda",
@@ -355,7 +385,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Bex was taken by a juvenile Model 3",
       "Mara suspects more than she admits"
     ],
-    "gm_notes": "Use Bex as the Redline emotional hook."
+    "gm_notes": "Use Bex as the Redline emotional hook.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Narin Pell",
@@ -375,7 +407,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Narin may still be alive early in the session",
       "If PCs delay, Narin is incorporated into the nest"
     ],
-    "gm_notes": "Use Narin as the possible rescue victim."
+    "gm_notes": "Use Narin as the possible rescue victim.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Halden Rook",
@@ -394,7 +428,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Halden’s warning was buried",
       "Corporate Recovery may know the name but not volunteer it"
     ],
-    "gm_notes": "Use Halden as the deep relay clue."
+    "gm_notes": "Use Halden as the deep relay clue.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Juvenile Model 3",
@@ -415,7 +451,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Only a few exist at first",
       "They are produced by the second hidden nest"
     ],
-    "gm_notes": "Use sparingly before the reveal. Its jaws split into three parts."
+    "gm_notes": "Use sparingly before the reveal. Its jaws split into three parts.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Model 1 Seed Clump",
@@ -434,7 +472,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "The clump is made from escaped Model 1s that suicided together",
       "The corporation does not know this happened"
     ],
-    "gm_notes": "This is a location/hazard more than a character."
+    "gm_notes": "This is a location/hazard more than a character.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Dr. Vela Myung",
@@ -456,7 +496,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Accepted corporate-donated medicine without asking enough questions",
       "Fears some clinic patients were trial subjects"
     ],
-    "gm_notes": "Use Dr. Myung when PCs need medical interpretation. She can identify trial-batch codes, false treatment protocols, and Model 3 bite trauma after evidence appears."
+    "gm_notes": "Use Dr. Myung when PCs need medical interpretation. She can identify trial-batch codes, false treatment protocols, and Model 3 bite trauma after evidence appears.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Vex Tan",
@@ -478,7 +520,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Smuggles minor side goods",
       "Knows Mara funds food and medicine"
     ],
-    "gm_notes": "Vex ties the Redline aid network to the missing-person trail. Treat as a witness, not a combatant."
+    "gm_notes": "Vex ties the Redline aid network to the missing-person trail. Treat as a witness, not a combatant.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Rook “Mads” Madsen",
@@ -500,7 +544,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Hates Bluewire and may provoke him",
       "Knows Bex would not desert easily"
     ],
-    "gm_notes": "Use Mads as a named underling token. He can escalate social tension or become useful once Bex’s fate is proven."
+    "gm_notes": "Use Mads as a named underling token. He can escalate social tension or become useful once Bex’s fate is proven.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Talla “Auntie’s Eyes” Vey",
@@ -522,7 +568,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Not actually Mara’s family",
       "Uses the Vey name because Mara saved her"
     ],
-    "gm_notes": "Talla guards the Auntie Red secret. She is a good social gatekeeper for the support-center floor."
+    "gm_notes": "Talla guards the Auntie Red secret. She is a good social gatekeeper for the support-center floor.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Lt. Varya Senn",
@@ -544,7 +592,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Briefed on witness control, not the second nest",
       "Believes ugly containment is necessary"
     ],
-    "gm_notes": "Use Senn when the corp needs teeth. She is more likely than Rusk to escalate physically."
+    "gm_notes": "Use Senn when the corp needs teeth. She is more likely than Rusk to escalate physically.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Orlan Pike",
@@ -567,7 +617,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Pressured or paid Switch for feed access",
       "May be operating without explicit written authorization"
     ],
-    "gm_notes": "Spy/handler. Pike is a greed/career spy inside local systems. Use as Bloke #3 until identified."
+    "gm_notes": "Spy/handler. Pike is a greed/career spy inside local systems. Use as Bloke #3 until identified.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Mara Silex",
@@ -589,7 +641,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Has leaked fragments to Mercy Twelve by conscience",
       "Knows corp medical orders are indefensible"
     ],
-    "gm_notes": "Potential conscience-spy. She can become a bridge between corp assets and clinic survival."
+    "gm_notes": "Potential conscience-spy. She can become a bridge between corp assets and clinic survival.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
   {
     "name": "Miri and Sol",
@@ -611,7 +665,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Adults told them not to talk",
       "They know Mara is softer than her reputation"
     ],
-    "gm_notes": "Use them to reveal Auntie Red and the missing-person trail through overheard conversation."
+    "gm_notes": "Use them to reveal Auntie Red and the missing-person trail through overheard conversation.",
+    "import_as": "gm_only_character",
+    "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   }
 ];
 
@@ -762,23 +818,25 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
 
   function bioForNpc(npc) {
     return [
-      '<h3>' + esc(npc.name) + '</h3>',
+      '<h2>' + esc(npc.name) + '</h2>',
       '<p><strong>Role:</strong> ' + esc(npc.role) + '</p>',
       '<p><strong>Faction:</strong> ' + esc(npc.faction) + '</p>',
       '<p><strong>Attitude:</strong> ' + esc(npc.attitude) + '</p>',
-      '<h4>Wants</h4>',
+      '<h3>Wants</h3>',
       list(npc.wants),
-      '<h4>Offers</h4>',
+      '<h3>Offers / Useful interaction</h3>',
       list(npc.offers)
     ].join('');
   }
 
   function gmnotesForNpc(npc) {
     return [
-      '<h3>GM Notes</h3>',
-      '<h4>Secrets</h4>',
+      '<h2>GM Notes</h2>',
+      '<p><strong>Import type:</strong> ' + esc(npc.import_as || 'gm_only_character') + '</p>',
+      '<p><strong>Token note:</strong> ' + esc(npc.token_note || 'Create map token manually.') + '</p>',
+      '<h3>Secrets</h3>',
       list(npc.secrets),
-      '<h4>Use in Play</h4>',
+      '<h3>Use in Play</h3>',
       '<p>' + esc(npc.gm_notes) + '</p>'
     ].join('');
   }
@@ -823,11 +881,14 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   function showHelp() {
     sendChat('Signal Bleed', '/w gm <strong>Hope//Punk Signal Bleed Importer</strong><br>' +
       '<code>' + COMMAND + ' --dry-run</code><br>' +
-      '<code>' + COMMAND + ' --import</code> imports NPCs and handouts that do not already exist<br>' +
-      '<code>' + COMMAND + ' --overwrite</code> updates/replaces NPC and handout content<br>' +
+      '<code>' + COMMAND + ' --import</code> imports all NPCs and handouts that do not already exist<br>' +
+      '<code>' + COMMAND + ' --overwrite</code> updates/replaces all NPC and handout content<br>' +
       '<code>' + COMMAND + ' --import --npcs</code> imports NPCs only<br>' +
       '<code>' + COMMAND + ' --import --handouts</code> imports handouts only<br><br>' +
-      'NPCs and handouts are created GM-only by default. Review handouts before sharing player-facing ones.');
+      '<strong>Current embedded content:</strong><br>' +
+      NPCS.length + ' NPC character entries<br>' +
+      HANDOUTS.length + ' handouts<br><br>' +
+      'NPCs and handouts are created GM-only by default. This script does not upload token images or place map tokens.');
   }
 
   function handle(msg) {
