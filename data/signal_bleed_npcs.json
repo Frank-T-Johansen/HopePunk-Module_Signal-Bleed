@@ -29,72 +29,69 @@
     },
     {
       "name": "Mara “Mother Red” Vey",
-      "role": "Leader of the Redline Choir",
+      "role": "Redline Choir leader",
       "faction": "Redline Choir",
       "attitude": "Charismatic, controlled, dangerous, politically rational",
       "wants": [
-        "Neighborhood control over the relay",
-        "Proof against the corp",
-        "Protection for her people",
-        "Respect"
+        "Protect the neighborhood",
+        "Get proof of what happened to missing locals",
+        "Prevent the corporation from using the clinic as a cleanup site"
       ],
       "offers": [
-        "Safe routes",
         "Lookouts",
-        "Crowd cover",
-        "Fighters during breach",
-        "Stolen corp access codes"
+        "Evacuation routes",
+        "Access to unofficial service paths",
+        "Switch’s camera help"
       ],
       "secrets": [
-        "Covertly funds school meals, medicine, teacher stipends, and generator fuel"
+        "Mara covertly funds food, medicine, and school support",
+        "Mara knows Bex and Lala are missing and suspects this is not normal gang business"
       ],
-      "gm_notes": "Prefers diplomacy if respected. Furious if her hidden good works are exposed to weaken her tough front."
+      "gm_notes": "Mara becomes more cooperative if PCs prove Redline people are being taken by something in the service infrastructure."
     },
     {
       "name": "Nox “Bluewire” Kade",
-      "role": "Unstable gang enforcer / cyber-strain casualty",
+      "role": "Volatile Redline enforcer and cyber-strain casualty",
       "faction": "Redline Choir",
-      "attitude": "Volatile, frightened, overstimulated, in pain",
+      "attitude": "Agitated, frightened, pain-ridden, desperate to be useful",
       "wants": [
-        "Respect",
-        "Pain relief",
-        "Proof he is still useful",
-        "To stop feeling afraid",
-        "To hurt the corp before they hurt him"
+        "Be respected",
+        "Protect Redline people from a threat he cannot explain"
       ],
       "offers": [
-        "Combat capability",
-        "A clue blurted during distress",
-        "A way to show whether PCs use empathy or humiliation"
+        "Instinctive warning about clicking in the walls",
+        "Memory of missing people near service routes",
+        "Knowledge of Redline paths"
       ],
       "secrets": [
-        "His implants are being aggravated by the signal",
-        "Everyone in the gang knows he is unstable"
+        "Bluewire is not alien-controlled",
+        "His distress is opioids, cyber-strain, trauma, and possibly illegal treatment side effects",
+        "He heard or saw signs of Model 3 activity and was dismissed because he is unstable"
       ],
-      "gm_notes": "Bluewire is not the gang. If he dies, the gang does not automatically attack. PCs should be able to read his distress at very low difficulty."
+      "gm_notes": "Keep Bluewire human. He is an early warning system because nobody believes him when he says the walls have teeth."
     },
     {
       "name": "Commander Ilan Rusk",
-      "role": "Corporate recovery commander",
-      "faction": "Corporate Recovery Team",
-      "attitude": "Professional, hostile, rational, containment-minded",
+      "role": "Corporate Recovery commander",
+      "faction": "Corporate Recovery",
+      "attitude": "Professional, hostile, rational, and wrong about the current threat",
       "wants": [
-        "Recover the relay",
-        "Suppress evidence",
-        "Prevent visible contamination",
-        "Avoid corporate blame"
+        "Recover or destroy the Quill Relay",
+        "Suppress witnesses and clinic records",
+        "Prevent Redline Choir from broadcasting evidence"
       ],
       "offers": [
-        "Safe passage",
-        "Money",
-        "Medical supplies",
-        "Minor warrant erasure",
-        "Temporary ceasefire"
+        "Temporary ceasefire",
+        "Evacuation assets if forced",
+        "Knowledge of the old nest site",
+        "Corporate access codes"
       ],
       "secrets": [
-        "Knows the relay is not merely stolen data, but does not fully understand the alien risk"
+        "Rusk knows the corporation created and destroyed the first nest",
+        "Rusk does not initially know the second hidden nest exists",
+        "His team’s mission includes witness control"
       ],
-      "gm_notes": "Can be delayed, bluffed, exposed, blackmailed, or convinced the alien breach is the higher priority."
+      "gm_notes": "Rusk can truthfully say the first nest was sterilized, while lying about experiments and cleanup orders. Once the second nest is proven, he must choose whether to cooperate or double down."
     },
     {
       "name": "Keet",
@@ -139,23 +136,23 @@
     },
     {
       "name": "Tamsin Quill",
-      "role": "Damaged courier",
-      "faction": "Independent / Mercy Twelve contact",
-      "attitude": "Dying, feverish, determined",
+      "role": "Courier who stole the Quill Relay",
+      "faction": "Independent / Mercy Twelve-adjacent",
+      "attitude": "Wounded, terrified, determined",
       "wants": [
-        "The relay delivered",
-        "The truth exposed",
-        "No one else treated as cargo"
+        "Keep the relay away from Corporate Recovery",
+        "Warn that the corporation is cleaning witnesses, not rescuing people"
       ],
       "offers": [
-        "Partial passphrase",
-        "Route clue",
-        "Final warning"
+        "Partial relay passphrase",
+        "Route from the old research annex",
+        "Fragmentary memory of Model 1s flying away during cleanup"
       ],
       "secrets": [
-        "Was not supposed to survive the route; may have been guided by the signal"
+        "Tamsin saw evidence that the first nest cleanup failed",
+        "The relay is evidence, not alien technology"
       ],
-      "gm_notes": "Can be alive, unconscious, or recently dead depending on pacing."
+      "gm_notes": "Use Tamsin as the inciting body and warning. A clear line: “They weren’t fleeing. They were planting something.”"
     },
     {
       "name": "Mote Swarm",
@@ -243,6 +240,183 @@
         "They are sponsored human tech, not alien drones"
       ],
       "gm_notes": "The Gurney Angels are evacuation tools, not combat monsters. They can briefly block or shove through danger while carrying a patient, but their main job is extraction."
+    },
+    {
+      "name": "Juno “Switch” Hale",
+      "role": "Redline camera sitter and unofficial surveillance operator",
+      "faction": "Redline Choir",
+      "attitude": "Sharp, defensive, overworked, more frightened than they admit",
+      "wants": [
+        "Protect Redline routes and people",
+        "Find out what happened to Bex Aranda and Lala Mir"
+      ],
+      "offers": [
+        "Side-corridor camera feeds",
+        "Blind spot map",
+        "Footage of Bex being dragged toward a service gap"
+      ],
+      "secrets": [
+        "Switch has seen low, fast shapes on corrupted footage",
+        "Switch suspects the missing people are not ordinary gang/corp casualties"
+      ],
+      "gm_notes": "Use Switch as a social alternative to hacking. Cooperation can reveal that people disappeared near routes connected to the hidden nest."
+    },
+    {
+      "name": "Rafa Mbeki",
+      "role": "Clinic security monitor",
+      "faction": "Mercy Twelve Clinic",
+      "attitude": "Tired, protective, privacy-conscious",
+      "wants": [
+        "Protect patients",
+        "Avoid turning clinic camera feeds into corporate evidence against patients"
+      ],
+      "offers": [
+        "Clinic camera lookups",
+        "Door logs",
+        "Emergency intake records",
+        "Patient movement discrepancies"
+      ],
+      "secrets": [
+        "Rafa noticed camera gaps but feared reporting them would trigger a corporate raid"
+      ],
+      "gm_notes": "Use Rafa as the clinic-side control room NPC. He can establish a pattern but not solve the whole mystery without physical investigation."
+    },
+    {
+      "name": "Oskar Venn",
+      "role": "Missing maintenance worker",
+      "faction": "Megacomplex Maintenance",
+      "attitude": "Absent; known by coworkers as careful and stubborn",
+      "wants": [
+        "Before vanishing: fix the HVAC fault"
+      ],
+      "offers": [
+        "Tool cart clue",
+        "Access badge record",
+        "Radio log: “Something is breathing in here.”",
+        "Drag marks toward service cavity"
+      ],
+      "secrets": [
+        "Oskar was taken by a juvenile Model 3",
+        "His remains may be partly incorporated near the hidden nest"
+      ],
+      "gm_notes": "Use Oskar as the cleanest technical missing-person clue."
+    },
+    {
+      "name": "Laleh “Lala” Mir",
+      "role": "Missing food distribution volunteer",
+      "faction": "Community Support / Redline-adjacent",
+      "attitude": "Absent; remembered as warm, reliable, and brave",
+      "wants": [
+        "Before vanishing: deliver food through back corridors"
+      ],
+      "offers": [
+        "Spilled meal crates",
+        "Witnesses among children and volunteers",
+        "Service hatch clue"
+      ],
+      "secrets": [
+        "Lala was taken near B10",
+        "Her disappearance grounds the Auntie Red reveal"
+      ],
+      "gm_notes": "Use Lala to link Mara’s covert support and the missing-person threat."
+    },
+    {
+      "name": "Bex Aranda",
+      "role": "Missing Redline lookout",
+      "faction": "Redline Choir",
+      "attitude": "Absent; officially accused of desertion by angry underlings",
+      "wants": [
+        "Before vanishing: watch the service approach"
+      ],
+      "offers": [
+        "Switch’s corrupted footage",
+        "Drag marks up into a service gap",
+        "A dropped Redline token or knife"
+      ],
+      "secrets": [
+        "Bex was taken by a juvenile Model 3",
+        "Mara suspects more than she admits"
+      ],
+      "gm_notes": "Use Bex as the Redline emotional hook."
+    },
+    {
+      "name": "Narin Pell",
+      "role": "Missing undocumented shelter resident",
+      "faction": "Community Support",
+      "attitude": "Absent; frightened of official systems",
+      "wants": [
+        "Before vanishing: stay hidden and avoid authorities"
+      ],
+      "offers": [
+        "Bag left under bunk",
+        "Sister Luma’s testimony",
+        "Organic smear near B12",
+        "Possible rescue if PCs act quickly"
+      ],
+      "secrets": [
+        "Narin may still be alive early in the session",
+        "If PCs delay, Narin is incorporated into the nest"
+      ],
+      "gm_notes": "Use Narin as the possible rescue victim."
+    },
+    {
+      "name": "Halden Rook",
+      "role": "Missing corporate cleanup technician",
+      "faction": "Corporate Research / Cleanup",
+      "attitude": "Dead or missing; cautious, technically competent, ignored",
+      "wants": [
+        "Before vanishing: warn that Model 1 flight was not random"
+      ],
+      "offers": [
+        "Final note: “They’re not fleeing. They’re relocating.”",
+        "Cleanup footage annotation",
+        "Overruled nest-seeding warning"
+      ],
+      "secrets": [
+        "Halden’s warning was buried",
+        "Corporate Recovery may know the name but not volunteer it"
+      ],
+      "gm_notes": "Use Halden as the deep relay clue."
+    },
+    {
+      "name": "Juvenile Model 3",
+      "role": "Dog-like Antithesis biomass hunter",
+      "faction": "Antithesis",
+      "attitude": "Predatory, cautious, nest-directed",
+      "wants": [
+        "Find biomass",
+        "Disable or kill prey",
+        "Drag prey back to the hidden nest"
+      ],
+      "offers": [
+        "Tracks to the hidden nest",
+        "Proof that a new nest exists",
+        "A rescue opportunity if it is dragging a victim"
+      ],
+      "secrets": [
+        "Only a few exist at first",
+        "They are produced by the second hidden nest"
+      ],
+      "gm_notes": "Use sparingly before the reveal. Its jaws split into three parts."
+    },
+    {
+      "name": "Model 1 Seed Clump",
+      "role": "Dead Model 1 mass that seeded the second nest",
+      "faction": "Antithesis",
+      "attitude": "Not an NPC; biological clue/hazard",
+      "wants": [
+        "Serve as seed biomass",
+        "Grow into the second nest"
+      ],
+      "offers": [
+        "Physical proof of Model 1 relocation",
+        "Connection between old nest footage and new nest location"
+      ],
+      "secrets": [
+        "The clump is made from escaped Model 1s that suicided together",
+        "The corporation does not know this happened"
+      ],
+      "gm_notes": "This is a location/hazard more than a character."
     }
   ]
 }

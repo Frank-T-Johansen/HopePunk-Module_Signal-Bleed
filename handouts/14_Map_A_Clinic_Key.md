@@ -350,3 +350,51 @@ This is a mobile keyed location. Place it where Bluewire has been spiraling near
 - Bluewire is obvious to read; this is not a hidden mystery.
 - Difficulty should be low: 8 to notice serious distress, 10 to identify likely dependence/cyber-strain.
 - Encouragement and respect can have a huge stabilizing effect.
+
+## Updated biological-nest clues for Map A
+
+Use Map A mostly for human pressure and early missing-person signs.
+
+### A3 Reception and Waiting Area
+
+- A worried patient asks why so many maintenance workers and volunteers have stopped showing up.
+- Medicine or Empathy can reveal that clinic staff are tracking no-show patients, but the pattern is being dismissed as poverty, fear, or gang trouble.
+- A frightened civilian mentions something scratching behind the vents but is embarrassed to say it.
+
+### A4 Pediatric / Community Corner
+
+Add **Miri and Sol** here if not using them on Map B.
+
+Overheard conversation:
+
+> “Auntie Red paid for breakfast again.”
+>
+> “Don’t call her that where grown-ups hear.”
+>
+> “Why?”
+>
+> “Because she gets mad when people know she’s nice.”
+
+Additional clue:
+
+- One child says Lala Mir used to bring food through the back corridor, but has not come back.
+- If asked gently, the child adds: “There was a dog sound in the wall. Not a dog.”
+
+### A6 Emergency Intake Bay
+
+- A patient transfer record references an exposure-treatment patient moved under false paperwork.
+- Pax Ruun recognizes a supposedly discharged patient from the relay files.
+- Camera footage does not show Antithesis here yet; instead it shows missing records and suspicious transfers.
+
+### A13 Service Corridor
+
+- Bex Aranda’s dropped token, knife, or bloodless scrape mark may be found here.
+- Tracking / Bounty Hunter can identify drag direction toward service infrastructure.
+- Small Arms can identify that shots were fired low and panicked, not at human height.
+
+### A14 Bluewire’s Pacing Route
+
+- Bluewire says the walls have teeth.
+- He has heard wet clicking near service routes.
+- He is not alien-controlled. His distress is opioids, cyber-strain, trauma, and possibly illegal treatment side effects.
+- Treating him as a person may make him a useful witness rather than a fight.

@@ -276,3 +276,46 @@ Good for PCs and small groups. Bad for panic evacuation.
 
 - This route can save the PCs if elevators are locked.
 - It cannot replace the elevator for mass evacuation.
+
+## Updated missing-person clues for Map B
+
+Use Map B to make the missing people matter.
+
+### B4 Pantry / Aid Distribution
+
+- Lala Mir used to distribute meal crates here.
+- Her absence is immediately noticed by volunteers and children.
+- Streetwise or Investigation reveals that her last route used the back service corridor.
+- The crates she carried were food, not weapons. This supports the Mara/Auntie Red reveal.
+
+### B7 Children’s Corner / Daycare
+
+Add **Miri and Sol** here.
+
+They can reveal:
+
+- “Auntie Red” funds breakfast.
+- Adults avoid saying that name because Mara dislikes looking soft.
+- Lala Mir disappeared after bringing food.
+- They heard “dog feet” or “the wall dog” near the service corridor.
+
+### B8 Shelter Dorm
+
+- Narin Pell’s bag is still under the bunk.
+- Sister Luma insists Narin would not have left it.
+- A search finds an organic smear or torn cloth near the route to B12.
+- This is a possible rescue timer: if PCs act quickly, Narin may still be alive near the hidden nest.
+
+### B10 Back Service Corridor
+
+- Lala’s spilled meal crate.
+- Torn food packets, not eaten normally.
+- A service hatch with acid-scored screws.
+- Redline marks showing this is an aid route, not just a gang route.
+- Tracking can follow drag signs toward Map C.
+
+### B12 Emergency Stair / Ladderwell
+
+- Organic smear near a landing.
+- A muffled scream was heard earlier but dismissed as a fight.
+- Athletics/Parkour can pursue; Medicine can identify the smear as biological, not ordinary blood.

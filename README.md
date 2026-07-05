@@ -75,3 +75,16 @@ handouts/17_Map_D_Incident_Key.md
 ```
 
 The location keys are designed to prompt players to interact with the environment using many skills, not only Awareness/Investigation. Combat skills such as Small Arms, Big Guns, Blades, and Melee Combat can reveal tactical and forensic information without requiring violence.
+
+
+## Current plot canon
+
+The current module canon is in:
+
+```text
+handouts/21_Updated_Plot_Canon_GM.md
+handouts/22_Missing_Person_Reports_GM.md
+handouts/23_Antithesis_Hidden_Nest_GM.md
+```
+
+These supersede earlier signal-interference framing. Signal Bleed now treats the relay as human evidence and the Antithesis threat as biological: the corporation’s first nest was nearly destroyed, but escaped Model 1s seeded a second hidden nest that is producing juvenile Model 3s and gathering biomass.

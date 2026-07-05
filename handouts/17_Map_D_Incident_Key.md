@@ -277,3 +277,43 @@ This route matters only if NightCrash appears or if PCs prepare evacuation.
 
 - NightCrash creates an opening, not a solution.
 - If the route is blocked, her help is delayed or reduced.
+
+## Updated old-nest and relay clues for Map D
+
+Map D should represent the old quarantine/incident layer, corporate records, and the first nest evidence. It is not necessarily where the current hidden nest is.
+
+### D3 Central Incident Hall
+
+- Signs of old corporate sterilization: scorch, foam, sealed doors, chemical burns.
+- Big Guns or Corporate Security can identify a professional cleanup assault.
+- Medicine can identify that some stains are biological remains, not ordinary blood.
+
+### D5 Diagnostics Lab
+
+- Exposure-treatment records.
+- Patient trial data connected to Mercy Twelve.
+- False discharge or transfer paperwork.
+- Evidence that locals were used as deniable subjects.
+
+### D6 Control Room
+
+- Cleanup footage of the first nest.
+- Model 1s are seen flying away in formation.
+- Corporate annotation: “terminal erratic flight.”
+- Halden Rook’s annotation: “They’re not fleeing. They’re relocating.”
+- A deleted risk tag: “nest-seeding possibility.”
+- This is the best place for the deep clue that the second nest may exist.
+
+### D8 Containment Chamber
+
+- The visible first nest was here or adjacent.
+- It is nearly destroyed.
+- Researchers were consumed as biomass.
+- Corporate Recovery thinks this was the only nest.
+- The chamber can be horrific evidence, but should not be the main current threat unless the GM wants a second combat site.
+
+### D9 Service Bypass
+
+- This route may match the Model 1 escape vector.
+- Tracking / Investigation can connect it to lower service infrastructure.
+- It points toward Map C rather than ending the mystery on Map D.

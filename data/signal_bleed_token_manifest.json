@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Signal Bleed token/NPC placement manifest",
     "status": "draft",
-    "note": "Use as a GM planning guide. Roll20 scripts can create character sheets and handouts, but placing tokens automatically requires page IDs, token image URLs already in Roll20, and map-specific coordinates. For now, place tokens manually."
+    "note": "Updated for the Antithesis hidden-nest plot. Manual token placement is still recommended until page IDs, coordinates, and Roll20-hosted token images are known."
   },
   "token_groups": [
     {
@@ -204,24 +204,78 @@
       ]
     },
     {
-      "group": "Alien Incursion",
-      "default_attitude": "Non-negotiable first-contact pressure",
+      "group": "Antithesis",
+      "default_attitude": "Non-negotiable biological threat",
       "tokens": [
         {
-          "name": "Mote Swarm",
-          "type": "alien group",
-          "starting_map": "D",
-          "starting_location": "D8 Containment Chamber or D3 Central Incident Hall",
-          "visible_to_players": "when breach starts",
-          "notes": "Forces cooperation and evacuation. Not a social faction."
+          "name": "Juvenile Model 3",
+          "type": "Antithesis biomass hunter",
+          "starting_map": "C",
+          "starting_location": "C6 HVAC / Air Handling, C12 Hidden Maintenance Cavity, or C5 Water Recycling",
+          "visible_to_players": "when encountered",
+          "notes": "Dog-like juvenile with jaws that split into three parts. Hunts isolated biomass and drags victims to the hidden nest."
         },
         {
-          "name": "Signal-Touched Patient",
-          "type": "hazard/NPC",
-          "starting_map": "A/D",
-          "starting_location": "A7 Trauma or D7 Patient Holding Rooms",
+          "name": "Second Hidden Nest",
+          "type": "hazard/location",
+          "starting_map": "C",
+          "starting_location": "C12 Hidden Maintenance Cavity by default",
           "visible_to_players": "when discovered",
-          "notes": "Medical/social scene before combat. Should prompt Medicine, Psychology, Cyberware, and Mesh checks."
+          "notes": "Seeded by escaped Model 1s that suicided in a clump. Corp does not know it exists."
+        },
+        {
+          "name": "Model 1 Seed Clump",
+          "type": "biological clue/hazard",
+          "starting_map": "C",
+          "starting_location": "inside or near the second hidden nest",
+          "visible_to_players": "when discovered",
+          "notes": "Dead Model 1 bodies dissolved together into a new nest seed."
+        }
+      ]
+    },
+    {
+      "group": "Missing people / clue tokens",
+      "default_attitude": "Absent, endangered, or evidence-bearing",
+      "tokens": [
+        {
+          "name": "Oskar Venn",
+          "type": "missing maintenance worker",
+          "starting_map": "C",
+          "starting_location": "C6 HVAC / Air Handling",
+          "visible_to_players": "clues first",
+          "notes": "Tool cart, radio log, and access badge lead toward hidden nest."
+        },
+        {
+          "name": "Lala Mir",
+          "type": "missing food volunteer",
+          "starting_map": "B/C",
+          "starting_location": "B10 Back Service Corridor or C1 Service Street",
+          "visible_to_players": "clues first",
+          "notes": "Spilled meal crates and child witnesses link community support routes to the biomass trail."
+        },
+        {
+          "name": "Bex Aranda",
+          "type": "missing Redline lookout",
+          "starting_map": "A/C",
+          "starting_location": "A13 Service Corridor or C1 Service Street",
+          "visible_to_players": "clues first",
+          "notes": "Switch footage shows Bex taken, not deserted."
+        },
+        {
+          "name": "Narin Pell",
+          "type": "missing shelter resident / possible rescue",
+          "starting_map": "B/C",
+          "starting_location": "B8 Shelter Dorm, B12 Emergency Stair, or hidden nest",
+          "visible_to_players": "possibly alive if reached quickly",
+          "notes": "Bag left under bunk; organic smear near stair; possible living victim at nest."
+        },
+        {
+          "name": "Halden Rook",
+          "type": "corporate cleanup technician",
+          "starting_map": "D/Relay records",
+          "starting_location": "D6 Control Room logs or old nest footage",
+          "visible_to_players": "as evidence",
+          "notes": "Final warning: the Model 1s were relocating, not fleeing."
         }
       ]
     }

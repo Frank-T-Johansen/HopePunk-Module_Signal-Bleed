@@ -280,3 +280,54 @@ This may be a hidden side room, conduit cluster, or maintenance box. It links th
 - The relay is not passive evidence.
 - The signal is spreading through infrastructure.
 - Fixing this can reduce breach severity later.
+
+## Updated hidden-nest clues for Map C
+
+Map C is now the primary hidden-nest investigation floor.
+
+### C1 Service Street / Logistics Lane
+
+- Bex Aranda or Lala Mir may have passed through here before vanishing.
+- Corporate personnel may dismiss missing workers as local disorder.
+- Streetwise can identify the disappearances cluster around quiet service routes.
+- Small Arms can find evidence of panicked low-angle shots.
+
+### C5 Water Recycling / Filtration
+
+- Thin organic film in drains or filters.
+- Dead rats, insects, or birds fused into residue.
+- The room provides moisture and nutrients, making it a plausible secondary nest approach.
+- Medicine or Biology-style reasoning identifies the growth as Antithesis-related, not mold.
+- A juvenile Model 3 may retreat through this area if wounded.
+
+### C6 HVAC / Air Handling
+
+This is the strongest recommended hidden nest approach.
+
+- Oskar Venn’s tool cart.
+- Radio log: “Something is breathing in here.”
+- Warm wet air from a cold vent.
+- Vent cover bent outward from the inside.
+- Three-pronged bite marks.
+- Drag marks into a maintenance cavity.
+- A juvenile Model 3 may attack here and try to drag an NPC away.
+
+### C9 Monitoring Office
+
+- One corrupted frame shows something low dragging Bex or Oskar.
+- Mesh Hacker retrieves camera footage, but this is human surveillance. The Antithesis is not hacking electronics.
+- Corporate edits may hide the original nest cleanup, but not because of alien interference.
+
+### C12 Signal Interference Node
+
+Rename in play to **C12 Hidden Maintenance Cavity**.
+
+Replace signal language with:
+
+- Dead Model 1 bodies dissolved into a clump.
+- Warm nest tissue spreading along ducts and insulation.
+- Badges/tools/clothing partly incorporated.
+- A partly alive victim if the PCs arrive quickly.
+- Juvenile Model 3s defending or feeding the nest.
+
+This is the most likely location of the second hidden nest.

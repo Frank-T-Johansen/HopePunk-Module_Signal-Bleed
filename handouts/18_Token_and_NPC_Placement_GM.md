@@ -191,3 +191,29 @@ Priority token art:
 8. Mote Swarm
 9. Redline Lookout / underling
 10. Clinic staff / patient / civilian groups
+
+## Updated Antithesis token placement
+
+Use these additional tokens for the revised hidden-nest plot.
+
+### Map B / Community Support
+
+- **Miri & Sol** — B7 Children’s Corner. They reveal “Auntie Red” and Lala’s disappearance.
+- **Lala Mir clue marker** — B10 Back Service Corridor. Spilled meal crates and service hatch.
+- **Narin Pell clue marker** — B8 Shelter Dorm or B12 Emergency Stair. Bag, smear, possible rescue timer.
+
+### Map C / Service Utility
+
+- **Oskar Venn clue marker** — C6 HVAC / Air Handling. Tool cart, radio log, drag marks.
+- **Juvenile Model 3** — C6 HVAC, C5 Water Recycling, C11 Stair, or C12 Hidden Maintenance Cavity.
+- **Second Hidden Nest** — C12 Hidden Maintenance Cavity by default.
+- **Model 1 Seed Clump** — inside the second hidden nest.
+- **Bex Aranda clue marker** — C1 Service Street or C9 Monitoring Office footage.
+
+### Map D / Incident Floor
+
+- **Halden Rook evidence marker** — D6 Control Room logs.
+- **Old Nest Remains** — D8 Containment Chamber.
+- **Model 1 escape-vector marker** — D9 Service Bypass.
+
+Do not place all Antithesis tokens at once. Start with missing-person clue markers, then a glimpse, then one Model 3 dragging a victim, then the hidden nest.

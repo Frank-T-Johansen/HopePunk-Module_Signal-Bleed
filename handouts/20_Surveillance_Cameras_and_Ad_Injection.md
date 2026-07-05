@@ -221,3 +221,11 @@ Bad camera results:
 
 - “Here is the entire plot.”
 - “You solve every mystery without leaving the room.”
+
+## Updated canon note: electronics are human systems
+
+The Antithesis in this module do not hack electronics and do not create electronic signal bleed.
+
+Camera glitches, ad injection, cyber-eye popups, and footage gaps are caused by human ad networks, cheap cyberware monetization, corporate tampering, Redline surveillance control, damaged cameras, panic, poor maintenance, and deliberate edits.
+
+The Antithesis clue trail is biological: missing people, drag marks, organic residue, three-part bite wounds, vent movement, Model 3 biomass hunting, and the Model 1 seed clump.
