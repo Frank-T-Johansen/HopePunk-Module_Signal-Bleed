@@ -151,11 +151,7 @@ model 3 adolescent.png
 model 3 adult.png
 ```
 
-Note: `model 3 adolescent.png` is misspelled in the current repository. The importer aliases that spelling so it still links. Future cleanup can rename it to:
-
-```text
-model 3 adolescent.png
-```
+The importer expects the standardized filenames above.
 
 ## Roll20 folder suggestion
 

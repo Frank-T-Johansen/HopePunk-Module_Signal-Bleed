@@ -385,7 +385,7 @@
           "starting_map": "Bestiary",
           "starting_location": "tokens/model 3 adolescent.png",
           "visible_to_players": "optional boss",
-          "notes": "Current repository filename is misspelled; importer aliases it."
+          "notes": "Repository filename has been standardized."
         },
         {
           "name": "Model 3 Adult",
