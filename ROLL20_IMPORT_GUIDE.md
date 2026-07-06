@@ -95,3 +95,27 @@ Portraits set character avatars. Tokens set default tokens. Combined mode:
 ```text
 !hopepunk-signal-bleed --link-selected-assets
 ```
+
+
+## Current recommended installation order
+
+Use the detailed guide in:
+
+```text
+handouts/26_Roll20_Installation_and_Asset_Linking.md
+```
+
+The GM should not normally run `split_signal_bleed_portraits.py`; the repository already contains split portrait files in `portraits/`.
+
+Recommended order:
+
+```text
+1. Create Roll20 pages.
+2. Upload and place maps.
+3. Upload portraits and tokens, then stage them on Asset Staging pages.
+4. Install the importer script.
+5. Run !hopepunk-signal-bleed --import.
+6. Link portraits with !hopepunk-signal-bleed --link-selected-portraits.
+7. Link tokens with !hopepunk-signal-bleed --link-selected-tokens.
+8. Manually organize Journal folders.
+```

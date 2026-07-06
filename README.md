@@ -141,3 +141,20 @@ The Roll20 importer can link selected, already-uploaded Roll20 graphics to match
 ```
 
 The `tokens/` folder includes normal NPC tokens plus optional escalation tokens for Model 1 / Model 3 adolescent and adult variants.
+
+
+## GM install note
+
+GMs do not need to split portrait sheets. The repository already contains ready-to-upload files:
+
+```text
+portraits/
+tokens/
+maps/
+```
+
+Use the Roll20 installation guide:
+
+```text
+handouts/26_Roll20_Installation_and_Asset_Linking.md
+```

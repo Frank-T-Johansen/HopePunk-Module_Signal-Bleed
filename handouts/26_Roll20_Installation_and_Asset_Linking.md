@@ -1,190 +1,375 @@
 # Roll20 Module Installation and Asset Linking Guide
 
-This guide describes the practical installation workflow for Signal Bleed in Roll20.
+This guide is for a GM installing Signal Bleed into a Roll20 game.
 
-The importer can create handouts and GM-only NPC character entries. Roll20 does not allow Mod/API scripts to upload local image files into your Art Library, so maps, portraits, and token images must still be uploaded through the Roll20 UI.
+The GitHub package already contains split portrait files and token files. GMs should **not** run the portrait-splitting script unless they are rebuilding the portrait assets from the original triptych images.
 
-The importer includes an asset-linking helper that can connect already-uploaded Roll20 images to matching character sheets.
+## What the importer can and cannot do
 
-## 1. Create or copy a Roll20 game
-
-Create a Roll20 game using the public Hope//Punk character sheet.
-
-Recommended Journal folders:
+The Roll20 importer can create:
 
 ```text
-Characters
-Pregens
-NPCs
-Bestiary
-Handouts
-Maps / GM Notes
+GM-only handouts
+GM-only NPC character entries
+character avatars from selected uploaded portrait graphics
+default tokens from selected uploaded token graphics
 ```
 
-Recommended pages:
+The importer cannot do these things automatically:
 
 ```text
-Landing / Start Page
+upload image files into your Roll20 Art Library
+create Journal folders reliably
+move Journal entries into folders reliably
+place map images for you
+draw Dynamic Lighting walls
+configure every page setting perfectly
+```
+
+So the basic installation pattern is:
+
+```text
+1. Create Roll20 pages.
+2. Upload/place maps, portraits, and tokens.
+3. Install the importer script.
+4. Import handouts and NPC character entries.
+5. Link staged portraits/tokens to the imported NPC sheets.
+6. Manually organize Journal folders.
+```
+
+The image upload/staging work can be done before or after installing the script, but the actual linking step must happen **after** the NPC character entries exist.
+
+## 1. Create Roll20 pages
+
+Use the existing Roll20 `Start` page as the landing page. You may rename it, but that is optional.
+
+Create these additional pages manually:
+
+```text
 Floor A - Clinic and Indoor Street
 Floor B - Community Support
 Floor C - Service Utility
 Floor D - Quarantine Incident
-Asset Staging
+Asset Staging - Portraits
+Asset Staging - Tokens
 ```
 
-## 2. Install the Roll20 importer
+### Page settings
 
-Open the game, then go to the Mod/API Scripts page, create a new script, and paste:
+When you turn Grid off, Roll20 shows page size in pixels. The old 40 × 30 grid-square recommendation is equivalent to 2800 × 2100 pixels because Roll20’s normal square is 70 pixels.
+
+For `Start` and Floor A–D pages:
 
 ```text
-roll20/hopepunk_signal_bleed_importer.js
+Grid: Off
+Width: 2800 px
+Height: 2100 px
 ```
 
-## 3. Import handouts and NPC character entries
-
-Run these in Roll20 chat as GM:
+For asset staging pages:
 
 ```text
-!hopepunk-signal-bleed --dry-run
-!hopepunk-signal-bleed --import
+Grid: Off
+Width: 1750 px
+Height: 1750 px
 ```
 
-Import only handouts:
+If a map feels cramped, use:
 
 ```text
-!hopepunk-signal-bleed --import --handouts
+Width: 2800 px
+Height: 2800 px
 ```
 
-Import only NPCs:
+With Grid off, you do not need a separate snap-to-grid setting.
+
+## 2. Upload and place maps
+
+Upload the map images from the repository’s `maps/` folder into Roll20.
+
+Suggested placement:
 
 ```text
-!hopepunk-signal-bleed --import --npcs
+Start
+  Optional splash / landing image
+
+Floor A - Clinic and Indoor Street
+  maps/10_Map_Floor_A_Clinic_and_Indoor_Street.png
+
+Floor B - Community Support
+  maps/11_Map_Floor_B_Community_Support.png
+
+Floor C - Service Utility
+  maps/12_Map_Floor_C_Service_Utility.png
+
+Floor D - Quarantine Incident
+  maps/13_Map_Floor_D_Quarantine_Incident.png
 ```
 
-Update existing imported content after a package update:
+For each map page:
+
+1. Open the page.
+2. Switch to the **Map & Background** layer.
+3. Drag/upload the map image onto the page.
+4. Resize it to fit the page area.
+5. Right-click the image and send it to the back if needed.
+6. Lock it if your Roll20 UI supports locking placed images.
+
+The current maps have baked-in visual grids. Recommended setup:
 
 ```text
-!hopepunk-signal-bleed --overwrite
+Roll20 Grid: Off
+Use the baked-in visual grid only as a visual guide
+Use Dynamic Lighting / Fog of War manually if desired
 ```
 
-NPCs and handouts are created GM-only by default.
+## 3. Upload portraits and tokens
 
-## 4. Upload maps manually
-
-Roll20 Mod/API scripts cannot upload files from your computer into the Art Library.
-
-Upload each map image through Roll20, then place it on the relevant page's Map layer.
-
-Current AI playtest maps have a baked-in visual grid, but are not mathematically aligned to Roll20's 70-pixel grid standard. For now:
+The GitHub repository already has ready-to-upload images:
 
 ```text
-Disable visible Roll20 grid.
-Use the baked-in grid visually.
-Use Dynamic Lighting / Fog of War for reveal.
+portraits/
+tokens/
 ```
 
-## 5. Upload portraits and tokens manually
-
-Split the portrait sheets locally first:
+Do **not** run this unless you are regenerating portraits from the original triptych sheets:
 
 ```text
-python3 split_signal_bleed_portraits.py --dry-run
 python3 split_signal_bleed_portraits.py
 ```
 
-Upload the resulting portraits and canonical Antithesis tokens into Roll20 through the Art Library UI.
+That step was used during asset creation, not normal GM installation.
 
-## 6. Create an Asset Staging page
+### Upload portraits
 
-Create a Roll20 page named:
+Upload all PNG files in:
 
 ```text
-Asset Staging
+portraits/
 ```
 
-Drag each uploaded portrait/token image onto that page.
+to Roll20.
 
-Set each placed graphic's name to the matching character name. Examples:
+Detailed workflow:
+
+1. Open Roll20.
+2. Open the **Art Library** tab.
+3. Upload or drag the portrait PNG files into the library.
+4. Open the `Asset Staging - Portraits` page.
+5. Drag each uploaded portrait from the Art Library onto that page.
+6. Arrange them loosely so they are easy to select.
+7. The placed graphic names should match the filenames without `.png`.
+
+Examples:
 
 ```text
 Dr. Sera Valez
 Mara Mother Red Vey
 Nox Bluewire Kade
 Juno Switch Hale
-Model 1 Juvenile
-Model 3 Juvenile
+Commander Ilan Rusk
 ```
 
-## 7. Link selected assets to character sheets
+If Roll20 gives a placed graphic a strange name, open the token/graphic settings and rename it.
 
-On the Asset Staging page:
+### Upload tokens
 
-1. Select one or more staged portrait/token graphics.
-2. Run:
+Upload all PNG files in:
+
+```text
+tokens/
+```
+
+to Roll20.
+
+Detailed workflow:
+
+1. Open Roll20.
+2. Open the **Art Library** tab.
+3. Upload or drag the token PNG files into the library.
+4. Open the `Asset Staging - Tokens` page.
+5. Drag each uploaded token from the Art Library onto that page.
+6. Arrange them loosely so they are easy to select.
+7. The placed graphic names should match the filenames without `.png`.
+
+Examples:
+
+```text
+Dr. Sera Valez
+Mara Mother Red Vey
+Model 1 Juvenile
+Model 1 Adolescent
+Model 1 Adult
+Model 3 Juvenile
+Model 3 Adolescent
+Model 3 Adult
+```
+
+The importer is forgiving about punctuation, quotes, and a few known aliases, but exact readable names are best.
+
+## 4. Install the importer script
+
+Open the Roll20 game, then go to:
+
+```text
+Game Settings / Mod Scripts / API Scripts
+```
+
+Create a new script named:
+
+```text
+HopePunk Signal Bleed Importer
+```
+
+Paste the contents of:
+
+```text
+roll20/hopepunk_signal_bleed_importer.js
+```
+
+Save the script.
+
+## 5. Import handouts and NPC character entries
+
+In Roll20 chat, run:
+
+```text
+!hopepunk-signal-bleed --dry-run
+```
+
+If the dry run looks right, import everything:
+
+```text
+!hopepunk-signal-bleed --import
+```
+
+To update existing imported content later:
+
+```text
+!hopepunk-signal-bleed --overwrite
+```
+
+To import only NPCs:
+
+```text
+!hopepunk-signal-bleed --import --npcs
+```
+
+To import only handouts:
+
+```text
+!hopepunk-signal-bleed --import --handouts
+```
+
+Imported handouts and characters appear at the root of the Journal. Move them into folders manually after import.
+
+## 6. Link portraits to character avatars
+
+Go to the `Asset Staging - Portraits` page.
+
+Select all staged portrait graphics.
+
+Run:
+
+```text
+!hopepunk-signal-bleed --link-selected-portraits --dry-run
+```
+
+Review the output. It should show lines like:
+
+```text
+Dr. Sera Valez -> Dr. Sera Valez: would set avatar
+Mara Mother Red Vey -> Mara “Mother Red” Vey: would set avatar
+```
+
+If the matches look right, run:
+
+```text
+!hopepunk-signal-bleed --link-selected-portraits
+```
+
+To replace existing avatars:
+
+```text
+!hopepunk-signal-bleed --link-selected-portraits --overwrite
+```
+
+## 7. Link tokens to default tokens
+
+Go to the `Asset Staging - Tokens` page.
+
+Select all staged token graphics.
+
+Run:
 
 ```text
 !hopepunk-signal-bleed --link-selected-tokens --dry-run
 ```
 
-Then run:
+Review the output. If the matches look right, run:
 
 ```text
 !hopepunk-signal-bleed --link-selected-tokens
 ```
 
-The script will:
-
-```text
-read each selected graphic name
-find the matching character
-set that character's avatar image
-set that graphic as the character's default token
-```
-
-To replace existing avatars/default tokens:
+To replace existing default tokens:
 
 ```text
 !hopepunk-signal-bleed --link-selected-tokens --overwrite
 ```
 
-## 8. Token naming advice
+## 8. Combined linking option
 
-Visible names help social play:
-
-```text
-Dr. Valez
-Mara “Mother Red”
-Bluewire
-Nurse Cho
-Switch
-Corp Recovery #1
-Corp Recovery #2
-Bloke #3
-```
-
-For hidden identities, start vague and rename later:
+If you only have one staged image per character and want that image to serve as both avatar and default token, select the graphics and run:
 
 ```text
-Bloke #3 -> Orlan Pike
-Redline Sitter -> Switch
-Corp Medic -> Mara Silex
-Dying Courier -> Tamsin Quill
+!hopepunk-signal-bleed --link-selected-assets --dry-run
+!hopepunk-signal-bleed --link-selected-assets
 ```
 
-## 9. Bestiary notes
-
-Use canonical-looking Antithesis tokens for Model 1 and Model 3, not the AI-generated portrait panels.
-
-Suggested Bestiary folder entries:
+For this module, the cleaner workflow is usually:
 
 ```text
-Model 1 Juvenile
-Model 3 Juvenile
+portraits/ -> --link-selected-portraits
+tokens/    -> --link-selected-tokens
 ```
 
-For now, create their mechanical sheets manually if you know the exact Hope//Punk sheet fields. The importer can create GM-only character entries and notes, but full mechanical sheet automation requires the exact Roll20 attribute names for NPC override, HP, movement, attacks, and special abilities.
+## 9. Suggested Journal organization
 
-## 10. Common issues
+Create folders manually after import:
+
+```text
+NPCs
+  Mercy Twelve Clinic
+  Redline Choir
+  Corporate Recovery
+  Community / Civilians
+
+Bestiary
+  Model 1 Juvenile
+  Model 1 Adolescent
+  Model 1 Adult
+  Model 3 Juvenile
+  Model 3 Adolescent
+  Model 3 Adult
+
+Handouts
+  Player-facing
+  GM-only
+  Maps / Keys
+  Installation
+```
+
+Suggested player-facing handouts to share:
+
+```text
+Signal Bleed - Player Start Here
+Signal Bleed - Player Hooks
+```
+
+Keep GM-only handouts hidden unless you intentionally reveal them.
+
+## 10. Troubleshooting
 
 ### The linker says no selected graphics
 
@@ -192,72 +377,36 @@ Select the staged image objects on the tabletop first, then run the command.
 
 ### The linker says no matching character
 
-Check the graphic name. It should resemble the imported character name.
+Check the staged graphic name. It should resemble the imported character name.
+
+Good:
+
+```text
+Mara Mother Red Vey
+Nox Bluewire Kade
+Model 3 Adolescent
+```
+
+Bad:
+
+```text
+image.png
+download 7
+token
+```
 
 ### The linker says ambiguous match
 
-Rename the staged graphic more specifically, then rerun.
+Rename the staged graphic more specifically, then rerun the dry run.
 
-### Avatar/default token does not visually update
+### The linked token does not look right
 
-Open the character sheet and check whether the avatar/default token changed. Sometimes Roll20 UI needs a refresh.
+Use `--overwrite` after adjusting the staged token’s size, name, bars, aura, or settings. The default token copies the staged graphic’s current token settings.
 
-### The image does not link
+### The map image keeps moving
 
-The selected object must be a Roll20 `graphic` object with an Art Library image source. The API cannot use arbitrary web URLs or local file paths.
+Make sure you are on the Map & Background layer when placing maps. If your Roll20 UI supports locking, lock the map after placement.
 
-## Portrait and token staging workflow
+### The script does not upload images
 
-The repository has separate folders:
-
-```text
-portraits/
-tokens/
-```
-
-Use portraits as character avatars and tokens as default map tokens.
-
-Recommended pages:
-
-```text
-Asset Staging - Portraits
-Asset Staging - Tokens
-```
-
-Upload the images into Roll20 manually, then drag them onto the relevant staging page.
-
-On the portrait staging page, select all portrait graphics and run:
-
-```text
-!hopepunk-signal-bleed --link-selected-portraits --dry-run
-!hopepunk-signal-bleed --link-selected-portraits
-```
-
-On the token staging page, select all token graphics and run:
-
-```text
-!hopepunk-signal-bleed --link-selected-tokens --dry-run
-!hopepunk-signal-bleed --link-selected-tokens
-```
-
-If you want to replace existing avatars/default tokens:
-
-```text
-!hopepunk-signal-bleed --link-selected-portraits --overwrite
-!hopepunk-signal-bleed --link-selected-tokens --overwrite
-```
-
-Combined mode is also available if you only stage one set of images and want both avatar and default token set from the same selected graphics:
-
-```text
-!hopepunk-signal-bleed --link-selected-assets --dry-run
-!hopepunk-signal-bleed --link-selected-assets
-```
-
-Repository token note:
-
-```text
-tokens/model 3 adolscent.png
-```
-
-is currently misspelled, but the importer aliases it to `Model 3 Adolescent`.
+Correct. Roll20 Mod/API scripts cannot upload local PNG files into your Art Library. Upload the images manually first.
