@@ -104,3 +104,21 @@ Use 14–17 to zoom into individual numbered locations.
 Use 21–23 for current plot canon, missing persons, and Antithesis behavior.
 Use 24–25 for missing-person descriptions and supporting NPCs.
 ```
+
+## Installation and asset linking
+
+See:
+
+```text
+handouts/26_Roll20_Installation_and_Asset_Linking.md
+```
+
+The Roll20 importer can create handouts and GM-only NPC character entries. It can also link selected, already-uploaded Roll20 graphics to matching character sheets as avatars/default tokens:
+
+```text
+!hopepunk-signal-bleed --link-selected-tokens --dry-run
+!hopepunk-signal-bleed --link-selected-tokens
+!hopepunk-signal-bleed --link-selected-tokens --overwrite
+```
+
+Roll20 Mod/API scripts cannot upload local PNGs into the Art Library, so portraits/tokens still need to be uploaded manually first.

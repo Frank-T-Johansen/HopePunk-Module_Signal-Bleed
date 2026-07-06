@@ -49,3 +49,32 @@ Signal Bleed - Player Hooks
 ```
 
 Keep the GM overview, NPC notes, Bluewire de-escalation notes, and scene outline hidden from players.
+
+## Asset linking helper
+
+The importer can link already-uploaded Roll20 images to character sheets.
+
+Workflow:
+
+```text
+1. Upload split portraits/tokens to Roll20 manually.
+2. Create a page named Asset Staging.
+3. Drag the uploaded assets onto that page.
+4. Rename each placed graphic to match the character.
+5. Select the staged graphics.
+6. Run: !hopepunk-signal-bleed --link-selected-tokens
+```
+
+Dry-run first:
+
+```text
+!hopepunk-signal-bleed --link-selected-tokens --dry-run
+```
+
+Overwrite existing avatars/default tokens:
+
+```text
+!hopepunk-signal-bleed --link-selected-tokens --overwrite
+```
+
+Roll20 Mod/API scripts cannot upload local PNG files into your Art Library. The helper only links images that are already present in Roll20 as selected graphics.

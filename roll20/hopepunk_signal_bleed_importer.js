@@ -1,6 +1,5 @@
 // Hope//Punk Signal Bleed Importer
 // Roll20 Mod/API script.
-//
 // Commands:
 //   !hopepunk-signal-bleed --help
 //   !hopepunk-signal-bleed --dry-run
@@ -8,19 +7,11 @@
 //   !hopepunk-signal-bleed --overwrite
 //   !hopepunk-signal-bleed --npcs
 //   !hopepunk-signal-bleed --handouts
-//
-// Notes:
-// - Imports all NPCs from data/signal_bleed_npcs.json as GM-only character entries.
-// - Imports scenario Markdown files as GM-only Roll20 handouts.
-// - Does not upload images/maps or place map tokens.
-// - Designed for games using the public Hope//Punk character sheet.
-// - Keep only one copy of this script active in the Roll20 game.
+//   !hopepunk-signal-bleed --link-selected-tokens
 
 var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   'use strict';
-
   var COMMAND = '!hopepunk-signal-bleed';
-
   var NPCS = [
   {
     "name": "Dr. Sera Valez",
@@ -670,7 +661,6 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   }
 ];
-
   var HANDOUTS = [
   {
     "name": "Signal Bleed - GM Overview",
@@ -801,150 +791,127 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "name": "Signal Bleed - Supporting NPCs and Spies GM",
     "source_file": "handouts/25_Supporting_NPCs_and_Spies_GM.md",
     "notes": "<h1>Supporting NPCs and Spies</h1>\n<p>These NPCs are intended as map tokens, conversation targets, suspects, witnesses, and pressure valves. They are less important than the faction heads, but they make the maps feel populated and give players people to talk to.</p>\n<h2>Mercy Twelve Clinic</h2>\n<h3>Senior Nurse Imani Cho</h3>\n<p><strong>Token name:</strong> Nurse Cho <strong>Location:</strong> A3 Reception or A5 Triage <strong>Role:</strong> clinic floor lead <strong>Use:</strong> practical guide, triage authority, patient-protection voice</p>\n<p>Hooks:</p>\n<ul>\n<li>knows which patients cannot be evacuated quickly</li>\n<li>knows Lala Mir by name from food distribution</li>\n<li>suspects recent “no-shows” are connected</li>\n<li>can authorize access to non-private clinic logs if Dr. Valez agrees</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>terrified that the relay proves the clinic unknowingly treated illegal trial subjects</li>\n</ul>\n<h3>Orderly Pax Ruun</h3>\n<p><strong>Token name:</strong> Pax Ruun <strong>Location:</strong> A6 Emergency Intake <strong>Role:</strong> nervous witness <strong>Use:</strong> emergency-bay clue source</p>\n<p>Hooks:</p>\n<ul>\n<li>saw unusual patient transfers</li>\n<li>recognizes a supposedly discharged patient from relay files</li>\n<li>knows the courier did not arrive through the official bay</li>\n<li>may panic if Corporate Recovery enters the clinic</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>deleted one minor intake note because he feared being blamed</li>\n</ul>\n<h3>Rafa Mbeki</h3>\n<p><strong>Token name:</strong> Rafa Mbeki or Clinic Security <strong>Location:</strong> A10 Records / clinic security alcove <strong>Role:</strong> clinic camera monitor <strong>Use:</strong> control-room cooperation point</p>\n<p>Hooks:</p>\n<ul>\n<li>can pull clinic camera feeds</li>\n<li>knows privacy-disabled rooms</li>\n<li>noticed missing footage near patient transfers</li>\n<li>can compare clinic doors with Redline street cameras if Switch cooperates</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>sat on some camera anomalies because reporting them would invite corporate seizure</li>\n</ul>\n<h3>Dr. Vela Myung</h3>\n<p><strong>Token name:</strong> Dr. Myung <strong>Location:</strong> A7 Trauma / A9 Recovery <strong>Role:</strong> tired trauma doctor <strong>Use:</strong> medical interpretation of exposure-trial victims</p>\n<p>Hooks:</p>\n<ul>\n<li>can identify false treatment protocols in relay files</li>\n<li>notices that some “medicine” had trial-batch codes</li>\n<li>can identify Model 3 bite trauma once shown a victim</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>once accepted corporate-donated medicine without asking enough questions</li>\n</ul>\n<h2>Redline Choir</h2>\n<h3>Vex Tan</h3>\n<p><strong>Token name:</strong> Vex Tan or Redline Runner <strong>Location:</strong> B4 Pantry / B10 Service Corridor <strong>Role:</strong> supply runner <strong>Use:</strong> aid-route witness</p>\n<p>Hooks:</p>\n<ul>\n<li>moved food and medicine through unofficial routes</li>\n<li>knows Lala’s normal route</li>\n<li>can confirm Mara ordered no shooting near the clinic</li>\n<li>can show where Redline cameras stop</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>smuggles some personal side goods; worried PCs will mistake that for the main crime</li>\n</ul>\n<h3>Juno “Switch” Hale</h3>\n<p><strong>Token name:</strong> Switch <strong>Location:</strong> B10 Back Corridor or C9 Monitoring <strong>Role:</strong> Redline camera sitter <strong>Use:</strong> surveillance witness and spy</p>\n<p>Hooks:</p>\n<ul>\n<li>has footage of Bex being dragged toward a service gap</li>\n<li>knows Redline blind spots</li>\n<li>can compare camera angles with clinic feeds</li>\n<li>saw corp biohazard containers moving before the current incident</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Spy for Corporate Recovery, by pressure.</strong></li>\n<li>Switch sold selected feed access to a corporate handler to pay medical debt / protect someone in Redline territory.</li>\n<li>Switch did not know about the second nest and did not intend to get people killed.</li>\n<li>If exposed, Switch can still become useful if offered protection or a way out.</li>\n</ul>\n<h3>Rook “Mads” Madsen</h3>\n<p><strong>Token name:</strong> Mads <strong>Location:</strong> A1 Indoor Street / A13 Service Corridor <strong>Role:</strong> Redline underling <strong>Use:</strong> suspicious muscle with useful local knowledge</p>\n<p>Hooks:</p>\n<ul>\n<li>knows Bex did not seem like a deserter</li>\n<li>can point toward service routes</li>\n<li>recognizes corp observers by posture</li>\n<li>can be talked into evacuation help if Bex’s fate is proven</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>hates Bluewire and may escalate if Bluewire is humiliated</li>\n</ul>\n<h3>Talla “Auntie’s Eyes” Vey</h3>\n<p><strong>Token name:</strong> Talla <strong>Location:</strong> B3 Commons / B4 Pantry <strong>Role:</strong> Mara loyalist and aid coordinator <strong>Use:</strong> protects Mara’s hidden soft power</p>\n<p>Hooks:</p>\n<ul>\n<li>knows who receives food and medicine</li>\n<li>knows Lala, Miri, and Sol</li>\n<li>can confirm Mara funds school meals if PCs earn trust</li>\n<li>will deny everything if asked like an accusation</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>not actually family, despite the surname; uses it because Mara saved her years ago</li>\n</ul>\n<h2>Corporate Recovery</h2>\n<h3>Lt. Varya Senn</h3>\n<p><strong>Token name:</strong> Lt. Senn <strong>Location:</strong> A1 Concourse / C1 Service Street <strong>Role:</strong> Rusk’s field second <strong>Use:</strong> tactical pressure and escalation</p>\n<p>Hooks:</p>\n<ul>\n<li>more aggressive than Rusk</li>\n<li>wants a clean seizure before crowds form</li>\n<li>can recognize Model 3 evidence as impossible if she saw old cleanup files</li>\n<li>may accept a temporary ceasefire only after proof of the second nest</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>believes witness control is ugly but necessary</li>\n</ul>\n<h3>Orlan Pike</h3>\n<p><strong>Token name:</strong> Feed Handler or Bloke #3 <strong>Location:</strong> off-map, C9 Monitoring, or D6 Control Room <strong>Role:</strong> corporate surveillance handler <strong>Use:</strong> spy, footage editor, evidence suppressor</p>\n<p>Hooks:</p>\n<ul>\n<li>edits camera footage</li>\n<li>injects false timestamps</li>\n<li>bought access from Switch</li>\n<li>can be identified by mesh/camera forensics</li>\n<li>tries to frame Redline Choir for disappearances</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Spy inside local systems for Corporate Recovery, by greed and career ambition.</strong></li>\n<li>He is the handler pressuring Switch.</li>\n<li>If exposed, Rusk may deny authorizing him, even if Rusk benefits from his work.</li>\n</ul>\n<h3>Corp Recovery Pair</h3>\n<p><strong>Token names:</strong> Corp Recovery #1, Corp Recovery #2 <strong>Location:</strong> A1, C1, or D3 <strong>Role:</strong> disciplined mooks <strong>Use:</strong> tactical and moral pressure</p>\n<p>Hooks:</p>\n<ul>\n<li>one can be dragged by a Model 3 to prove the threat is real</li>\n<li>one may break discipline to save a civilian</li>\n<li>Small Arms / Tactics can read their formation and intent</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>they were briefed on witness cleanup, not on an active second nest</li>\n</ul>\n<h3>Mara Silex</h3>\n<p><strong>Token name:</strong> Corp Medic <strong>Location:</strong> A1 / C1 / D3 <strong>Role:</strong> corporate field medic <strong>Use:</strong> uneasy corporate conscience</p>\n<p>Hooks:</p>\n<ul>\n<li>recognizes exposure-treatment batch codes</li>\n<li>can stabilize victims</li>\n<li>knows some corporate medical orders are indefensible</li>\n<li>may quietly help if civilians are at risk</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Potential Mercy Twelve informant, by conscience.</strong></li>\n<li>She has leaked fragments to Dr. Valez before, but not enough to expose herself.</li>\n<li>Can become an ally if PCs protect her from Rusk/Senn.</li>\n</ul>\n<h2>Community / civilians</h2>\n<h3>Miri and Sol</h3>\n<p><strong>Token name:</strong> Miri &amp; Sol <strong>Location:</strong> A4 Pediatric Corner or B7 Children’s Corner <strong>Role:</strong> schoolchildren witnesses <strong>Use:</strong> Auntie Red clue and missing-person emotional hook</p>\n<p>Hooks:</p>\n<ul>\n<li>overheard: “Auntie Red paid for breakfast again.”</li>\n<li>know Lala used to bring food</li>\n<li>heard “dog feet in the wall”</li>\n<li>may have seen Keet hide relay fragments or a student slate</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>adults keep telling them not to talk</li>\n</ul>\n<h3>Keet</h3>\n<p><strong>Token name:</strong> Keet <strong>Location:</strong> B6 Classroom / B7 Children’s Corner <strong>Role:</strong> child witness / student tech helper <strong>Use:</strong> route and data-leak clue</p>\n<p>Hooks:</p>\n<ul>\n<li>copied a relay fragment to a school slate</li>\n<li>saw strange service-route movement</li>\n<li>knows which children heard what</li>\n<li>can identify the first place people started avoiding</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>afraid Redline or corp will punish whoever talks</li>\n</ul>\n<h3>Sister Luma</h3>\n<p><strong>Token name:</strong> Sister Luma <strong>Location:</strong> A3 Waiting / B9 Counselor Offices <strong>Role:</strong> counselor and emotional stabilizer <strong>Use:</strong> witness trust, Bluewire/Narin connection</p>\n<p>Hooks:</p>\n<ul>\n<li>knows Narin would not leave voluntarily</li>\n<li>can calm witnesses</li>\n<li>can interpret Bluewire’s fear as trauma, not just aggression</li>\n<li>may get civilians to cooperate with evacuation</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>keeps unofficial records of undocumented residents</li>\n</ul>\n<h2>Recommended spy placement</h2>\n<p>Use at least two:</p>\n<pre>Switch → compromised by Corporate Recovery, pressured by medical debt.\nOrlan Pike → corporate surveillance handler, greedy/careerist.\nMara Silex → corporate medic leaking to Mercy Twelve by conscience.</pre>\n<p>For a shorter game, use only Switch and Pike.</p>\n<p>For a richer game, add Silex as a possible redemption/contact NPC.</p>"
+  },
+  {
+    "name": "Signal Bleed - Roll20 Installation and Asset Linking",
+    "source_file": "handouts/26_Roll20_Installation_and_Asset_Linking.md",
+    "notes": "<h1>Roll20 Module Installation and Asset Linking Guide</h1>\n<p>This guide describes the practical installation workflow for Signal Bleed in Roll20.</p>\n<p>The importer can create handouts and GM-only NPC character entries. Roll20 does not allow Mod/API scripts to upload local image files into your Art Library, so maps, portraits, and token images must still be uploaded through the Roll20 UI.</p>\n<p>The importer includes an asset-linking helper that can connect already-uploaded Roll20 images to matching character sheets.</p>\n<h2>1. Create or copy a Roll20 game</h2>\n<p>Create a Roll20 game using the public Hope//Punk character sheet.</p>\n<p>Recommended Journal folders:</p>\n<pre>Characters\nPregens\nNPCs\nBestiary\nHandouts\nMaps / GM Notes</pre>\n<p>Recommended pages:</p>\n<pre>Landing / Start Page\nFloor A - Clinic and Indoor Street\nFloor B - Community Support\nFloor C - Service Utility\nFloor D - Quarantine Incident\nAsset Staging</pre>\n<h2>2. Install the Roll20 importer</h2>\n<p>Open the game, then go to the Mod/API Scripts page, create a new script, and paste:</p>\n<pre>roll20/hopepunk_signal_bleed_importer.js</pre>\n<h2>3. Import handouts and NPC character entries</h2>\n<p>Run these in Roll20 chat as GM:</p>\n<pre>!hopepunk-signal-bleed --dry-run\n!hopepunk-signal-bleed --import</pre>\n<p>Import only handouts:</p>\n<pre>!hopepunk-signal-bleed --import --handouts</pre>\n<p>Import only NPCs:</p>\n<pre>!hopepunk-signal-bleed --import --npcs</pre>\n<p>Update existing imported content after a package update:</p>\n<pre>!hopepunk-signal-bleed --overwrite</pre>\n<p>NPCs and handouts are created GM-only by default.</p>\n<h2>4. Upload maps manually</h2>\n<p>Roll20 Mod/API scripts cannot upload files from your computer into the Art Library.</p>\n<p>Upload each map image through Roll20, then place it on the relevant page's Map layer.</p>\n<p>Current AI playtest maps have a baked-in visual grid, but are not mathematically aligned to Roll20's 70-pixel grid standard. For now:</p>\n<pre>Disable visible Roll20 grid.\nUse the baked-in grid visually.\nUse Dynamic Lighting / Fog of War for reveal.</pre>\n<h2>5. Upload portraits and tokens manually</h2>\n<p>Split the portrait sheets locally first:</p>\n<pre>python3 split_signal_bleed_portraits.py --dry-run\npython3 split_signal_bleed_portraits.py</pre>\n<p>Upload the resulting portraits and canonical Antithesis tokens into Roll20 through the Art Library UI.</p>\n<h2>6. Create an Asset Staging page</h2>\n<p>Create a Roll20 page named:</p>\n<pre>Asset Staging</pre>\n<p>Drag each uploaded portrait/token image onto that page.</p>\n<p>Set each placed graphic's name to the matching character name. Examples:</p>\n<pre>Dr. Sera Valez\nMara Mother Red Vey\nNox Bluewire Kade\nJuno Switch Hale\nModel 1 Juvenile\nModel 3 Juvenile</pre>\n<h2>7. Link selected assets to character sheets</h2>\n<p>On the Asset Staging page:</p>\n<p>1. Select one or more staged portrait/token graphics. 2. Run:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens --dry-run</pre>\n<p>Then run:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens</pre>\n<p>The script will:</p>\n<pre>read each selected graphic name\nfind the matching character\nset that character's avatar image\nset that graphic as the character's default token</pre>\n<p>To replace existing avatars/default tokens:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens --overwrite</pre>\n<h2>8. Token naming advice</h2>\n<p>Visible names help social play:</p>\n<pre>Dr. Valez\nMara “Mother Red”\nBluewire\nNurse Cho\nSwitch\nCorp Recovery #1\nCorp Recovery #2\nBloke #3</pre>\n<p>For hidden identities, start vague and rename later:</p>\n<pre>Bloke #3 -&gt; Orlan Pike\nRedline Sitter -&gt; Switch\nCorp Medic -&gt; Mara Silex\nDying Courier -&gt; Tamsin Quill</pre>\n<h2>9. Bestiary notes</h2>\n<p>Use canonical-looking Antithesis tokens for Model 1 and Model 3, not the AI-generated portrait panels.</p>\n<p>Suggested Bestiary folder entries:</p>\n<pre>Model 1 Juvenile\nModel 3 Juvenile</pre>\n<p>For now, create their mechanical sheets manually if you know the exact Hope//Punk sheet fields. The importer can create GM-only character entries and notes, but full mechanical sheet automation requires the exact Roll20 attribute names for NPC override, HP, movement, attacks, and special abilities.</p>\n<h2>10. Common issues</h2>\n<h3>The linker says no selected graphics</h3>\n<p>Select the staged image objects on the tabletop first, then run the command.</p>\n<h3>The linker says no matching character</h3>\n<p>Check the graphic name. It should resemble the imported character name.</p>\n<h3>The linker says ambiguous match</h3>\n<p>Rename the staged graphic more specifically, then rerun.</p>\n<h3>Avatar/default token does not visually update</h3>\n<p>Open the character sheet and check whether the avatar/default token changed. Sometimes Roll20 UI needs a refresh.</p>\n<h3>The image does not link</h3>\n<p>The selected object must be a Roll20 <code>graphic</code> object with an Art Library image source. The API cannot use arbitrary web URLs or local file paths.</p>"
   }
 ];
 
-  function esc(s) {
-    return String(s || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-  }
+  function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function list(items) { if (!items || !items.length) return '<p>—</p>'; return '<ul>' + items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
+  function normalizeName(s) { return String(s || '').toLowerCase().replace(/[“”"']/g, '').replace(/[’]/g, '').replace(/\([^)]*\)/g, ' ').replace(/[^a-z0-9]+/g, ' ').replace(/(dr|doctor|commander|cmdr|lt|lieutenant|the)/g, ' ').replace(/\s+/g, ' ').trim(); }
+  function bioForNpc(npc) { return ['<h2>'+esc(npc.name)+'</h2>','<p><strong>Role:</strong> '+esc(npc.role)+'</p>','<p><strong>Faction:</strong> '+esc(npc.faction)+'</p>','<p><strong>Attitude:</strong> '+esc(npc.attitude)+'</p>','<h3>Wants</h3>',list(npc.wants),'<h3>Offers / Useful interaction</h3>',list(npc.offers)].join(''); }
+  function gmnotesForNpc(npc) { return ['<h2>GM Notes</h2>','<p><strong>Import type:</strong> '+esc(npc.import_as || 'gm_only_character')+'</p>','<p><strong>Token note:</strong> '+esc(npc.token_note || 'Create map token manually.')+'</p>','<h3>Secrets</h3>',list(npc.secrets),'<h3>Use in Play</h3>','<p>'+esc(npc.gm_notes)+'</p>'].join(''); }
+  function findByName(type, name) { var matches = findObjs({ _type: type, name: name }); return matches && matches.length ? matches[0] : null; }
+  function allCharacters() { return findObjs({ _type: 'character' }) || []; }
 
-  function list(items) {
-    if (!items || !items.length) return '<p>—</p>';
-    return '<ul>' + items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
-  }
-
-  function bioForNpc(npc) {
-    return [
-      '<h2>' + esc(npc.name) + '</h2>',
-      '<p><strong>Role:</strong> ' + esc(npc.role) + '</p>',
-      '<p><strong>Faction:</strong> ' + esc(npc.faction) + '</p>',
-      '<p><strong>Attitude:</strong> ' + esc(npc.attitude) + '</p>',
-      '<h3>Wants</h3>',
-      list(npc.wants),
-      '<h3>Offers / Useful interaction</h3>',
-      list(npc.offers)
-    ].join('');
-  }
-
-  function gmnotesForNpc(npc) {
-    return [
-      '<h2>GM Notes</h2>',
-      '<p><strong>Import type:</strong> ' + esc(npc.import_as || 'gm_only_character') + '</p>',
-      '<p><strong>Token note:</strong> ' + esc(npc.token_note || 'Create map token manually.') + '</p>',
-      '<h3>Secrets</h3>',
-      list(npc.secrets),
-      '<h3>Use in Play</h3>',
-      '<p>' + esc(npc.gm_notes) + '</p>'
-    ].join('');
-  }
-
-  function findByName(type, name) {
-    var matches = findObjs({ _type: type, name: name });
-    return matches && matches.length ? matches[0] : null;
+  function findCharacterByLooseName(name) {
+    var wanted = normalizeName(name);
+    if (!wanted) return { status: 'no-name', matches: [] };
+    var chars = allCharacters();
+    var exact = chars.filter(function (c) { return normalizeName(c.get('name')) === wanted; });
+    if (exact.length === 1) return { status: 'ok', character: exact[0], matches: exact };
+    if (exact.length > 1) return { status: 'ambiguous', matches: exact };
+    var contains = chars.filter(function (c) { var cn = normalizeName(c.get('name')); return cn.indexOf(wanted) !== -1 || wanted.indexOf(cn) !== -1; });
+    if (contains.length === 1) return { status: 'ok', character: contains[0], matches: contains };
+    if (contains.length > 1) return { status: 'ambiguous', matches: contains };
+    var aliases = {
+      'dr valez':'sera valez','valez':'sera valez','mother red':'mara mother red vey','mara vey':'mara mother red vey','bluewire':'nox bluewire kade','switch':'juno switch hale','nightcrash':'florence nightcrash vale','siren saint':'siren saint','nurse cho':'imani cho','corp medic':'mara silex','feed handler':'orlan pike','bloke 3':'orlan pike','dying courier':'tamsin quill','model 1 juvenile':'model 1 juvenile','model 3 juvenile':'juvenile model 3'
+    };
+    if (aliases[wanted]) {
+      var aw = normalizeName(aliases[wanted]);
+      var am = chars.filter(function (c) { var cn=normalizeName(c.get('name')); return cn === aw || cn.indexOf(aw) !== -1 || aw.indexOf(cn) !== -1; });
+      if (am.length === 1) return { status: 'ok', character: am[0], matches: am };
+      if (am.length > 1) return { status: 'ambiguous', matches: am };
+    }
+    return { status: 'not-found', matches: [] };
   }
 
   function createOrUpdateNpc(npc, overwrite) {
     var existing = findByName('character', npc.name);
-    if (existing && !overwrite) {
-      return { status: 'exists', name: npc.name };
-    }
+    if (existing && !overwrite) return { status: 'exists', name: npc.name };
     var character = existing || createObj('character', { name: npc.name });
-    character.set('name', npc.name);
-    character.set('bio', bioForNpc(npc));
-    character.set('gmnotes', gmnotesForNpc(npc));
-    character.set('inplayerjournals', '');
-    character.set('controlledby', '');
+    character.set('name', npc.name); character.set('bio', bioForNpc(npc)); character.set('gmnotes', gmnotesForNpc(npc)); character.set('inplayerjournals', ''); character.set('controlledby', '');
     return { status: existing ? 'updated' : 'created', name: npc.name };
   }
-
   function createOrUpdateHandout(handout, overwrite) {
     var existing = findByName('handout', handout.name);
-    if (existing && !overwrite) {
-      return { status: 'exists', name: handout.name };
-    }
+    if (existing && !overwrite) return { status: 'exists', name: handout.name };
     var obj = existing || createObj('handout', { name: handout.name });
-    obj.set('name', handout.name);
-    obj.set('notes', handout.notes);
-    obj.set('inplayerjournals', '');
+    obj.set('name', handout.name); obj.set('notes', handout.notes); obj.set('inplayerjournals', '');
     return { status: existing ? 'updated' : 'created', name: handout.name };
   }
+  function resultSummary(results) { return results.map(function (r) { return esc(r.name) + ' [' + esc(r.status) + ']'; }).join('<br>'); }
+  function selectedGraphics(msg) { if (!msg.selected || !msg.selected.length) return []; return msg.selected.map(function (s) { if (s._type !== 'graphic') return null; return getObj('graphic', s._id); }).filter(function (g) { return !!g; }); }
+  function normalizeImgsrc(src) { return String(src || '').replace(/\/max\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2').replace(/\/med\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2').replace(/\/original\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2'); }
 
-  function resultSummary(results) {
-    return results.map(function (r) {
-      return esc(r.name) + ' [' + esc(r.status) + ']';
-    }).join('<br>');
+  function linkSelectedTokens(msg, overwrite, dryRun) {
+    var graphics = selectedGraphics(msg);
+    if (!graphics.length) { sendChat('Signal Bleed', '/w gm No selected graphics found. Select staged portrait/token graphics on the tabletop first.'); return; }
+    var results = [];
+    graphics.forEach(function (g) {
+      var tokenName = g.get('name') || '';
+      var match = findCharacterByLooseName(tokenName);
+      if (match.status !== 'ok') {
+        var detail = match.status === 'ambiguous' ? ' — matches: ' + match.matches.map(function (c) { return esc(c.get('name')); }).join(', ') : '';
+        results.push('<strong>'+esc(tokenName || '(unnamed graphic)')+'</strong>: '+esc(match.status)+detail); return;
+      }
+      var character = match.character;
+      var characterName = character.get('name');
+      var imgsrc = normalizeImgsrc(g.get('imgsrc'));
+      if (!imgsrc) { results.push('<strong>'+esc(tokenName)+'</strong> → '+esc(characterName)+': no imgsrc found'); return; }
+      if (!overwrite && (character.get('avatar') || character.get('defaulttoken'))) { results.push('<strong>'+esc(tokenName)+'</strong> → '+esc(characterName)+': skipped, avatar/default token already set; use --overwrite'); return; }
+      if (!dryRun) {
+        character.set('avatar', imgsrc);
+        try {
+          if (typeof setDefaultTokenForCharacter === 'function') setDefaultTokenForCharacter(character, g);
+          else { var tokenJSON = g.toJSON(); tokenJSON.represents = character.id; character.set('defaulttoken', JSON.stringify(tokenJSON)); }
+        } catch (e) { results.push('<strong>'+esc(tokenName)+'</strong> → '+esc(characterName)+': avatar set, default token failed: '+esc(e.message || e)); return; }
+      }
+      results.push('<strong>'+esc(tokenName)+'</strong> → '+esc(characterName)+': '+(dryRun ? 'would link' : 'linked'));
+    });
+    sendChat('Signal Bleed', '/w gm <strong>Asset linking results</strong><br>' + results.join('<br>'));
   }
 
   function showHelp() {
-    sendChat('Signal Bleed', '/w gm <strong>Hope//Punk Signal Bleed Importer</strong><br>' +
-      '<code>' + COMMAND + ' --dry-run</code><br>' +
-      '<code>' + COMMAND + ' --import</code> imports all NPCs and handouts that do not already exist<br>' +
-      '<code>' + COMMAND + ' --overwrite</code> updates/replaces all NPC and handout content<br>' +
-      '<code>' + COMMAND + ' --import --npcs</code> imports NPCs only<br>' +
-      '<code>' + COMMAND + ' --import --handouts</code> imports handouts only<br><br>' +
-      '<strong>Current embedded content:</strong><br>' +
-      NPCS.length + ' NPC character entries<br>' +
-      HANDOUTS.length + ' handouts<br><br>' +
-      'NPCs and handouts are created GM-only by default. This script does not upload token images or place map tokens.');
+    sendChat('Signal Bleed', '/w gm <strong>Hope//Punk Signal Bleed Importer</strong><br>'+
+      '<code>'+COMMAND+' --dry-run</code><br>'+
+      '<code>'+COMMAND+' --import</code> imports all NPCs and handouts that do not already exist<br>'+
+      '<code>'+COMMAND+' --overwrite</code> updates/replaces all NPC and handout content<br>'+
+      '<code>'+COMMAND+' --import --npcs</code> imports NPCs only<br>'+
+      '<code>'+COMMAND+' --import --handouts</code> imports handouts only<br>'+
+      '<code>'+COMMAND+' --link-selected-tokens --dry-run</code> tests linking selected staged assets<br>'+
+      '<code>'+COMMAND+' --link-selected-tokens</code> links selected staged assets to matching character sheets<br>'+
+      '<code>'+COMMAND+' --link-selected-tokens --overwrite</code> replaces existing avatars/default tokens<br><br>'+
+      '<strong>Current embedded content:</strong><br>'+NPCS.length+' NPC character entries<br>'+HANDOUTS.length+' handouts<br><br>'+ 'NPCs and handouts are GM-only by default. This script does not upload local image files.');
   }
 
   function handle(msg) {
     if (msg.type !== 'api') return;
     if (msg.content.indexOf(COMMAND) !== 0) return;
-
-    if (msg.content.indexOf('--help') !== -1) {
-      showHelp();
-      return;
-    }
-
     var dryRun = msg.content.indexOf('--dry-run') !== -1;
-    var doImport = msg.content.indexOf('--import') !== -1;
     var overwrite = msg.content.indexOf('--overwrite') !== -1;
+    if (msg.content.indexOf('--help') !== -1) { showHelp(); return; }
+    if (msg.content.indexOf('--link-selected-tokens') !== -1) { linkSelectedTokens(msg, overwrite, dryRun); return; }
+    var doImport = msg.content.indexOf('--import') !== -1;
     var onlyNpcs = msg.content.indexOf('--npcs') !== -1;
     var onlyHandouts = msg.content.indexOf('--handouts') !== -1;
-
-    if (!dryRun && !doImport && !overwrite) {
-      showHelp();
-      return;
-    }
-
+    if (!dryRun && !doImport && !overwrite) { showHelp(); return; }
     var includeNpcs = onlyNpcs || (!onlyNpcs && !onlyHandouts);
     var includeHandouts = onlyHandouts || (!onlyNpcs && !onlyHandouts);
-
     if (dryRun) {
-      var msgParts = [];
-      if (includeNpcs) {
-        msgParts.push('<strong>NPCs:</strong> ' + NPCS.length + '<br>' +
-          NPCS.map(function (n) { return esc(n.name); }).join('<br>'));
-      }
-      if (includeHandouts) {
-        msgParts.push('<strong>Handouts:</strong> ' + HANDOUTS.length + '<br>' +
-          HANDOUTS.map(function (h) { return esc(h.name); }).join('<br>'));
-      }
-      sendChat('Signal Bleed', '/w gm <strong>Dry run</strong><br>' + msgParts.join('<br><br>'));
-      return;
+      var msgParts=[];
+      if (includeNpcs) msgParts.push('<strong>NPCs:</strong> '+NPCS.length+'<br>'+NPCS.map(function(n){return esc(n.name);}).join('<br>'));
+      if (includeHandouts) msgParts.push('<strong>Handouts:</strong> '+HANDOUTS.length+'<br>'+HANDOUTS.map(function(h){return esc(h.name);}).join('<br>'));
+      sendChat('Signal Bleed', '/w gm <strong>Dry run</strong><br>'+msgParts.join('<br><br>')); return;
     }
-
-    var summaries = [];
-    if (includeNpcs) {
-      summaries.push('<strong>NPCs</strong><br>' + resultSummary(NPCS.map(function (npc) {
-        return createOrUpdateNpc(npc, overwrite);
-      })));
-    }
-    if (includeHandouts) {
-      summaries.push('<strong>Handouts</strong><br>' + resultSummary(HANDOUTS.map(function (handout) {
-        return createOrUpdateHandout(handout, overwrite);
-      })));
-    }
-    sendChat('Signal Bleed', '/w gm Import complete:<br><br>' + summaries.join('<br><br>'));
+    var summaries=[];
+    if (includeNpcs) summaries.push('<strong>NPCs</strong><br>'+resultSummary(NPCS.map(function(npc){ return createOrUpdateNpc(npc, overwrite); })));
+    if (includeHandouts) summaries.push('<strong>Handouts</strong><br>'+resultSummary(HANDOUTS.map(function(handout){ return createOrUpdateHandout(handout, overwrite); })));
+    sendChat('Signal Bleed', '/w gm Import complete:<br><br>'+summaries.join('<br><br>'));
   }
-
   on('chat:message', handle);
-
-  return {
-    handle: handle
-  };
+  return { handle: handle };
 }());
