@@ -41,3 +41,13 @@ The clinic’s generator and power storage are old, overloaded, and sensitive to
 **Dr. Sera Valez** runs Mercy Twelve.
 
 She is warm, direct, exhausted, and hard to intimidate. She does not want a fight. She also will not hand frightened people over to the corp just because someone with a badge and a contract says “compliance.”
+
+## Sera and Mara
+
+Dr. Sera Valez and Mara “Mother Red” Vey are estranged sisters.
+
+Sera kept the Valez name and built Mercy Twelve into a place of public trust. Mara shortened/cut her name to Vey and became the dangerous unofficial power that keeps food, medicine, generator fuel, and protection moving when official systems fail.
+
+Sera knows Mara’s aid network exists. She does not like the violence that comes with it. She also knows some patients would be dead without it.
+
+Sera does not want outsiders using the relationship as leverage inside her clinic.

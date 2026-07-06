@@ -61,3 +61,16 @@ Damaged courier. Alive, barely conscious, or recently dead depending on pacing.
 First alien pressure. Not a negotiable NPC.
 
 Use to force cooperation, evacuation, and first ascension.
+
+## Family link: Sera Valez and Mara Vey
+
+Sera Valez and Mara “Mother Red” Vey are estranged sisters.
+
+This makes their conflict personal:
+
+- Sera represents medicine, legitimacy, and public trust.
+- Mara represents informal power, fear, smuggling, and neighborhood survival.
+- Both protect the same people.
+- Neither wants the relationship used as public leverage.
+
+Use this to complicate negotiations. The PCs can earn trust by respecting both sisters’ protective instincts without pretending their methods are equivalent.

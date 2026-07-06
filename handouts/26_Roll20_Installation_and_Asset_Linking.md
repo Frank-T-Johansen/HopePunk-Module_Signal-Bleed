@@ -205,3 +205,59 @@ Open the character sheet and check whether the avatar/default token changed. Som
 ### The image does not link
 
 The selected object must be a Roll20 `graphic` object with an Art Library image source. The API cannot use arbitrary web URLs or local file paths.
+
+## Portrait and token staging workflow
+
+The repository has separate folders:
+
+```text
+portraits/
+tokens/
+```
+
+Use portraits as character avatars and tokens as default map tokens.
+
+Recommended pages:
+
+```text
+Asset Staging - Portraits
+Asset Staging - Tokens
+```
+
+Upload the images into Roll20 manually, then drag them onto the relevant staging page.
+
+On the portrait staging page, select all portrait graphics and run:
+
+```text
+!hopepunk-signal-bleed --link-selected-portraits --dry-run
+!hopepunk-signal-bleed --link-selected-portraits
+```
+
+On the token staging page, select all token graphics and run:
+
+```text
+!hopepunk-signal-bleed --link-selected-tokens --dry-run
+!hopepunk-signal-bleed --link-selected-tokens
+```
+
+If you want to replace existing avatars/default tokens:
+
+```text
+!hopepunk-signal-bleed --link-selected-portraits --overwrite
+!hopepunk-signal-bleed --link-selected-tokens --overwrite
+```
+
+Combined mode is also available if you only stage one set of images and want both avatar and default token set from the same selected graphics:
+
+```text
+!hopepunk-signal-bleed --link-selected-assets --dry-run
+!hopepunk-signal-bleed --link-selected-assets
+```
+
+Repository token note:
+
+```text
+tokens/model 3 adolscent.png
+```
+
+is currently misspelled, but the importer aliases it to `Model 3 Adolescent`.

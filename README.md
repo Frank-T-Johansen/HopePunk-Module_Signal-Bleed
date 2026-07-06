@@ -122,3 +122,22 @@ The Roll20 importer can create handouts and GM-only NPC character entries. It ca
 ```
 
 Roll20 Mod/API scripts cannot upload local PNGs into the Art Library, so portraits/tokens still need to be uploaded manually first.
+
+## Portraits and tokens
+
+The repository contains separate portrait and token assets:
+
+```text
+portraits/
+tokens/
+```
+
+The Roll20 importer can link selected, already-uploaded Roll20 graphics to matching character sheets:
+
+```text
+!hopepunk-signal-bleed --link-selected-portraits
+!hopepunk-signal-bleed --link-selected-tokens
+!hopepunk-signal-bleed --link-selected-assets
+```
+
+The `tokens/` folder includes normal NPC tokens plus optional escalation tokens for Model 1 / Model 3 adolescent and adult variants.

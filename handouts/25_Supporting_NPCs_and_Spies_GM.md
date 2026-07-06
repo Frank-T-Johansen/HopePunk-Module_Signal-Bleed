@@ -299,3 +299,17 @@ Mara Silex → corporate medic leaking to Mercy Twelve by conscience.
 For a shorter game, use only Switch and Pike.
 
 For a richer game, add Silex as a possible redemption/contact NPC.
+
+## Spy pressure on the Valez/Vey relationship
+
+Orlan Pike can use the Sera/Mara relationship as blackmail material.
+
+Possible plays:
+
+- leak that Mercy Twelve is “gang-compromised”
+- imply Sera knowingly launders Redline aid
+- suggest Mara is hiding behind her sister’s clinic
+- pressure Switch to deliver footage proving Mara’s aid routes pass through clinic-adjacent spaces
+- pressure Mara Silex to stop quietly helping the clinic
+
+This should make the spy subplot feel tied to the main social conflict, not like a disconnected side mystery.

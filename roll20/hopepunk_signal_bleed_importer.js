@@ -1,5 +1,6 @@
 // Hope//Punk Signal Bleed Importer
 // Roll20 Mod/API script.
+//
 // Commands:
 //   !hopepunk-signal-bleed --help
 //   !hopepunk-signal-bleed --dry-run
@@ -7,11 +8,21 @@
 //   !hopepunk-signal-bleed --overwrite
 //   !hopepunk-signal-bleed --npcs
 //   !hopepunk-signal-bleed --handouts
+//   !hopepunk-signal-bleed --link-selected-portraits
 //   !hopepunk-signal-bleed --link-selected-tokens
+//   !hopepunk-signal-bleed --link-selected-assets
+//
+// Notes:
+// - Imports NPCs as GM-only character entries.
+// - Imports scenario Markdown files as GM-only Roll20 handouts.
+// - Links selected, already-uploaded Roll20 graphics to matching character sheets.
+// - Does not upload local images/maps.
 
 var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   'use strict';
+
   var COMMAND = '!hopepunk-signal-bleed';
+
   var NPCS = [
   {
     "name": "Dr. Sera Valez",
@@ -32,9 +43,12 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       "Access to the relay"
     ],
     "secrets": [
-      "Knows Mara covertly supports local schools and food programs"
+      "Knows Mara covertly supports local schools and food programs",
+      "Sera and Mara “Mother Red” Vey are estranged sisters",
+      "Sera knows Mara funds food, medicine, and other community support, but hates the violence around it",
+      "Sera does not want the family link used as leverage inside her clinic"
     ],
-    "gm_notes": "If the PCs interact with her, she pushes negotiation, evacuation, and containment. She is not naive and will not hand civilians to corporate recovery.",
+    "gm_notes": "If the PCs interact with her, she pushes negotiation, evacuation, and containment. She is not naive and will not hand civilians to corporate recovery. Sera is Mara Vey’s estranged sister. She represents legitimacy and medicine, while Mara represents informal power and survival. The relationship should complicate negotiations rather than become a simple secret to expose.",
     "import_as": "gm_only_character",
     "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
@@ -56,9 +70,12 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     ],
     "secrets": [
       "Mara covertly funds food, medicine, and school support",
-      "Mara knows Bex and Lala are missing and suspects this is not normal gang business"
+      "Mara knows Bex and Lala are missing and suspects this is not normal gang business",
+      "Mara was born Mara Valez and is Sera Valez’s estranged sister",
+      "Mara shortened/cut the family name to Vey after leaving the respectable world behind",
+      "Mara’s aid network is partly a refusal to let Sera be the only one who gets to save people"
     ],
-    "gm_notes": "Mara becomes more cooperative if PCs prove Redline people are being taken by something in the service infrastructure.",
+    "gm_notes": "Mara becomes more cooperative if PCs prove Redline people are being taken by something in the service infrastructure. Mara is Sera Valez’s estranged sister. If PCs respect that wound, it can open negotiation. If they use it to humiliate her, Redline reacts badly.",
     "import_as": "gm_only_character",
     "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
   },
@@ -659,8 +676,146 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     "gm_notes": "Use them to reveal Auntie Red and the missing-person trail through overheard conversation.",
     "import_as": "gm_only_character",
     "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
+  },
+  {
+    "name": "Model 1 Juvenile",
+    "role": "Small flying Antithesis / nest-seeding clue",
+    "faction": "Antithesis / Bestiary",
+    "attitude": "Biological, alien, non-negotiable",
+    "wants": [
+      "Follow nest-directed behavior",
+      "Threaten civilians through speed and swarm pressure",
+      "Serve as evidence that the nest can reproduce"
+    ],
+    "offers": [
+      "Evidence of Model 1 relocation",
+      "Escalation pressure if the hidden nest matures",
+      "Aerial threat for harder scenes"
+    ],
+    "secrets": [
+      "In this module, Model 1s are the clue that the first nest’s destruction was incomplete",
+      "Dead Model 1s seeded the second hidden nest"
+    ],
+    "gm_notes": "Use the canonical Model 1 token. For the starter version, Model 1s are mostly evidence, footage, seed-clump remains, or late pressure. Full mechanical import needs confirmed Hope//Punk sheet attribute names.",
+    "token_note": "Use tokens/model 1 juvenile.png from the repository.",
+    "import_as": "gm_only_character"
+  },
+  {
+    "name": "Model 1 Adolescent",
+    "role": "Optional stronger Model 1 escalation",
+    "faction": "Antithesis / Bestiary",
+    "attitude": "Biological, alien, escalating",
+    "wants": [
+      "Increase pressure if the nest matures",
+      "Harass from the air",
+      "Force urgent containment"
+    ],
+    "offers": [
+      "Harder aerial threat",
+      "Evidence that containment is failing",
+      "Optional difficulty ramp"
+    ],
+    "secrets": [
+      "Should usually appear only if the GM wants a harder scenario or delayed containment consequences"
+    ],
+    "gm_notes": "Optional escalation token. Do not use by default in a one-shot starter unless the table wants a much harder fight.",
+    "token_note": "Use tokens/model 1 adolescent.png from the repository.",
+    "import_as": "gm_only_character"
+  },
+  {
+    "name": "Model 1 Adult",
+    "role": "High-threat Model 1 escalation",
+    "faction": "Antithesis / Bestiary",
+    "attitude": "Biological, alien, severe",
+    "wants": [
+      "Represent a failed-containment escalation",
+      "Create aerial crisis pressure",
+      "Punish major delay or bad-ending outcomes"
+    ],
+    "offers": [
+      "Late-campaign escalation",
+      "Hard-mode variant",
+      "Visible proof the nest matured beyond starter scale"
+    ],
+    "secrets": [
+      "Not recommended for a normal starter-session fight"
+    ],
+    "gm_notes": "Use only for a much harder version, a later campaign revisit, or if the nest is allowed to grow unchecked.",
+    "token_note": "Use tokens/model 1 adult.png from the repository.",
+    "import_as": "gm_only_character"
+  },
+  {
+    "name": "Model 3 Juvenile",
+    "role": "Dog-like Antithesis biomass hunter",
+    "faction": "Antithesis / Bestiary",
+    "attitude": "Predatory, cautious, nest-directed",
+    "wants": [
+      "Find biomass",
+      "Disable or kill prey",
+      "Drag prey back to the hidden nest",
+      "Avoid unnecessary fights with strong groups"
+    ],
+    "offers": [
+      "Tracks to the hidden nest if followed",
+      "Proof that a new nest exists",
+      "A rescue opportunity if it is dragging a victim"
+    ],
+    "secrets": [
+      "Only a few exist at first",
+      "They are produced by the second hidden nest",
+      "They are not random monsters; they are biomass collectors"
+    ],
+    "gm_notes": "Use sparingly before the reveal. Its jaws split into three parts. Its first full encounter should involve a victim being dragged away, teaching the PCs what the hidden nest is doing. Full mechanical import needs confirmed Hope//Punk sheet attribute names.",
+    "token_note": "Use tokens/model 3 juvenile.png from the repository.",
+    "import_as": "gm_only_character"
+  },
+  {
+    "name": "Model 3 Adolescent",
+    "role": "Optional boss-level Model 3 biomass hunter",
+    "faction": "Antithesis / Bestiary",
+    "attitude": "Predatory, stronger, nest-defending",
+    "wants": [
+      "Defend the hidden nest",
+      "Drag biomass to the nest",
+      "Force PCs to choose between fighting and rescue"
+    ],
+    "offers": [
+      "Boss-fight pressure",
+      "Harder climax for larger groups",
+      "Clear sign that the nest is maturing"
+    ],
+    "secrets": [
+      "Should be optional in a starter job",
+      "Works best as one major defender rather than a random extra monster"
+    ],
+    "gm_notes": "Optional boss fight for 4+ PCs or tactically strong groups. It should defend the hidden nest or try to drag a named victim away while the PCs handle objectives.",
+    "token_note": "Use tokens/model 3 adolscent.png from the repository; current filename is misspelled but supported by aliases.",
+    "import_as": "gm_only_character"
+  },
+  {
+    "name": "Model 3 Adult",
+    "role": "High-threat Model 3 escalation",
+    "faction": "Antithesis / Bestiary",
+    "attitude": "Predatory, severe, campaign-scale",
+    "wants": [
+      "Represent major containment failure",
+      "Overwhelm unprepared defenders",
+      "Force evacuation or desperate containment"
+    ],
+    "offers": [
+      "Hard-mode climax",
+      "Later-campaign threat",
+      "Bad-ending escalation"
+    ],
+    "secrets": [
+      "Usually too much for a normal starter job unless used as an unfinished emergence or timer"
+    ],
+    "gm_notes": "Use very cautiously in starter play. Better as a threat that is not fully emerged yet: stop it before it finishes forming.",
+    "token_note": "Use tokens/model 3 adult.png from the repository.",
+    "import_as": "gm_only_character"
   }
 ];
+
   var HANDOUTS = [
   {
     "name": "Signal Bleed - GM Overview",
@@ -680,17 +835,17 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   {
     "name": "Signal Bleed - Mercy Twelve Clinic",
     "source_file": "handouts/03_Mercy_Twelve_Clinic.md",
-    "notes": "<h1>Mercy Twelve Clinic</h1>\n<h2>Player-facing summary</h2>\n<p>Mercy Twelve is a community clinic, shelter, night-school annex, and last-resort triage station built into an old municipal health building.</p>\n<p>The lobby smells of antiseptic, cheap noodles, rain-wet concrete, and overheated batteries. Every wall has been patched more than once. Half the lights flicker. The other half are covered with children’s drawings, hand-written instructions, missing-person notes, and old protest posters.</p>\n<p>Mercy Twelve is not safe because the law protects it.</p>\n<p>Mercy Twelve is safe because the neighborhood has agreed that some doors should stay open.</p>\n<h2>Key areas</h2>\n<h3>Waiting Room</h3>\n<p>Crowded with patients, volunteers, gang lookouts pretending not to be lookouts, and at least one child trying to do homework on the floor.</p>\n<h3>Triage Hall</h3>\n<p>Staff move fast here. Outsiders standing in the wrong place will be redirected firmly but politely.</p>\n<h3>Treatment Wing</h3>\n<p>Locked after the courier arrived. Contains the contaminated relay/data-core and at least one patient exposed to it.</p>\n<h3>School Annex</h3>\n<p>Used for night classes, food distribution, tutoring, and shelter overflow.</p>\n<h3>Roof Access</h3>\n<p>Possible drone landing, signal access, escape route, or final transmitter location.</p>\n<h3>Generator Room</h3>\n<p>The clinic’s generator and power storage are old, overloaded, and sensitive to signal pulses.</p>\n<h2>Clinic leader</h2>\n<p><strong>Dr. Sera Valez</strong> runs Mercy Twelve.</p>\n<p>She is warm, direct, exhausted, and hard to intimidate. She does not want a fight. She also will not hand frightened people over to the corp just because someone with a badge and a contract says “compliance.”</p>"
+    "notes": "<h1>Mercy Twelve Clinic</h1>\n<h2>Player-facing summary</h2>\n<p>Mercy Twelve is a community clinic, shelter, night-school annex, and last-resort triage station built into an old municipal health building.</p>\n<p>The lobby smells of antiseptic, cheap noodles, rain-wet concrete, and overheated batteries. Every wall has been patched more than once. Half the lights flicker. The other half are covered with children’s drawings, hand-written instructions, missing-person notes, and old protest posters.</p>\n<p>Mercy Twelve is not safe because the law protects it.</p>\n<p>Mercy Twelve is safe because the neighborhood has agreed that some doors should stay open.</p>\n<h2>Key areas</h2>\n<h3>Waiting Room</h3>\n<p>Crowded with patients, volunteers, gang lookouts pretending not to be lookouts, and at least one child trying to do homework on the floor.</p>\n<h3>Triage Hall</h3>\n<p>Staff move fast here. Outsiders standing in the wrong place will be redirected firmly but politely.</p>\n<h3>Treatment Wing</h3>\n<p>Locked after the courier arrived. Contains the contaminated relay/data-core and at least one patient exposed to it.</p>\n<h3>School Annex</h3>\n<p>Used for night classes, food distribution, tutoring, and shelter overflow.</p>\n<h3>Roof Access</h3>\n<p>Possible drone landing, signal access, escape route, or final transmitter location.</p>\n<h3>Generator Room</h3>\n<p>The clinic’s generator and power storage are old, overloaded, and sensitive to signal pulses.</p>\n<h2>Clinic leader</h2>\n<p><strong>Dr. Sera Valez</strong> runs Mercy Twelve.</p>\n<p>She is warm, direct, exhausted, and hard to intimidate. She does not want a fight. She also will not hand frightened people over to the corp just because someone with a badge and a contract says “compliance.”</p>\n<h2>Sera and Mara</h2>\n<p>Dr. Sera Valez and Mara “Mother Red” Vey are estranged sisters.</p>\n<p>Sera kept the Valez name and built Mercy Twelve into a place of public trust. Mara shortened/cut her name to Vey and became the dangerous unofficial power that keeps food, medicine, generator fuel, and protection moving when official systems fail.</p>\n<p>Sera knows Mara’s aid network exists. She does not like the violence that comes with it. She also knows some patients would be dead without it.</p>\n<p>Sera does not want outsiders using the relationship as leverage inside her clinic.</p>"
   },
   {
     "name": "Signal Bleed - Redline Choir",
     "source_file": "handouts/04_Redline_Choir.md",
-    "notes": "<h1>The Redline Choir</h1>\n<h2>Public face</h2>\n<p>The Redline Choir is the local gang. They control corners, roofs, underpass routes, informal markets, and protection rackets. They smuggle medicine, run debt enforcement, move stolen gear, and make examples of people who prey on the block.</p>\n<p>They are not gentle.</p>\n<p>They are also not simple.</p>\n<h2>Private reality</h2>\n<p>The Redline Choir quietly funds school meals, buys medicine, pays teachers, keeps generators running, and makes certain predators disappear before the law notices.</p>\n<p>This is not public knowledge.</p>\n<p>Mara “Mother Red” Vey works hard to preserve the Choir’s tough front. She does not want outsiders saying the gang has gone soft. In her mind, fear is one of the few tools the neighborhood still has.</p>\n<h2>Discovering the secret</h2>\n<p>Players may discover Mara’s hidden support through investigation or good social play:</p>\n<ul>\n<li>a clinic underling accidentally says “Mara paid for that” and then stops talking</li>\n<li>schoolchildren know her as “Auntie Red,” but adults avoid saying it</li>\n<li>a hidden ledger lists food, medicine, teacher stipends, and funeral costs</li>\n<li>a gang courier delivers crates marked as contraband, but they contain insulin, antibiotics, and meal packs</li>\n<li>Dr. Valez knows, but will not reveal it unless the PCs earn trust</li>\n<li>Bluewire bitterly blurts out something like: “She feeds everyone but still looks at me like I’m broken.”</li>\n</ul>\n<h2>Leader: Mara “Mother Red” Vey</h2>\n<p>Mara is charismatic, controlled, and visibly tired of burying kids.</p>\n<p>She does not want a war with the clinic, the corp, or the PCs. She wants leverage and a guarantee that the neighborhood is not cut out of decisions about the relay.</p>\n<p>Her position:</p>\n<blockquote>The clinic saves lives one at a time. We keep the whole block from being eaten. Do not confuse our methods with lack of morals.</blockquote>"
+    "notes": "<h1>The Redline Choir</h1>\n<h2>Public face</h2>\n<p>The Redline Choir is the local gang. They control corners, roofs, underpass routes, informal markets, and protection rackets. They smuggle medicine, run debt enforcement, move stolen gear, and make examples of people who prey on the block.</p>\n<p>They are not gentle.</p>\n<p>They are also not simple.</p>\n<h2>Private reality</h2>\n<p>The Redline Choir quietly funds school meals, buys medicine, pays teachers, keeps generators running, and makes certain predators disappear before the law notices.</p>\n<p>This is not public knowledge.</p>\n<p>Mara “Mother Red” Vey works hard to preserve the Choir’s tough front. She does not want outsiders saying the gang has gone soft. In her mind, fear is one of the few tools the neighborhood still has.</p>\n<h2>Discovering the secret</h2>\n<p>Players may discover Mara’s hidden support through investigation or good social play:</p>\n<ul>\n<li>a clinic underling accidentally says “Mara paid for that” and then stops talking</li>\n<li>schoolchildren know her as “Auntie Red,” but adults avoid saying it</li>\n<li>a hidden ledger lists food, medicine, teacher stipends, and funeral costs</li>\n<li>a gang courier delivers crates marked as contraband, but they contain insulin, antibiotics, and meal packs</li>\n<li>Dr. Valez knows, but will not reveal it unless the PCs earn trust</li>\n<li>Bluewire bitterly blurts out something like: “She feeds everyone but still looks at me like I’m broken.”</li>\n</ul>\n<h2>Leader: Mara “Mother Red” Vey</h2>\n<p>Mara is charismatic, controlled, and visibly tired of burying kids.</p>\n<p>She does not want a war with the clinic, the corp, or the PCs. She wants leverage and a guarantee that the neighborhood is not cut out of decisions about the relay.</p>\n<p>Her position:</p>\n<blockquote>The clinic saves lives one at a time. We keep the whole block from being eaten. Do not confuse our methods with lack of morals.</blockquote>\n<h2>Mara and Sera</h2>\n<p>Mara “Mother Red” Vey and Dr. Sera Valez are estranged sisters.</p>\n<p>Mara’s hidden soft-power network is not random charity. It is partly guilt, partly territorial politics, and partly a furious refusal to let Sera be the only one who gets to save people.</p>\n<p>Redline underlings may not know all the family history, but senior locals know enough to avoid joking about it.</p>\n<p>If PCs reveal the relationship respectfully, Mara may negotiate. If they use it to humiliate her, she treats it as an attack.</p>"
   },
   {
     "name": "Signal Bleed - NPCs GM",
     "source_file": "handouts/05_NPCs_GM.md",
-    "notes": "<h1>NPCs: GM Notes</h1>\n<h2>Dr. Sera Valez</h2>\n<p>Clinic director, community organizer, moral center. Charismatic through warmth and presence rather than threat.</p>\n<p><strong>Wants:</strong> keep patients alive, verify the signal, expose the corp if possible, prevent the clinic from becoming a battlefield.</p>\n<p><strong>Offers:</strong> medical care, information, local trust, neutral ground, access to the relay.</p>\n<p><strong>Secret:</strong> knows Mara covertly funds food and school support.</p>\n<h2>Mara “Mother Red” Vey</h2>\n<p>Leader of the Redline Choir. Charismatic, controlled, dangerous, and rational.</p>\n<p><strong>Wants:</strong> neighborhood control over the relay, proof against the corp, protection for her people, respect.</p>\n<p><strong>Offers:</strong> local routes, lookouts, fighters, stolen codes, street legitimacy.</p>\n<p><strong>Secret:</strong> covertly funds school meals, medicine, teacher stipends, and generator fuel.</p>\n<h2>Nox “Bluewire” Kade</h2>\n<p>Unstable Redline Choir enforcer. On opioids, overclocked combat ware, and too much cyber strain.</p>\n<p><strong>Wants:</strong> respect, pain relief, proof he is still useful, to stop feeling afraid, to hurt the corp before the corp hurts them.</p>\n<p><strong>Triggers:</strong> mockery, public disarmament, corp uniforms/drones, people touching his cyberware, signal pulses, withdrawal symptoms, sudden movement.</p>\n<p><strong>Important:</strong> Bluewire is not the gang. If he dies, the gang does not automatically attack.</p>\n<h2>Commander Ilan Rusk</h2>\n<p>Corporate recovery commander. Calm, professional, and legally protected.</p>\n<p><strong>Wants:</strong> recover the relay, suppress evidence, prevent visible contamination, avoid corporate blame.</p>\n<p><strong>Offers:</strong> safe passage, money, medical supplies, minor warrant erasure, temporary ceasefire.</p>\n<h2>Keet</h2>\n<p>School volunteer / witness. Young, quick-talking, frightened, and observant.</p>\n<p><strong>Offers:</strong> witness details, hidden route, clue about Mara’s school support.</p>\n<h2>Sister Luma</h2>\n<p>Clinic volunteer and spiritual counselor. Calm, perceptive, and emotionally direct.</p>\n<p><strong>Offers:</strong> emotional reads, patient trust, help calming civilians, spiritual interpretation of the breach.</p>\n<h2>Tamsin Quill</h2>\n<p>Damaged courier. Alive, barely conscious, or recently dead depending on pacing.</p>\n<p><strong>Offers:</strong> final warning, route clue, partial passphrase, contamination symptoms.</p>\n<h2>Mote Swarm</h2>\n<p>First alien pressure. Not a negotiable NPC.</p>\n<p>Use to force cooperation, evacuation, and first ascension.</p>"
+    "notes": "<h1>NPCs: GM Notes</h1>\n<h2>Dr. Sera Valez</h2>\n<p>Clinic director, community organizer, moral center. Charismatic through warmth and presence rather than threat.</p>\n<p><strong>Wants:</strong> keep patients alive, verify the signal, expose the corp if possible, prevent the clinic from becoming a battlefield.</p>\n<p><strong>Offers:</strong> medical care, information, local trust, neutral ground, access to the relay.</p>\n<p><strong>Secret:</strong> knows Mara covertly funds food and school support.</p>\n<h2>Mara “Mother Red” Vey</h2>\n<p>Leader of the Redline Choir. Charismatic, controlled, dangerous, and rational.</p>\n<p><strong>Wants:</strong> neighborhood control over the relay, proof against the corp, protection for her people, respect.</p>\n<p><strong>Offers:</strong> local routes, lookouts, fighters, stolen codes, street legitimacy.</p>\n<p><strong>Secret:</strong> covertly funds school meals, medicine, teacher stipends, and generator fuel.</p>\n<h2>Nox “Bluewire” Kade</h2>\n<p>Unstable Redline Choir enforcer. On opioids, overclocked combat ware, and too much cyber strain.</p>\n<p><strong>Wants:</strong> respect, pain relief, proof he is still useful, to stop feeling afraid, to hurt the corp before the corp hurts them.</p>\n<p><strong>Triggers:</strong> mockery, public disarmament, corp uniforms/drones, people touching his cyberware, signal pulses, withdrawal symptoms, sudden movement.</p>\n<p><strong>Important:</strong> Bluewire is not the gang. If he dies, the gang does not automatically attack.</p>\n<h2>Commander Ilan Rusk</h2>\n<p>Corporate recovery commander. Calm, professional, and legally protected.</p>\n<p><strong>Wants:</strong> recover the relay, suppress evidence, prevent visible contamination, avoid corporate blame.</p>\n<p><strong>Offers:</strong> safe passage, money, medical supplies, minor warrant erasure, temporary ceasefire.</p>\n<h2>Keet</h2>\n<p>School volunteer / witness. Young, quick-talking, frightened, and observant.</p>\n<p><strong>Offers:</strong> witness details, hidden route, clue about Mara’s school support.</p>\n<h2>Sister Luma</h2>\n<p>Clinic volunteer and spiritual counselor. Calm, perceptive, and emotionally direct.</p>\n<p><strong>Offers:</strong> emotional reads, patient trust, help calming civilians, spiritual interpretation of the breach.</p>\n<h2>Tamsin Quill</h2>\n<p>Damaged courier. Alive, barely conscious, or recently dead depending on pacing.</p>\n<p><strong>Offers:</strong> final warning, route clue, partial passphrase, contamination symptoms.</p>\n<h2>Mote Swarm</h2>\n<p>First alien pressure. Not a negotiable NPC.</p>\n<p>Use to force cooperation, evacuation, and first ascension.</p>\n<h2>Family link: Sera Valez and Mara Vey</h2>\n<p>Sera Valez and Mara “Mother Red” Vey are estranged sisters.</p>\n<p>This makes their conflict personal:</p>\n<ul>\n<li>Sera represents medicine, legitimacy, and public trust.</li>\n<li>Mara represents informal power, fear, smuggling, and neighborhood survival.</li>\n<li>Both protect the same people.</li>\n<li>Neither wants the relationship used as public leverage.</li>\n</ul>\n<p>Use this to complicate negotiations. The PCs can earn trust by respecting both sisters’ protective instincts without pretending their methods are equivalent.</p>"
   },
   {
     "name": "Signal Bleed - Bluewire Deescalation",
@@ -790,128 +945,350 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   {
     "name": "Signal Bleed - Supporting NPCs and Spies GM",
     "source_file": "handouts/25_Supporting_NPCs_and_Spies_GM.md",
-    "notes": "<h1>Supporting NPCs and Spies</h1>\n<p>These NPCs are intended as map tokens, conversation targets, suspects, witnesses, and pressure valves. They are less important than the faction heads, but they make the maps feel populated and give players people to talk to.</p>\n<h2>Mercy Twelve Clinic</h2>\n<h3>Senior Nurse Imani Cho</h3>\n<p><strong>Token name:</strong> Nurse Cho <strong>Location:</strong> A3 Reception or A5 Triage <strong>Role:</strong> clinic floor lead <strong>Use:</strong> practical guide, triage authority, patient-protection voice</p>\n<p>Hooks:</p>\n<ul>\n<li>knows which patients cannot be evacuated quickly</li>\n<li>knows Lala Mir by name from food distribution</li>\n<li>suspects recent “no-shows” are connected</li>\n<li>can authorize access to non-private clinic logs if Dr. Valez agrees</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>terrified that the relay proves the clinic unknowingly treated illegal trial subjects</li>\n</ul>\n<h3>Orderly Pax Ruun</h3>\n<p><strong>Token name:</strong> Pax Ruun <strong>Location:</strong> A6 Emergency Intake <strong>Role:</strong> nervous witness <strong>Use:</strong> emergency-bay clue source</p>\n<p>Hooks:</p>\n<ul>\n<li>saw unusual patient transfers</li>\n<li>recognizes a supposedly discharged patient from relay files</li>\n<li>knows the courier did not arrive through the official bay</li>\n<li>may panic if Corporate Recovery enters the clinic</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>deleted one minor intake note because he feared being blamed</li>\n</ul>\n<h3>Rafa Mbeki</h3>\n<p><strong>Token name:</strong> Rafa Mbeki or Clinic Security <strong>Location:</strong> A10 Records / clinic security alcove <strong>Role:</strong> clinic camera monitor <strong>Use:</strong> control-room cooperation point</p>\n<p>Hooks:</p>\n<ul>\n<li>can pull clinic camera feeds</li>\n<li>knows privacy-disabled rooms</li>\n<li>noticed missing footage near patient transfers</li>\n<li>can compare clinic doors with Redline street cameras if Switch cooperates</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>sat on some camera anomalies because reporting them would invite corporate seizure</li>\n</ul>\n<h3>Dr. Vela Myung</h3>\n<p><strong>Token name:</strong> Dr. Myung <strong>Location:</strong> A7 Trauma / A9 Recovery <strong>Role:</strong> tired trauma doctor <strong>Use:</strong> medical interpretation of exposure-trial victims</p>\n<p>Hooks:</p>\n<ul>\n<li>can identify false treatment protocols in relay files</li>\n<li>notices that some “medicine” had trial-batch codes</li>\n<li>can identify Model 3 bite trauma once shown a victim</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>once accepted corporate-donated medicine without asking enough questions</li>\n</ul>\n<h2>Redline Choir</h2>\n<h3>Vex Tan</h3>\n<p><strong>Token name:</strong> Vex Tan or Redline Runner <strong>Location:</strong> B4 Pantry / B10 Service Corridor <strong>Role:</strong> supply runner <strong>Use:</strong> aid-route witness</p>\n<p>Hooks:</p>\n<ul>\n<li>moved food and medicine through unofficial routes</li>\n<li>knows Lala’s normal route</li>\n<li>can confirm Mara ordered no shooting near the clinic</li>\n<li>can show where Redline cameras stop</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>smuggles some personal side goods; worried PCs will mistake that for the main crime</li>\n</ul>\n<h3>Juno “Switch” Hale</h3>\n<p><strong>Token name:</strong> Switch <strong>Location:</strong> B10 Back Corridor or C9 Monitoring <strong>Role:</strong> Redline camera sitter <strong>Use:</strong> surveillance witness and spy</p>\n<p>Hooks:</p>\n<ul>\n<li>has footage of Bex being dragged toward a service gap</li>\n<li>knows Redline blind spots</li>\n<li>can compare camera angles with clinic feeds</li>\n<li>saw corp biohazard containers moving before the current incident</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Spy for Corporate Recovery, by pressure.</strong></li>\n<li>Switch sold selected feed access to a corporate handler to pay medical debt / protect someone in Redline territory.</li>\n<li>Switch did not know about the second nest and did not intend to get people killed.</li>\n<li>If exposed, Switch can still become useful if offered protection or a way out.</li>\n</ul>\n<h3>Rook “Mads” Madsen</h3>\n<p><strong>Token name:</strong> Mads <strong>Location:</strong> A1 Indoor Street / A13 Service Corridor <strong>Role:</strong> Redline underling <strong>Use:</strong> suspicious muscle with useful local knowledge</p>\n<p>Hooks:</p>\n<ul>\n<li>knows Bex did not seem like a deserter</li>\n<li>can point toward service routes</li>\n<li>recognizes corp observers by posture</li>\n<li>can be talked into evacuation help if Bex’s fate is proven</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>hates Bluewire and may escalate if Bluewire is humiliated</li>\n</ul>\n<h3>Talla “Auntie’s Eyes” Vey</h3>\n<p><strong>Token name:</strong> Talla <strong>Location:</strong> B3 Commons / B4 Pantry <strong>Role:</strong> Mara loyalist and aid coordinator <strong>Use:</strong> protects Mara’s hidden soft power</p>\n<p>Hooks:</p>\n<ul>\n<li>knows who receives food and medicine</li>\n<li>knows Lala, Miri, and Sol</li>\n<li>can confirm Mara funds school meals if PCs earn trust</li>\n<li>will deny everything if asked like an accusation</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>not actually family, despite the surname; uses it because Mara saved her years ago</li>\n</ul>\n<h2>Corporate Recovery</h2>\n<h3>Lt. Varya Senn</h3>\n<p><strong>Token name:</strong> Lt. Senn <strong>Location:</strong> A1 Concourse / C1 Service Street <strong>Role:</strong> Rusk’s field second <strong>Use:</strong> tactical pressure and escalation</p>\n<p>Hooks:</p>\n<ul>\n<li>more aggressive than Rusk</li>\n<li>wants a clean seizure before crowds form</li>\n<li>can recognize Model 3 evidence as impossible if she saw old cleanup files</li>\n<li>may accept a temporary ceasefire only after proof of the second nest</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>believes witness control is ugly but necessary</li>\n</ul>\n<h3>Orlan Pike</h3>\n<p><strong>Token name:</strong> Feed Handler or Bloke #3 <strong>Location:</strong> off-map, C9 Monitoring, or D6 Control Room <strong>Role:</strong> corporate surveillance handler <strong>Use:</strong> spy, footage editor, evidence suppressor</p>\n<p>Hooks:</p>\n<ul>\n<li>edits camera footage</li>\n<li>injects false timestamps</li>\n<li>bought access from Switch</li>\n<li>can be identified by mesh/camera forensics</li>\n<li>tries to frame Redline Choir for disappearances</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Spy inside local systems for Corporate Recovery, by greed and career ambition.</strong></li>\n<li>He is the handler pressuring Switch.</li>\n<li>If exposed, Rusk may deny authorizing him, even if Rusk benefits from his work.</li>\n</ul>\n<h3>Corp Recovery Pair</h3>\n<p><strong>Token names:</strong> Corp Recovery #1, Corp Recovery #2 <strong>Location:</strong> A1, C1, or D3 <strong>Role:</strong> disciplined mooks <strong>Use:</strong> tactical and moral pressure</p>\n<p>Hooks:</p>\n<ul>\n<li>one can be dragged by a Model 3 to prove the threat is real</li>\n<li>one may break discipline to save a civilian</li>\n<li>Small Arms / Tactics can read their formation and intent</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>they were briefed on witness cleanup, not on an active second nest</li>\n</ul>\n<h3>Mara Silex</h3>\n<p><strong>Token name:</strong> Corp Medic <strong>Location:</strong> A1 / C1 / D3 <strong>Role:</strong> corporate field medic <strong>Use:</strong> uneasy corporate conscience</p>\n<p>Hooks:</p>\n<ul>\n<li>recognizes exposure-treatment batch codes</li>\n<li>can stabilize victims</li>\n<li>knows some corporate medical orders are indefensible</li>\n<li>may quietly help if civilians are at risk</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Potential Mercy Twelve informant, by conscience.</strong></li>\n<li>She has leaked fragments to Dr. Valez before, but not enough to expose herself.</li>\n<li>Can become an ally if PCs protect her from Rusk/Senn.</li>\n</ul>\n<h2>Community / civilians</h2>\n<h3>Miri and Sol</h3>\n<p><strong>Token name:</strong> Miri &amp; Sol <strong>Location:</strong> A4 Pediatric Corner or B7 Children’s Corner <strong>Role:</strong> schoolchildren witnesses <strong>Use:</strong> Auntie Red clue and missing-person emotional hook</p>\n<p>Hooks:</p>\n<ul>\n<li>overheard: “Auntie Red paid for breakfast again.”</li>\n<li>know Lala used to bring food</li>\n<li>heard “dog feet in the wall”</li>\n<li>may have seen Keet hide relay fragments or a student slate</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>adults keep telling them not to talk</li>\n</ul>\n<h3>Keet</h3>\n<p><strong>Token name:</strong> Keet <strong>Location:</strong> B6 Classroom / B7 Children’s Corner <strong>Role:</strong> child witness / student tech helper <strong>Use:</strong> route and data-leak clue</p>\n<p>Hooks:</p>\n<ul>\n<li>copied a relay fragment to a school slate</li>\n<li>saw strange service-route movement</li>\n<li>knows which children heard what</li>\n<li>can identify the first place people started avoiding</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>afraid Redline or corp will punish whoever talks</li>\n</ul>\n<h3>Sister Luma</h3>\n<p><strong>Token name:</strong> Sister Luma <strong>Location:</strong> A3 Waiting / B9 Counselor Offices <strong>Role:</strong> counselor and emotional stabilizer <strong>Use:</strong> witness trust, Bluewire/Narin connection</p>\n<p>Hooks:</p>\n<ul>\n<li>knows Narin would not leave voluntarily</li>\n<li>can calm witnesses</li>\n<li>can interpret Bluewire’s fear as trauma, not just aggression</li>\n<li>may get civilians to cooperate with evacuation</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>keeps unofficial records of undocumented residents</li>\n</ul>\n<h2>Recommended spy placement</h2>\n<p>Use at least two:</p>\n<pre>Switch → compromised by Corporate Recovery, pressured by medical debt.\nOrlan Pike → corporate surveillance handler, greedy/careerist.\nMara Silex → corporate medic leaking to Mercy Twelve by conscience.</pre>\n<p>For a shorter game, use only Switch and Pike.</p>\n<p>For a richer game, add Silex as a possible redemption/contact NPC.</p>"
+    "notes": "<h1>Supporting NPCs and Spies</h1>\n<p>These NPCs are intended as map tokens, conversation targets, suspects, witnesses, and pressure valves. They are less important than the faction heads, but they make the maps feel populated and give players people to talk to.</p>\n<h2>Mercy Twelve Clinic</h2>\n<h3>Senior Nurse Imani Cho</h3>\n<p><strong>Token name:</strong> Nurse Cho <strong>Location:</strong> A3 Reception or A5 Triage <strong>Role:</strong> clinic floor lead <strong>Use:</strong> practical guide, triage authority, patient-protection voice</p>\n<p>Hooks:</p>\n<ul>\n<li>knows which patients cannot be evacuated quickly</li>\n<li>knows Lala Mir by name from food distribution</li>\n<li>suspects recent “no-shows” are connected</li>\n<li>can authorize access to non-private clinic logs if Dr. Valez agrees</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>terrified that the relay proves the clinic unknowingly treated illegal trial subjects</li>\n</ul>\n<h3>Orderly Pax Ruun</h3>\n<p><strong>Token name:</strong> Pax Ruun <strong>Location:</strong> A6 Emergency Intake <strong>Role:</strong> nervous witness <strong>Use:</strong> emergency-bay clue source</p>\n<p>Hooks:</p>\n<ul>\n<li>saw unusual patient transfers</li>\n<li>recognizes a supposedly discharged patient from relay files</li>\n<li>knows the courier did not arrive through the official bay</li>\n<li>may panic if Corporate Recovery enters the clinic</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>deleted one minor intake note because he feared being blamed</li>\n</ul>\n<h3>Rafa Mbeki</h3>\n<p><strong>Token name:</strong> Rafa Mbeki or Clinic Security <strong>Location:</strong> A10 Records / clinic security alcove <strong>Role:</strong> clinic camera monitor <strong>Use:</strong> control-room cooperation point</p>\n<p>Hooks:</p>\n<ul>\n<li>can pull clinic camera feeds</li>\n<li>knows privacy-disabled rooms</li>\n<li>noticed missing footage near patient transfers</li>\n<li>can compare clinic doors with Redline street cameras if Switch cooperates</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>sat on some camera anomalies because reporting them would invite corporate seizure</li>\n</ul>\n<h3>Dr. Vela Myung</h3>\n<p><strong>Token name:</strong> Dr. Myung <strong>Location:</strong> A7 Trauma / A9 Recovery <strong>Role:</strong> tired trauma doctor <strong>Use:</strong> medical interpretation of exposure-trial victims</p>\n<p>Hooks:</p>\n<ul>\n<li>can identify false treatment protocols in relay files</li>\n<li>notices that some “medicine” had trial-batch codes</li>\n<li>can identify Model 3 bite trauma once shown a victim</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>once accepted corporate-donated medicine without asking enough questions</li>\n</ul>\n<h2>Redline Choir</h2>\n<h3>Vex Tan</h3>\n<p><strong>Token name:</strong> Vex Tan or Redline Runner <strong>Location:</strong> B4 Pantry / B10 Service Corridor <strong>Role:</strong> supply runner <strong>Use:</strong> aid-route witness</p>\n<p>Hooks:</p>\n<ul>\n<li>moved food and medicine through unofficial routes</li>\n<li>knows Lala’s normal route</li>\n<li>can confirm Mara ordered no shooting near the clinic</li>\n<li>can show where Redline cameras stop</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>smuggles some personal side goods; worried PCs will mistake that for the main crime</li>\n</ul>\n<h3>Juno “Switch” Hale</h3>\n<p><strong>Token name:</strong> Switch <strong>Location:</strong> B10 Back Corridor or C9 Monitoring <strong>Role:</strong> Redline camera sitter <strong>Use:</strong> surveillance witness and spy</p>\n<p>Hooks:</p>\n<ul>\n<li>has footage of Bex being dragged toward a service gap</li>\n<li>knows Redline blind spots</li>\n<li>can compare camera angles with clinic feeds</li>\n<li>saw corp biohazard containers moving before the current incident</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Spy for Corporate Recovery, by pressure.</strong></li>\n<li>Switch sold selected feed access to a corporate handler to pay medical debt / protect someone in Redline territory.</li>\n<li>Switch did not know about the second nest and did not intend to get people killed.</li>\n<li>If exposed, Switch can still become useful if offered protection or a way out.</li>\n</ul>\n<h3>Rook “Mads” Madsen</h3>\n<p><strong>Token name:</strong> Mads <strong>Location:</strong> A1 Indoor Street / A13 Service Corridor <strong>Role:</strong> Redline underling <strong>Use:</strong> suspicious muscle with useful local knowledge</p>\n<p>Hooks:</p>\n<ul>\n<li>knows Bex did not seem like a deserter</li>\n<li>can point toward service routes</li>\n<li>recognizes corp observers by posture</li>\n<li>can be talked into evacuation help if Bex’s fate is proven</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>hates Bluewire and may escalate if Bluewire is humiliated</li>\n</ul>\n<h3>Talla “Auntie’s Eyes” Vey</h3>\n<p><strong>Token name:</strong> Talla <strong>Location:</strong> B3 Commons / B4 Pantry <strong>Role:</strong> Mara loyalist and aid coordinator <strong>Use:</strong> protects Mara’s hidden soft power</p>\n<p>Hooks:</p>\n<ul>\n<li>knows who receives food and medicine</li>\n<li>knows Lala, Miri, and Sol</li>\n<li>can confirm Mara funds school meals if PCs earn trust</li>\n<li>will deny everything if asked like an accusation</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>not actually family, despite the surname; uses it because Mara saved her years ago</li>\n</ul>\n<h2>Corporate Recovery</h2>\n<h3>Lt. Varya Senn</h3>\n<p><strong>Token name:</strong> Lt. Senn <strong>Location:</strong> A1 Concourse / C1 Service Street <strong>Role:</strong> Rusk’s field second <strong>Use:</strong> tactical pressure and escalation</p>\n<p>Hooks:</p>\n<ul>\n<li>more aggressive than Rusk</li>\n<li>wants a clean seizure before crowds form</li>\n<li>can recognize Model 3 evidence as impossible if she saw old cleanup files</li>\n<li>may accept a temporary ceasefire only after proof of the second nest</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>believes witness control is ugly but necessary</li>\n</ul>\n<h3>Orlan Pike</h3>\n<p><strong>Token name:</strong> Feed Handler or Bloke #3 <strong>Location:</strong> off-map, C9 Monitoring, or D6 Control Room <strong>Role:</strong> corporate surveillance handler <strong>Use:</strong> spy, footage editor, evidence suppressor</p>\n<p>Hooks:</p>\n<ul>\n<li>edits camera footage</li>\n<li>injects false timestamps</li>\n<li>bought access from Switch</li>\n<li>can be identified by mesh/camera forensics</li>\n<li>tries to frame Redline Choir for disappearances</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Spy inside local systems for Corporate Recovery, by greed and career ambition.</strong></li>\n<li>He is the handler pressuring Switch.</li>\n<li>If exposed, Rusk may deny authorizing him, even if Rusk benefits from his work.</li>\n</ul>\n<h3>Corp Recovery Pair</h3>\n<p><strong>Token names:</strong> Corp Recovery #1, Corp Recovery #2 <strong>Location:</strong> A1, C1, or D3 <strong>Role:</strong> disciplined mooks <strong>Use:</strong> tactical and moral pressure</p>\n<p>Hooks:</p>\n<ul>\n<li>one can be dragged by a Model 3 to prove the threat is real</li>\n<li>one may break discipline to save a civilian</li>\n<li>Small Arms / Tactics can read their formation and intent</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>they were briefed on witness cleanup, not on an active second nest</li>\n</ul>\n<h3>Mara Silex</h3>\n<p><strong>Token name:</strong> Corp Medic <strong>Location:</strong> A1 / C1 / D3 <strong>Role:</strong> corporate field medic <strong>Use:</strong> uneasy corporate conscience</p>\n<p>Hooks:</p>\n<ul>\n<li>recognizes exposure-treatment batch codes</li>\n<li>can stabilize victims</li>\n<li>knows some corporate medical orders are indefensible</li>\n<li>may quietly help if civilians are at risk</li>\n</ul>\n<p>Spy status:</p>\n<ul>\n<li><strong>Potential Mercy Twelve informant, by conscience.</strong></li>\n<li>She has leaked fragments to Dr. Valez before, but not enough to expose herself.</li>\n<li>Can become an ally if PCs protect her from Rusk/Senn.</li>\n</ul>\n<h2>Community / civilians</h2>\n<h3>Miri and Sol</h3>\n<p><strong>Token name:</strong> Miri &amp; Sol <strong>Location:</strong> A4 Pediatric Corner or B7 Children’s Corner <strong>Role:</strong> schoolchildren witnesses <strong>Use:</strong> Auntie Red clue and missing-person emotional hook</p>\n<p>Hooks:</p>\n<ul>\n<li>overheard: “Auntie Red paid for breakfast again.”</li>\n<li>know Lala used to bring food</li>\n<li>heard “dog feet in the wall”</li>\n<li>may have seen Keet hide relay fragments or a student slate</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>adults keep telling them not to talk</li>\n</ul>\n<h3>Keet</h3>\n<p><strong>Token name:</strong> Keet <strong>Location:</strong> B6 Classroom / B7 Children’s Corner <strong>Role:</strong> child witness / student tech helper <strong>Use:</strong> route and data-leak clue</p>\n<p>Hooks:</p>\n<ul>\n<li>copied a relay fragment to a school slate</li>\n<li>saw strange service-route movement</li>\n<li>knows which children heard what</li>\n<li>can identify the first place people started avoiding</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>afraid Redline or corp will punish whoever talks</li>\n</ul>\n<h3>Sister Luma</h3>\n<p><strong>Token name:</strong> Sister Luma <strong>Location:</strong> A3 Waiting / B9 Counselor Offices <strong>Role:</strong> counselor and emotional stabilizer <strong>Use:</strong> witness trust, Bluewire/Narin connection</p>\n<p>Hooks:</p>\n<ul>\n<li>knows Narin would not leave voluntarily</li>\n<li>can calm witnesses</li>\n<li>can interpret Bluewire’s fear as trauma, not just aggression</li>\n<li>may get civilians to cooperate with evacuation</li>\n</ul>\n<p>Secret pressure:</p>\n<ul>\n<li>keeps unofficial records of undocumented residents</li>\n</ul>\n<h2>Recommended spy placement</h2>\n<p>Use at least two:</p>\n<pre>Switch → compromised by Corporate Recovery, pressured by medical debt.\nOrlan Pike → corporate surveillance handler, greedy/careerist.\nMara Silex → corporate medic leaking to Mercy Twelve by conscience.</pre>\n<p>For a shorter game, use only Switch and Pike.</p>\n<p>For a richer game, add Silex as a possible redemption/contact NPC.</p>\n<h2>Spy pressure on the Valez/Vey relationship</h2>\n<p>Orlan Pike can use the Sera/Mara relationship as blackmail material.</p>\n<p>Possible plays:</p>\n<ul>\n<li>leak that Mercy Twelve is “gang-compromised”</li>\n<li>imply Sera knowingly launders Redline aid</li>\n<li>suggest Mara is hiding behind her sister’s clinic</li>\n<li>pressure Switch to deliver footage proving Mara’s aid routes pass through clinic-adjacent spaces</li>\n<li>pressure Mara Silex to stop quietly helping the clinic</li>\n</ul>\n<p>This should make the spy subplot feel tied to the main social conflict, not like a disconnected side mystery.</p>"
   },
   {
     "name": "Signal Bleed - Roll20 Installation and Asset Linking",
     "source_file": "handouts/26_Roll20_Installation_and_Asset_Linking.md",
-    "notes": "<h1>Roll20 Module Installation and Asset Linking Guide</h1>\n<p>This guide describes the practical installation workflow for Signal Bleed in Roll20.</p>\n<p>The importer can create handouts and GM-only NPC character entries. Roll20 does not allow Mod/API scripts to upload local image files into your Art Library, so maps, portraits, and token images must still be uploaded through the Roll20 UI.</p>\n<p>The importer includes an asset-linking helper that can connect already-uploaded Roll20 images to matching character sheets.</p>\n<h2>1. Create or copy a Roll20 game</h2>\n<p>Create a Roll20 game using the public Hope//Punk character sheet.</p>\n<p>Recommended Journal folders:</p>\n<pre>Characters\nPregens\nNPCs\nBestiary\nHandouts\nMaps / GM Notes</pre>\n<p>Recommended pages:</p>\n<pre>Landing / Start Page\nFloor A - Clinic and Indoor Street\nFloor B - Community Support\nFloor C - Service Utility\nFloor D - Quarantine Incident\nAsset Staging</pre>\n<h2>2. Install the Roll20 importer</h2>\n<p>Open the game, then go to the Mod/API Scripts page, create a new script, and paste:</p>\n<pre>roll20/hopepunk_signal_bleed_importer.js</pre>\n<h2>3. Import handouts and NPC character entries</h2>\n<p>Run these in Roll20 chat as GM:</p>\n<pre>!hopepunk-signal-bleed --dry-run\n!hopepunk-signal-bleed --import</pre>\n<p>Import only handouts:</p>\n<pre>!hopepunk-signal-bleed --import --handouts</pre>\n<p>Import only NPCs:</p>\n<pre>!hopepunk-signal-bleed --import --npcs</pre>\n<p>Update existing imported content after a package update:</p>\n<pre>!hopepunk-signal-bleed --overwrite</pre>\n<p>NPCs and handouts are created GM-only by default.</p>\n<h2>4. Upload maps manually</h2>\n<p>Roll20 Mod/API scripts cannot upload files from your computer into the Art Library.</p>\n<p>Upload each map image through Roll20, then place it on the relevant page's Map layer.</p>\n<p>Current AI playtest maps have a baked-in visual grid, but are not mathematically aligned to Roll20's 70-pixel grid standard. For now:</p>\n<pre>Disable visible Roll20 grid.\nUse the baked-in grid visually.\nUse Dynamic Lighting / Fog of War for reveal.</pre>\n<h2>5. Upload portraits and tokens manually</h2>\n<p>Split the portrait sheets locally first:</p>\n<pre>python3 split_signal_bleed_portraits.py --dry-run\npython3 split_signal_bleed_portraits.py</pre>\n<p>Upload the resulting portraits and canonical Antithesis tokens into Roll20 through the Art Library UI.</p>\n<h2>6. Create an Asset Staging page</h2>\n<p>Create a Roll20 page named:</p>\n<pre>Asset Staging</pre>\n<p>Drag each uploaded portrait/token image onto that page.</p>\n<p>Set each placed graphic's name to the matching character name. Examples:</p>\n<pre>Dr. Sera Valez\nMara Mother Red Vey\nNox Bluewire Kade\nJuno Switch Hale\nModel 1 Juvenile\nModel 3 Juvenile</pre>\n<h2>7. Link selected assets to character sheets</h2>\n<p>On the Asset Staging page:</p>\n<p>1. Select one or more staged portrait/token graphics. 2. Run:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens --dry-run</pre>\n<p>Then run:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens</pre>\n<p>The script will:</p>\n<pre>read each selected graphic name\nfind the matching character\nset that character's avatar image\nset that graphic as the character's default token</pre>\n<p>To replace existing avatars/default tokens:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens --overwrite</pre>\n<h2>8. Token naming advice</h2>\n<p>Visible names help social play:</p>\n<pre>Dr. Valez\nMara “Mother Red”\nBluewire\nNurse Cho\nSwitch\nCorp Recovery #1\nCorp Recovery #2\nBloke #3</pre>\n<p>For hidden identities, start vague and rename later:</p>\n<pre>Bloke #3 -&gt; Orlan Pike\nRedline Sitter -&gt; Switch\nCorp Medic -&gt; Mara Silex\nDying Courier -&gt; Tamsin Quill</pre>\n<h2>9. Bestiary notes</h2>\n<p>Use canonical-looking Antithesis tokens for Model 1 and Model 3, not the AI-generated portrait panels.</p>\n<p>Suggested Bestiary folder entries:</p>\n<pre>Model 1 Juvenile\nModel 3 Juvenile</pre>\n<p>For now, create their mechanical sheets manually if you know the exact Hope//Punk sheet fields. The importer can create GM-only character entries and notes, but full mechanical sheet automation requires the exact Roll20 attribute names for NPC override, HP, movement, attacks, and special abilities.</p>\n<h2>10. Common issues</h2>\n<h3>The linker says no selected graphics</h3>\n<p>Select the staged image objects on the tabletop first, then run the command.</p>\n<h3>The linker says no matching character</h3>\n<p>Check the graphic name. It should resemble the imported character name.</p>\n<h3>The linker says ambiguous match</h3>\n<p>Rename the staged graphic more specifically, then rerun.</p>\n<h3>Avatar/default token does not visually update</h3>\n<p>Open the character sheet and check whether the avatar/default token changed. Sometimes Roll20 UI needs a refresh.</p>\n<h3>The image does not link</h3>\n<p>The selected object must be a Roll20 <code>graphic</code> object with an Art Library image source. The API cannot use arbitrary web URLs or local file paths.</p>"
+    "notes": "<h1>Roll20 Module Installation and Asset Linking Guide</h1>\n<p>This guide describes the practical installation workflow for Signal Bleed in Roll20.</p>\n<p>The importer can create handouts and GM-only NPC character entries. Roll20 does not allow Mod/API scripts to upload local image files into your Art Library, so maps, portraits, and token images must still be uploaded through the Roll20 UI.</p>\n<p>The importer includes an asset-linking helper that can connect already-uploaded Roll20 images to matching character sheets.</p>\n<h2>1. Create or copy a Roll20 game</h2>\n<p>Create a Roll20 game using the public Hope//Punk character sheet.</p>\n<p>Recommended Journal folders:</p>\n<pre>Characters\nPregens\nNPCs\nBestiary\nHandouts\nMaps / GM Notes</pre>\n<p>Recommended pages:</p>\n<pre>Landing / Start Page\nFloor A - Clinic and Indoor Street\nFloor B - Community Support\nFloor C - Service Utility\nFloor D - Quarantine Incident\nAsset Staging</pre>\n<h2>2. Install the Roll20 importer</h2>\n<p>Open the game, then go to the Mod/API Scripts page, create a new script, and paste:</p>\n<pre>roll20/hopepunk_signal_bleed_importer.js</pre>\n<h2>3. Import handouts and NPC character entries</h2>\n<p>Run these in Roll20 chat as GM:</p>\n<pre>!hopepunk-signal-bleed --dry-run\n!hopepunk-signal-bleed --import</pre>\n<p>Import only handouts:</p>\n<pre>!hopepunk-signal-bleed --import --handouts</pre>\n<p>Import only NPCs:</p>\n<pre>!hopepunk-signal-bleed --import --npcs</pre>\n<p>Update existing imported content after a package update:</p>\n<pre>!hopepunk-signal-bleed --overwrite</pre>\n<p>NPCs and handouts are created GM-only by default.</p>\n<h2>4. Upload maps manually</h2>\n<p>Roll20 Mod/API scripts cannot upload files from your computer into the Art Library.</p>\n<p>Upload each map image through Roll20, then place it on the relevant page's Map layer.</p>\n<p>Current AI playtest maps have a baked-in visual grid, but are not mathematically aligned to Roll20's 70-pixel grid standard. For now:</p>\n<pre>Disable visible Roll20 grid.\nUse the baked-in grid visually.\nUse Dynamic Lighting / Fog of War for reveal.</pre>\n<h2>5. Upload portraits and tokens manually</h2>\n<p>Split the portrait sheets locally first:</p>\n<pre>python3 split_signal_bleed_portraits.py --dry-run\npython3 split_signal_bleed_portraits.py</pre>\n<p>Upload the resulting portraits and canonical Antithesis tokens into Roll20 through the Art Library UI.</p>\n<h2>6. Create an Asset Staging page</h2>\n<p>Create a Roll20 page named:</p>\n<pre>Asset Staging</pre>\n<p>Drag each uploaded portrait/token image onto that page.</p>\n<p>Set each placed graphic's name to the matching character name. Examples:</p>\n<pre>Dr. Sera Valez\nMara Mother Red Vey\nNox Bluewire Kade\nJuno Switch Hale\nModel 1 Juvenile\nModel 3 Juvenile</pre>\n<h2>7. Link selected assets to character sheets</h2>\n<p>On the Asset Staging page:</p>\n<p>1. Select one or more staged portrait/token graphics. 2. Run:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens --dry-run</pre>\n<p>Then run:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens</pre>\n<p>The script will:</p>\n<pre>read each selected graphic name\nfind the matching character\nset that character's avatar image\nset that graphic as the character's default token</pre>\n<p>To replace existing avatars/default tokens:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens --overwrite</pre>\n<h2>8. Token naming advice</h2>\n<p>Visible names help social play:</p>\n<pre>Dr. Valez\nMara “Mother Red”\nBluewire\nNurse Cho\nSwitch\nCorp Recovery #1\nCorp Recovery #2\nBloke #3</pre>\n<p>For hidden identities, start vague and rename later:</p>\n<pre>Bloke #3 -&gt; Orlan Pike\nRedline Sitter -&gt; Switch\nCorp Medic -&gt; Mara Silex\nDying Courier -&gt; Tamsin Quill</pre>\n<h2>9. Bestiary notes</h2>\n<p>Use canonical-looking Antithesis tokens for Model 1 and Model 3, not the AI-generated portrait panels.</p>\n<p>Suggested Bestiary folder entries:</p>\n<pre>Model 1 Juvenile\nModel 3 Juvenile</pre>\n<p>For now, create their mechanical sheets manually if you know the exact Hope//Punk sheet fields. The importer can create GM-only character entries and notes, but full mechanical sheet automation requires the exact Roll20 attribute names for NPC override, HP, movement, attacks, and special abilities.</p>\n<h2>10. Common issues</h2>\n<h3>The linker says no selected graphics</h3>\n<p>Select the staged image objects on the tabletop first, then run the command.</p>\n<h3>The linker says no matching character</h3>\n<p>Check the graphic name. It should resemble the imported character name.</p>\n<h3>The linker says ambiguous match</h3>\n<p>Rename the staged graphic more specifically, then rerun.</p>\n<h3>Avatar/default token does not visually update</h3>\n<p>Open the character sheet and check whether the avatar/default token changed. Sometimes Roll20 UI needs a refresh.</p>\n<h3>The image does not link</h3>\n<p>The selected object must be a Roll20 <code>graphic</code> object with an Art Library image source. The API cannot use arbitrary web URLs or local file paths.</p>\n<h2>Portrait and token staging workflow</h2>\n<p>The repository has separate folders:</p>\n<pre>portraits/\ntokens/</pre>\n<p>Use portraits as character avatars and tokens as default map tokens.</p>\n<p>Recommended pages:</p>\n<pre>Asset Staging - Portraits\nAsset Staging - Tokens</pre>\n<p>Upload the images into Roll20 manually, then drag them onto the relevant staging page.</p>\n<p>On the portrait staging page, select all portrait graphics and run:</p>\n<pre>!hopepunk-signal-bleed --link-selected-portraits --dry-run\n!hopepunk-signal-bleed --link-selected-portraits</pre>\n<p>On the token staging page, select all token graphics and run:</p>\n<pre>!hopepunk-signal-bleed --link-selected-tokens --dry-run\n!hopepunk-signal-bleed --link-selected-tokens</pre>\n<p>If you want to replace existing avatars/default tokens:</p>\n<pre>!hopepunk-signal-bleed --link-selected-portraits --overwrite\n!hopepunk-signal-bleed --link-selected-tokens --overwrite</pre>\n<p>Combined mode is also available if you only stage one set of images and want both avatar and default token set from the same selected graphics:</p>\n<pre>!hopepunk-signal-bleed --link-selected-assets --dry-run\n!hopepunk-signal-bleed --link-selected-assets</pre>\n<p>Repository token note:</p>\n<pre>tokens/model 3 adolscent.png</pre>\n<p>is currently misspelled, but the importer aliases it to <code>Model 3 Adolescent</code>.</p>"
+  },
+  {
+    "name": "Signal Bleed - Valez Vey Family Tension GM",
+    "source_file": "handouts/27_Valez_Vey_Family_Tension_GM.md",
+    "notes": "<h1>Valez / Vey Family Tension</h1>\n<h2>Canon update</h2>\n<p>Dr. Sera Valez and Mara “Mother Red” Vey are estranged sisters.</p>\n<p>They were born Sera Valez and Mara Valez. Sera kept the family name and built a life around medicine, legitimacy, and public trust. Mara cut the family name down to <strong>Vey</strong> after prison, Redline initiation, exile, or simply because she refused to carry a respectable name while doing necessary dirty work.</p>\n<p>They look similar enough that observant PCs may notice it quickly.</p>\n<p>Do not treat this as a hidden “gotcha.” It is a pressure point, a social clue, and a way to make the neighborhood politics more personal.</p>\n<h2>Core dynamic</h2>\n<p>Sera and Mara protect the same people through incompatible methods.</p>\n<pre>Sera protects people through medicine, legitimacy, records, triage, and public moral authority.\nMara protects people through territory, fear, smuggling, favors, retaliation, and informal power.</pre>\n<p>Neither sister is entirely wrong.</p>\n<p>Neither sister wants the PCs to weaponize the relationship in public.</p>\n<h2>Public truth</h2>\n<p>Most locals know there is history between Dr. Valez and Mother Red, but not everyone knows exactly what it is.</p>\n<p>Children and old residents may speak more freely:</p>\n<pre>“Auntie Red paid for breakfast again.”\n“Don’t call her that where grown-ups hear.”\n“Why?”\n“Because she gets mad when people know she’s nice.”</pre>\n<p>“Auntie Red” is partly community slang and partly literal family residue. Mara is not everyone’s aunt, but she has acted like one often enough that children use the name.</p>\n<h2>What Sera says</h2>\n<p>Sera does not deny the relationship if directly and respectfully confronted, but she refuses gossip.</p>\n<p>Possible lines:</p>\n<blockquote>“Mara is my sister. She is also the reason half these children ate last month. She is also the reason three men came in with broken ribs. Both things are true.”</blockquote>\n<blockquote>“Do not use my family to start a war in my clinic.”</blockquote>\n<blockquote>“I heal the people who make it through my doors. Mara keeps some of them alive long enough to reach those doors. That does not make her methods clean.”</blockquote>\n<h2>What Mara says</h2>\n<p>Mara hates sounding sentimental. She deflects first.</p>\n<p>Possible lines:</p>\n<blockquote>“Sera saves people who make it through her doors. I save the ones who never get that far.”</blockquote>\n<blockquote>“She thinks I chose this. I think she chose a room with windows and called it virtue.”</blockquote>\n<blockquote>“Say ‘sister’ like it gives you leverage and I will show you what leverage is.”</blockquote>\n<h2>How to reveal it</h2>\n<p>Use any of these:</p>\n<ul>\n<li>A child calls Mara “Auntie Red.”</li>\n<li>Sera and Mara argue with the rhythm of people who have done it since childhood.</li>\n<li>Sister Luma refers to “the Valez girls” before correcting herself.</li>\n<li>Mara knows old clinic maintenance details she should not know.</li>\n<li>Sera knows Redline aid routes but pretends she does not.</li>\n<li>A family photo in a clinic back room shows two similar young women, one with Sera’s name and one with Mara’s old surname.</li>\n<li>Talla “Auntie’s Eyes” Vey uses “Vey” because Mara took her in, not because they are blood relatives.</li>\n</ul>\n<h2>How it affects negotiations</h2>\n<p>The relationship should create routes, not close them.</p>\n<h3>If PCs respect both sisters</h3>\n<ul>\n<li>Sera may ask Mara for evacuation help.</li>\n<li>Mara may order Redline to protect clinic corridors.</li>\n<li>Both may agree to keep the relay in clinic custody temporarily.</li>\n<li>Redline aid routes can become evacuation routes.</li>\n<li>The sisters can coordinate without admitting reconciliation.</li>\n</ul>\n<h3>If PCs expose the relationship mockingly</h3>\n<ul>\n<li>Mara becomes hostile.</li>\n<li>Sera shuts down personal questions.</li>\n<li>Redline underlings interpret it as an attack on Mara’s reputation.</li>\n<li>Children and civilians become less willing to talk.</li>\n</ul>\n<h3>If PCs try to blackmail either sister</h3>\n<ul>\n<li>It should backfire.</li>\n<li>The community may resent outsiders exploiting a family wound.</li>\n<li>Corporate Recovery may learn the link and use it to pressure both factions.</li>\n</ul>\n<h2>How Corporate Recovery can use it</h2>\n<p>Commander Rusk may not know the relationship at first.</p>\n<p>Orlan Pike may discover it through surveillance and try to exploit it:</p>\n<pre>Leak the relationship to make Sera look gang-compromised.\nFrame Redline aid as clinic corruption.\nSuggest Mara is using the clinic as a shield.\nPressure Sera with “your sister’s criminal network.”\nPressure Mara with “your sister’s medical license.”</pre>\n<p>This gives the spy subplot teeth.</p>\n<h2>How the hidden nest changes the relationship</h2>\n<p>Once the second nest is proven, the sisters’ conflict becomes secondary.</p>\n<p>The best scene is not a reconciliation speech. It is a tactical compromise:</p>\n<pre>Sera: “I need patients out.”\nMara: “I need your back doors open.”\nSera: “No weapons in recovery.”\nMara: “No uniforms near the children.”\nSera: “Done.”\nMara: “Done.”</pre>\n<p>They still disagree. They still move.</p>\n<h2>GM use</h2>\n<p>Use this relationship to make social scenes sharper:</p>\n<ul>\n<li>Sera can veto violence in the clinic.</li>\n<li>Mara can unlock routes, lookouts, and aid networks.</li>\n<li>Either sister can force the other to act if civilians are in danger.</li>\n<li>Corporate exploitation of the family tie can reveal the spy/handler plot.</li>\n<li>The PCs can become trusted only by proving they are not trying to own the sisters’ history.</li>\n</ul>"
+  },
+  {
+    "name": "Signal Bleed - Antithesis Escalation and Boss Options GM",
+    "source_file": "handouts/28_Antithesis_Escalation_and_Boss_Options_GM.md",
+    "notes": "<h1>Antithesis Escalation and Boss Options</h1>\n<h2>Purpose</h2>\n<p>Signal Bleed is written as a starter job, but the Antithesis threat can scale.</p>\n<p>By default, the hidden nest has produced a few juvenile Model 3s. That is enough for a tense starter scenario, especially if civilians, evacuation, bad visibility, and faction conflict are active at the same time.</p>\n<p>Some GMs may want a harder climax. The module now supports optional adolescent and adult Model 1 / Model 3 tokens for that purpose.</p>\n<h2>Player durability note</h2>\n<p>Hope//Punk characters may look fragile if judged only by HP. They are harder to kill in practice because they can be wounded twice and only die on the third wound. Each time they are wounded, they restore to full health.</p>\n<p>That means a starter group can sometimes survive more pressure than a first glance at HP suggests.</p>\n<p>Use that durability to create desperate heroic scenes, not to grind the party down with unavoidable damage.</p>\n<h2>Recommended baseline</h2>\n<p>For a starter group, use:</p>\n<pre>1–3 Juvenile Model 3s across the scenario\nModel 1s as evidence, background, or late pressure\none hidden nest hazard/objective\nmany civilians to protect</pre>\n<p>A single Juvenile Model 3 should not always fight to the death. It should try to grab biomass and escape.</p>\n<h2>Optional boss fight: Adolescent Model 3</h2>\n<p>For a stronger climax, add one Adolescent Model 3 as the hidden nest’s first major defender.</p>\n<p>Use this when:</p>\n<pre>there are 4+ PCs\nthe players are tactically competent\nthe PCs have already ascended or are about to\nthe group wants a clear boss fight\nNightCrash is available only as emergency extraction, not solution</pre>\n<p>Good placement:</p>\n<pre>C12 Hidden Maintenance Cavity\nC6 HVAC / Air Handling\nC5 Water Recycling\nD9 Service Bypass if the fight moves vertically</pre>\n<p>Boss-fight objective ideas:</p>\n<ul>\n<li>hold it off while civilians evacuate</li>\n<li>stop it from dragging Narin or another victim into the nest</li>\n<li>destroy the seed clump while it protects the nest</li>\n<li>force it into a sterilization choke point</li>\n<li>survive long enough for a newly ascended Samurai to act</li>\n</ul>\n<h2>Adult Model 3</h2>\n<p>Use an Adult Model 3 only if the GM wants a much more dangerous scenario.</p>\n<p>Good reasons:</p>\n<ul>\n<li>larger party</li>\n<li>combat-heavy table</li>\n<li>late-campaign revisit of Signal Bleed</li>\n<li>failed containment after the starter job</li>\n<li>“bad ending” escalation if the hidden nest is ignored</li>\n</ul>\n<p>For a true starter session, an Adult Model 3 should usually be foreshadowing or a timer, not the expected fight.</p>\n<p>Example:</p>\n<pre>The adult is not fully emerged.\nThe PCs must prevent it from finishing.</pre>\n<h2>Model 1 escalation</h2>\n<p>Model 1s are the clue that the second nest exists. They are also a possible timer.</p>\n<p>Use:</p>\n<pre>juvenile Model 1 evidence in relay footage\ndead Model 1 seed clump in the hidden nest\nadolescent/adult Model 1 tokens only if the nest matures or the GM wants a swarm scene</pre>\n<p>Model 1s work best as:</p>\n<ul>\n<li>motion in vents</li>\n<li>swarm pressure</li>\n<li>aerial harassment</li>\n<li>evidence that the nest is producing again</li>\n<li>a “contain this now” warning</li>\n</ul>\n<h2>Suggested scaling by group</h2>\n<h3>2–3 PCs</h3>\n<ul>\n<li>one Juvenile Model 3 at a time</li>\n<li>no adolescent unless heavily wounded or objective-based</li>\n<li>NightCrash available as evacuation safety valve</li>\n<li>focus on rescue and containment</li>\n</ul>\n<h3>4 PCs</h3>\n<ul>\n<li>one or two Juvenile Model 3s</li>\n<li>optional Adolescent Model 3 as boss</li>\n<li>civilians and faction complications active</li>\n</ul>\n<h3>5+ PCs</h3>\n<ul>\n<li>two Juvenile Model 3s plus one Adolescent Model 3</li>\n<li>or one Adolescent Model 3 with Model 1 swarm pressure</li>\n<li>multiple simultaneous objectives</li>\n</ul>\n<h2>Boss-fight design rule</h2>\n<p>Do not make the climax only “reduce HP to zero.”</p>\n<p>Better objectives:</p>\n<pre>destroy the Model 1 seed clump\nsave a victim before they are absorbed\nhold a corridor for three rounds\nrestore elevator power\nseal the vent network\nforce corp and Redline to stop shooting\nbroadcast the relay while under attack</pre>\n<h2>Token names in repository</h2>\n<p>The repository token folder includes optional escalation art using these filenames:</p>\n<pre>model 1 juvenile.png\nmodel 1 adolescent.png\nmodel 1 adult.png\nmodel 3 juvenile.png\nmodel 3 adolscent.png\nmodel 3 adult.png</pre>\n<p>Note: <code>model 3 adolscent.png</code> is misspelled in the current repository. The importer aliases that spelling so it still links. Future cleanup can rename it to:</p>\n<pre>model 3 adolescent.png</pre>\n<h2>Roll20 folder suggestion</h2>\n<p>Put these in a Journal folder named:</p>\n<pre>Bestiary</pre>\n<p>Suggested character names:</p>\n<pre>Model 1 Juvenile\nModel 1 Adolescent\nModel 1 Adult\nModel 3 Juvenile\nModel 3 Adolescent\nModel 3 Adult</pre>\n<p>The importer can create basic GM-only entries and link selected tokens. Full mechanical stat import still depends on confirming the exact Hope//Punk sheet attribute names.</p>"
   }
 ];
 
-  function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-  function list(items) { if (!items || !items.length) return '<p>—</p>'; return '<ul>' + items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
-  function normalizeName(s) { return String(s || '').toLowerCase().replace(/[“”"']/g, '').replace(/[’]/g, '').replace(/\([^)]*\)/g, ' ').replace(/[^a-z0-9]+/g, ' ').replace(/(dr|doctor|commander|cmdr|lt|lieutenant|the)/g, ' ').replace(/\s+/g, ' ').trim(); }
-  function bioForNpc(npc) { return ['<h2>'+esc(npc.name)+'</h2>','<p><strong>Role:</strong> '+esc(npc.role)+'</p>','<p><strong>Faction:</strong> '+esc(npc.faction)+'</p>','<p><strong>Attitude:</strong> '+esc(npc.attitude)+'</p>','<h3>Wants</h3>',list(npc.wants),'<h3>Offers / Useful interaction</h3>',list(npc.offers)].join(''); }
-  function gmnotesForNpc(npc) { return ['<h2>GM Notes</h2>','<p><strong>Import type:</strong> '+esc(npc.import_as || 'gm_only_character')+'</p>','<p><strong>Token note:</strong> '+esc(npc.token_note || 'Create map token manually.')+'</p>','<h3>Secrets</h3>',list(npc.secrets),'<h3>Use in Play</h3>','<p>'+esc(npc.gm_notes)+'</p>'].join(''); }
-  function findByName(type, name) { var matches = findObjs({ _type: type, name: name }); return matches && matches.length ? matches[0] : null; }
-  function allCharacters() { return findObjs({ _type: 'character' }) || []; }
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function list(items) {
+    if (!items || !items.length) return '<p>—</p>';
+    return '<ul>' + items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+  }
+
+  function normalizeName(s) {
+    return String(s || '')
+      .toLowerCase()
+      .replace(/\.png$|\.jpg$|\.jpeg$|\.webp$|\.gif$/i, '')
+      .replace(/[“”"']/g, '')
+      .replace(/[’]/g, '')
+      .replace(/\([^)]*\)/g, ' ')
+      .replace(/adolscent/g, 'adolescent')
+      .replace(/aunties/g, 'auntie s')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .replace(/\b(dr|doctor|commander|cmdr|lt|lieutenant|the|token|portrait)\b/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function bioForNpc(npc) {
+    return [
+      '<h2>' + esc(npc.name) + '</h2>',
+      '<p><strong>Role:</strong> ' + esc(npc.role) + '</p>',
+      '<p><strong>Faction:</strong> ' + esc(npc.faction) + '</p>',
+      '<p><strong>Attitude:</strong> ' + esc(npc.attitude) + '</p>',
+      '<h3>Wants</h3>',
+      list(npc.wants),
+      '<h3>Offers / Useful interaction</h3>',
+      list(npc.offers)
+    ].join('');
+  }
+
+  function gmnotesForNpc(npc) {
+    return [
+      '<h2>GM Notes</h2>',
+      '<p><strong>Import type:</strong> ' + esc(npc.import_as || 'gm_only_character') + '</p>',
+      '<p><strong>Token note:</strong> ' + esc(npc.token_note || 'Create map token manually.') + '</p>',
+      '<h3>Secrets</h3>',
+      list(npc.secrets),
+      '<h3>Use in Play</h3>',
+      '<p>' + esc(npc.gm_notes) + '</p>'
+    ].join('');
+  }
+
+  function findByName(type, name) {
+    var matches = findObjs({ _type: type, name: name });
+    return matches && matches.length ? matches[0] : null;
+  }
+
+  function allCharacters() {
+    return findObjs({ _type: 'character' }) || [];
+  }
+
+  function aliasFor(wanted) {
+    var aliases = {
+      'sera valez': 'sera valez',
+      'valez': 'sera valez',
+      'mara mother red vey': 'mara mother red vey',
+      'mother red': 'mara mother red vey',
+      'mara vey': 'mara mother red vey',
+      'mara valez': 'mara mother red vey',
+      'bluewire': 'nox bluewire kade',
+      'switch': 'juno switch hale',
+      'nightcrash': 'florence nightcrash vale',
+      'siren saint': 'siren saint',
+      'nurse cho': 'imani cho',
+      'corp medic': 'mara silex',
+      'feed handler': 'orlan pike',
+      'bloke 3': 'orlan pike',
+      'dying courier': 'tamsin quill',
+      'model 1 juvenile': 'model 1 juvenile',
+      'model one juvenile': 'model 1 juvenile',
+      'model 1 adolescent': 'model 1 adolescent',
+      'model one adolescent': 'model 1 adolescent',
+      'model 1 adult': 'model 1 adult',
+      'model one adult': 'model 1 adult',
+      'juvenile model 3': 'model 3 juvenile',
+      'model 3 juvenile': 'model 3 juvenile',
+      'model three juvenile': 'model 3 juvenile',
+      'model 3 adolscent': 'model 3 adolescent',
+      'model 3 adolescent': 'model 3 adolescent',
+      'model three adolescent': 'model 3 adolescent',
+      'model 3 adult': 'model 3 adult',
+      'model three adult': 'model 3 adult'
+    };
+    return aliases[wanted] || null;
+  }
 
   function findCharacterByLooseName(name) {
     var wanted = normalizeName(name);
     if (!wanted) return { status: 'no-name', matches: [] };
+
+    var alias = aliasFor(wanted);
+    if (alias) wanted = normalizeName(alias);
+
     var chars = allCharacters();
-    var exact = chars.filter(function (c) { return normalizeName(c.get('name')) === wanted; });
+    var exact = chars.filter(function (c) {
+      return normalizeName(c.get('name')) === wanted;
+    });
     if (exact.length === 1) return { status: 'ok', character: exact[0], matches: exact };
     if (exact.length > 1) return { status: 'ambiguous', matches: exact };
-    var contains = chars.filter(function (c) { var cn = normalizeName(c.get('name')); return cn.indexOf(wanted) !== -1 || wanted.indexOf(cn) !== -1; });
+
+    var contains = chars.filter(function (c) {
+      var cn = normalizeName(c.get('name'));
+      return cn.indexOf(wanted) !== -1 || wanted.indexOf(cn) !== -1;
+    });
     if (contains.length === 1) return { status: 'ok', character: contains[0], matches: contains };
     if (contains.length > 1) return { status: 'ambiguous', matches: contains };
-    var aliases = {
-      'dr valez':'sera valez','valez':'sera valez','mother red':'mara mother red vey','mara vey':'mara mother red vey','bluewire':'nox bluewire kade','switch':'juno switch hale','nightcrash':'florence nightcrash vale','siren saint':'siren saint','nurse cho':'imani cho','corp medic':'mara silex','feed handler':'orlan pike','bloke 3':'orlan pike','dying courier':'tamsin quill','model 1 juvenile':'model 1 juvenile','model 3 juvenile':'juvenile model 3'
-    };
-    if (aliases[wanted]) {
-      var aw = normalizeName(aliases[wanted]);
-      var am = chars.filter(function (c) { var cn=normalizeName(c.get('name')); return cn === aw || cn.indexOf(aw) !== -1 || aw.indexOf(cn) !== -1; });
-      if (am.length === 1) return { status: 'ok', character: am[0], matches: am };
-      if (am.length > 1) return { status: 'ambiguous', matches: am };
-    }
+
     return { status: 'not-found', matches: [] };
   }
 
   function createOrUpdateNpc(npc, overwrite) {
     var existing = findByName('character', npc.name);
-    if (existing && !overwrite) return { status: 'exists', name: npc.name };
+    if (existing && !overwrite) {
+      return { status: 'exists', name: npc.name };
+    }
     var character = existing || createObj('character', { name: npc.name });
-    character.set('name', npc.name); character.set('bio', bioForNpc(npc)); character.set('gmnotes', gmnotesForNpc(npc)); character.set('inplayerjournals', ''); character.set('controlledby', '');
+    character.set('name', npc.name);
+    character.set('bio', bioForNpc(npc));
+    character.set('gmnotes', gmnotesForNpc(npc));
+    character.set('inplayerjournals', '');
+    character.set('controlledby', '');
     return { status: existing ? 'updated' : 'created', name: npc.name };
   }
+
   function createOrUpdateHandout(handout, overwrite) {
     var existing = findByName('handout', handout.name);
-    if (existing && !overwrite) return { status: 'exists', name: handout.name };
+    if (existing && !overwrite) {
+      return { status: 'exists', name: handout.name };
+    }
     var obj = existing || createObj('handout', { name: handout.name });
-    obj.set('name', handout.name); obj.set('notes', handout.notes); obj.set('inplayerjournals', '');
+    obj.set('name', handout.name);
+    obj.set('notes', handout.notes);
+    obj.set('inplayerjournals', '');
     return { status: existing ? 'updated' : 'created', name: handout.name };
   }
-  function resultSummary(results) { return results.map(function (r) { return esc(r.name) + ' [' + esc(r.status) + ']'; }).join('<br>'); }
-  function selectedGraphics(msg) { if (!msg.selected || !msg.selected.length) return []; return msg.selected.map(function (s) { if (s._type !== 'graphic') return null; return getObj('graphic', s._id); }).filter(function (g) { return !!g; }); }
-  function normalizeImgsrc(src) { return String(src || '').replace(/\/max\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2').replace(/\/med\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2').replace(/\/original\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2'); }
 
-  function linkSelectedTokens(msg, overwrite, dryRun) {
+  function resultSummary(results) {
+    return results.map(function (r) {
+      return esc(r.name) + ' [' + esc(r.status) + ']';
+    }).join('<br>');
+  }
+
+  function selectedGraphics(msg) {
+    if (!msg.selected || !msg.selected.length) return [];
+    return msg.selected.map(function (s) {
+      if (s._type !== 'graphic') return null;
+      return getObj('graphic', s._id);
+    }).filter(function (g) { return !!g; });
+  }
+
+  function normalizeImgsrc(src) {
+    src = String(src || '');
+    return src.replace(/\/max\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2')
+              .replace(/\/med\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2')
+              .replace(/\/original\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2');
+  }
+
+  function setDefaultToken(character, graphic) {
+    if (typeof setDefaultTokenForCharacter === 'function') {
+      setDefaultTokenForCharacter(character, graphic);
+    } else {
+      var tokenJSON = graphic.toJSON();
+      tokenJSON.represents = character.id;
+      character.set('defaulttoken', JSON.stringify(tokenJSON));
+    }
+  }
+
+  function linkSelected(msg, mode, overwrite, dryRun) {
     var graphics = selectedGraphics(msg);
-    if (!graphics.length) { sendChat('Signal Bleed', '/w gm No selected graphics found. Select staged portrait/token graphics on the tabletop first.'); return; }
+    if (!graphics.length) {
+      sendChat('Signal Bleed', '/w gm No selected graphics found. Select staged portrait/token graphics on the tabletop first.');
+      return;
+    }
+
     var results = [];
+
     graphics.forEach(function (g) {
       var tokenName = g.get('name') || '';
       var match = findCharacterByLooseName(tokenName);
       if (match.status !== 'ok') {
-        var detail = match.status === 'ambiguous' ? ' — matches: ' + match.matches.map(function (c) { return esc(c.get('name')); }).join(', ') : '';
-        results.push('<strong>'+esc(tokenName || '(unnamed graphic)')+'</strong>: '+esc(match.status)+detail); return;
+        var detail = '';
+        if (match.status === 'ambiguous') {
+          detail = ' — matches: ' + match.matches.map(function (c) { return esc(c.get('name')); }).join(', ');
+        }
+        results.push('<strong>' + esc(tokenName || '(unnamed graphic)') + '</strong>: ' + esc(match.status) + detail);
+        return;
       }
+
       var character = match.character;
       var characterName = character.get('name');
       var imgsrc = normalizeImgsrc(g.get('imgsrc'));
-      if (!imgsrc) { results.push('<strong>'+esc(tokenName)+'</strong> → '+esc(characterName)+': no imgsrc found'); return; }
-      if (!overwrite && (character.get('avatar') || character.get('defaulttoken'))) { results.push('<strong>'+esc(tokenName)+'</strong> → '+esc(characterName)+': skipped, avatar/default token already set; use --overwrite'); return; }
-      if (!dryRun) {
-        character.set('avatar', imgsrc);
-        try {
-          if (typeof setDefaultTokenForCharacter === 'function') setDefaultTokenForCharacter(character, g);
-          else { var tokenJSON = g.toJSON(); tokenJSON.represents = character.id; character.set('defaulttoken', JSON.stringify(tokenJSON)); }
-        } catch (e) { results.push('<strong>'+esc(tokenName)+'</strong> → '+esc(characterName)+': avatar set, default token failed: '+esc(e.message || e)); return; }
+
+      if (!imgsrc) {
+        results.push('<strong>' + esc(tokenName) + '</strong> → ' + esc(characterName) + ': no imgsrc found');
+        return;
       }
-      results.push('<strong>'+esc(tokenName)+'</strong> → '+esc(characterName)+': '+(dryRun ? 'would link' : 'linked'));
+
+      var changes = [];
+      var needsAvatar = (mode === 'portrait' || mode === 'both');
+      var needsToken = (mode === 'token' || mode === 'both');
+
+      if (needsAvatar && !overwrite && character.get('avatar')) {
+        changes.push('avatar skipped existing');
+      } else if (needsAvatar) {
+        if (!dryRun) character.set('avatar', imgsrc);
+        changes.push(dryRun ? 'would set avatar' : 'avatar set');
+      }
+
+      if (needsToken && !overwrite && character.get('defaulttoken')) {
+        changes.push('default token skipped existing');
+      } else if (needsToken) {
+        if (!dryRun) {
+          try {
+            g.set('represents', character.id);
+            setDefaultToken(character, g);
+          } catch (e) {
+            results.push('<strong>' + esc(tokenName) + '</strong> → ' + esc(characterName) + ': default token failed: ' + esc(e.message || e));
+            return;
+          }
+        }
+        changes.push(dryRun ? 'would set default token' : 'default token set');
+      }
+
+      results.push('<strong>' + esc(tokenName) + '</strong> → ' + esc(characterName) + ': ' + changes.join(', '));
     });
+
     sendChat('Signal Bleed', '/w gm <strong>Asset linking results</strong><br>' + results.join('<br>'));
   }
 
   function showHelp() {
-    sendChat('Signal Bleed', '/w gm <strong>Hope//Punk Signal Bleed Importer</strong><br>'+
-      '<code>'+COMMAND+' --dry-run</code><br>'+
-      '<code>'+COMMAND+' --import</code> imports all NPCs and handouts that do not already exist<br>'+
-      '<code>'+COMMAND+' --overwrite</code> updates/replaces all NPC and handout content<br>'+
-      '<code>'+COMMAND+' --import --npcs</code> imports NPCs only<br>'+
-      '<code>'+COMMAND+' --import --handouts</code> imports handouts only<br>'+
-      '<code>'+COMMAND+' --link-selected-tokens --dry-run</code> tests linking selected staged assets<br>'+
-      '<code>'+COMMAND+' --link-selected-tokens</code> links selected staged assets to matching character sheets<br>'+
-      '<code>'+COMMAND+' --link-selected-tokens --overwrite</code> replaces existing avatars/default tokens<br><br>'+
-      '<strong>Current embedded content:</strong><br>'+NPCS.length+' NPC character entries<br>'+HANDOUTS.length+' handouts<br><br>'+ 'NPCs and handouts are GM-only by default. This script does not upload local image files.');
+    sendChat('Signal Bleed', '/w gm <strong>Hope//Punk Signal Bleed Importer</strong><br>' +
+      '<code>' + COMMAND + ' --dry-run</code><br>' +
+      '<code>' + COMMAND + ' --import</code> imports all NPCs and handouts that do not already exist<br>' +
+      '<code>' + COMMAND + ' --overwrite</code> updates/replaces all NPC and handout content<br>' +
+      '<code>' + COMMAND + ' --import --npcs</code> imports NPCs only<br>' +
+      '<code>' + COMMAND + ' --import --handouts</code> imports handouts only<br><br>' +
+      '<strong>Asset linking:</strong><br>' +
+      '<code>' + COMMAND + ' --link-selected-portraits --dry-run</code><br>' +
+      '<code>' + COMMAND + ' --link-selected-portraits</code> sets avatars from selected graphics<br>' +
+      '<code>' + COMMAND + ' --link-selected-tokens --dry-run</code><br>' +
+      '<code>' + COMMAND + ' --link-selected-tokens</code> sets default tokens from selected graphics<br>' +
+      '<code>' + COMMAND + ' --link-selected-assets</code> sets both avatar and default token from selected graphics<br>' +
+      '<code>' + COMMAND + ' --link-selected-tokens --overwrite</code> replaces existing links<br><br>' +
+      '<strong>Current embedded content:</strong><br>' +
+      NPCS.length + ' NPC character entries<br>' +
+      HANDOUTS.length + ' handouts<br><br>' +
+      'Roll20 images must be uploaded manually first, then dragged to a staging page and selected.');
   }
 
   function handle(msg) {
     if (msg.type !== 'api') return;
     if (msg.content.indexOf(COMMAND) !== 0) return;
+
     var dryRun = msg.content.indexOf('--dry-run') !== -1;
     var overwrite = msg.content.indexOf('--overwrite') !== -1;
-    if (msg.content.indexOf('--help') !== -1) { showHelp(); return; }
-    if (msg.content.indexOf('--link-selected-tokens') !== -1) { linkSelectedTokens(msg, overwrite, dryRun); return; }
+
+    if (msg.content.indexOf('--help') !== -1) {
+      showHelp();
+      return;
+    }
+
+    if (msg.content.indexOf('--link-selected-portraits') !== -1) {
+      linkSelected(msg, 'portrait', overwrite, dryRun);
+      return;
+    }
+    if (msg.content.indexOf('--link-selected-tokens') !== -1) {
+      linkSelected(msg, 'token', overwrite, dryRun);
+      return;
+    }
+    if (msg.content.indexOf('--link-selected-assets') !== -1) {
+      linkSelected(msg, 'both', overwrite, dryRun);
+      return;
+    }
+
     var doImport = msg.content.indexOf('--import') !== -1;
     var onlyNpcs = msg.content.indexOf('--npcs') !== -1;
     var onlyHandouts = msg.content.indexOf('--handouts') !== -1;
-    if (!dryRun && !doImport && !overwrite) { showHelp(); return; }
+
+    if (!dryRun && !doImport && !overwrite) {
+      showHelp();
+      return;
+    }
+
     var includeNpcs = onlyNpcs || (!onlyNpcs && !onlyHandouts);
     var includeHandouts = onlyHandouts || (!onlyNpcs && !onlyHandouts);
+
     if (dryRun) {
-      var msgParts=[];
-      if (includeNpcs) msgParts.push('<strong>NPCs:</strong> '+NPCS.length+'<br>'+NPCS.map(function(n){return esc(n.name);}).join('<br>'));
-      if (includeHandouts) msgParts.push('<strong>Handouts:</strong> '+HANDOUTS.length+'<br>'+HANDOUTS.map(function(h){return esc(h.name);}).join('<br>'));
-      sendChat('Signal Bleed', '/w gm <strong>Dry run</strong><br>'+msgParts.join('<br><br>')); return;
+      var msgParts = [];
+      if (includeNpcs) {
+        msgParts.push('<strong>NPCs:</strong> ' + NPCS.length + '<br>' +
+          NPCS.map(function (n) { return esc(n.name); }).join('<br>'));
+      }
+      if (includeHandouts) {
+        msgParts.push('<strong>Handouts:</strong> ' + HANDOUTS.length + '<br>' +
+          HANDOUTS.map(function (h) { return esc(h.name); }).join('<br>'));
+      }
+      sendChat('Signal Bleed', '/w gm <strong>Dry run</strong><br>' + msgParts.join('<br><br>'));
+      return;
     }
-    var summaries=[];
-    if (includeNpcs) summaries.push('<strong>NPCs</strong><br>'+resultSummary(NPCS.map(function(npc){ return createOrUpdateNpc(npc, overwrite); })));
-    if (includeHandouts) summaries.push('<strong>Handouts</strong><br>'+resultSummary(HANDOUTS.map(function(handout){ return createOrUpdateHandout(handout, overwrite); })));
-    sendChat('Signal Bleed', '/w gm Import complete:<br><br>'+summaries.join('<br><br>'));
+
+    var summaries = [];
+    if (includeNpcs) {
+      summaries.push('<strong>NPCs</strong><br>' + resultSummary(NPCS.map(function (npc) {
+        return createOrUpdateNpc(npc, overwrite);
+      })));
+    }
+    if (includeHandouts) {
+      summaries.push('<strong>Handouts</strong><br>' + resultSummary(HANDOUTS.map(function (handout) {
+        return createOrUpdateHandout(handout, overwrite);
+      })));
+    }
+    sendChat('Signal Bleed', '/w gm Import complete:<br><br>' + summaries.join('<br><br>'));
   }
+
   on('chat:message', handle);
+
   return { handle: handle };
 }());

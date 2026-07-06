@@ -36,3 +36,13 @@ She does not want a war with the clinic, the corp, or the PCs. She wants leverag
 Her position:
 
 > The clinic saves lives one at a time. We keep the whole block from being eaten. Do not confuse our methods with lack of morals.
+
+## Mara and Sera
+
+Mara “Mother Red” Vey and Dr. Sera Valez are estranged sisters.
+
+Mara’s hidden soft-power network is not random charity. It is partly guilt, partly territorial politics, and partly a furious refusal to let Sera be the only one who gets to save people.
+
+Redline underlings may not know all the family history, but senior locals know enough to avoid joking about it.
+
+If PCs reveal the relationship respectfully, Mara may negotiate. If they use it to humiliate her, she treats it as an attack.

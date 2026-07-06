@@ -2,7 +2,9 @@
   "metadata": {
     "title": "Signal Bleed token/NPC placement manifest",
     "status": "draft",
-    "note": "Updated for the Antithesis hidden-nest plot. Manual token placement is still recommended until page IDs, coordinates, and Roll20-hosted token images are known."
+    "note": "Portraits and tokens should be uploaded to Roll20 manually, staged as graphics, then linked with the importer commands. The repository contains matching portrait and token filenames.",
+    "token_folder": "tokens/",
+    "portrait_folder": "portraits/"
   },
   "token_groups": [
     {
@@ -338,6 +340,82 @@
           "starting_location": "with corp team",
           "visible_to_players": "delayed",
           "notes": "Corporate medic who may leak to Mercy Twelve by conscience."
+        }
+      ]
+    },
+    {
+      "group": "Repository token assets",
+      "default_attitude": "Asset mapping for Roll20 staging",
+      "tokens": [
+        {
+          "name": "Model 1 Juvenile",
+          "type": "Bestiary token",
+          "starting_map": "Bestiary",
+          "starting_location": "tokens/model 1 juvenile.png",
+          "visible_to_players": "when encountered",
+          "notes": "Canonical-looking token in repo."
+        },
+        {
+          "name": "Model 1 Adolescent",
+          "type": "Bestiary token",
+          "starting_map": "Bestiary",
+          "starting_location": "tokens/model 1 adolescent.png",
+          "visible_to_players": "optional escalation",
+          "notes": "Optional harder threat."
+        },
+        {
+          "name": "Model 1 Adult",
+          "type": "Bestiary token",
+          "starting_map": "Bestiary",
+          "starting_location": "tokens/model 1 adult.png",
+          "visible_to_players": "optional escalation",
+          "notes": "High-threat escalation."
+        },
+        {
+          "name": "Model 3 Juvenile",
+          "type": "Bestiary token",
+          "starting_map": "Bestiary",
+          "starting_location": "tokens/model 3 juvenile.png",
+          "visible_to_players": "when encountered",
+          "notes": "Default active Antithesis threat."
+        },
+        {
+          "name": "Model 3 Adolescent",
+          "type": "Bestiary token",
+          "starting_map": "Bestiary",
+          "starting_location": "tokens/model 3 adolscent.png",
+          "visible_to_players": "optional boss",
+          "notes": "Current repository filename is misspelled; importer aliases it."
+        },
+        {
+          "name": "Model 3 Adult",
+          "type": "Bestiary token",
+          "starting_map": "Bestiary",
+          "starting_location": "tokens/model 3 adult.png",
+          "visible_to_players": "optional severe escalation",
+          "notes": "Use cautiously in starter play."
+        }
+      ]
+    },
+    {
+      "group": "Valez/Vey relationship",
+      "default_attitude": "Estranged family pressure",
+      "tokens": [
+        {
+          "name": "Dr. Sera Valez",
+          "type": "Clinic director",
+          "starting_map": "A",
+          "starting_location": "A5 or A10",
+          "visible_to_players": true,
+          "notes": "Estranged sister of Mara Vey."
+        },
+        {
+          "name": "Mara Mother Red Vey",
+          "type": "Redline leader",
+          "starting_map": "A/B",
+          "starting_location": "A13/B4/B10",
+          "visible_to_players": "delayed",
+          "notes": "Born Mara Valez; estranged sister of Sera Valez."
         }
       ]
     }

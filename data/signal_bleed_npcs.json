@@ -23,9 +23,12 @@
         "Access to the relay"
       ],
       "secrets": [
-        "Knows Mara covertly supports local schools and food programs"
+        "Knows Mara covertly supports local schools and food programs",
+        "Sera and Mara “Mother Red” Vey are estranged sisters",
+        "Sera knows Mara funds food, medicine, and other community support, but hates the violence around it",
+        "Sera does not want the family link used as leverage inside her clinic"
       ],
-      "gm_notes": "If the PCs interact with her, she pushes negotiation, evacuation, and containment. She is not naive and will not hand civilians to corporate recovery.",
+      "gm_notes": "If the PCs interact with her, she pushes negotiation, evacuation, and containment. She is not naive and will not hand civilians to corporate recovery. Sera is Mara Vey’s estranged sister. She represents legitimacy and medicine, while Mara represents informal power and survival. The relationship should complicate negotiations rather than become a simple secret to expose.",
       "import_as": "gm_only_character",
       "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
     },
@@ -47,9 +50,12 @@
       ],
       "secrets": [
         "Mara covertly funds food, medicine, and school support",
-        "Mara knows Bex and Lala are missing and suspects this is not normal gang business"
+        "Mara knows Bex and Lala are missing and suspects this is not normal gang business",
+        "Mara was born Mara Valez and is Sera Valez’s estranged sister",
+        "Mara shortened/cut the family name to Vey after leaving the respectable world behind",
+        "Mara’s aid network is partly a refusal to let Sera be the only one who gets to save people"
       ],
-      "gm_notes": "Mara becomes more cooperative if PCs prove Redline people are being taken by something in the service infrastructure.",
+      "gm_notes": "Mara becomes more cooperative if PCs prove Redline people are being taken by something in the service infrastructure. Mara is Sera Valez’s estranged sister. If PCs respect that wound, it can open negotiation. If they use it to humiliate her, Redline reacts badly.",
       "import_as": "gm_only_character",
       "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
     },
@@ -650,6 +656,137 @@
       "gm_notes": "Use them to reveal Auntie Red and the missing-person trail through overheard conversation.",
       "import_as": "gm_only_character",
       "token_note": "Create map token manually; importer creates the GM-only character entry and notes."
+    },
+    {
+      "name": "Model 1 Juvenile",
+      "role": "Small flying Antithesis / nest-seeding clue",
+      "faction": "Antithesis / Bestiary",
+      "attitude": "Biological, alien, non-negotiable",
+      "wants": [
+        "Follow nest-directed behavior",
+        "Threaten civilians through speed and swarm pressure",
+        "Serve as evidence that the nest can reproduce"
+      ],
+      "offers": [
+        "Evidence of Model 1 relocation",
+        "Escalation pressure if the hidden nest matures",
+        "Aerial threat for harder scenes"
+      ],
+      "secrets": [
+        "In this module, Model 1s are the clue that the first nest’s destruction was incomplete",
+        "Dead Model 1s seeded the second hidden nest"
+      ],
+      "gm_notes": "Use the canonical Model 1 token. For the starter version, Model 1s are mostly evidence, footage, seed-clump remains, or late pressure. Full mechanical import needs confirmed Hope//Punk sheet attribute names.",
+      "token_note": "Use tokens/model 1 juvenile.png from the repository."
+    },
+    {
+      "name": "Model 1 Adolescent",
+      "role": "Optional stronger Model 1 escalation",
+      "faction": "Antithesis / Bestiary",
+      "attitude": "Biological, alien, escalating",
+      "wants": [
+        "Increase pressure if the nest matures",
+        "Harass from the air",
+        "Force urgent containment"
+      ],
+      "offers": [
+        "Harder aerial threat",
+        "Evidence that containment is failing",
+        "Optional difficulty ramp"
+      ],
+      "secrets": [
+        "Should usually appear only if the GM wants a harder scenario or delayed containment consequences"
+      ],
+      "gm_notes": "Optional escalation token. Do not use by default in a one-shot starter unless the table wants a much harder fight.",
+      "token_note": "Use tokens/model 1 adolescent.png from the repository."
+    },
+    {
+      "name": "Model 1 Adult",
+      "role": "High-threat Model 1 escalation",
+      "faction": "Antithesis / Bestiary",
+      "attitude": "Biological, alien, severe",
+      "wants": [
+        "Represent a failed-containment escalation",
+        "Create aerial crisis pressure",
+        "Punish major delay or bad-ending outcomes"
+      ],
+      "offers": [
+        "Late-campaign escalation",
+        "Hard-mode variant",
+        "Visible proof the nest matured beyond starter scale"
+      ],
+      "secrets": [
+        "Not recommended for a normal starter-session fight"
+      ],
+      "gm_notes": "Use only for a much harder version, a later campaign revisit, or if the nest is allowed to grow unchecked.",
+      "token_note": "Use tokens/model 1 adult.png from the repository."
+    },
+    {
+      "name": "Model 3 Juvenile",
+      "role": "Dog-like Antithesis biomass hunter",
+      "faction": "Antithesis / Bestiary",
+      "attitude": "Predatory, cautious, nest-directed",
+      "wants": [
+        "Find biomass",
+        "Disable or kill prey",
+        "Drag prey back to the hidden nest",
+        "Avoid unnecessary fights with strong groups"
+      ],
+      "offers": [
+        "Tracks to the hidden nest if followed",
+        "Proof that a new nest exists",
+        "A rescue opportunity if it is dragging a victim"
+      ],
+      "secrets": [
+        "Only a few exist at first",
+        "They are produced by the second hidden nest",
+        "They are not random monsters; they are biomass collectors"
+      ],
+      "gm_notes": "Use sparingly before the reveal. Its jaws split into three parts. Its first full encounter should involve a victim being dragged away, teaching the PCs what the hidden nest is doing. Full mechanical import needs confirmed Hope//Punk sheet attribute names.",
+      "token_note": "Use tokens/model 3 juvenile.png from the repository."
+    },
+    {
+      "name": "Model 3 Adolescent",
+      "role": "Optional boss-level Model 3 biomass hunter",
+      "faction": "Antithesis / Bestiary",
+      "attitude": "Predatory, stronger, nest-defending",
+      "wants": [
+        "Defend the hidden nest",
+        "Drag biomass to the nest",
+        "Force PCs to choose between fighting and rescue"
+      ],
+      "offers": [
+        "Boss-fight pressure",
+        "Harder climax for larger groups",
+        "Clear sign that the nest is maturing"
+      ],
+      "secrets": [
+        "Should be optional in a starter job",
+        "Works best as one major defender rather than a random extra monster"
+      ],
+      "gm_notes": "Optional boss fight for 4+ PCs or tactically strong groups. It should defend the hidden nest or try to drag a named victim away while the PCs handle objectives.",
+      "token_note": "Use tokens/model 3 adolscent.png from the repository; current filename is misspelled but supported by aliases."
+    },
+    {
+      "name": "Model 3 Adult",
+      "role": "High-threat Model 3 escalation",
+      "faction": "Antithesis / Bestiary",
+      "attitude": "Predatory, severe, campaign-scale",
+      "wants": [
+        "Represent major containment failure",
+        "Overwhelm unprepared defenders",
+        "Force evacuation or desperate containment"
+      ],
+      "offers": [
+        "Hard-mode climax",
+        "Later-campaign threat",
+        "Bad-ending escalation"
+      ],
+      "secrets": [
+        "Usually too much for a normal starter job unless used as an unfinished emergence or timer"
+      ],
+      "gm_notes": "Use very cautiously in starter play. Better as a threat that is not fully emerged yet: stop it before it finishes forming.",
+      "token_note": "Use tokens/model 3 adult.png from the repository."
     }
   ]
 }

@@ -78,3 +78,20 @@ Overwrite existing avatars/default tokens:
 ```
 
 Roll20 Mod/API scripts cannot upload local PNG files into your Art Library. The helper only links images that are already present in Roll20 as selected graphics.
+
+## Portrait/token asset linking
+
+Upload portraits and tokens to Roll20 manually, drag them onto staging pages, select them, then run:
+
+```text
+!hopepunk-signal-bleed --link-selected-portraits --dry-run
+!hopepunk-signal-bleed --link-selected-portraits
+!hopepunk-signal-bleed --link-selected-tokens --dry-run
+!hopepunk-signal-bleed --link-selected-tokens
+```
+
+Portraits set character avatars. Tokens set default tokens. Combined mode:
+
+```text
+!hopepunk-signal-bleed --link-selected-assets
+```
