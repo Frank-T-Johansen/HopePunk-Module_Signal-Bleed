@@ -765,7 +765,7 @@
         "Works best as one major defender rather than a random extra monster"
       ],
       "gm_notes": "Optional boss fight for 4+ PCs or tactically strong groups. It should defend the hidden nest or try to drag a named victim away while the PCs handle objectives.",
-      "token_note": "Use tokens/model 3 adolscent.png from the repository; current filename is misspelled but supported by aliases."
+      "token_note": "Use tokens/model 3 adolescent.png from the repository."
     },
     {
       "name": "Model 3 Adult",

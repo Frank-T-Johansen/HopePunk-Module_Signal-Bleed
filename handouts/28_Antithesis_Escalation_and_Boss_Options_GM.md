@@ -147,11 +147,11 @@ model 1 juvenile.png
 model 1 adolescent.png
 model 1 adult.png
 model 3 juvenile.png
-model 3 adolscent.png
+model 3 adolescent.png
 model 3 adult.png
 ```
 
-Note: `model 3 adolscent.png` is misspelled in the current repository. The importer aliases that spelling so it still links. Future cleanup can rename it to:
+Note: `model 3 adolescent.png` is misspelled in the current repository. The importer aliases that spelling so it still links. Future cleanup can rename it to:
 
 ```text
 model 3 adolescent.png
