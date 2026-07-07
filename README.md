@@ -158,3 +158,36 @@ Use the Roll20 installation guide:
 ```text
 handouts/26_Roll20_Installation_and_Asset_Linking.md
 ```
+
+## Roll20 setup
+
+Start with:
+
+```text
+ROLL20_IMPORT_GUIDE.md
+```
+
+That file covers the steps required before the in-game Roll20 installation handout exists.
+
+After importing, continue from the Roll20 handout:
+
+```text
+Signal Bleed - Roll20 Installation and Asset Linking
+```
+
+The source file for the full in-game guide is:
+
+```text
+handouts/26_Roll20_Installation_and_Asset_Linking.md
+```
+
+## Map scaling utility
+
+The package includes a helper script for preparing larger Roll20 map files and optional transparent grid overlays:
+
+```bash
+python3 tools/scale_signal_bleed_maps.py --scale 3
+python3 tools/scale_signal_bleed_maps.py --scale 3 --grid-overlay
+```
+
+The output is written to `maps_scaled/`.

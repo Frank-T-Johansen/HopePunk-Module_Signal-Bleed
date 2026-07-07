@@ -1,121 +1,146 @@
 # Roll20 Import Guide: Signal Bleed
 
-Use this script:
+This file covers only the first setup steps needed before the full Roll20 installation handout exists inside your game.
+
+After you import the module, continue from the imported Roll20 handout:
+
+```text
+Signal Bleed - Roll20 Installation and Asset Linking
+```
+
+The source file for that full guide is:
+
+```text
+handouts/26_Roll20_Installation_and_Asset_Linking.md
+```
+
+## 1. Get the module files locally
+
+Before setting up Roll20, download the repository/package and extract it into a local folder.
+
+### Option A: Download the GitHub ZIP on Windows
+
+1. Open the GitHub repository page.
+2. Click **Code**.
+3. Click **Download ZIP**.
+4. In File Explorer, right-click the downloaded ZIP file.
+5. Choose **Extract All...**
+6. Accept the suggested output folder, or change it to a simpler location.
+
+After extraction, open folders until you see this structure:
+
+```text
+README.md
+ROLL20_IMPORT_GUIDE.md
+data/
+handouts/
+maps/
+portraits/
+roll20/
+tokens/
+tools/
+```
+
+That folder is the module root.
+
+Windows may create a nested folder such as:
+
+```text
+Downloads\HopePunk-Module_Signal-Bleed-main\HopePunk-Module_Signal-Bleed-main\
+```
+
+That is fine. The correct folder is the one that directly contains:
+
+```text
+maps/
+portraits/
+tokens/
+roll20/
+```
+
+### Option B: Clone with Git
+
+If you are comfortable using Git:
+
+```bash
+git clone https://github.com/Frank-T-Johansen/HopePunk-Module_Signal-Bleed.git
+cd HopePunk-Module_Signal-Bleed
+```
+
+## 2. Create or open a Roll20 game
+
+Create or open a Roll20 game using the public Hope//Punk character sheet.
+
+Use the default Roll20 `Start` page as the landing/start page.
+
+You do not need to upload maps, portraits, or tokens before installing the importer. The importer cannot upload images anyway; those steps are covered in the full installation handout after import.
+
+## 3. Install the importer script
+
+In your local module folder, open:
 
 ```text
 roll20/hopepunk_signal_bleed_importer.js
 ```
 
-The Roll20 chat command is:
+In Roll20:
+
+1. Open the game.
+2. Open **Game Settings / Mod Scripts / API Scripts**.
+3. Create a new script.
+4. Paste the entire contents of `roll20/hopepunk_signal_bleed_importer.js`.
+5. Save the script.
+
+If you are testing an updated package, replace the entire old script with the new one and save.
+
+## 4. Import the module handouts and NPCs
+
+In Roll20 chat, run:
 
 ```text
-!hopepunk-signal-bleed
+!hopepunk-signal-bleed --dry-run
 ```
 
-## Before importing
-
-Create or open a Roll20 game using the public **Hope//Punk** character sheet template.
-
-In Roll20 game settings, the selected character sheet should be:
+If the dry run looks reasonable, run:
 
 ```text
-Hope//Punk
+!hopepunk-signal-bleed --import
 ```
 
-Do this before running the importer.
+If you are refreshing an existing test game after updating the script, run:
 
-## Commands
+```text
+!hopepunk-signal-bleed --overwrite
+```
+
+## 5. Continue from the imported handout
+
+After the import finishes, open this Roll20 handout:
+
+```text
+Signal Bleed - Roll20 Installation and Asset Linking
+```
+
+Continue there for:
+
+```text
+creating/configuring pages
+uploading maps from maps/
+uploading portraits from portraits/
+uploading tokens from tokens/
+creating Asset Staging pages
+linking portraits and tokens
+organizing Journal folders
+troubleshooting
+```
+
+## Quick command reference
 
 ```text
 !hopepunk-signal-bleed --help
 !hopepunk-signal-bleed --dry-run
 !hopepunk-signal-bleed --import
 !hopepunk-signal-bleed --overwrite
-!hopepunk-signal-bleed --import --npcs
 !hopepunk-signal-bleed --import --handouts
-!hopepunk-signal-bleed --overwrite --npcs
-!hopepunk-signal-bleed --overwrite --handouts
-```
-
-NPCs are created GM-only.
-
-Handouts are created GM-only by default. Review them, then manually share the player-facing handouts with players.
-
-Suggested player-facing handouts:
-
-```text
-Signal Bleed - Player Start Here
-Signal Bleed - Player Hooks
-```
-
-Keep the GM overview, NPC notes, Bluewire de-escalation notes, and scene outline hidden from players.
-
-## Asset linking helper
-
-The importer can link already-uploaded Roll20 images to character sheets.
-
-Workflow:
-
-```text
-1. Upload split portraits/tokens to Roll20 manually.
-2. Create a page named Asset Staging.
-3. Drag the uploaded assets onto that page.
-4. Rename each placed graphic to match the character.
-5. Select the staged graphics.
-6. Run: !hopepunk-signal-bleed --link-selected-tokens
-```
-
-Dry-run first:
-
-```text
-!hopepunk-signal-bleed --link-selected-tokens --dry-run
-```
-
-Overwrite existing avatars/default tokens:
-
-```text
-!hopepunk-signal-bleed --link-selected-tokens --overwrite
-```
-
-Roll20 Mod/API scripts cannot upload local PNG files into your Art Library. The helper only links images that are already present in Roll20 as selected graphics.
-
-## Portrait/token asset linking
-
-Upload portraits and tokens to Roll20 manually, drag them onto staging pages, select them, then run:
-
-```text
-!hopepunk-signal-bleed --link-selected-portraits --dry-run
-!hopepunk-signal-bleed --link-selected-portraits
-!hopepunk-signal-bleed --link-selected-tokens --dry-run
-!hopepunk-signal-bleed --link-selected-tokens
-```
-
-Portraits set character avatars. Tokens set default tokens. Combined mode:
-
-```text
-!hopepunk-signal-bleed --link-selected-assets
-```
-
-
-## Current recommended installation order
-
-Use the detailed guide in:
-
-```text
-handouts/26_Roll20_Installation_and_Asset_Linking.md
-```
-
-The GM should not normally run `split_signal_bleed_portraits.py`; the repository already contains split portrait files in `portraits/`.
-
-Recommended order:
-
-```text
-1. Create Roll20 pages.
-2. Upload and place maps.
-3. Upload portraits and tokens, then stage them on Asset Staging pages.
-4. Install the importer script.
-5. Run !hopepunk-signal-bleed --import.
-6. Link portraits with !hopepunk-signal-bleed --link-selected-portraits.
-7. Link tokens with !hopepunk-signal-bleed --link-selected-tokens.
-8. Manually organize Journal folders.
+!hopepunk-signal-bleed --import --npcs
 ```
