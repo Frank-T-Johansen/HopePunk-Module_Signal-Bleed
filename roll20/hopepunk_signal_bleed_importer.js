@@ -9,6 +9,8 @@
 //   !hopepunk-signal-bleed --npcs
 //   !hopepunk-signal-bleed --handouts
 //   !hopepunk-signal-bleed --name-selected
+//   !hopepunk-signal-bleed --name-selected --asset-order
+//   !hopepunk-signal-bleed --name-selected --asset-order --reverse
 //   !hopepunk-signal-bleed --link-selected-portraits
 //   !hopepunk-signal-bleed --link-selected-tokens
 //   !hopepunk-signal-bleed --link-selected-assets
@@ -1304,6 +1306,9 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       '<code>' + COMMAND + ' --name-selected --dry-run</code> previews naming selected staged graphics<br>' +
       '<code>' + COMMAND + ' --name-selected</code> names selected staged graphics in top-to-bottom, left-to-right NPC roster order<br>' +
       '<code>' + COMMAND + ' --name-selected --start 5</code> starts naming at NPC roster slot 5<br>' +
+      '<code>' + COMMAND + ' --name-selected --asset-order --dry-run</code> names by GitHub filename/alphabetical asset order<br>' +
+      '<code>' + COMMAND + ' --name-selected --asset-order --reverse --dry-run</code> names by reversed Uploaded Assets order<br>' +
+      '<code>' + COMMAND + ' --name-selected --asset-order --start 9</code> starts at asset-order slot 9<br>' +
       '<code>' + COMMAND + ' --link-selected-portraits</code> sets avatars from selected graphics<br>' +
       '<code>' + COMMAND + ' --link-selected-tokens --dry-run</code><br>' +
       '<code>' + COMMAND + ' --link-selected-tokens</code> sets one-cell 70×70 default tokens from selected graphics<br>' +
@@ -1318,6 +1323,40 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       'Roll20 images must be uploaded manually first, then dragged to a staging page and selected.');
   }
 
+
+  var ASSET_FILE_ORDER = [
+    "Bex Aranda",
+    "Commander Ilan Rusk",
+    "Dr. Sera Valez",
+    "Dr. Vela Myung",
+    "Florence “NightCrash” Vale",
+    "Gurney Angels",
+    "Halden Rook",
+    "Juno “Switch” Hale",
+    "Keet",
+    "Laleh “Lala” Mir",
+    "Lt. Varya Senn",
+    "Mara “Mother Red” Vey",
+    "Mara Silex",
+    "Miri and Sol",
+    "Model 1 Adolescent",
+    "Model 1 Adult",
+    "Model 1 Juvenile",
+    "Model 3 Adolescent",
+    "Model 3 Adult",
+    "Model 3 Juvenile",
+    "Narin Pell",
+    "Nox “Bluewire” Kade",
+    "Orlan Pike",
+    "Oskar Venn",
+    "Rafa Mbeki",
+    "Rook “Mads” Madsen",
+    "Sister Luma",
+    "Talla “Auntie’s Eyes” Vey",
+    "Tamsin Quill",
+    "The Siren Saint",
+    "Vex Tan"
+  ];
 
   function graphicSort(a, b) {
     var ay = Number(a.get('top')) || 0;
@@ -1336,20 +1375,28 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     var startMatch = String(msg.content || '').match(/--start\s+(\d+)/);
     var start = startMatch ? Math.max(1, parseInt(startMatch[1], 10)) : 1;
 
-    var lines = [];
+    var useAssetOrder = String(msg.content || '').indexOf('--asset-order') !== -1;
+    var reverseOrder = String(msg.content || '').indexOf('--reverse') !== -1;
+    var roster = useAssetOrder ? ASSET_FILE_ORDER.slice(0) : NPCS.map(function (n) { return n.name; });
+    if (reverseOrder) {
+      roster.reverse();
+    }
+    var rosterLabel = (useAssetOrder ? 'asset filename order' : 'NPC roster order') + (reverseOrder ? ' reversed' : '');
+
+    var lines = ['Naming by <b>' + esc(rosterLabel) + '</b>.'];
     graphics.forEach(function (g, i) {
       var rosterIndex = start - 1 + i;
-      var npc = NPCS[rosterIndex];
+      var name = roster[rosterIndex];
 
-      if (!npc) {
-        lines.push('No NPC roster entry for selected graphic #' + (i + 1) + ' at roster slot ' + (rosterIndex + 1));
+      if (!name) {
+        lines.push('No roster entry for selected graphic #' + (i + 1) + ' at roster slot ' + (rosterIndex + 1));
         return;
       }
 
-      lines.push((dryRun ? 'Would name ' : 'Named ') + esc(g.get('name') || '(unnamed graphic)') + ' → <b>' + esc(npc.name) + '</b>');
+      lines.push((dryRun ? 'Would name ' : 'Named ') + esc(g.get('name') || '(unnamed graphic)') + ' → <b>' + esc(name) + '</b>');
 
       if (!dryRun) {
-        g.set('name', npc.name);
+        g.set('name', name);
       }
     });
 
