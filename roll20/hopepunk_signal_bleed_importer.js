@@ -1160,6 +1160,64 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
               .replace(/\/original\.(jpg|jpeg|png|gif|webp)(\?[^?]*)?$/i, '/thumb.$1$2');
   }
 
+  function parseTokenSize(content) {
+    var m = String(content || '').match(/--token-size\s+(\d+)/);
+    if (!m) return 70;
+    var n = parseInt(m[1], 10);
+    if (!isFinite(n) || n < 20 || n > 560) return 70;
+    return n;
+  }
+
+  function shouldKeepTokenSize(content) {
+    return String(content || '').indexOf('--keep-token-size') !== -1;
+  }
+
+  function createNormalizedDefaultToken(sourceGraphic, character, tokenSize) {
+    var pageid = sourceGraphic.get('_pageid') || sourceGraphic.get('pageid');
+    var layer = sourceGraphic.get('layer') || 'objects';
+    var left = Number(sourceGraphic.get('left')) || 70;
+    var top = Number(sourceGraphic.get('top')) || 70;
+
+    return createObj('graphic', {
+      _pageid: pageid,
+      pageid: pageid,
+      layer: layer,
+      imgsrc: normalizeImgsrc(sourceGraphic.get('imgsrc')),
+      name: character.get('name'),
+      represents: character.id,
+      left: left,
+      top: top,
+      width: tokenSize,
+      height: tokenSize,
+      rotation: 0,
+      isdrawing: false,
+      showname: sourceGraphic.get('showname') || false,
+      showplayers_name: sourceGraphic.get('showplayers_name') || false
+    });
+  }
+
+  function setDefaultToken(character, graphic, tokenSize, keepTokenSize) {
+    var tokenForDefault = graphic;
+
+    graphic.set('represents', character.id);
+
+    if (!keepTokenSize) {
+      tokenForDefault = createNormalizedDefaultToken(graphic, character, tokenSize);
+    }
+
+    if (typeof setDefaultTokenForCharacter === 'function') {
+      setDefaultTokenForCharacter(character, tokenForDefault);
+    } else {
+      var tokenJSON = tokenForDefault.toJSON();
+      tokenJSON.represents = character.id;
+      character.set('defaulttoken', JSON.stringify(tokenJSON));
+    }
+
+    if (!keepTokenSize) {
+      tokenForDefault.remove();
+    }
+  }
+
   function setDefaultToken(character, graphic) {
     if (typeof setDefaultTokenForCharacter === 'function') {
       setDefaultTokenForCharacter(character, graphic);
@@ -1178,6 +1236,8 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     }
 
     var results = [];
+    var tokenSize = parseTokenSize(msg.content);
+    var keepTokenSize = shouldKeepTokenSize(msg.content);
 
     graphics.forEach(function (g) {
       var tokenName = g.get('name') || '';
@@ -1216,8 +1276,7 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       } else if (needsToken) {
         if (!dryRun) {
           try {
-            g.set('represents', character.id);
-            setDefaultToken(character, g);
+            setDefaultToken(character, g, tokenSize, keepTokenSize);
           } catch (e) {
             results.push('<strong>' + esc(tokenName) + '</strong> → ' + esc(characterName) + ': default token failed: ' + esc(e.message || e));
             return;
@@ -1243,7 +1302,10 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       '<code>' + COMMAND + ' --link-selected-portraits --dry-run</code><br>' +
       '<code>' + COMMAND + ' --link-selected-portraits</code> sets avatars from selected graphics<br>' +
       '<code>' + COMMAND + ' --link-selected-tokens --dry-run</code><br>' +
-      '<code>' + COMMAND + ' --link-selected-tokens</code> sets default tokens from selected graphics<br>' +
+      '<code>' + COMMAND + ' --link-selected-tokens</code> sets one-cell 70×70 default tokens from selected graphics<br>' +
+      '<code>' + COMMAND + ' --link-selected-tokens --overwrite --token-size 70</code> relinks one-cell default tokens<br>' +
+      '<code>' + COMMAND + ' --link-selected-tokens --overwrite --token-size 140</code> relinks two-cell default tokens<br>' +
+      '<code>--keep-token-size</code> preserves staged token dimensions instead of normalizing<br>' +
       '<code>' + COMMAND + ' --link-selected-assets</code> sets both avatar and default token from selected graphics<br>' +
       '<code>' + COMMAND + ' --link-selected-tokens --overwrite</code> replaces existing links<br><br>' +
       '<strong>Current embedded content:</strong><br>' +
