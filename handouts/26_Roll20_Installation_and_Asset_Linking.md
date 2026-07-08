@@ -145,10 +145,12 @@ In pixels, that map size is approximately:
 
 That corresponds to scaling the 1086 × 1448 PNGs by 3×.
 
-If you prefer to prepare scaled files before uploading, use the utility script:
+If you prefer to prepare scaled files before uploading, use the utility script.
+
+Recommended command for large maps that should stay reasonably light for older laptops:
 
 ```bash
-python3 tools/scale_signal_bleed_maps.py --scale 3
+python3 tools/scale_signal_bleed_maps.py --scale 3 --format jpg --quality 88
 ```
 
 This writes scaled files into:
@@ -160,13 +162,21 @@ maps_scaled/
 If you want transparent grid overlays too:
 
 ```bash
-python3 tools/scale_signal_bleed_maps.py --scale 3 --grid-overlay
+python3 tools/scale_signal_bleed_maps.py --scale 3 --format jpg --quality 88 --grid-overlay
 ```
 
 If you want a grid baked directly into a copy of the map:
 
 ```bash
-python3 tools/scale_signal_bleed_maps.py --scale 3 --combined-grid
+python3 tools/scale_signal_bleed_maps.py --scale 3 --format jpg --quality 88 --combined-grid
+```
+
+Recommended format split:
+
+```text
+Scaled full-color maps: JPG
+Transparent grid overlays: PNG
+Tokens and portraits: PNG
 ```
 
 ### Placing each map

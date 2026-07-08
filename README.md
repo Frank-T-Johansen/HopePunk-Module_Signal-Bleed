@@ -183,11 +183,26 @@ handouts/26_Roll20_Installation_and_Asset_Linking.md
 
 ## Map scaling utility
 
-The package includes a helper script for preparing larger Roll20 map files and optional transparent grid overlays:
+The package includes a helper script for preparing larger Roll20 map files and optional transparent grid overlays.
+
+Recommended for old or slower laptops:
 
 ```bash
-python3 tools/scale_signal_bleed_maps.py --scale 3
-python3 tools/scale_signal_bleed_maps.py --scale 3 --grid-overlay
+python3 tools/scale_signal_bleed_maps.py --scale 3 --format jpg --quality 88
+```
+
+With transparent grid overlays too:
+
+```bash
+python3 tools/scale_signal_bleed_maps.py --scale 3 --format jpg --quality 88 --grid-overlay
 ```
 
 The output is written to `maps_scaled/`.
+
+Recommended format split:
+
+```text
+Scaled full-color maps: JPG
+Transparent grid overlays: PNG
+Tokens and portraits: PNG
+```

@@ -125,7 +125,8 @@ Continue there for:
 
 ```text
 creating/configuring pages
-uploading maps from maps/
+preparing scaled JPG map files from maps/ if desired
+uploading maps from maps/ or maps_scaled/
 uploading portraits from portraits/
 uploading tokens from tokens/
 creating Asset Staging pages
