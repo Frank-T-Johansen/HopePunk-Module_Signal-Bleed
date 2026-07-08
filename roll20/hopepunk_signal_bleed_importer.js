@@ -1364,6 +1364,11 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     var dryRun = msg.content.indexOf('--dry-run') !== -1;
     var overwrite = msg.content.indexOf('--overwrite') !== -1;
 
+    if (msg.content.indexOf('--name-selected') !== -1) {
+      nameSelectedGraphics(msg, dryRun);
+      return;
+    }
+
     if (msg.content.indexOf('--help') !== -1) {
       showHelp();
       return;
