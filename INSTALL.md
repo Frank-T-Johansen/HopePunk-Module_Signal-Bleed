@@ -2,6 +2,32 @@
 
 This guide imports the Signal Bleed module into Roll20 and links NPC portraits and default tokens.
 
+## Before you start
+
+Download or clone the repository locally.
+
+### Option A: Download ZIP
+
+1. Open the GitHub repository page.
+2. Click **Code**.
+3. Click **Download ZIP**.
+4. Extract the ZIP file.
+5. Open folders until you find the module root.
+
+The module root is the folder that directly contains:
+
+```text
+data/
+handouts/
+maps/
+portraits/
+roll20/
+tokens/
+tools/
+README.md
+INSTALL.md
+```
+
 ## Current canonical script
 
 Use one Signal Bleed script in Roll20:
