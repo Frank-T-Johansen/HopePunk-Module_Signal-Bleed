@@ -14,6 +14,7 @@
 //   !hopepunk-signal-bleed --link-selected-portraits
 //   !hopepunk-signal-bleed --link-selected-tokens
 //   !hopepunk-signal-bleed --link-selected-assets
+//   !hopepunk-signal-bleed --gm-labels floor-a
 //
 // Notes:
 // - Imports NPCs as GM-only character entries.
@@ -1320,7 +1321,13 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       '<strong>Current embedded content:</strong><br>' +
       NPCS.length + ' NPC character entries<br>' +
       HANDOUTS.length + ' handouts<br><br>' +
-      'Roll20 images must be uploaded manually first, then dragged to a staging page and selected.');
+      '<br><strong>GM layer labels:</strong><br>' +
+      '<code>' + COMMAND + ' --gm-labels floor-a --dry-run</code> previews Floor A GM labels; select the map graphic first<br>' +
+      '<code>' + COMMAND + ' --gm-labels floor-a</code> creates Floor A GM-layer labels<br>' +
+      '<code>' + COMMAND + ' --gm-labels floor-b</code>, <code>floor-c</code>, <code>floor-d</code> create labels for other floors<br>' +
+      '<code>' + COMMAND + ' --clear-gm-labels floor-a --dry-run</code> previews removing generated Floor A labels<br>' +
+      '<code>' + COMMAND + ' --clear-gm-labels floor-a</code> removes generated Floor A labels<br><br>' +
+            'Roll20 images must be uploaded manually first, then dragged to a staging page and selected.');
   }
 
 
@@ -1404,6 +1411,181 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   }
 
 
+
+  var GM_LABELS = {
+    'floor-a': {
+      name: 'Floor A',
+      prefix: 'A',
+      labels: [
+        { id: 'A1',  x: 0.50, y: 0.08, note: 'Main street / public frontage' },
+        { id: 'A2',  x: 0.16, y: 0.25, note: 'Ambulance bay / emergency access' },
+        { id: 'A3',  x: 0.44, y: 0.24, note: 'Surgical / treatment room' },
+        { id: 'A4',  x: 0.68, y: 0.25, note: 'Recovery ward' },
+        { id: 'A5',  x: 0.22, y: 0.45, note: 'Office / records' },
+        { id: 'A6',  x: 0.17, y: 0.66, note: 'Staff lounge / break room' },
+        { id: 'A7',  x: 0.48, y: 0.55, note: 'Central reception / waiting hall' },
+        { id: 'A8',  x: 0.42, y: 0.76, note: 'Curved front desk' },
+        { id: 'A9',  x: 0.39, y: 0.62, note: 'Elevator / lift core' },
+        { id: 'A10', x: 0.54, y: 0.74, note: 'Stairwell' },
+        { id: 'A11', x: 0.72, y: 0.63, note: 'Patient rooms' },
+        { id: 'A12', x: 0.51, y: 0.92, note: 'South entrance / street access' },
+        { id: 'A13', x: 0.87, y: 0.55, note: 'East exterior walkway' }
+      ]
+    },
+    'floor-b': {
+      name: 'Floor B',
+      prefix: 'B',
+      labels: [
+        { id: 'B1',  x: 0.50, y: 0.08, note: 'Upper exterior walkway / public edge' },
+        { id: 'B2',  x: 0.20, y: 0.22, note: 'Left clinical lab / procedure space' },
+        { id: 'B3',  x: 0.48, y: 0.19, note: 'Server / equipment room' },
+        { id: 'B4',  x: 0.62, y: 0.25, note: 'Small office / checkpoint' },
+        { id: 'B5',  x: 0.82, y: 0.20, note: 'VTOL / drone landing pad' },
+        { id: 'B6',  x: 0.45, y: 0.46, note: 'Central corridor junction' },
+        { id: 'B7',  x: 0.72, y: 0.42, note: 'Support rooms' },
+        { id: 'B8',  x: 0.73, y: 0.62, note: 'Biohazard isolation pods' },
+        { id: 'B9',  x: 0.38, y: 0.64, note: 'Elevator / lift core' },
+        { id: 'B10', x: 0.52, y: 0.71, note: 'Stairwell' },
+        { id: 'B11', x: 0.50, y: 0.92, note: 'Lower exterior street / entrance' },
+        { id: 'B12', x: 0.20, y: 0.72, note: 'Staff room / small office' }
+      ]
+    },
+    'floor-c': {
+      name: 'Floor C',
+      prefix: 'C',
+      labels: [
+        { id: 'C1',  x: 0.18, y: 0.15, note: 'Upper-left machinery room' },
+        { id: 'C2',  x: 0.41, y: 0.15, note: 'Utility tanks / pipes' },
+        { id: 'C3',  x: 0.64, y: 0.15, note: 'Power / filtration room' },
+        { id: 'C4',  x: 0.18, y: 0.35, note: 'Storage racks / crates' },
+        { id: 'C5',  x: 0.24, y: 0.50, note: 'Workshop / maintenance' },
+        { id: 'C6',  x: 0.50, y: 0.44, note: 'Central service corridor' },
+        { id: 'C7',  x: 0.45, y: 0.59, note: 'Elevator / lift core' },
+        { id: 'C8',  x: 0.60, y: 0.58, note: 'Stairwell' },
+        { id: 'C9',  x: 0.72, y: 0.42, note: 'Right-side control room / office' },
+        { id: 'C10', x: 0.20, y: 0.77, note: 'Heavy machinery' },
+        { id: 'C11', x: 0.50, y: 0.78, note: 'Lower-middle service room' },
+        { id: 'C12', x: 0.72, y: 0.80, note: 'Lower-right quarantine / utility chamber' }
+      ]
+    },
+    'floor-d': {
+      name: 'Floor D',
+      prefix: 'D',
+      labels: [
+        { id: 'D1',  x: 0.50, y: 0.08, note: 'Top public walkway / exterior frontage' },
+        { id: 'D2',  x: 0.18, y: 0.26, note: 'Upper-left storage / back office' },
+        { id: 'D3',  x: 0.43, y: 0.23, note: 'Upper-middle workroom / lab' },
+        { id: 'D4',  x: 0.70, y: 0.24, note: 'Classroom / dorm-like room' },
+        { id: 'D5',  x: 0.86, y: 0.16, note: 'VTOL / drone pad' },
+        { id: 'D6',  x: 0.45, y: 0.47, note: 'Central open hall' },
+        { id: 'D7',  x: 0.49, y: 0.56, note: 'Central planter / cover point' },
+        { id: 'D8',  x: 0.38, y: 0.64, note: 'Elevator / lift core' },
+        { id: 'D9',  x: 0.55, y: 0.69, note: 'Stairwell' },
+        { id: 'D10', x: 0.72, y: 0.59, note: 'Right-side patient rooms' },
+        { id: 'D11', x: 0.20, y: 0.72, note: 'Lower-left lounge / common room' },
+        { id: 'D12', x: 0.71, y: 0.76, note: 'Lower-right treatment / recovery rooms' },
+        { id: 'D13', x: 0.50, y: 0.92, note: 'South exterior entrance' }
+      ]
+    }
+  };
+
+  function gmLabelKeyForPage(pageid, floorKey) {
+    return 'SB-GM-' + floorKey + '-';
+  }
+
+  function selectedMapGraphic(msg) {
+    var graphics = selectedGraphics(msg);
+    if (!graphics.length) return null;
+    return graphics[0];
+  }
+
+  function labelPositionOnMap(mapGraphic, point) {
+    var left = Number(mapGraphic.get('left')) || 0;
+    var top = Number(mapGraphic.get('top')) || 0;
+    var width = Number(mapGraphic.get('width')) || 0;
+    var height = Number(mapGraphic.get('height')) || 0;
+
+    return {
+      x: left - (width / 2) + (width * point.x),
+      y: top - (height / 2) + (height * point.y)
+    };
+  }
+
+  function createGmLabels(msg, floorKey, dryRun) {
+    var def = GM_LABELS[floorKey];
+    if (!def) {
+      sendChat('Signal Bleed', '/w gm Unknown floor for GM labels: <code>' + esc(floorKey || '') + '</code>. Use floor-a, floor-b, floor-c, or floor-d.');
+      return;
+    }
+
+    var mapGraphic = selectedMapGraphic(msg);
+    if (!mapGraphic) {
+      sendChat('Signal Bleed', '/w gm Select the map image on the MAP layer, then run <code>' + COMMAND + ' --gm-labels ' + esc(floorKey) + '</code>.');
+      return;
+    }
+
+    var pageid = mapGraphic.get('_pageid') || mapGraphic.get('pageid');
+    var lines = [];
+    lines.push((dryRun ? 'Would create ' : 'Created ') + def.labels.length + ' GM-layer labels for <b>' + esc(def.name) + '</b>.');
+
+    def.labels.forEach(function (p) {
+      var pos = labelPositionOnMap(mapGraphic, p);
+      lines.push('<b>[' + esc(p.id) + ']</b> at x=' + Math.round(pos.x) + ', y=' + Math.round(pos.y) + ' — ' + esc(p.note));
+
+      if (!dryRun) {
+        createObj('text', {
+          _pageid: pageid,
+          pageid: pageid,
+          layer: 'gmlayer',
+          left: pos.x,
+          top: pos.y,
+          text: '[' + p.id + ']',
+          font_size: 18,
+          color: '#00FFFF',
+          rotation: 0
+        });
+      }
+    });
+
+    sendChat('Signal Bleed', '/w gm ' + lines.join('<br>'));
+  }
+
+  function clearGmLabels(msg, floorKey, dryRun) {
+    var def = GM_LABELS[floorKey];
+    if (!def) {
+      sendChat('Signal Bleed', '/w gm Unknown floor for GM labels: <code>' + esc(floorKey || '') + '</code>. Use floor-a, floor-b, floor-c, or floor-d.');
+      return;
+    }
+
+    var mapGraphic = selectedMapGraphic(msg);
+    if (!mapGraphic) {
+      sendChat('Signal Bleed', '/w gm Select any graphic on the target page, preferably the map image, then run <code>' + COMMAND + ' --clear-gm-labels ' + esc(floorKey) + '</code>.');
+      return;
+    }
+
+    var pageid = mapGraphic.get('_pageid') || mapGraphic.get('pageid');
+    var wanted = {};
+    def.labels.forEach(function (p) { wanted['[' + p.id + ']'] = true; });
+
+    var textObjs = findObjs({ _type: 'text', _pageid: pageid, layer: 'gmlayer' }) || [];
+    var matches = textObjs.filter(function (t) {
+      return wanted[t.get('text') || ''];
+    });
+
+    if (!dryRun) {
+      matches.forEach(function (t) { t.remove(); });
+    }
+
+    sendChat('Signal Bleed', '/w gm ' + (dryRun ? 'Would remove ' : 'Removed ') + matches.length + ' GM labels for <b>' + esc(def.name) + '</b>.');
+  }
+
+  function gmLabelFloorFromContent(content, flag) {
+    var re = new RegExp(flag + '\\s+(floor-[a-d])');
+    var m = String(content || '').match(re);
+    return m ? m[1] : '';
+  }
+
+
   function handle(msg) {
     if (msg.type !== 'api') return;
     if (msg.content.indexOf(COMMAND) !== 0) return;
@@ -1413,6 +1595,16 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
 
     if (msg.content.indexOf('--name-selected') !== -1) {
       nameSelectedGraphics(msg, dryRun);
+      return;
+    }
+
+    if (msg.content.indexOf('--gm-labels') !== -1) {
+      createGmLabels(msg, gmLabelFloorFromContent(msg.content, '--gm-labels'), dryRun);
+      return;
+    }
+
+    if (msg.content.indexOf('--clear-gm-labels') !== -1) {
+      clearGmLabels(msg, gmLabelFloorFromContent(msg.content, '--clear-gm-labels'), dryRun);
       return;
     }
 
