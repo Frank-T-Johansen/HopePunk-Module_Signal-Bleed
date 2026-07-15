@@ -1324,6 +1324,8 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       '<br><strong>GM layer labels:</strong><br>' +
       '<code>' + COMMAND + ' --gm-labels floor-a --dry-run</code> previews Floor A GM labels; select the map graphic first<br>' +
       '<code>' + COMMAND + ' --gm-labels floor-a</code> creates Floor A GM-layer labels<br>' +
+      '<code>' + COMMAND + ' --gm-labels floor-a --label-size 56 --label-color yellow</code> creates larger yellow labels<br>' +
+      '<code>--outline-color black</code> changes label outline color; <code>--no-outline</code> disables outline<br>' +
       '<code>' + COMMAND + ' --gm-labels floor-b</code>, <code>floor-c</code>, <code>floor-d</code> create labels for other floors<br>' +
       '<code>' + COMMAND + ' --clear-gm-labels floor-a --dry-run</code> previews removing generated Floor A labels<br>' +
       '<code>' + COMMAND + ' --clear-gm-labels floor-a</code> removes generated Floor A labels<br><br>' +
@@ -1410,6 +1412,41 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
     sendChat('Signal Bleed', '/w gm ' + lines.join('<br>'));
   }
 
+
+
+
+  function parseOptionInt(content, flag, defaultValue, minValue, maxValue) {
+    var re = new RegExp(flag + '\\s+(\\d+)');
+    var m = String(content || '').match(re);
+    if (!m) return defaultValue;
+    var n = parseInt(m[1], 10);
+    if (!isFinite(n)) return defaultValue;
+    if (typeof minValue === 'number' && n < minValue) return defaultValue;
+    if (typeof maxValue === 'number' && n > maxValue) return defaultValue;
+    return n;
+  }
+
+  function parseOptionColor(content, flag, defaultValue) {
+    var re = new RegExp(flag + '\\s+(#[0-9A-Fa-f]{6}|[A-Za-z]+)');
+    var m = String(content || '').match(re);
+    if (!m) return defaultValue;
+    var c = m[1].toLowerCase();
+    var named = {
+      yellow: '#FFFF00',
+      white: '#FFFFFF',
+      black: '#000000',
+      cyan: '#00FFFF',
+      magenta: '#FF00FF',
+      red: '#FF3333',
+      green: '#33FF66',
+      blue: '#3399FF'
+    };
+    return named[c] || m[1];
+  }
+
+  function wantsNoOutline(content) {
+    return String(content || '').indexOf('--no-outline') !== -1;
+  }
 
 
   var GM_LABELS = {
@@ -1526,22 +1563,53 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
 
     var pageid = mapGraphic.get('_pageid') || mapGraphic.get('pageid');
     var lines = [];
-    lines.push((dryRun ? 'Would create ' : 'Created ') + def.labels.length + ' GM-layer labels for <b>' + esc(def.name) + '</b>.');
+    lines.push((dryRun ? 'Would create ' : 'Created ') + def.labels.length + ' GM-layer labels for <b>' + esc(def.name) + '</b>.' + (dryRun ? ' Default style: white 44px text with black outline.' : ''));
 
     def.labels.forEach(function (p) {
       var pos = labelPositionOnMap(mapGraphic, p);
       lines.push('<b>[' + esc(p.id) + ']</b> at x=' + Math.round(pos.x) + ', y=' + Math.round(pos.y) + ' — ' + esc(p.note));
 
       if (!dryRun) {
+        var labelText = '[' + p.id + ']';
+        var size = parseOptionInt(msg.content, '--label-size', 44, 18, 96);
+        var color = parseOptionColor(msg.content, '--label-color', '#FFFFFF');
+        var outlineColor = parseOptionColor(msg.content, '--outline-color', '#000000');
+        var outlineOffset = Math.max(2, Math.round(size / 14));
+
+        if (!wantsNoOutline(msg.content)) {
+          [
+            [-outlineOffset, -outlineOffset],
+            [0, -outlineOffset],
+            [outlineOffset, -outlineOffset],
+            [-outlineOffset, 0],
+            [outlineOffset, 0],
+            [-outlineOffset, outlineOffset],
+            [0, outlineOffset],
+            [outlineOffset, outlineOffset]
+          ].forEach(function (off) {
+            createObj('text', {
+              _pageid: pageid,
+              pageid: pageid,
+              layer: 'gmlayer',
+              left: pos.x + off[0],
+              top: pos.y + off[1],
+              text: labelText,
+              font_size: size,
+              color: outlineColor,
+              rotation: 0
+            });
+          });
+        }
+
         createObj('text', {
           _pageid: pageid,
           pageid: pageid,
           layer: 'gmlayer',
           left: pos.x,
           top: pos.y,
-          text: '[' + p.id + ']',
-          font_size: 18,
-          color: '#00FFFF',
+          text: labelText,
+          font_size: size,
+          color: color,
           rotation: 0
         });
       }
