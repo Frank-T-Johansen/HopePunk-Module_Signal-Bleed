@@ -1734,12 +1734,75 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   }
 
 
+
+  function characterByIdForSelectedToken(id) {
+    if (!id) return null;
+    var ch = getObj('character', id);
+    return ch || null;
+  }
+
+  function normalizeSelectedPlacedTokens(msg, dryRun) {
+    var tokenSize = parseTokenSize(msg.content);
+    var graphics = selectedGraphics(msg);
+
+    if (!graphics.length) {
+      sendChat('Signal Bleed', '/w gm Select one or more already-placed NPC tokens first, then run <code>' + COMMAND + ' --normalize-selected-tokens --dry-run</code>.');
+      return;
+    }
+
+    var lines = [];
+    lines.push((dryRun ? 'Would normalize ' : 'Normalized ') + graphics.length + ' selected placed token(s) to <b>' + tokenSize + '×' + tokenSize + ' px</b>.');
+    lines.push("This uses the selected token artwork itself and the token's existing Represents Character value. It does not use staging-page order or names.");
+
+    graphics.forEach(function (g) {
+      var rep = g.get('represents');
+      var ch = characterByIdForSelectedToken(rep);
+      var nm = g.get('name') || '(unnamed token)';
+      var detail = esc(nm);
+
+      if (ch) {
+        detail += ' → ' + esc(ch.get('name'));
+      } else {
+        detail += ' → no represented character';
+      }
+
+      lines.push(detail);
+
+      if (!dryRun) {
+        g.set('width', tokenSize);
+        g.set('height', tokenSize);
+
+        if (ch && typeof setDefaultTokenForCharacter === 'function') {
+          setDefaultTokenForCharacter(ch, g);
+        } else if (ch) {
+          try {
+            var tokenJSON = g.toJSON();
+            tokenJSON.width = tokenSize;
+            tokenJSON.height = tokenSize;
+            tokenJSON.represents = ch.id;
+            ch.set('defaulttoken', JSON.stringify(tokenJSON));
+          } catch (e) {
+            // keep resizing the placed token even if default token setting fails
+          }
+        }
+      }
+    });
+
+    sendChat('Signal Bleed', '/w gm ' + lines.join('<br>'));
+  }
+
+
   function handle(msg) {
     if (msg.type !== 'api') return;
     if (msg.content.indexOf(COMMAND) !== 0) return;
 
     var dryRun = msg.content.indexOf('--dry-run') !== -1;
     var overwrite = msg.content.indexOf('--overwrite') !== -1;
+
+    if (msg.content.indexOf('--normalize-selected-tokens') !== -1) {
+      normalizeSelectedPlacedTokens(msg, dryRun);
+      return;
+    }
 
     if (msg.content.indexOf('--normalize-default-token-size') !== -1) {
       normalizeNpcDefaultTokenSizes(msg, dryRun);
