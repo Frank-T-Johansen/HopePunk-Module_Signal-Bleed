@@ -1,6 +1,8 @@
-# Map B — Community Support, Shelter, and School Annex Key
+# Map B — Repurposed Recovery & Support Ward Key
 
 Use this floor to make the civilian stakes concrete. It is where the PCs can discover why the clinic matters and why Mara protects the neighborhood in ways that do not look like ordinary gang activity.
+
+Floor B was built as a clinical overflow/recovery ward and later repurposed into Mercy Twelve’s mixed support level. It still looks medical because it is medical: short-stay beds, monitoring stations, sealed pods, staff offices, and emergency access all remain in use. The “community support” function is layered on top of that infrastructure.
 
 ## How to use these checks
 
@@ -13,235 +15,156 @@ Recommended clue handling:
 - **High success:** give a shortcut, future advantage, or a way to reduce danger.
 - **Failure:** do not stall the scenario; give the clue with less detail, extra time cost, noise, or complication.
 
-## B1. Indoor Street / Neighborhood Walkway
+## B1. Upper Public / Service Walkway
 
-**Read-aloud:**
+**Read-aloud:** The upper walkway looks public enough to be harmless, but every planter, bench, and kiosk has been positioned by people who have learned to watch exits.
 
-This indoor street is less clinical and more lived-in: food smells, tired families, cheap kiosks, planters, and people using the megacomplex like a neighborhood square.
-
-**GM notes:**
-
-This is a place for non-faction civilians, rumor gathering, and public consequences.
+**GM notes:** Use this for public approach, watchers, and visible pressure from corp or Redline observers.
 
 **Interaction prompts:**
 
 - **Streetwise:** Identify who is Redline Choir, who is clinic-adjacent, and who is just surviving.
-- **Performance:** Spread a calming message or draw attention away from frightened kids.
+- **Performance:** Spread a calming message or draw attention away from frightened families.
 - **Awareness:** Spot a watcher using a storefront reflection.
 - **Gambler / Social read:** Notice who is bluffing about being uninvolved.
 
 **Useful information:**
 
 - The neighborhood is watching what the PCs do.
-- People here fear both the corp and uncontrolled gang violence.
+- People here fear both corporate force and uncontrolled gang violence.
 
-## B2. Public Entrance / Welcome Desk
+## B2. Procedure / Extended-Care Room
 
-**Read-aloud:**
+**Read-aloud:** Treatment beds and procedure equipment fill a room that was never meant to be comforting, but someone has added bright blankets, taped-up drawings, and a cracked speaker playing quiet music.
 
-A desk patched from three different furniture sets guards the entrance. It is covered with sign-in slates, donated stickers, and a hand sanitizer dispenser that wheezes.
-
-**GM notes:**
-
-Staff here are easier to talk to than gang underlings. They know practical things.
+**GM notes:** This is not a normal waiting area. Use it for active treatment, short procedures, stabilization, or evidence that the clinic is overloaded.
 
 **Interaction prompts:**
 
-- **Persuasion:** Get a volunteer to tell the PCs who has been asking about the relay.
-- **Medicine:** Notice staff are doing informal triage for more than illness: hunger, panic, shock.
-- **Investigation:** Find a sign-in gap that matches the courier’s arrival time.
-- **Student Dropout:** Recognize the school program is better organized than expected.
+- **Medicine:** Notice patients are being treated for illness, cyberware stress, hunger, panic, and injuries.
+- **Investigation:** Find a treatment gap that matches the courier’s arrival time.
+- **Empathy:** Calm a patient who saw something but does not know how to describe it.
+- **Corporate Security:** Recognize which patients would be targeted or deprioritized in a formal raid.
 
 **Useful information:**
 
-- Keet may be found or referenced here.
-- The support center is partly funded through unofficial channels.
+- Mercy Twelve is handling more than ordinary clinic intake.
+- Some patients are too vulnerable to move quickly if evacuation begins.
 
-## B3. Community Commons
+## B3. Medical Records / Monitoring Equipment
 
-**Read-aloud:**
+**Read-aloud:** Server racks, monitoring panels, and stacked diagnostic stations hum behind locked panels. It feels less like an office and more like the floor’s nervous system.
 
-The open commons is a patchwork of tables, planters, old couches, public terminals, charging points, and murals bright enough to feel defiant.
-
-**GM notes:**
-
-This is a good social scene space. It can become an evacuation staging area.
+**GM notes:** Use this for door logs, patient movement records, camera constraints, and medical-monitor data.
 
 **Interaction prompts:**
 
-- **Performance:** Calm or organize a crowd.
-- **Leadership / Tactics:** Set up evacuation lanes and crowd control.
-- **Empathy:** Recognize who is scared of the gang and who trusts them.
-- **Piss-Poor Artist:** Interpret mural tags showing who contributed supplies.
+- **Mesh Hacker:** Pull partial logs without tripping privacy locks.
+- **Investigation:** Correlate patient movement, service access, and missing-person timings.
+- **Medicine:** Read monitor trends that show something biological is wrong.
+- **Awareness:** Notice one feed has been deliberately routed around a blind spot.
 
 **Useful information:**
 
-- The community is not passive.
-- People may help if asked respectfully and given specific tasks.
+- The floor keeps better records than it admits.
+- Several missing-person clues point toward service routes and vertical access.
 
-## B4. Pantry / Aid Distribution
+## B4. Staff Intake / Interview Office
 
-**Read-aloud:**
+**Read-aloud:** A small office has been repurposed again and again: intake forms, counselling notes, staff mugs, aid ledgers, and a half-hidden cot all compete for space.
 
-Shelves of ration packs, meal crates, electrolyte bottles, school snacks, and medicine-adjacent supplies are stacked behind a half-height counter.
-
-**GM notes:**
-
-One of the best places to discover Mara’s covert support.
+**GM notes:** One of the best places to discover Mara’s covert support without making the whole map look like a food pantry.
 
 **Interaction prompts:**
 
-- **Investigation:** Find delivery tags routed through Redline Choir cutouts.
-- **Streetwise:** Recognize smuggling marks used for food rather than weapons.
-- **Medicine:** Identify supplies bought for chronic illness and malnutrition.
-- **Corporate Security:** Notice the inventory has been anonymized to avoid seizure.
-
-**Useful information:**
-
-- Mara funds food and medicine.
-- The aid program could be shut down if publicly exposed or seized.
-
-## B5. Communal Kitchen / Cafeteria
-
-**Read-aloud:**
-
-A narrow kitchen opens into a simple eating area. The equipment is old but clean, and everything smells of rice, soup base, and recycled heat.
-
-**GM notes:**
-
-Good place for warm human interactions and overheard clues.
-
-**Interaction prompts:**
-
-- **Cooking / Survival / Scavenger:** Notice how efficiently scarce supplies are stretched.
-- **Social / Empathy:** Get a kitchen volunteer to open up while helping.
-- **Grease Monkey:** Keep the failing heater or food printer running.
-- **Small Arms:** Notice a gang guard has unloaded their weapon before entering.
-
-**Useful information:**
-
-- The gang respects this space more than they admit.
-- A volunteer saw Bluewire shaking earlier.
-
-## B6. Classroom / Workshop
-
-**Read-aloud:**
-
-Rows of desks share space with toolkits, cheap tablets, broken drone parts, and a board covered in diagrams that mix homework with survival math.
-
-**GM notes:**
-
-This can spotlight Student Dropout, Grease Monkey, Mesh Hacker, Artist, or Rocker backgrounds.
-
-**Interaction prompts:**
-
-- **Teaching / Student Dropout:** Connect with students and get honest information.
-- **Grease Monkey:** Recognize student-built sensor boxes tracking signal pulses.
-- **Mesh Hacker:** Access a student mesh node that saw the courier pass.
-- **Performance:** Turn fear into focus with a song, joke, or story.
-
-**Useful information:**
-
-- Kids detected signal anomalies before adults did.
-- Keet may have saved a local copy of useful data.
-
-## B7. Children’s Corner / Daycare
-
-**Read-aloud:**
-
-Foam mats, soft seats, battered toys, and bright murals try very hard to pretend the megacomplex is gentle.
-
-**GM notes:**
-
-Use this to humanize stakes, not to threaten children cheaply.
-
-**Interaction prompts:**
-
-- **Empathy:** Learn what a child saw without frightening them.
-- **Performance:** Distract children during evacuation.
-- **Awareness:** Spot that a toy drone is recording more than playtime.
-- **Religious / Comfort:** Help a frightened family without preaching at them.
-
-**Useful information:**
-
-- Children call Mara 'Auntie Red' if they trust the PCs.
-- They noticed Bluewire was 'sick-mad' before adults acted.
-
-## B8. Shelter Dorm
-
-**Read-aloud:**
-
-Bunks and fold-out beds line the room. Bags are tucked beneath them with the careful order of people who cannot afford to lose anything.
-
-**GM notes:**
-
-Good for evacuation complications and moral weight.
-
-**Interaction prompts:**
-
-- **Medicine:** Identify who cannot be moved quickly.
-- **Athletics:** Carry supplies or help people move without panic.
-- **Streetwise:** Spot which beds belong to people avoiding gang or corp attention.
-- **Investigation:** Find a hidden witness who does not trust official questions.
-
-**Useful information:**
-
-- Some residents saw corp scouts before tonight.
-- The shelter depends on unofficial protection.
-
-## B9. Counselor / Caseworker Offices
-
-**Read-aloud:**
-
-Tiny offices hold privacy screens, old chairs, therapy toys, hardcopy forms, and emergency contact lists that are almost certainly illegal to keep.
-
-**GM notes:**
-
-This area supports psychology and social investigation.
-
-**Interaction prompts:**
-
-- **Psychology:** Understand Bluewire’s behavior from prior incident notes.
-- **Investigation:** Find patterns in people harmed by the same corporation.
-- **Persuasion:** Earn enough trust to see sensitive records.
+- **Investigation:** Find delivery or payment notes routed through Redline Choir cutouts.
+- **Streetwise:** Recognize smuggling marks used for food and medicine rather than weapons.
+- **Persuasion:** Earn enough trust to see sensitive support records.
 - **Corporate Security:** Know which records would be targeted in a raid.
 
 **Useful information:**
 
-- Bluewire has been treated here before.
-- Dr. Valez and Mara have both kept people alive through unofficial channels.
+- Mara funds food, medicine, staff support, or recovery capacity.
+- The aid program could be shut down if publicly exposed or seized.
 
-## B10. Back Service Corridor
+## B5. VTOL / Emergency Landing Pad
 
-**Read-aloud:**
+**Read-aloud:** The landing pad is clean, bright, and too exposed. Whoever arrives here does not intend to blend in.
 
-A narrow corridor behind the public rooms carries carts, laundry, food crates, and people who do not want to be seen entering from the front.
-
-**GM notes:**
-
-Use for stealth, secret deliveries, and chase routes.
+**GM notes:** Use for emergency extraction, corporate arrival, NightCrash intervention, or a visible escalation beat.
 
 **Interaction prompts:**
 
-- **Stealth:** Move unseen between support rooms.
-- **Bounty Hunter / Tracking:** Follow courier or gang movement traces.
-- **Blades:** Notice scrape marks from a concealed knife fight that did not become public.
-- **Scavenger:** Find a useful shortcut through old service panels.
+- **Piloting:** Judge whether an emergency landing or evacuation is feasible.
+- **Tactics:** Predict where armed responders would enter.
+- **Awareness:** Spot a drone or craft before it lands.
+- **Bounty Hunter:** Identify a professional entry pattern.
 
 **Useful information:**
 
-- Redline Choir supply deliveries use this route.
-- It can become an evacuation bypass.
+- This is the floor’s fastest external access point.
+- It can save lives or bring danger straight into the ward.
 
-## B11. Elevator Core
+## B6. Central Support Corridor
 
-**Read-aloud:**
+**Read-aloud:** The central corridor carries everything: carts, stretchers, worried families, staff with no time to explain, and people who clearly know which doors not to open.
 
-The lift doors are scuffed by carts, beds, and crates. Someone has taped a child’s drawing above the call panel.
+**GM notes:** This replaces the old “community commons” function. It is the floor’s active social and movement space.
 
-**GM notes:**
+**Interaction prompts:**
 
-Accessible vertical travel. Also a panic bottleneck.
+- **Leadership / Tactics:** Set up evacuation lanes and crowd control.
+- **Empathy:** Recognize who is scared of the gang and who trusts them.
+- **Bounty Hunter / Tracking:** Follow courier or gang movement traces.
+- **Performance:** Calm a corridor full of scared people.
+
+**Useful information:**
+
+- The floor is not passive. People may help if asked respectfully and given specific tasks.
+- Redline aid movement and clinic evacuation routes overlap here.
+
+## B7. Short-Stay Recovery / Counselling Rooms
+
+**Read-aloud:** Pink-lit recovery rooms line the hall. Some hold patients, some hold families, and some are clearly used for conversations nobody wants overheard.
+
+**GM notes:** Use these rooms for short-stay recovery, counselling, child/family support, and human-stakes scenes. This is a better match for the visible rooms than a literal daycare.
+
+**Interaction prompts:**
+
+- **Empathy:** Learn what a child or patient saw without frightening them.
+- **Psychology:** Understand Bluewire’s behavior from prior incident notes.
+- **Performance:** Distract frightened families during evacuation.
+- **Religious / Comfort:** Help a frightened family without preaching at them.
+
+**Useful information:**
+
+- Children or patients may call Mara “Auntie Red” if they trust the PCs.
+- They noticed Bluewire was “sick-mad” before adults acted.
+- Some recovery rooms hide people who do not trust official systems.
+
+## B8. Quarantine / Sealed Isolation Pods
+
+**Read-aloud:** The sealed pods are too clean and too bright. Warning marks and filtered vents make the room feel like it was designed for problems nobody wanted to name.
+
+**GM notes:** This replaces the old shelter-dorm interpretation. Use it for isolation, contamination fears, cyberware complications, and Antithesis foreshadowing.
+
+**Interaction prompts:**
+
+- **Medicine:** Identify who can and cannot be moved safely.
+- **Investigation:** Find a record mismatch, abandoned bag, or sealed-room anomaly.
+- **Streetwise:** Spot which patient names are being kept off official logs.
+- **Awareness:** Notice a pod has been opened from the wrong side.
+
+**Useful information:**
+
+- Someone vulnerable may have disappeared from this area.
+- The sealed pods point toward a threat deeper than gang violence.
+
+## B9. Elevator / Lift Core
+
+**Read-aloud:** The lift doors are scuffed by carts, beds, and crates. Someone has taped a child’s drawing above the call panel.
+
+**GM notes:** Accessible vertical travel. Also a panic bottleneck.
 
 **Interaction prompts:**
 
@@ -252,18 +175,14 @@ Accessible vertical travel. Also a panic bottleneck.
 
 **Useful information:**
 
-- This is the only good route for shelter residents with mobility issues.
-- If the lift fails, the shelter becomes much harder to evacuate.
+- This is the only good route for patients with mobility issues.
+- If the lift fails, the ward becomes much harder to evacuate.
 
-## B12. Emergency Stair / Ladderwell
+## B10. Stairwell / Vertical Access
 
-**Read-aloud:**
+**Read-aloud:** The stairwell is narrow, steep, and practical rather than welcoming. Emergency strips glow along metal edges.
 
-The stairwell is narrow, steep, and practical rather than welcoming. Emergency strips glow along metal edges.
-
-**GM notes:**
-
-Good for PCs and small groups. Bad for panic evacuation.
+**GM notes:** Good for PCs and small groups. Bad for panic evacuation.
 
 **Interaction prompts:**
 
@@ -276,46 +195,80 @@ Good for PCs and small groups. Bad for panic evacuation.
 
 - This route can save the PCs if elevators are locked.
 - It cannot replace the elevator for mass evacuation.
+- Service-route traces may point toward Map C.
+
+## B11. Lower Exterior / Service Access
+
+**Read-aloud:** The lower edge of the floor opens toward service access and exterior movement. It feels public only until someone blocks the way.
+
+**GM notes:** Use as the floor’s secondary approach, evacuation edge, or quiet exit.
+
+**Interaction prompts:**
+
+- **Awareness:** Spot someone shadowing the floor from outside.
+- **Stealth:** Slip out without using the lift.
+- **Tactics:** Secure a fallback route.
+- **Streetwise:** Recognize which route Redline would use for quiet movement.
+
+**Useful information:**
+
+- This can become an evacuation bypass or a trap.
+- Corporate or Redline pressure can appear here without crossing the whole ward.
+
+## B12. Staff Rest / Overnight Support Room
+
+**Read-aloud:** This room is part lounge, part crash space, part refuge. The furniture is mismatched, the blankets are folded with military neatness, and nobody has had enough sleep.
+
+**GM notes:** Use this as staff rest, emergency shelter overflow, or a place where a vulnerable NPC left something behind.
+
+**Interaction prompts:**
+
+- **Medicine:** Identify who has been sleeping in shifts to keep the floor running.
+- **Empathy:** Get an exhausted volunteer to admit what they saw.
+- **Investigation:** Find Narin’s bag, an odd smear, or a note that should not be here.
+- **Scavenger:** Find improvised supplies useful for evacuation.
+
+**Useful information:**
+
+- The support ward runs on exhaustion and favors.
+- Narin Pell or another missing-person clue can be tied here.
 
 ## Updated missing-person clues for Map B
 
 Use Map B to make the missing people matter.
 
-### B4 Pantry / Aid Distribution
+### B4 Staff Intake / Interview Office
 
-- Lala Mir used to distribute meal crates here.
-- Her absence is immediately noticed by volunteers and children.
-- Streetwise or Investigation reveals that her last route used the back service corridor.
-- The crates she carried were food, not weapons. This supports the Mara/Auntie Red reveal.
+- Lala Mir used to coordinate aid and recovery support through here.
+- Her absence is immediately noticed by volunteers and patients.
+- Streetwise or Investigation reveals that her last route used a service/vertical-access path.
+- The supplies she handled were food and medical support, not weapons. This supports the Mara/Auntie Red reveal.
 
-### B7 Children’s Corner / Daycare
+### B7 Short-Stay Recovery / Counselling Rooms
 
-Add **Miri and Sol** here.
+Add **Miri and Sol** here if you still want children/family witnesses on this floor. They can reveal:
 
-They can reveal:
-
-- “Auntie Red” funds breakfast.
+- “Auntie Red” funds breakfast, medicine, or recovery beds.
 - Adults avoid saying that name because Mara dislikes looking soft.
-- Lala Mir disappeared after bringing food.
-- They heard “dog feet” or “the wall dog” near the service corridor.
+- Lala Mir disappeared after bringing supplies.
+- They heard “dog feet” or “the wall dog” near a service route.
 
-### B8 Shelter Dorm
+### B8 Quarantine / Sealed Isolation Pods
 
-- Narin Pell’s bag is still under the bunk.
-- Sister Luma insists Narin would not have left it.
-- A search finds an organic smear or torn cloth near the route to B12.
+- A patient record, bag, or cot assignment does not match the current occupants.
+- Sister Luma insists Narin would not have left without telling someone.
+- A search finds an organic smear, acid-scored fastener, or torn cloth near a route toward B10/B12.
 - This is a possible rescue timer: if PCs act quickly, Narin may still be alive near the hidden nest.
 
-### B10 Back Service Corridor
+### B10 Stairwell / Vertical Access
 
-- Lala’s spilled meal crate.
-- Torn food packets, not eaten normally.
+- Scuffed steps, torn food packets, or drag signs.
 - A service hatch with acid-scored screws.
 - Redline marks showing this is an aid route, not just a gang route.
-- Tracking can follow drag signs toward Map C.
+- Tracking can follow signs toward Map C.
 
-### B12 Emergency Stair / Ladderwell
+### B12 Staff Rest / Overnight Support Room
 
-- Organic smear near a landing.
-- A muffled scream was heard earlier but dismissed as a fight.
-- Athletics/Parkour can pursue; Medicine can identify the smear as biological, not ordinary blood.
+- Narin’s bag, an unfinished message, or a volunteer’s report.
+- A muffled scream was heard earlier but dismissed as a fight or patient distress.
+- Medicine can identify a biological trace as not ordinary blood.
