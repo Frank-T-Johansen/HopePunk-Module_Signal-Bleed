@@ -1321,6 +1321,11 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
       '<strong>Current embedded content:</strong><br>' +
       NPCS.length + ' NPC character entries<br>' +
       HANDOUTS.length + ' handouts<br><br>' +
+      '<br><strong>Token maintenance:</strong><br>' +
+      '<code>' + COMMAND + ' --normalize-default-token-size --dry-run</code> previews resizing existing NPC default tokens without changing artwork<br>' +
+      '<code>' + COMMAND + ' --normalize-default-token-size</code> resizes existing NPC default tokens to 70×70 px without relinking images<br>' +
+      '<code>' + COMMAND + ' --normalize-default-token-size --token-size 140</code> resizes existing NPC default tokens to 140×140 px<br>' +
+      '<code>' + COMMAND + ' --normalize-default-token-size --only "Juno “Switch” Hale"</code> resizes one NPC default token only<br><br>' +
       '<br><strong>GM layer labels:</strong><br>' +
       '<code>' + COMMAND + ' --gm-labels floor-a --dry-run</code> previews Floor A GM labels; select the map graphic first<br>' +
       '<code>' + COMMAND + ' --gm-labels floor-a</code> creates Floor A GM-layer labels<br>' +
@@ -1654,12 +1659,92 @@ var HopepunkSignalBleed = HopepunkSignalBleed || (function () {
   }
 
 
+
+  function findCharacterByExactNameForTokenNormalize(name) {
+    var chars = findObjs({ _type: 'character', name: name }) || [];
+    return chars.length ? chars[0] : null;
+  }
+
+  function normalizeDefaultTokenSizeForCharacter(character, tokenSize, dryRun) {
+    var raw = character.get('defaulttoken');
+    if (!raw) {
+      return { status: 'missing', name: character.get('name') };
+    }
+
+    var parsed;
+    try {
+      parsed = JSON.parse(raw);
+    } catch (e) {
+      return { status: 'bad-json', name: character.get('name') };
+    }
+
+    parsed.width = tokenSize;
+    parsed.height = tokenSize;
+    parsed.represents = character.id;
+
+    if (!dryRun) {
+      character.set('defaulttoken', JSON.stringify(parsed));
+    }
+
+    return { status: 'updated', name: character.get('name') };
+  }
+
+  function normalizeNpcDefaultTokenSizes(msg, dryRun) {
+    var tokenSize = parseTokenSize(msg.content);
+    var onlyMatch = String(msg.content || '').match(/--only\s+(.+)$/);
+    var wantedName = onlyMatch ? onlyMatch[1].trim().replace(/^"|"$/g, '') : '';
+
+    var targets = [];
+
+    if (wantedName) {
+      var ch = findCharacterByExactNameForTokenNormalize(wantedName);
+      if (!ch) {
+        sendChat('Signal Bleed', '/w gm No character found named <code>' + esc(wantedName) + '</code>.');
+        return;
+      }
+      targets.push(ch);
+    } else {
+      NPCS.forEach(function (npc) {
+        var ch = findCharacterByExactNameForTokenNormalize(npc.name);
+        if (ch) targets.push(ch);
+      });
+    }
+
+    var counts = { updated: 0, missing: 0, bad: 0 };
+    var lines = [];
+    lines.push((dryRun ? 'Would normalize ' : 'Normalized ') + targets.length + ' NPC default token sizes to <b>' + tokenSize + '×' + tokenSize + ' px</b>.');
+    lines.push('This changes only saved default-token width/height. It does not change token artwork.');
+
+    targets.forEach(function (ch) {
+      var r = normalizeDefaultTokenSizeForCharacter(ch, tokenSize, dryRun);
+      if (r.status === 'updated') {
+        counts.updated += 1;
+        lines.push('OK: ' + esc(r.name));
+      } else if (r.status === 'missing') {
+        counts.missing += 1;
+        lines.push('No default token: ' + esc(r.name));
+      } else {
+        counts.bad += 1;
+        lines.push('Could not parse default token JSON: ' + esc(r.name));
+      }
+    });
+
+    lines.push('<br><b>Summary:</b> updated=' + counts.updated + ', missing=' + counts.missing + ', bad-json=' + counts.bad);
+    sendChat('Signal Bleed', '/w gm ' + lines.join('<br>'));
+  }
+
+
   function handle(msg) {
     if (msg.type !== 'api') return;
     if (msg.content.indexOf(COMMAND) !== 0) return;
 
     var dryRun = msg.content.indexOf('--dry-run') !== -1;
     var overwrite = msg.content.indexOf('--overwrite') !== -1;
+
+    if (msg.content.indexOf('--normalize-default-token-size') !== -1) {
+      normalizeNpcDefaultTokenSizes(msg, dryRun);
+      return;
+    }
 
     if (msg.content.indexOf('--name-selected') !== -1) {
       nameSelectedGraphics(msg, dryRun);
