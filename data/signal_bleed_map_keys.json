@@ -69,56 +69,56 @@
     },
     {
       "id": "B",
-      "title": "Map B — Community Support, Shelter, and School Annex Key",
+      "title": "Map B — Repurposed Recovery & Support Ward Key",
       "handout_file": "handouts/15_Map_B_Community_Support_Key.md",
       "locations": [
         {
           "id": "B1",
-          "name": "Indoor Street / Neighborhood Walkway"
+          "name": "Upper Public / Service Walkway"
         },
         {
           "id": "B2",
-          "name": "Public Entrance / Welcome Desk"
+          "name": "Procedure / Extended-Care Room"
         },
         {
           "id": "B3",
-          "name": "Community Commons"
+          "name": "Medical Records / Monitoring Equipment"
         },
         {
           "id": "B4",
-          "name": "Pantry / Aid Distribution"
+          "name": "Staff Intake / Interview Office"
         },
         {
           "id": "B5",
-          "name": "Communal Kitchen / Cafeteria"
+          "name": "VTOL / Emergency Landing Pad"
         },
         {
           "id": "B6",
-          "name": "Classroom / Workshop"
+          "name": "Central Support Corridor"
         },
         {
           "id": "B7",
-          "name": "Children’s Corner / Daycare"
+          "name": "Short-Stay Recovery / Counselling Rooms"
         },
         {
           "id": "B8",
-          "name": "Shelter Dorm"
+          "name": "Quarantine / Sealed Isolation Pods"
         },
         {
           "id": "B9",
-          "name": "Counselor / Caseworker Offices"
+          "name": "Elevator / Lift Core"
         },
         {
           "id": "B10",
-          "name": "Back Service Corridor"
+          "name": "Stairwell / Vertical Access"
         },
         {
           "id": "B11",
-          "name": "Elevator Core"
+          "name": "Lower Exterior / Service Access"
         },
         {
           "id": "B12",
-          "name": "Emergency Stair / Ladderwell"
+          "name": "Staff Rest / Overnight Support Room"
         }
       ]
     },
