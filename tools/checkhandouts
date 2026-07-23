@@ -1,0 +1,17 @@
+python3 - <<'PY'
+import base64, re
+from pathlib import Path
+
+p = Path("roll20/hopepunk_signal_bleed_importer.js")
+s = p.read_text(errors="replace")
+
+bad = 0
+for name, b64 in re.findall(r'"name":\s*"([^"]+)".*?"notes_b64":\s*"([^"]+)"', s, re.S):
+    html = base64.b64decode(b64).decode("utf-8", errors="replace")
+    n = html.count("\\1")
+    if n:
+        bad += 1
+        print(f"{n:3}  {name}")
+
+print(f"\nBad handouts: {bad}")
+PY
