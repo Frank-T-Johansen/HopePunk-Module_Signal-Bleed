@@ -1,0 +1,37 @@
+python3 - <<'PY'
+import json
+import re
+from pathlib import Path
+
+p = Path("roll20/hopepunk_signal_bleed_importer.js")
+s = p.read_text(encoding="utf-8")
+
+marker = "var HANDOUTS = "
+start = s.index(marker) + len(marker)
+m = re.search(r"\n\];", s[start:])
+if not m:
+    raise SystemExit("Could not find end of HANDOUTS block")
+
+end = start + m.start() + 2
+handouts = json.loads(s[start:end])
+
+kept = []
+removed = []
+
+for h in handouts:
+    src = h.get("source_file", "")
+    if src.startswith("handouts/") and not Path(src).exists():
+        removed.append(src)
+    else:
+        kept.append(h)
+
+print("Before:", len(handouts))
+print("After: ", len(kept))
+for src in removed:
+    print("Removed:", src)
+
+p.write_text(
+    s[:start] + json.dumps(kept, ensure_ascii=False, indent=2) + s[end:],
+    encoding="utf-8",
+)
+PY
