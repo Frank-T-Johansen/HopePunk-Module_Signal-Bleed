@@ -1,19 +1,11 @@
 #!/usr/bin/env python3
 """
 Rebuild the embedded HANDOUTS block in roll20/hopepunk_signal_bleed_importer.js
-from the Markdown files in handouts/.
+from Markdown files in handouts/.
 
-This fixes the literal "\1" corruption caused by a bad Markdown conversion pass.
-It preserves the existing importer code and NPC data; only the HANDOUTS array is rebuilt.
-
-Run from the repository root:
-
-  python3 tools/rebuild_signal_bleed_importer_handouts.py --dry-run
-  python3 tools/rebuild_signal_bleed_importer_handouts.py
-
-Then paste roll20/hopepunk_signal_bleed_importer.js into Roll20 and run:
-
-  !hopepunk-signal-bleed --overwrite --handouts
+By default this preserves the existing HANDOUTS list. Use --include-new to append
+new handout Markdown files that exist in handouts/ but are not yet embedded in
+the importer.
 """
 
 from __future__ import annotations
@@ -23,8 +15,9 @@ import base64
 import html
 import json
 import re
+import subprocess
 from pathlib import Path
-from typing import Iterable, List, Dict, Any
+from typing import Iterable, Any
 
 
 IMPORTER = Path("roll20/hopepunk_signal_bleed_importer.js")
@@ -36,14 +29,7 @@ def esc(s: str) -> str:
 
 
 def inline_md(s: str) -> str:
-    """Small, safe inline Markdown renderer.
-
-    Important: use callback/lambda replacements, never replacement strings with
-    backreferences. This avoids accidentally writing literal "\\1".
-    """
     s = esc(s)
-
-    # Inline code first, protected with simple placeholders.
     code_chunks: list[str] = []
 
     def save_code(m: re.Match[str]) -> str:
@@ -52,13 +38,10 @@ def inline_md(s: str) -> str:
 
     s = re.sub(r"`([^`]+)`", save_code, s)
 
-    # Bold. Use callbacks, not '<strong>\\1</strong>'.
+    # Always use callbacks so no backreference syntax can leak as literal "\\1".
     s = re.sub(r"\*\*(.+?)\*\*", lambda m: f"<strong>{m.group(1)}</strong>", s)
-
-    # Basic italic; deliberately conservative so it does not eat bullet markers.
     s = re.sub(r"(?<!\*)\*([^*\n]+?)\*(?!\*)", lambda m: f"<em>{m.group(1)}</em>", s)
 
-    # Markdown links: [text](url)
     s = re.sub(
         r"\[([^\]]+)\]\(([^)]+)\)",
         lambda m: f'<a href="{html.escape(m.group(2), quote=True)}">{m.group(1)}</a>',
@@ -87,11 +70,6 @@ def flush_list(out: list[str], items: list[str], ordered: bool) -> None:
 
 
 def render_markdown(md: str) -> str:
-    """Render enough Markdown for Roll20 handouts.
-
-    Supports headings, paragraphs, bullet lists, ordered lists, fenced code,
-    horizontal rules, blockquotes, inline bold/italic/code, and links.
-    """
     out: list[str] = []
     paragraph: list[str] = []
     list_items: list[str] = []
@@ -99,9 +77,7 @@ def render_markdown(md: str) -> str:
     in_fence = False
     fence_lines: list[str] = []
 
-    lines = md.replace("\r\n", "\n").replace("\r", "\n").split("\n")
-
-    for raw in lines:
+    for raw in md.replace("\r\n", "\n").replace("\r", "\n").split("\n"):
         line = raw.rstrip()
 
         if line.strip().startswith("```"):
@@ -164,14 +140,12 @@ def render_markdown(md: str) -> str:
             list_items.append(m.group(1).strip())
             continue
 
-        # Simple indented preformatted block.
         if raw.startswith("    "):
             flush_paragraph(out, paragraph)
             flush_list(out, list_items, list_ordered)
             out.append(f"<pre>{esc(raw[4:])}</pre>")
             continue
 
-        # A normal paragraph line terminates any active list.
         flush_list(out, list_items, list_ordered)
         paragraph.append(stripped)
 
@@ -190,9 +164,6 @@ def find_handouts_block(src: str) -> tuple[int, int, str]:
     if start < 0:
         raise SystemExit("Could not find 'var HANDOUTS = [' in importer")
 
-    # Find the matching '];' before the next function/section. The block is JSON
-    # produced by the generator, so the first standalone '];' after the array is
-    # the end.
     m = re.search(r"\n\];", src[start:])
     if not m:
         raise SystemExit("Could not find end of HANDOUTS block")
@@ -209,11 +180,39 @@ def load_existing_handouts(src: str) -> list[dict[str, Any]]:
         raise SystemExit(f"Could not parse existing HANDOUTS block as JSON: {e}") from e
 
 
-def rebuild_handouts(existing: list[dict[str, Any]]) -> list[dict[str, str]]:
+def source_to_name(source_file: str) -> str:
+    stem = Path(source_file).stem
+    stem = re.sub(r"^\d+[_ -]*", "", stem)
+    title = stem.replace("_", " ").replace("-", " ").strip()
+    title = re.sub(r"\s+", " ", title)
+    return "Signal Bleed - " + title
+
+
+def with_new_handouts(existing: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[str]]:
+    by_source = {str(h["source_file"]) for h in existing}
+    new_sources: list[str] = []
+
+    for md in sorted(HANDOUTS_DIR.glob("*.md")):
+        source = md.as_posix()
+        if source not in by_source:
+            new_sources.append(source)
+
+    combined = list(existing)
+    for source in new_sources:
+        combined.append({
+            "name": source_to_name(source),
+            "source_file": source,
+            "notes_b64": "",
+        })
+
+    return combined, new_sources
+
+
+def rebuild_handouts(entries: list[dict[str, Any]]) -> list[dict[str, str]]:
     rebuilt: list[dict[str, str]] = []
     missing: list[str] = []
 
-    for old in existing:
+    for old in entries:
         name = old["name"]
         source_file = old["source_file"]
         path = Path(source_file)
@@ -251,18 +250,30 @@ def decoded_bad_counts(handouts: Iterable[dict[str, str]]) -> list[tuple[str, in
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--include-new", action="store_true",
+                    help="append handouts/*.md files that are not already embedded")
     ap.add_argument("--importer", default=str(IMPORTER))
     args = ap.parse_args()
 
     importer = Path(args.importer)
     src = importer.read_text(encoding="utf-8")
 
-    existing = load_existing_handouts(src)
-    rebuilt = rebuild_handouts(existing)
+    original_entries = load_existing_handouts(src)
+    entries = original_entries
+    new_sources: list[str] = []
+
+    if args.include_new:
+        entries, new_sources = with_new_handouts(original_entries)
+
+    rebuilt = rebuild_handouts(entries)
     bad = decoded_bad_counts(rebuilt)
 
-    print(f"Existing handouts: {len(existing)}")
-    print(f"Rebuilt handouts:  {len(rebuilt)}")
+    print(f"Existing embedded handouts before rebuild: {len(original_entries)}")
+    print(f"Handouts after rebuild:                  {len(rebuilt)}")
+    if args.include_new:
+        print(f"New handouts discovered:                 {len(new_sources)}")
+        for source in new_sources:
+            print(f"  + {source} -> {source_to_name(source)}")
     print(f"Bad decoded \\1/control-A occurrences after rebuild: {sum(n for _, n in bad)}")
 
     if bad:
@@ -285,9 +296,7 @@ def main() -> None:
     print(f"Wrote:   {importer}")
     print(f"Backup:  {backup}")
 
-    # Optional syntax check if node exists.
     try:
-        import subprocess
         res = subprocess.run(["node", "--check", str(importer)], text=True, capture_output=True)
         if res.returncode == 0:
             print("node --check: ok")
