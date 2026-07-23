@@ -1,6 +1,8 @@
-# Map C — Service, Utility, and Maintenance Floor Key
+# Map C — Service / Utility Key
 
-Use this floor for repairs, sabotage, stealth, alternate routes, and infrastructure consequences. It should not feel empty: maintenance workers, smugglers, delivery crews, and tired staff pass through here.
+Use this as the service-route, infrastructure, and missing-person clue floor.
+
+Map C should not be the default location of the current active hidden nest. The current hidden nest is now on **Floor D**. Map C instead shows how the active threat moves through the megacomplex: service access, HVAC, monitoring rooms, freight routes, and maintenance corridors.
 
 ## How to use these checks
 
@@ -13,321 +15,271 @@ Recommended clue handling:
 - **High success:** give a shortcut, future advantage, or a way to reduce danger.
 - **Failure:** do not stall the scenario; give the clue with less detail, extra time cost, noise, or complication.
 
-## C1. Service Street / Logistics Lane
+## What this floor does
 
-**Read-aloud:**
+Floor C connects the public crisis to the hidden threat.
 
-A broad indoor logistics lane runs along the facility edge. Utility carts, delivery bays, and warning lights make it feel like a street for machines and workers.
+Use it for:
 
-**GM notes:**
+- maintenance access,
+- Redline routes,
+- camera gaps,
+- missing-person trails,
+- Oskar Venn’s disappearance,
+- Bex Aranda footage,
+- corporate feed tampering,
+- and signs that something is moving toward or from Floor D.
 
-This is the utility-floor equivalent of public space.
+Floor C should point the players toward Floor D, not end the mystery.
 
-**Interaction prompts:**
+## C1. Service Street / Industrial Approach
 
-- **Streetwise:** Identify which crews are legitimate and which are lookouts.
-- **Piloting / Driving:** Use carts or vehicles to move fast.
-- **Awareness:** Spot a corporate-tagged service drone.
-- **Performance:** Blend in by acting like a worker who belongs.
+**Read-aloud:**  
+A service street runs between loading shutters, maintenance alcoves, and back-of-house doors. It is built for deliveries, not comfort.
 
-**Useful information:**
-
-- Corp recovery can use service routes.
-- Redline Choir knows some routes staff do not.
-
-## C2. Central Loading Zone
-
-**Read-aloud:**
-
-Pallets, crates, cargo lifters, and stained floor markings form the beating heart of the service level.
-
-**GM notes:**
-
-Good for chases, cover, forklift improvisation, and ambushes.
+**GM notes:**  
+Good for Redline lookouts, corporate logistics, and evidence that service routes are less controlled than public clinic areas.
 
 **Interaction prompts:**
 
-- **Grease Monkey:** Get a cargo lifter moving.
-- **Big Guns:** Identify which crates provide actual cover.
-- **Small Arms:** Spot ideal firing lanes before someone uses them.
-- **Athletics:** Climb or move cargo under pressure.
-- **Scavenger:** Find a useful tool, battery, or sealed crate.
+- **Streetwise / Gutter Rat:** Identify which routes locals actually use.
+- **Corporate Security:** Recognize which cameras should be present but are missing.
+- **Stealth:** Move without being seen by public or corporate observers.
+- **Investigation:** Find signs that someone was dragged or carried away.
 
 **Useful information:**
 
-- This zone can connect to every other floor by freight lift.
-- A fight here can damage vital supplies.
+- Service movement can bypass official entrances.
+- Redline and clinic volunteers both know parts of this route.
+- Footage or witnesses may connect Bex Aranda to this approach.
 
-## C3. Generator Room
+## C2. Loading Zone
 
-**Read-aloud:**
+**Read-aloud:**  
+Pallet marks, scuffed floor paint, and old lift equipment show where supplies move through the complex.
 
-Heavy generator housings vibrate behind safety rails. The hum is steady until the relay pulse makes it stutter.
-
-**GM notes:**
-
-Power is a scenario lever. Let technical PCs shine.
+**GM notes:**  
+Use for food crates, medical supplies, missing manifests, and false corporate cargo labels.
 
 **Interaction prompts:**
 
-- **Grease Monkey / Repair:** Stabilize power or identify overload risk.
-- **Mesh Hacker:** Notice remote commands trying to isolate clinic power.
-- **Big Guns:** Understand that one bad shot could cascade into an outage.
-- **Cyberware:** Feel implants prickle as the relay pulse rides the power grid.
+- **Logistics / Scavenger:** Identify what was recently moved.
+- **Investigation:** Spot missing crates or falsified labels.
+- **Athletics:** Move cargo to block pursuit or open a route.
+- **Streetwise:** Know what normal local deliveries should look like.
 
 **Useful information:**
 
-- The signal is coupling into clinic infrastructure.
-- The corp may try to force a selective blackout.
+- Some supplies are routed through Mara’s hidden aid network.
+- Some corporate shipments were disguised as medical logistics.
 
-## C4. Battery Bank
+## C3. Utility Corridor
 
-**Read-aloud:**
+**Read-aloud:**  
+Pipes and cable trays run along the walls. Heat bleeds through from hidden systems.
 
-Rows of battery cabinets glow cyan behind reinforced panels. Warning tape has been applied, removed, and reapplied.
-
-**GM notes:**
-
-A stable battery bank can keep medical systems alive during breach.
+**GM notes:**  
+Good for low-level dread and directional clues.
 
 **Interaction prompts:**
 
-- **Grease Monkey:** Reroute emergency power.
-- **Investigation:** Notice one bank has been drained recently.
-- **Sabotage:** Disable or fake a failure without causing an explosion.
-- **Corporate Security:** Recognize a standardized remote lockout module.
+- **Awareness:** Hear clicking, scraping, or distant movement.
+- **Grease Monkey:** Identify which systems lead toward Floor D.
+- **Investigation:** Follow residue, drag marks, or air-flow anomalies.
+- **Stealth:** Move quietly through an echoing corridor.
 
 **Useful information:**
 
-- The emergency bay vehicle was likely drained here or through this system.
-- A stable bank gives the clinic time.
+- The dangerous movement is physical, not electronic.
+- The route points toward deeper containment/service infrastructure.
 
-## C5. Water Recycling / Filtration
+## C4. Pump / Water Control
 
-**Read-aloud:**
+**Read-aloud:**  
+Condensation runs down tanks and control housings. The floor is wet enough to distort reflections.
 
-Condensation beads on pipes and tanks. The air smells clean in the wrong way, like metal and rain filtered through plastic.
-
-**GM notes:**
-
-Good for alien contamination clues and environmental hazards.
+**GM notes:**  
+Useful for residue, drainage clues, and traces that survived cleanup.
 
 **Interaction prompts:**
 
-- **Medicine:** Identify contamination risk if systems are breached.
-- **Awareness:** Hear something moving inside a pipe wall.
-- **Scavenger:** Find access through a maintenance crawlspace.
-- **Melee Combat:** Know slippery floors make close fighting dangerous.
+- **Grease Monkey:** Understand where drains and pumps connect.
+- **Medicine / Xenobiology:** Identify nonhuman residue in filters.
+- **Investigation:** Find contamination moving through drainage rather than data lines.
+- **Athletics:** Cross slick surfaces under pressure.
 
 **Useful information:**
 
-- The breach could spread through utilities if not isolated.
-- This room offers bypass access at a cost.
+- Biological traces may survive where cameras and logs were wiped.
+- Drainage can point toward the Floor D nest approach.
+
+## C5. Water Recycling / Treatment
+
+**Read-aloud:**  
+Recycling tanks hum behind safety mesh. Warning labels peel from damp machinery.
+
+**GM notes:**  
+Good location for Oskar-related technical clues or signs of something using maintenance spaces to move unseen.
+
+**Interaction prompts:**
+
+- **Scavenger:** Find useful tools or improvised weapons.
+- **Grease Monkey:** Trace flow direction.
+- **Awareness:** Notice a tank or grate vibrating out of rhythm.
+- **Investigation:** Find a small organic smear or lost personal item.
+
+**Useful information:**
+
+- The missing-person trail is physical and biological.
+- The system connects to restricted areas on Floor D.
 
 ## C6. HVAC / Air Handling
 
-**Read-aloud:**
+**Read-aloud:**  
+Large air handlers shake in their mounts. Filters rattle behind access panels. The air smells of dust, heat, and something faintly sweet.
 
-Huge fans churn behind grills. Airflow arrows glow on the floor, and each relay pulse makes the vents sing half a note too high.
-
-**GM notes:**
-
-Can become a countdown location if alien spores/signals/heat spread.
+**GM notes:**  
+Primary clue site for Oskar Venn.
 
 **Interaction prompts:**
 
-- **Grease Monkey:** Reverse or isolate airflow.
-- **Mesh Hacker:** Lock dampers or detect a hostile override.
-- **Parkour:** Use duct access for risky movement.
-- **Cyber-Junkie:** Feel the signal resonance through the vents.
+- **Grease Monkey:** Identify a forced maintenance route.
+- **Investigation:** Find Oskar’s tool cart, radio log, or drag marks.
+- **Awareness:** Hear movement too large for normal ductwork.
+- **Medicine / Xenobiology:** Identify residue as biological rather than chemical.
 
 **Useful information:**
 
-- Air systems can spread panic, smoke, or alien effects.
-- Controlling HVAC can protect civilians.
+- Oskar was taken while investigating a real fault.
+- His final route points toward Floor D access or a hidden service drop.
+- The creature responsible did not stay here.
 
-## C7. Workshop / Repair Bay
+## C7. Workshop
 
-**Read-aloud:**
+**Read-aloud:**  
+Benches, chargers, spare panels, and tagged tool racks fill a cramped maintenance workshop.
 
-Tools hang beside half-repaired carts, cracked drones, replacement joints, scavenged panels, and one coffee mug that may be older than the clinic.
-
-**GM notes:**
-
-Give practical rewards here, not just clues.
+**GM notes:**  
+Good for preparation, improvised repairs, and technical confirmation that systems were sabotaged or bypassed by humans and damaged by creatures.
 
 **Interaction prompts:**
 
-- **Grease Monkey:** Build an improvised barricade or med-cart repair.
-- **Scavenger:** Find a useful spare part.
-- **Small Arms:** Repair or identify a damaged non-lethal weapon.
-- **Cyberware:** Patch a hot-running implant temporarily.
-- **Performance:** Win over maintenance workers by helping rather than ordering.
+- **Grease Monkey:** Repair gear, build a bypass, or identify missing tools.
+- **Scavenger:** Find useful parts.
+- **Investigation:** Match tools to forced panels.
+- **Corporate Security:** Recognize unauthorized corporate tamper seals.
 
 **Useful information:**
 
-- The workers know unofficial routes.
-- Helping here earns practical allies.
+- Human coverup and alien movement both left traces.
+- Tools may help open or seal Floor D access routes.
 
-## C8. Storage Rooms
+## C8. Power / Breaker Access
 
-**Read-aloud:**
+**Read-aloud:**  
+Breaker panels and backup power cells line the wall. Someone has marked several circuits with old tape and newer warning glyphs.
 
-Stacked bins, outdated labels, ration crates, bedding, cleaning chemicals, and obsolete machines fill the storage rooms.
-
-**GM notes:**
-
-Use storage for hidden supplies, smuggled aid, or danger.
+**GM notes:**  
+Use for lighting control, route control, and tension before entering Floor D.
 
 **Interaction prompts:**
 
-- **Investigation:** Find mislabeled Redline aid crates.
-- **Streetwise:** Identify goods that came through gang routes.
-- **Medicine:** Find useful medical supplies among the wrong labels.
-- **Stealth:** Hide or move through without disturbing obvious stacks.
+- **Grease Monkey:** Restore lights or cut power to a route.
+- **Mesh Hacker:** Identify remote-control relays.
+- **Tactics:** Decide whether darkness helps or hurts the group.
+- **Awareness:** Notice which circuits were recently overloaded.
 
 **Useful information:**
 
-- Some 'contraband' is actually food and medicine.
-- This can support the Mara reveal.
+- Cutting power can slow humans but may not slow the Antithesis.
+- Some “signal bleed” effects are copied data and failing infrastructure, not alien hacking.
 
 ## C9. Monitoring Office
 
-**Read-aloud:**
+**Read-aloud:**  
+A small monitoring office holds cheap screens, patch panels, and a chair worn by long shifts.
 
-A cramped room of old screens, system maps, dead camera feeds, and one chair patched with tape.
-
-**GM notes:**
-
-This can reveal map information without requiring the GM to expose everything.
+**GM notes:**  
+Good place for Switch, Redline camera feeds, corporate feed tampering, and Bex Aranda footage.
 
 **Interaction prompts:**
 
-- **Mesh Hacker:** Access cameras and partial floor maps.
-- **Corporate Security:** Recognize which feeds have been looped professionally.
-- **Investigation:** Match signal pulses to system failures.
-- **Awareness:** Notice a live feed showing someone where they should not be.
+- **Mesh Hacker:** Recover partial footage.
+- **Streetwise:** Interpret Redline blind spots and local camera habits.
+- **Investigation:** Find edits, missing timestamps, or copied feeds.
+- **Empathy / Negotiation:** Convince a camera sitter to cooperate.
 
 **Useful information:**
 
-- The camera gaps are deliberate.
-- This can reveal one or two unrevealed map areas if earned.
+- Bex disappeared near a service route.
+- Some feeds were sold, copied, or tampered with by humans.
+- Footage points toward Floor D access rather than a local Floor C nest.
 
-## C10. Elevator / Freight Lift Core
+## C10. Freight Lift
 
-**Read-aloud:**
+**Read-aloud:**  
+The freight lift is large enough for medical pallets, maintenance carts, and things people would rather not move through public halls.
 
-This lift is bigger and uglier than the public elevator. It smells of oil, plastic wrap, and overheated brakes.
-
-**GM notes:**
-
-Cargo route. Great for moving equipment, bad if controlled by enemies.
+**GM notes:**  
+Useful for corporate movement, evacuation, and danger spreading between floors.
 
 **Interaction prompts:**
 
-- **Grease Monkey:** Override freight priority.
-- **Piloting / Logistics:** Use the lift to move many civilians or supplies.
-- **Big Guns:** Predict how a breach team would use the large doors.
-- **Mesh Hacker:** Prevent external rerouting.
+- **Grease Monkey:** Force or disable the lift.
+- **Mesh Hacker:** Trace recent stops.
+- **Corporate Security:** Identify suppressed movement logs.
+- **Tactics:** Decide whether to hold or abandon the lift.
 
 **Useful information:**
 
-- This lift can move heavy gear between maps.
-- It is a likely corporate approach route.
+- The lift may connect to Floor D quarantine/incident spaces.
+- Corporate Recovery may use it if they want to move fast and unseen.
 
-## C11. Emergency Stair / Ladderwell
+## C11. Stair / Vertical Service Access
 
-**Read-aloud:**
+**Read-aloud:**  
+A narrow vertical access shaft smells of oil, dust, and overheated metal.
 
-The maintenance stairwell is steep, metal, and unforgiving, with old warning paint and newer graffiti.
-
-**GM notes:**
-
-Back route for PCs, gang, or alien movement.
+**GM notes:**  
+Good for escape, pursuit, and hints of Model 3 movement.
 
 **Interaction prompts:**
 
-- **Athletics:** Move fast without falling.
-- **Gutter Rat:** Find the landing that skips a monitored door.
-- **Blades / Melee:** Read bloodless scrape marks from intimidation rather than murder.
-- **Awareness:** Hear movement from another floor.
+- **Athletics:** Climb or descend quickly.
+- **Parkour:** Bypass blocked landings.
+- **Awareness:** Hear movement from below.
+- **Small Arms:** Understand why shooting here is dangerous.
 
 **Useful information:**
 
-- This route can bypass elevator lockdown.
-- It is poor for wounded evacuation.
+- This route can connect to Floor D’s D11 Emergency Stair / Ladderwell.
+- If a Model 3 appears here, it should retreat toward Floor D rather than establish a nest on Floor C.
 
-## C12. Signal Interference Node
+## C12. Hidden Maintenance Cavity
 
-**Read-aloud:**
+**Read-aloud:**  
+A narrow maintenance cavity hides behind mismatched panels and taped-over warnings. Something has passed through here recently, but it did not stay.
 
-A service junction hums with the wrong rhythm. Nearby indicator lights pulse in time with the relay.
-
-**GM notes:**
-
-This may be a hidden side room, conduit cluster, or maintenance box. It links the alien signal to infrastructure.
+**GM notes:**  
+This was previously a candidate for the hidden nest. In the current version, it is a transit clue and service-route discovery. The active hidden nest is on Floor D.
 
 **Interaction prompts:**
 
-- **Mesh Hacker:** Trace the signal bleed toward the incident floor.
-- **Cyberware:** Feel implant discomfort worsen near the node.
-- **Grease Monkey:** Physically isolate the conduit.
-- **Investigation:** Connect this node to the deleted intake logs.
-- **Samurai Otaku:** Recognize telemetry patterns that sound like real Samurai incidents.
+- **Investigation / Tracking:** Follow marks, residue, or drag traces toward Floor D.
+- **Scavenger:** Find a broken panel, dropped tool, or hidden cache.
+- **Gutter Rat:** Understand the route’s real-world use by people avoiding official corridors.
+- **Xenobiology / Antithesis knowledge:** Identify traces from Model 1s or Model 3s, but not a mature nest structure.
 
 **Useful information:**
 
-- The relay is not passive evidence.
-- The signal is spreading through infrastructure.
-- Fixing this can reduce breach severity later.
+- This cavity connects the missing-person trail to Floor D.
+- It may contain Model 1 residue, but the active nest is elsewhere.
+- It can foreshadow the Floor D discovery without revealing it too early.
 
-## Updated hidden-nest clues for Map C
+## What Map C should establish
 
-Map C is now the primary hidden-nest investigation floor.
-
-### C1 Service Street / Logistics Lane
-
-- Bex Aranda or Lala Mir may have passed through here before vanishing.
-- Corporate personnel may dismiss missing workers as local disorder.
-- Streetwise can identify the disappearances cluster around quiet service routes.
-- Small Arms can find evidence of panicked low-angle shots.
-
-### C5 Water Recycling / Filtration
-
-- Thin organic film in drains or filters.
-- Dead rats, insects, or birds fused into residue.
-- The room provides moisture and nutrients, making it a plausible secondary nest approach.
-- Medicine or Biology-style reasoning identifies the growth as Antithesis-related, not mold.
-- A juvenile Model 3 may retreat through this area if wounded.
-
-### C6 HVAC / Air Handling
-
-This is the strongest recommended hidden nest approach.
-
-- Oskar Venn’s tool cart.
-- Radio log: “Something is breathing in here.”
-- Warm wet air from a cold vent.
-- Vent cover bent outward from the inside.
-- Three-pronged bite marks.
-- Drag marks into a maintenance cavity.
-- A juvenile Model 3 may attack here and try to drag an NPC away.
-
-### C9 Monitoring Office
-
-- One corrupted frame shows something low dragging Bex or Oskar.
-- Mesh Hacker retrieves camera footage, but this is human surveillance. The Antithesis is not hacking electronics.
-- Corporate edits may hide the original nest cleanup, but not because of alien interference.
-
-### C12 Signal Interference Node
-
-Rename in play to **C12 Hidden Maintenance Cavity**.
-
-Replace signal language with:
-
-- Dead Model 1 bodies dissolved into a clump.
-- Warm nest tissue spreading along ducts and insulation.
-- Badges/tools/clothing partly incorporated.
-- A partly alive victim if the PCs arrive quickly.
-- Juvenile Model 3s defending or feeding the nest.
-
-This is the most likely location of the second hidden nest.
+- Service infrastructure lets people and creatures move unseen.
+- Redline, clinic staff, maintenance workers, and corporate recovery all use different parts of the same back routes.
+- Oskar, Bex, and other missing-person clues point toward Floor D.
+- “Signal bleed” is copied evidence and human systems failing under pressure, not alien electronic infection.
+- The active hidden nest is not here; this map points to it.
