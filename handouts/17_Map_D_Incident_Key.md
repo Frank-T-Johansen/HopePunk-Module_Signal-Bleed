@@ -1,77 +1,90 @@
-# Map D — Quarantine Incident / Hidden Nest Key
+# Map D — Quarantine Incident / Northern Tenant Hidden Nest Key
 
-Use this as the breach, investigation, and finale floor.
+Use this as the main active hidden-nest floor.
 
-Floor D contains two truths:
+Floor D is divided by locked tenant-control doors:
 
-1. The **old destroyed nest** was in or adjacent to the quarantine / containment area.
-2. The **active hidden nest** is deeper on this same floor, in service routes, bypass spaces, and sealed maintenance cavities reached from the incident floor.
+- **Southern Floor D:** clinic-accessible support, diagnostics, patient holding, emergency movement, and control areas.
+- **Northern Floor D:** a separate leased tenant suite that is normally locked away from Mercy Twelve patients, residents, and visitors.
+- **Nest zone:** the active hidden nest is in the unmarked room between **D10 Elevator Core** and **D4 Virellan Observation / Quarantine Rooms**, inside the northern tenant-controlled area.
 
-This keeps the old evidence and the current threat on the same map without making the nest obvious the moment the PCs arrive.
+The old destroyed first nest was in **B8 Sealed Isolation Ward**, where the corporation’s first illegal experiment failed and was burned clean by corporate recovery forces. Floor D is where escaped Model 1s later seeded the active second nest.
 
-## How to use these checks
+## Northern tenant: Virellan Neuro-Recovery Annex
+
+The northern half of Floor D is leased to **Virellan Neuro-Recovery Annex**, a private remote neuro-rehabilitation and prosthetic calibration clinic.
+
+On paper, Virellan provides:
+
+- post-surgical neuro-recovery monitoring,
+- cyberware strain rehabilitation,
+- prosthetic calibration,
+- sleep and seizure observation,
+- remote diagnostics,
+- and “low-contact” recovery rooms for patients who can pay or whose employer can pay.
+
+In practice, the site is a thinly staffed shell tenant. Most appointments are remote. The doors are locked for privacy, liability, and “medical device security.” A contractor visits irregularly. Several rooms are under “renovation,” “audit hold,” or “equipment recalibration,” which explains why nobody from Mercy Twelve uses the space and why problems can grow unnoticed.
+
+This tenant choice fits the map better than pure storage: beds, observation rooms, equipment, medical partitions, and control spaces all make sense.
+
+## Why nobody noticed immediately
+
+Use any of these explanations:
+
+- Virellan operates mostly by remote appointment.
+- Patient intake was paused for audit or equipment recertification.
+- Local cameras are owned by the tenant, not Mercy Twelve.
+- The north doors are locked and unavailable to citizens using the south half.
+- A contractor marked the area as “under maintenance.”
+- Corporate or tenant-side systems looped stale camera feeds.
+- Early victims were isolated squatters, a maintenance worker, or a contractor with no immediate advocate.
+- Mercy Twelve staff assumed the north tenant was absent, closed, or handling its own issues.
+
+## Door and access logic
+
+All normal doors between the southern and northern halves are locked at scenario start.
+
+The public/citizen-accessible south side should include:
+
+- D1 / D12 emergency arrival route if used,
+- D3 Central Incident Hall south side,
+- D5 Diagnostics Lab if under Mercy Twelve control,
+- D6 Control Room or local security access,
+- D7 Patient Holding Rooms,
+- southern access to D10 Elevator Core,
+- and southern access to D11 Emergency Stair / Ladderwell if desired.
+
+The northern tenant-controlled side should include:
+
+- D4 Quarantine / observation cells,
+- the unmarked room between D10 and D4,
+- nearby northern corridors,
+- tenant-side access to D10,
+- tenant-side access to D11,
+- and any rooms you want to treat as Virellan recovery suites.
+
+The north/south doors can be opened by D6 Control Room override, D10 elevator service override, D11 stair access, tenant keycard, forced breach, Redline or maintenance knowledge, or by following Model 3 movement through a service bypass.
+
+Failure to open them should not block the scenario. It should cost time, make noise, draw corporate attention, trigger a camera ping, or let the nest advance.
+
+## How to use checks
 
 These are prompts, not a fixed menu. If a player describes a sensible approach, use the closest skill or Background logic.
-
-Recommended clue handling:
 
 - **No roll / basic interaction:** give the obvious clue.
 - **Success:** give useful detail, leverage, or a safer route.
 - **High success:** give a shortcut, future advantage, or a way to reduce danger.
 - **Failure:** do not stall the scenario; give the clue with less detail, extra time cost, noise, or complication.
 
-## Floor D structure
+## D1. Emergency Arrival Route / Landing Access
 
-Treat the map as two overlapping zones.
-
-### Investigation / containment zone
-
-This is the cleaner half of the map. It includes the landing access route, quarantine rooms, diagnostics, control room, and the old containment chamber.
-
-It should show:
-
-- sterilized corridors,
-- sealed doors,
-- clean corporate error screens,
-- hidden cleanup logs,
-- frightened patients or staff,
-- old burn patterns,
-- and evidence that the corporation thought the first nest was destroyed.
-
-### Infested / hidden-nest zone
-
-This is the compromised half of the map. It begins subtly near the old containment area and becomes obvious through service routes, bypasses, and hidden access spaces.
-
-It should show:
-
-- warm walls,
-- organic film in corners and vents,
-- low clicking in ducts,
-- dead camera angles,
-- flying Model 1 movement,
-- drag marks,
-- residue trails,
-- cocooned remains,
-- and Model 3 hunting behavior.
-
-The PCs should usually discover the active nest by following clues, exploring unsafe routes, or responding to an attack.
-
-## D1. Landing Corner / Emergency Access Route
+If your visual map has the main landing pad on Floor B, use D1 as the internal route from the Floor B pad down to Floor D.
 
 **Read-aloud:**  
-A small emergency landing corner opens to a vertical skywell between megacomplex towers. Warning lights pulse through ceiling haze and old exhaust.
+Emergency access lights pulse through the corridor. The route is wide enough for stretcher drones, but only if someone keeps the doors clear.
 
 **GM notes:**  
-This is where emergency craft or medical response can arrive if the scene escalates. If your current map has the main landing pad on Floor B instead, treat D1 as the internal arrival route from the Floor B pad: elevator, stair, lift, or service-corridor access.
-
-NightCrash can land on Floor B, then enter Floor D through this route. That delay is useful. Her arrival creates an opening, not a solution.
-
-**Interaction prompts:**
-
-- **Piloting / Logistics:** Judge how quickly emergency transport can reach this floor.
-- **Awareness:** Spot incoming lights, drone movement, or dust falling from upper access.
-- **Corporate Security:** Recognize emergency access protocols.
-- **Performance / Leadership:** Use the promise of medevac to steady frightened civilians.
+NightCrash can land on Floor B and enter Floor D through this route. The delay is useful. Her arrival creates an opening, not a solution.
 
 **Useful information:**
 
@@ -79,10 +92,10 @@ NightCrash can land on Floor B, then enter Floor D through this route. That dela
 - A flying vehicle cannot solve the nest problem.
 - If the route is blocked, rescue is delayed or reduced.
 
-## D2. Skywell / Emergency Access Door
+## D2. Emergency Access Door
 
 **Read-aloud:**  
-A reinforced door connects the emergency access route to the facility interior. Its seals are old, overpainted, and recently forced.
+A reinforced door links emergency movement to the facility interior. The lock reports three different authorities, none of them fully agreeing.
 
 **GM notes:**  
 A chokepoint for rescue, retreat, or alien spillover.
@@ -91,218 +104,200 @@ A chokepoint for rescue, retreat, or alien spillover.
 
 - **Grease Monkey:** Force or repair the door safely.
 - **Mesh Hacker:** Override emergency lockout.
-- **Big Guns:** Know what happens if someone breaches it loudly.
+- **Corporate Security:** Recognize conflicting tenant permissions.
 - **Athletics:** Hold or force it under pressure.
 
-**Useful information:**
-
-- This door may trap or save people depending on timing.
-- NightCrash’s drones need the route clear for evacuation.
-- If the infestation has spread this far, the floor is close to collapse.
-
-## D3. Central Incident Hall
+## D3. Central Incident Hall — South/North Threshold
 
 **Read-aloud:**  
-A wide hall links containment, diagnostics, patient holding, and vertical access. It is too open when the lights start flickering. Some parts still look sterile; others have the wrong texture in the corners.
+A wide hall links the accessible clinic side to locked tenant doors. The southern half still looks usable. The northern doors are closed, badge-locked, and dark behind their small windows.
 
 **GM notes:**  
-This is the natural action scene space. It should change based on earlier diplomacy and how quickly the PCs realize the active nest is still on this floor.
-
-Use D3 as the transition between investigation and infestation.
+This is the transition point. At first, it should feel like bureaucracy and locked doors, not obvious infestation. As the scene escalates, D3 can become the action corridor between civilians, corporate responders, and nest spillover.
 
 **Interaction prompts:**
 
 - **Tactics:** Set defensive positions without blocking evacuation.
-- **Small Arms:** Identify clean firing lanes and dangerous crossfire.
-- **Performance / Leadership:** Direct panicked civilians or staff.
-- **Parkour:** Use furniture, barriers, and partial collapses to move around the fight.
-- **Awareness:** Hear Model 1 movement before it breaks into the hall.
+- **Corporate Security:** Read tenant-control rules and emergency override labels.
+- **Mesh Hacker:** Open one locked door without opening all of them.
+- **Awareness:** Hear movement behind the northern doors.
+- **Investigation:** Notice organic residue near the lower door seals.
 
 **Useful information:**
 
-- This can become a kill zone or an evacuation corridor.
-- Earlier faction choices determine who helps hold it.
-- Organic residue or insect-like motion points toward the infested side of the floor.
+- Citizens normally cannot access the northern half.
+- The north doors explain why the active nest stayed hidden.
+- Early signs point beyond the locked doors.
 
-## D4. Quarantine Cells
+## D4. Virellan Observation / Quarantine Rooms
 
 **Read-aloud:**  
-Pink-lit quarantine rooms line the corridor. Each cell has observation glass, isolation seals, and equipment meant to keep fear contained.
+Observation rooms line the tenant side. Each has glass, privacy shutters, bio-monitor ports, and furniture meant for long quiet recovery.
 
 **GM notes:**  
-Use for exposed patients, old test subjects, alien symptoms, or corporate containment cruelty. The cells are not the current nest, but they are close enough to show that this floor was used to hold living people and dangerous samples.
+These are not Mercy Twelve public rooms. They belong to Virellan’s remote neuro-recovery operation. This is a good place for the first obvious signs of infestation after the north doors are opened.
 
 **Interaction prompts:**
 
-- **Medicine:** Distinguish contamination, panic, trauma, and experimental treatment effects.
-- **Psychology:** Calm an isolated patient enough to get useful information.
-- **Corporate Security:** Recognize the layout as containment-first, care-second.
-- **Blades / Melee:** Notice defensive gouges from someone trapped inside.
-- **Xenobiology / Antithesis knowledge:** Recognize small traces of Antithesis residue that survived cleaning.
+- **Medicine:** Distinguish recovery equipment from emergency quarantine equipment.
+- **Cyberware:** Identify prosthetic calibration and strain-monitoring rigs.
+- **Investigation:** Notice missed appointments, stale patient loops, or a contractor badge.
+- **Xenobiology / Antithesis knowledge:** Identify nest residue around vents and wall seams.
+- **Stealth:** Move through rooms without alerting creatures in the cavity.
 
 **Useful information:**
 
-- The quarantine system can protect or imprison.
-- Patients may know about clicking in the walls, missing staff, or service routes.
-- One cell may have been used as temporary storage for material recovered from the old nest.
+- The tenant was real, but absentee.
+- At least one recent human passed through here.
+- The active nest is nearby, not in the public clinic side.
 
-## D5. Diagnostics Lab
+## D5. Diagnostics Lab — South-Side Evidence
 
 **Read-aloud:**  
 Diagnostic beds, scanners, and monitors surround a central work area. Several screens show clean error states that feel too clean.
 
 **GM notes:**  
-This is where technical and medical PCs can learn that the relay is human evidence, not alien technology. It is also a good place for logs connecting B8, D8, and the current hidden nest.
+This is where technical and medical PCs can learn that the relay is human evidence, not alien technology. It is also a good place for south-side logs connecting B8, Virellan, and the current Floor D nest.
 
 **Interaction prompts:**
 
-- **Medicine / Surgery:** Interpret physiological records and exposure-treatment failures.
+- **Medicine / Surgery:** Interpret exposure records and triage gaps.
 - **Mesh Hacker:** Recover corrupted diagnostics, deleted patient tags, or copied relay fragments.
-- **Cyberware:** Notice cheap implants responding to local data noise and exploitative ad systems, not alien control.
+- **Cyberware:** Notice cheap implants responding to human ad systems and local data noise, not alien control.
 - **Investigation:** Catch that results were sanitized by an automated routine.
-- **Xenobiology / Antithesis knowledge:** Identify that the active threat is biological, not electronic.
+- **Corporate Security:** Identify tenant-side access delegation.
 
 **Useful information:**
 
 - The Quill Relay is a human data core.
 - The relay is evidence, not a beacon.
-- The relay does not summon Antithesis.
-- Logs point from the old destroyed nest toward a second active nest somewhere on Floor D.
+- Logs point from B8 toward locked Floor D tenant spaces.
+- Virellan’s systems may be a corporate shell, proxy tenant, or unwitting host.
 
-## D6. Control Room
+## D6. Control Room — South-Side Override
 
 **Read-aloud:**  
-Curved consoles face camera feeds, isolation controls, air systems, and security doors. Half the indicators are clean corporate teal. The others are dead, looping, or physically disconnected.
+Curved consoles face camera feeds, isolation controls, air systems, and security doors. Several feeds from the northern tenant side show privacy screens, maintenance slates, or stale loops.
 
 **GM notes:**  
-This is the room for map control, door choices, missing footage, and hard moral tradeoffs.
-
-It is also the best place to reveal that Corporate Recovery misread the Model 1 escape as terminal erratic flight.
+This is the best room for revealing that the north half is a separate tenant area and that its cameras are unreliable.
 
 **Interaction prompts:**
 
 - **Mesh Hacker:** Control doors, cameras, or containment shutters.
-- **Corporate Security:** Predict recovery override procedures.
+- **Corporate Security:** Predict recovery override procedures and tenant-lock hierarchy.
 - **Grease Monkey:** Keep controls running when software fails.
 - **Tactics:** Choose which doors to lock without trapping civilians.
-- **Investigation:** Identify footage gaps and buried annotations.
+- **Investigation:** Identify stale loops, privacy-masked cameras, and suppressed alerts.
 
 **Useful information:**
 
 - The PCs can shape the battlefield from here.
-- Bad decisions may trap allies or spread the infestation.
-- Footage shows Model 1s leaving the destroyed nest through service routes.
-- Halden Rook flagged “nest-seeding possibility” before the warning was deleted or overruled.
+- Virellan camera feeds are stale or tenant-controlled.
+- Halden Rook flagged the possibility that escaped Model 1s could seed a new nest.
+- Door overrides can open the way to the north, but may also give creatures a route south.
 
-## D7. Patient Holding Rooms
+## D7. Patient Holding Rooms — South-Side Civilians
 
 **Read-aloud:**  
 Small rooms hold beds, monitors, and privacy curtains. They are not cells, but they are not comforting either. Some beds are empty too recently.
 
 **GM notes:**  
-Useful for civilian rescue, Bluewire treatment, exposed NPCs, or evidence that the Model 3s are hunting isolated biomass.
+Keep most living human NPCs here or below. This is the civilian / rescue zone.
 
 **Interaction prompts:**
 
 - **Medicine:** Stabilize a patient while alarms rise.
-- **Empathy:** Get a terrified person to move now instead of freeze.
-- **Athletics:** Carry someone to the elevator or emergency route.
-- **Religious / Comfort:** Help someone face impossible symptoms without despair.
-- **Awareness:** Notice drag marks or low movement outside the room.
+- **Empathy:** Get a terrified person to move.
+- **Athletics:** Carry someone to elevator, stairs, or emergency arrival route.
+- **Awareness:** Notice drag marks leading toward a locked northern threshold.
 
 **Useful information:**
 
 - The players should feel the cost of delays here.
 - Saving patients can matter more than killing enemies.
-- Missing patients and drag marks point toward the infested zone.
+- Missing patients and drag marks point toward locked tenant spaces.
 
-## D8. Containment Chamber — Destroyed Old Nest
+## D8. Tenant Support / Containment Interface
 
 **Read-aloud:**  
-The containment chamber has been burned hard and cleaned harder. Fresh coating cannot hide the buckled wall panels, melted fittings, and blackened seams. The center of the room is empty, but not clean.
+This room carries the wrong mix of tenant clinic furniture and hardened containment retrofits. Someone tried to make a private recovery suite double as an isolation interface.
 
 **GM notes:**  
-This is the **destroyed old nest**, not the active hidden nest.
+D8 is no longer the old destroyed nest. The old destroyed nest evidence is in B8.
 
-Corporate Recovery thinks this was the only nest. They are wrong.
-
-Use this chamber to reveal what happened before, not to end the current threat immediately.
+Use D8 as an approach room, threshold, or equipment space near the northern infestation. It can show that Virellan’s medical infrastructure was misused after the escaped Model 1s found the area.
 
 **Interaction prompts:**
 
-- **Xenobiology / Antithesis knowledge:** Identify remains of nest structure and Model 1 emergence.
-- **Big Guns / Corporate Security:** Recognize powered-armor assault patterns and incendiary cleanup.
-- **Medicine / Surgery:** Identify that researchers or staff were incorporated as biomass.
-- **Investigation:** Find where evidence was scraped, burned, and replaced.
-- **Grease Monkey / Scavenger:** Identify service gaps where small forms escaped.
+- **Medicine:** Identify recovery equipment repurposed for containment.
+- **Cyberware:** Recognize neuro-rehab and prosthetic calibration rigs.
+- **Investigation:** Find a tenant maintenance ticket that was ignored.
+- **Xenobiology / Antithesis knowledge:** Notice growth patterns moving toward the active nest.
+- **Corporate Security:** Identify emergency seals applied too late.
 
 **Useful information:**
 
-- The first nest was here or immediately adjacent.
-- It is nearly destroyed.
-- Researchers and staff were consumed as biomass.
-- Corporate cleanup teams burned the visible nest.
-- Corporate Recovery believes this was the only nest.
-- Escape evidence points away from D8, toward D9 and the hidden infested area.
+- This is not the old nest site.
+- It is part of the route into the active infestation.
+- Virellan may be negligent, compromised, or merely an absentee tenant whose space was invaded.
 
-## D9. Service Bypass — Escape Route
+## D9. Service Bypass — Tenant Back Route
 
 **Read-aloud:**  
-A narrow corridor of pipes, access panels, and yellow service lights runs behind the main rooms. The air is warm. Some panels are sealed from the outside. Others are bent outward from within.
+A narrow corridor of pipes, access panels, and yellow service lights runs behind the main rooms. Some panels are sealed from the public side. Others are bent outward from within.
 
 **GM notes:**  
-This is the bridge between the destroyed old nest and the active hidden nest.
-
-Model 1s escaped this way. Later, Model 3s use nearby routes to drag biomass back toward the new nest.
+This route links the old B8 escape evidence to the active Floor D infestation. It is also how Model 3s can bypass locked doors.
 
 **Interaction prompts:**
 
 - **Stealth:** Move around the main hall unseen.
-- **Scavenger:** Find tools, access hatches, and residue trails.
-- **Gutter Rat:** Know which panel leads to a maintenance crawl.
-- **Melee Combat:** Understand the danger of close fighting in the narrow space.
-- **Tracking / Investigation:** Follow the escape vector and later drag marks.
+- **Scavenger:** Find tools, panels, and residue trails.
+- **Gutter Rat:** Know which panel leads to a tenant maintenance crawl.
+- **Tracking / Investigation:** Follow the escape vector and current drag marks.
 
 **Useful information:**
 
-- This route can save the party if the central hall is overrun.
-- It can also let something bypass them.
-- The old Model 1 escape vector and current missing-person trail both point deeper into Floor D.
+- This route can save the party if the central hall is locked down.
+- It can also let something bypass the PCs.
+- The Model 1 escape vector and current missing-person trail both lead deeper into the north tenant area.
 
-## D10. Elevator Core
+## D10. Elevator Core — Split Access
 
 **Read-aloud:**  
-The elevator doors shudder with each distant impact. The floor indicator flickers between valid floors, error codes, and blank darkness.
+The elevator doors shudder with each distant impact. One call panel serves the clinic side. Another is locked under Virellan tenant authority.
 
 **GM notes:**  
-Dangerous vertical connection. Good for tension, rescue, or letting the GM show that the problem could spread.
+Important because the active nest is in the unmarked room between D10 and D4. The elevator can accidentally deliver PCs close to danger if they use the tenant-side access.
 
 **Interaction prompts:**
 
 - **Mesh Hacker:** Stop the elevator carrying panic, corporate forces, or infestation between floors.
 - **Grease Monkey:** Force it open or hold it shut mechanically.
 - **Tactics:** Decide whether to sacrifice mobility for containment.
+- **Corporate Security:** Understand split tenant/public elevator permissions.
 - **Awareness:** Hear whether something is inside before opening it.
 
 **Useful information:**
 
 - The elevator is useful but risky.
-- Alien effects do not spread electronically, but creatures, bodies, panic, and bad human decisions can spread through vertical infrastructure.
+- A tenant-side elevator stop may bypass the locked south/north doors.
+- Creatures, bodies, panic, and bad human decisions can spread through vertical infrastructure.
 
-## D11. Emergency Stair / Ladderwell
+## D11. Emergency Stair / Ladderwell — North Flank
 
 **Read-aloud:**  
 The emergency shaft drops into red-lit gloom. Its metal steps are narrow, steep, and echo too long. Something has scratched the underside of several landings.
 
 **GM notes:**  
-Last-resort route. Good for escape, ambush, or Model 3 movement.
+This is the other way the nest can threaten the south half. If players use stairs to reach Floor D, decide whether they enter the south-access stair first or accidentally reach the tenant-side landing.
 
 **Interaction prompts:**
 
 - **Athletics:** Move fast under pressure.
 - **Parkour:** Skip landings or bypass obstacles.
 - **Awareness:** Detect movement from above or below.
-- **Small Arms:** Know firing here risks ricochets and panic.
 - **Tactics:** Decide whether to hold the stair or abandon it.
 
 **Useful information:**
@@ -317,35 +312,38 @@ Last-resort route. Good for escape, ambush, or Model 3 movement.
 From emergency access to hall, the route is just wide enough for two nurse-shaped drones carrying a smart-stretcher at a dead run.
 
 **GM notes:**  
-This route matters if NightCrash appears or if PCs prepare evacuation. If the actual landing pad is on Floor B, D12 is the internal route she and the Gurney Angels use to reach Floor D.
+If the landing pad is on Floor B, D12 is the internal route NightCrash and the Gurney Angels use to reach Floor D.
 
-**Interaction prompts:**
-
-- **Logistics / Piloting:** Keep the route clear for medevac.
-- **Athletics:** Move debris or bodies out of the way.
-- **Performance / Leadership:** Make frightened people stop blocking the path.
-- **Small Arms:** Cover the route without endangering patients.
+Keep D12 south of the locked tenant section if possible, so her arrival helps evacuation but does not instantly solve the hidden nest.
 
 **Useful information:**
 
 - NightCrash creates an opening, not a solution.
 - If the route is blocked, her help is delayed or reduced.
 
-## D13. Active Hidden Nest
+## D13. Deprecated label
 
-If the map has no obvious room for a separate D13, place this in the half of the map most connected to **D9 Service Bypass**, **D11 Emergency Stair / Ladderwell**, or a sealed maintenance cavity behind the quarantine/incident rooms.
+Do not use D13 as the default nest location in this version.
+
+If an older handout or label says **D13 Active Hidden Nest**, reinterpret it as:
+
+```text
+the unmarked tenant room between D10 Elevator Core and D4 Virellan Observation / Quarantine Rooms
+```
+
+## Unmarked room between D10 and D4 — Active Hidden Nest
 
 **Read-aloud when discovered:**  
-The corridor stops being architecture. Pipes disappear under pulsing tissue. Panels have been pulled inward and webbed into the walls. Small winged shapes cling to the ceiling like wet leaves. Something larger moves low behind the growth, breathing in clicks.
+The door opens into a room that no longer belongs to architecture. Treatment couches, sensor rigs, and wall panels have been pulled inward and webbed into pulsing tissue. Small winged shapes cling to the ceiling like wet leaves. Something larger moves low behind the growth, breathing in clicks.
 
 **GM notes:**  
-This is the **second hidden nest**, seeded by Model 1s that escaped the destroyed old nest. It should be hidden until the PCs follow clues, explore the unsafe half of the map, or trigger an attack.
+This is the **second hidden nest**, seeded by Model 1s that escaped the destroyed B8 experiment nest.
 
-The nest is active but young. It should be frightening, not impossible.
+It should stay hidden until the PCs open the tenant-controlled north side, follow D9 service traces, reach the tenant side through D10 elevator access, reach the tenant side through D11 stair access, track missing-person drag marks, or respond to an attack from the north.
 
 **Interaction prompts:**
 
-- **Xenobiology / Antithesis knowledge:** Understand that Model 1 remains seeded this new nest.
+- **Xenobiology / Antithesis knowledge:** Understand that escaped Model 1s seeded this new nest.
 - **Investigation / Tracking:** Connect missing-person drag marks to the nest.
 - **Tactics:** Identify chokepoints, weak growth supports, and bad firing lanes.
 - **Big Guns / Demolitions logic:** Destroy nest structure without collapsing rescue routes.
@@ -365,11 +363,11 @@ Adjust for party size and tone.
 
 ### Default starter version
 
-- **Model 1 Juvenile** — 3 to 5 total, mostly near D9 / D13.
-- **Model 1 Adolescent** — 0 to 1, near the nest.
-- **Model 1 Seed Clump / Active Nest Core** — inside D13.
-- **Juvenile Model 3** — 1 to 2, roaming between D7, D9, D11, and D13.
-- **Mote Swarm** — optional pressure in D3 or near D8.
+- **Model 1 Juvenile** — 3 to 5 total, mostly in the northern tenant zone.
+- **Model 1 Adolescent** — 0 to 1, near the active nest.
+- **Model 1 Seed Clump / Active Nest Core** — in the unmarked room between D10 and D4.
+- **Juvenile Model 3** — 1 to 2, roaming between D4, D9, D10, D11, and the active nest.
+- **Mote Swarm** — optional pressure in D3, D8, or D9.
 
 ### Hard version
 
@@ -379,24 +377,26 @@ Adjust for party size and tone.
 
 ### Do not use by default
 
-- **Model 3 Adult** — too large for normal starter play unless used as an unfinished emergence, countdown, or later-campaign threat.
+- **Model 3 Adult** — too large for normal starter play unless used as unfinished emergence, countdown, or later-campaign threat.
 
 ## Discovery flow
 
-1. PCs enter Floor D through emergency access, elevator, stair, or service route.
-2. D5/D6 reveal sanitized records, deleted footage, and the relay’s evidence.
-3. D8 shows the destroyed old nest and corporate cleanup.
-4. D9 reveals the escape route from the old nest.
-5. D7 or D11 shows current hunting / drag evidence.
-6. D13 reveals the active hidden nest.
-7. The PCs choose between evidence, rescue, containment, and direct destruction.
-8. NightCrash can arrive late through D1/D12 if the group needs rescue pressure, extraction, or recognition.
+1. PCs enter Floor D through elevator, stairs, emergency access, or service routes.
+2. They see the southern half still used by clinic/citizens.
+3. D3 reveals locked tenant doors and unreliable Virellan camera coverage.
+4. D5/D6 reveal sanitized records, deleted footage, and the relay’s evidence.
+5. D7 shows current missing-person or drag evidence.
+6. PCs open or bypass the locked northern tenant area.
+7. D4/D8/D9 show the infestation is physical and active.
+8. The unmarked room between D10 and D4 reveals the hidden nest.
+9. The PCs choose between evidence, rescue, containment, and direct destruction.
+10. NightCrash can arrive late through D1/D12 if the group needs rescue pressure, extraction, or recognition.
 
 ## What Floor D should establish
 
 - The relay is human evidence, not alien technology.
-- The corporation created the first nest through illegal bio-research.
-- Corporate cleanup destroyed the visible old nest but missed the escape vector.
-- Model 1s seeded a second hidden nest on Floor D.
-- The second nest is active and responsible for the current missing-person pattern.
-- Human secrecy, not alien hacking, let the threat grow.
+- The old destroyed nest evidence is in B8.
+- Escaped Model 1s seeded the active hidden nest on Floor D.
+- Locked tenant boundaries explain why citizens did not stumble into the nest immediately.
+- The northern tenant, Virellan, may be negligent, compromised, or a shell entity.
+- Human secrecy and divided authority let the Antithesis grow.

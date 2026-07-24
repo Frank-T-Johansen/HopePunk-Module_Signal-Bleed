@@ -166,52 +166,65 @@ Possible foreshadowing:
 
 Floor C should point toward Floor D rather than ending the mystery.
 
-## Floor D — Quarantine Incident / Hidden Nest
+## Floor D — Quarantine Incident / Northern Tenant Hidden Nest
 
 ### Placement note
 
-Floor D is the main active hidden-nest floor.
+Floor D is split between a citizen-accessible southern side and a locked northern tenant side.
 
-The old destroyed nest remains are in **D8 Containment Chamber**. The active second nest is deeper on the same floor, usually connected through **D9 Service Bypass**, **D11 Emergency Stair / Ladderwell**, or a hidden cavity/infested zone the GM may label **D13 Active Hidden Nest**.
+The **active hidden nest** is in the unmarked room between **D10 Elevator Core** and **D4 Virellan Observation / Quarantine Rooms**. Do not use D13 as the default nest label unless you need a generic fallback.
 
-The floor should be partially infested: enough to feel dangerous, but not so obvious that the players see the entire nest immediately.
+The old destroyed nest evidence is in **B8**, not on Floor D.
 
-### Starting visible human tokens
+All living civilians and ordinary clinic-facing NPCs should start in **D6 or below / south-side spaces**. The northern part is locked and unavailable to citizens using the southern part.
 
-Usually none, unless the PCs arrive during the incident.
+### Southern side: starting visible human tokens
 
-Possible visible tokens if they arrive before full breach:
+These are the only Floor D human tokens that should usually be visible at scene start:
 
 - **Signal-Touched Patient / Exposed Patient** — D7 Patient Holding Rooms.
 - **Clinic technician** — D5 Diagnostics Lab or D6 Control Room.
 - **Dr. Vela Myung** — D5 Diagnostics Lab or D7 Patient Holding Rooms if she is trapped or treating someone.
-- **Corporate Recovery Pair** — D3 Central Incident Hall or D6 Control Room if corp got there first.
 - **Clinic Staff / Automated Nurse / Generic Patient tokens** — D7 Patient Holding Rooms or D12 NightCrash Arrival Route if evacuation has begun.
+- **Corporate Recovery Pair** — D3 Central Incident Hall south side or D6 Control Room if corp got there first. Keep them outside the locked northern area unless they have already breached it.
 
-### Delayed or GM-layer human tokens
+### Southern side: GM-layer or delayed human tokens
 
-- **Commander Ilan Rusk** — D6 Control Room, D8 Containment Chamber entrance, or off-map until corporate pressure escalates.
-- **Lt. Varya Senn** — D3 Central Incident Hall, D8 approach, or D9 if the tactical fight escalates.
+- **Commander Ilan Rusk** — D6 Control Room, D3 south threshold, or off-map until corporate pressure escalates.
+- **Lt. Varya Senn** — D3 south threshold or D6 if the tactical fight escalates.
 - **Mara Silex** — D5 Diagnostics Lab or D7 Patient Holding Rooms if you want the corporate medic / possible informant angle.
 - **Orlan Pike** — D6 Control Room or remote-only if the camera/log manipulation thread is active.
 - **Halden Rook evidence marker** — D6 Control Room logs and deleted annotations.
 - **NightCrash** — D1/D12 emergency arrival route if emergency intervention is needed, or after the climax as recognition/extraction.
-- **The Siren Saint** — D1 or the Floor B landing pad, depending on current map setup.
-- **Gurney Angels** — D12 NightCrash Arrival Route, moving toward D7, D3, or D13 if evacuation begins.
+- **The Siren Saint** — Floor B landing pad or Floor D D1 access, depending on map setup.
+- **Gurney Angels** — D12 NightCrash Arrival Route, moving toward D7, D3, or the north breach if evacuation begins.
+
+### Northern tenant-side markers
+
+Place these as GM-layer text notes before the players open the locked doors.
+
+- **[D3 LOCKED TENANT DOORS]** — locked north/south boundary.
+- **[D4 VIRELLAN OBSERVATION]** — tenant recovery / monitoring rooms.
+- **[D4 FIRST RESIDUE]** — first obvious physical infestation signs.
+- **[D8 TENANT SUPPORT]** — repurposed support / containment interface.
+- **[D9 TENANT BACK ROUTE]** — bypass route and drag marks.
+- **[D10 TENANT ELEVATOR]** — split tenant/public access.
+- **[D11 NORTH FLANK]** — stair / ladder movement route.
+- **[NEST: D10/D4 ROOM]** — active hidden nest in the unmarked room between D10 and D4.
 
 ### Evidence markers
 
 Place these as GM-layer text notes.
 
 - **[D5 RELAY / TRIAL RECORDS]** — diagnostics and patient-trial data.
-- **[D6 HALDEN LOG]** — footage of Model 1s leaving the old nest in formation.
+- **[D6 VIRELLAN FEED LOOP]** — stale tenant camera coverage.
+- **[D6 HALDEN LOG]** — footage warning that Model 1s did not flee randomly.
 - **[D6 DELETED RISK TAG]** — “nest-seeding possibility.”
-- **[D8 OLD NEST REMAINS]** — destroyed visible nest.
-- **[D8 CLEANUP BURNS]** — powered-armor / incendiary cleanup.
-- **[D9 ESCAPE VECTOR]** — Model 1s fled through this route.
 - **[D7 DRAG MARKS]** — current Model 3 hunting pattern.
+- **[D9 ESCAPE / DRAG ROUTE]** — Model 1 seed route and current Model 3 route.
+- **[D10 ELEVATOR TRACE]** — movement through tenant-side elevator access.
 - **[D11 FLANK ROUTE]** — emergency stair / ladderwell movement.
-- **[D13 ACTIVE NEST]** — hidden until discovered.
+- **[NEST CORE]** — visible only after discovery.
 
 ### Antithesis starting state
 
@@ -219,16 +232,15 @@ Use the GM layer for hidden creatures until the PCs discover or trigger them.
 
 Recommended default:
 
-- **Old Nest Remains** — D8 Containment Chamber. Environmental marker, not an active creature.
+- **Model 1 Juvenile** — hidden in D4 or just beyond the north tenant doors.
 - **Model 1 Juvenile** — hidden near D9 Service Bypass.
-- **Model 1 Juvenile** — hidden near D3/D4 transition.
-- **Model 1 Juvenile** — hidden near D13 Active Hidden Nest.
-- **Model 1 Juvenile** — optional extra near D11 if you want stronger infestation pressure.
-- **Model 1 Adolescent** — hidden near D13 Active Hidden Nest.
-- **Model 1 Seed Clump / Active Nest Core** — D13 Active Hidden Nest.
-- **Juvenile Model 3** — roaming hunter between D7, D9, D11, and D13.
-- **Juvenile Model 3** — optional second hunter near D11 or D13.
-- **Mote Swarm** — optional pressure in D3, D8, or the D9 approach.
+- **Model 1 Juvenile** — hidden near D10 tenant-side elevator access.
+- **Model 1 Juvenile** — hidden inside or just outside the D10/D4 nest room.
+- **Model 1 Adolescent** — hidden near the D10/D4 nest room.
+- **Model 1 Seed Clump / Active Nest Core** — inside the unmarked room between D10 and D4.
+- **Juvenile Model 3** — roaming hunter between D4, D9, D10, D11, and the nest room.
+- **Juvenile Model 3** — optional second hunter near D11 or inside the northern tenant zone.
+- **Mote Swarm** — optional pressure in D3, D8, or D9.
 
 Hard version:
 
@@ -242,15 +254,16 @@ Do not use by default:
 
 ### Suggested reveal sequence
 
-1. PCs enter Floor D and encounter clean quarantine architecture.
-2. D5/D6 reveal sanitized records, deleted footage, and the relay’s evidence.
-3. D8 reveals the destroyed old nest and corporate cleanup.
-4. D9 reveals the Model 1 escape vector.
-5. D7/D11 show current drag marks and hunting activity.
-6. Model 1s appear first as movement, noise, and swarm pressure.
-7. A Juvenile Model 3 attacks, retreats, or drags prey toward the nest.
-8. PCs discover D13 Active Hidden Nest.
-9. Finale choice: destroy, contain, rescue, extract evidence, or survive long enough for help.
+1. PCs arrive on the south side through elevator, stairs, emergency access, or service routes.
+2. They see that southern Floor D is still used by clinic/citizens.
+3. D3 reveals locked north-side tenant doors.
+4. D5/D6 reveal Virellan, stale tenant feeds, deleted logs, and the relay’s evidence.
+5. D7 shows drag marks or missing-person pressure.
+6. PCs open or bypass the locked northern tenant area.
+7. D4/D8/D9 show the infestation is physical and active.
+8. The unmarked room between D10 and D4 reveals the active hidden nest.
+9. PCs choose between rescue, evidence, containment, destruction, and survival.
+10. NightCrash can arrive late through D1/D12 if the group needs rescue pressure, extraction, or recognition.
 
 ## Schoolchildren overheard conversation
 

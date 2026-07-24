@@ -2,7 +2,7 @@
 
 ## One-sentence premise
 
-Signal Bleed is about a stolen human data relay proving that a corporation’s illegal Antithesis bio-research created a nest, that their cleanup failed, and that a second hidden nest is now active on Floor D beneath the community they came to silence.
+Signal Bleed is about a stolen human data relay proving that a corporation’s illegal Antithesis bio-research created a nest, that their cleanup failed, and that escaped Model 1s seeded an active hidden nest inside a locked northern tenant suite on Floor D.
 
 ## Hard setting constraints
 
@@ -23,52 +23,74 @@ They were wrong.
 
 The stored biomass consumed researchers and lab staff, incorporated them as material, and formed a small nest. That first nest produced **Model 1s**, the small flying Antithesis.
 
+The first illegal experiment and burned-out visible nest evidence are represented by **B8 Sealed Isolation Ward** and related records.
+
 Corporate containment forces attacked the visible nest and nearly exterminated it. The official internal conclusion was that the Antithesis event was contained.
 
-But several Model 1s behaved unexpectedly.
-
-They did not attack, scatter, or die in place. They flew through ducts and hidden service routes. The corporation dismissed this as terminal erratic flight.
+But several Model 1s behaved unexpectedly. They escaped through ducts, service gaps, and hidden routes. The corporation dismissed this as terminal erratic flight.
 
 A dead or missing researcher flagged it as a nest-seeding risk before being overruled.
 
-The escaped Model 1s seeded a second, smaller, hidden nest elsewhere on **Floor D**, deeper in the quarantine/incident level’s service routes and sealed maintenance spaces.
+The escaped Model 1s later seeded a second, smaller, hidden nest inside a locked northern tenant area on **Floor D**.
 
 The corporation does not know this second nest exists.
 
-## The old nest
+## The northern Floor D tenant
 
-The old visible nest was in or adjacent to the quarantine / containment chamber system, represented in play by:
+The northern half of Floor D is leased to **Virellan Neuro-Recovery Annex**, a private remote neuro-rehabilitation and prosthetic calibration clinic.
 
-```text
-D8 Containment Chamber
-B8 Sealed Isolation Ward / old experiment evidence
-related diagnostic and control logs on D5/D6
-```
-
-B8 can show the illegal research and early disaster. D8 shows the burned-out visible nest and corporate cleanup.
-
-Both point to the same historical truth:
+On paper, Virellan provides:
 
 ```text
-The corporation created the first nest.
-Researchers and staff died.
-Corporate Recovery burned the visible nest.
-The cleanup missed the escape vector.
+post-surgical neuro-recovery monitoring
+cyberware strain rehabilitation
+prosthetic calibration
+sleep and seizure observation
+remote diagnostics
+low-contact recovery rooms
 ```
+
+In practice, the site is thinly staffed and often empty.
+
+The doors between the citizen-accessible southern part of Floor D and the northern tenant area are locked. Citizens, shelter residents, and ordinary Mercy Twelve patients do not use the northern rooms.
+
+That separation explains why the active nest can grow unnoticed for a while.
+
+Virellan may be:
+
+```text
+an unwitting absentee tenant
+a negligent medical shell company
+a corporate proxy tenant
+a subcontractor whose systems were compromised
+or a liability shield for the original research program
+```
+
+The GM can choose how guilty Virellan is.
 
 ## The second hidden nest
 
-The second hidden nest is now active on **Floor D**.
+The second hidden nest is now active on **Floor D**, inside the locked northern tenant zone.
 
-Place it in the infested half of the map, usually connected to:
+Default location:
 
 ```text
-D9 Service Bypass
-D11 Emergency Stair / Ladderwell
-a sealed maintenance cavity or hidden nest area the GM may label D13 Active Hidden Nest
+the unmarked room between D10 Elevator Core and D4 Virellan Observation / Quarantine Rooms
 ```
 
-The second nest should not be obvious immediately. The PCs discover it by investigating the destroyed old nest, following the Model 1 escape vector, tracking missing-person evidence, or stumbling into the infested half of Floor D.
+This replaces older references to D13 as the default active nest. If D13 appears in older notes, treat it as shorthand for the unmarked D10/D4 nest room.
+
+The second nest should not be obvious immediately. The PCs discover it by:
+
+```text
+opening or bypassing the locked tenant doors
+using tenant-side elevator access
+using the emergency stair / ladderwell
+following D9 service traces
+tracking missing-person drag marks
+recovering deleted footage from D6
+or responding to an attack from the northern side
+```
 
 The second nest has produced:
 
@@ -96,7 +118,7 @@ Find the courier.
 Suppress clinic records.
 Prevent Redline Choir from broadcasting the evidence.
 Identify witnesses.
-Blame gang violence, panic, or rogue staff if needed.
+Blame gang violence, panic, tenant negligence, or rogue staff if needed.
 Avoid public evacuation unless corporate liability can be controlled.
 ```
 
@@ -106,22 +128,22 @@ This makes him dangerous but not omniscient. He is wrong about the second hidden
 
 ## What is actually happening now
 
-The second hidden nest is active on Floor D.
+The second hidden nest is active in the northern Floor D tenant suite.
 
-It is not a large mature hive yet, but it is growing. It has enough biomass and structure to produce Model 1s and a few juvenile Model 3 hunters.
+The southern half of Floor D can still contain patients, staff, diagnostics, and emergency movement. Ordinary civilians have not been allowed through the locked tenant doors, which is why the infestation has not been obvious to everyone.
 
-Those hunters are responsible for:
+The northern half is partially infested.
+
+The current missing-person pattern comes from:
 
 ```text
-missing maintenance workers
-missing shelter residents
-missing food-route volunteers
-corrupted camera gaps near service access
-drag marks through maintenance routes
-organic residue in drains, ducts, and stairwells
+Model 3 hunters moving through tenant-side access
+drag marks near D7, D9, D10, and D11
+stale or looped tenant camera feeds
+service panels bent from within
+organic residue around locked door seals
+unanswered Virellan appointments or contractor logs
 ```
-
-The PCs do not need to understand the full pattern immediately. They should first see isolated clues, then the old destroyed nest, then the escape vector, then the active hidden nest.
 
 ## The Quill Relay
 
@@ -143,6 +165,8 @@ corporate cleanup orders
 evidence that locals were used as deniable subjects
 footage of Model 1s behaving strangely during cleanup
 a buried warning that the Model 1 flight vector was not random
+tenant access metadata pointing toward Floor D
+stale Virellan camera loops and door logs
 ```
 
 The relay’s most important clue is initially easy to miss:
@@ -151,7 +175,7 @@ The relay’s most important clue is initially easy to miss:
 Several Model 1s escaped the destroyed nest and flew somewhere else.
 ```
 
-The corporation dismissed this as terminal erratic behavior. Halden Rook or another researcher flagged it as possible nest-seeding behavior before the warning was buried.
+The corporation dismissed this as terminal erratic behavior. A dead or missing researcher flagged it as possible nest-seeding behavior before the warning was buried.
 
 ## What “Signal Bleed” means
 
@@ -165,7 +189,7 @@ The evidence is spreading.
 The corporation cannot contain the story.
 ```
 
-In-world, characters may use “signal bleed” to describe the relay’s copied evidence appearing in clinic terminals, camera buffers, student slates, and Redline mesh caches.
+In-world, characters may use “signal bleed” to describe the relay’s copied evidence appearing in clinic terminals, camera buffers, student slates, tenant device logs, and Redline mesh caches.
 
 That is human data leakage and human hacking, not Antithesis influence.
 
@@ -173,33 +197,33 @@ That is human data leakage and human hacking, not Antithesis influence.
 
 1. **The courier arrives:** Tamsin Quill reaches Mercy Twelve with the relay and collapses.
 2. **Human pressure:** the PCs deal with clinic staff, Redline Choir, Bluewire, civilians, corporate observers, surveillance gaps, and first missing-person clues.
-3. **The old research:** B8 and/or relay evidence reveal that the corporation ran illegal Antithesis bio-research under medical cover.
-4. **The old nest:** D8 reveals the burned-out visible nest and corporate cleanup.
-5. **The wrong conclusion:** footage shows Model 1s flying away in formation. Corporate reports call this “terminal erratic flight.”
-6. **The buried warning:** Halden Rook or another researcher warned that the flight vector could seed a new nest.
-7. **The current threat:** drag marks, missing people, and service routes point deeper into Floor D.
-8. **The active hidden nest:** the PCs discover the second nest, mostly Model 1s plus a few juvenile Model 3 hunters.
-9. **Final choices:** rescue, destroy, contain, broadcast evidence, cooperate temporarily with enemies, or survive long enough for NightCrash to create an extraction opening.
+3. **The old research:** B8 and relay evidence reveal that the corporation ran illegal Antithesis bio-research under medical cover.
+4. **The wrong conclusion:** footage shows Model 1s flying away in formation. Corporate reports call this “terminal erratic flight.”
+5. **The locked tenant problem:** D3/D5/D6 reveal the northern Floor D tenant boundary, stale Virellan feeds, and suspicious access gaps.
+6. **The missing people:** D7/D9/D10/D11 show current drag marks and hunting patterns.
+7. **The hidden nest:** the PCs open or bypass the northern tenant area and discover the active nest in the unmarked room between D10 and D4.
+8. **Final choices:** rescue, destroy, contain, broadcast evidence, cooperate temporarily with enemies, or survive long enough for NightCrash to create an extraction opening.
 
 ## How to use Floor B and Floor D together
 
-Floor B is still important because it shows what is at stake:
+Floor B is the past-crime and community-stakes level:
 
 ```text
 recovery rooms
 family support
 aid networks
 Mara’s hidden support
+B8 old experiment evidence
 the recovered B8 notebook
 the landing pad or emergency arrival access
 ```
 
-Floor D is where the horror becomes physically active:
+Floor D is the current-threat level:
 
 ```text
-old destroyed nest
-control logs
-escape vector
+locked tenant boundary
+stale Virellan systems
+current missing-person drag marks
 active hidden nest
 Model 1 infestation
 Model 3 hunters
@@ -212,6 +236,8 @@ NightCrash may land at the Floor B pad and then enter Floor D through elevators,
 The corporation did not merely “make a mistake.”
 
 They created deniable conditions for illegal research, used locals as subjects or collateral, buried risk warnings, and sent recovery forces to control evidence rather than rescue everyone.
+
+Virellan may be an absentee tenant, a negligent contractor, or a shell company. The GM can decide how much they knew.
 
 The Antithesis are the immediate biological horror.
 
